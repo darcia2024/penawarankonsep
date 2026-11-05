@@ -436,6 +436,29 @@
   .ui-site.m .k-list { grid-template-columns: 1fr; font-size: 15px; }
   .ui-site.m .k-calc b { font-size: 16px; }
 
+  /* Pilihan paket */
+  .pk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; flex: 1; min-height: 0; }
+  .pk { background: #fff; border-radius: 22px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 14px; transition: background-color .25s ease, color .25s ease, transform .25s ease; }
+  .pk:hover { transform: translateY(-2px); }
+  .pk.on { background: var(--navy); color: #fff; }
+  .pk-sel { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 6px; border-radius: 12px; }
+  .pk-sel:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+  .pk-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .pk-top h3 { font-size: clamp(19px, 1.5vw, 24px); }
+  .pk-badge { background: var(--orange); color: #fff; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .pk-for { opacity: .75; }
+  .pk-price { font-size: min(3.2vw, 5.6vh); margin-top: 8px; }
+  .pk.on .pk-price { color: #fff; }
+  .pk-list { display: grid; gap: 7px; font-size: clamp(14px, 1vw, 16px); border-top: 1px solid var(--line); padding-top: 14px; }
+  .pk.on .pk-list { border-top-color: rgba(255,255,255,.2); }
+  .pk-list li { position: relative; padding-left: 24px; line-height: 1.4; }
+  .pk-list li::before { content: ""; position: absolute; left: 2px; top: .3em; width: 6px; height: 11px; border: solid var(--orange); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .pk-cta { margin-top: auto; display: block; text-align: center; border-radius: 999px; padding: 12px 16px; font-weight: 700; box-shadow: inset 0 0 0 1.5px var(--navy); color: var(--navy); transition: background-color .15s ease; }
+  .pk-cta:hover { background: var(--seal); }
+  .pk.on .pk-cta { background: var(--orange); color: #fff; box-shadow: none; }
+  .pk.on .pk-cta:hover { background: #c2410c; }
+  .pk-note { margin-top: 14px; max-width: 110ch; }
+
   .erp-list { display: grid; gap: 4px; }
   .erp-pick { display: flex; align-items: center; gap: 12px; border: 0; background: transparent; color: var(--navy); padding: 10px 12px; border-radius: 12px; font-weight: 500; text-align: left; transition: background-color .15s ease; }
   .erp-pick svg { width: 18px; height: 18px; opacity: .7; }
@@ -507,6 +530,9 @@
     .demo-frame { height: 640px; }
     .slide h2[style*="font-size"] { font-size: 30px !important; }
     .erp-pick { padding: 9px 10px; }
+    .pk-grid { grid-template-columns: minmax(0, 1fr); }
+    .pk:nth-child(3) { order: -1; }
+    .pk-price { font-size: 34px; }
     .cover-band .photo { height: 200px; }
     .timeline { grid-template-columns: minmax(0, 1fr); padding-top: 0; padding-left: 28px; }
     .tl-line { left: 8px; right: auto; top: 0; bottom: 0; width: 3px; height: auto; }
@@ -868,16 +894,16 @@ var SLIDES = [
 
   { id: 'solusi', title: 'Kekurangan dan solusi', theme: 'dark', html: function () {
     var items = [
-      ['Website proper', 'Halaman PIP Machinery dengan katalog mesin, gerobak, dan paket, siap dicari di Google.', 'Mesin sulit ditemukan di internet', 'Tahap 1'],
-      ['Pusat chat dan prospek', 'Satu nomor untuk banyak admin. Setiap chat tercatat, ada pengingat follow up.', 'Chat masuk tidak tercatat', 'Tahap 2'],
-      ['Pengingat dan halaman mitra', 'Pelanggan diingatkan saat bahan hampir habis, lalu pesan ulang sekali tekan.', 'Pembeli mesin belum tentu kembali', 'Tahap 3'],
-      ['QR di setiap mesin', 'Sekali scan: tutorial, garansi, lapor kendala, dan pesan bahan.', 'Panduan harus ditanyakan dulu', 'Tahap 3']
+      ['Website proper', 'Halaman PIP Machinery dengan katalog mesin, gerobak, dan paket, siap dicari di Google.', 'Mesin sulit ditemukan di internet', 'Semua paket'],
+      ['Pusat chat dan prospek', 'Satu nomor untuk banyak admin. Setiap chat tercatat, ada pengingat follow up.', 'Chat masuk tidak tercatat', 'Paket Bisnis'],
+      ['Pengingat dan halaman mitra', 'Pelanggan diingatkan saat bahan hampir habis, lalu pesan ulang sekali tekan.', 'Pembeli mesin belum tentu kembali', 'Paket Lengkap'],
+      ['QR di setiap mesin', 'Sekali scan: tutorial, garansi, lapor kendala, dan pesan bahan.', 'Panduan harus ditanyakan dulu', 'Paket Lengkap']
     ];
     return '<div class="g fill" style="grid-template-columns:.85fr 1.5fr;gap:28px;align-items:center">' +
       '<div><h2 class="rise" tabindex="-1">Empat Solusi<br>dari Kami</h2>' +
         '<p class="lead soft rise d1" style="margin-top:16px">Satu sistem yang menyambungkan penjualan mesin dengan penjualan bahan yang berulang.</p>' +
         '<p class="rise d2" style="margin-top:22px;font-weight:700;color:var(--orange)">Pendekatan kami</p>' +
-        '<ul class="dot-list rise d2"><li>Mulai dari yang paling cepat terasa.</li><li>WhatsApp tetap jadi tempat berjualan.</li><li>Setiap tahap berdiri sendiri.</li></ul></div>' +
+        '<ul class="dot-list rise d2"><li>Mulai dari yang paling cepat terasa.</li><li>WhatsApp tetap jadi tempat berjualan.</li><li>Semua paket selesai dalam 1 bulan.</li></ul></div>' +
       '<div class="g" style="grid-template-columns:1fr 1fr">' + items.map(function (it, i) {
         return '<div class="card orange hover-lift rise d' + (i + 2) + '" style="display:flex;flex-direction:column;gap:10px">' +
           '<div class="card-top" style="margin:0"><h3 style="font-size:clamp(20px,1.7vw,28px)">' + it[0] + '</h3>' + ra() + '</div>' +
@@ -986,12 +1012,12 @@ var SLIDES = [
   { id: 'mockup-pelanggan', title: 'Mockup pelanggan', theme: 'light', html: function () { return '' +
     '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Layar untuk Pelanggan</h2><p class="small soft rise d1" style="max-width:40ch">Tanpa aplikasi tambahan. Cukup dibuka lewat tautan atau QR yang menempel di mesin.</p></div>' +
     '<div class="g fill" style="grid-template-columns:repeat(3,1fr)">' +
-      [['Lacak pesanan', uiTrack()], ['Pesan ulang bahan', uiReorder()], ['Scan QR di mesin', uiQR()]].map(function (p, i) {
+      [['Pengingat pesan ulang', uiReminder()], ['Lacak pesanan', uiTrack()], ['Scan QR di mesin', uiQR()]].map(function (p, i) {
         return '<div style="display:flex;flex-direction:column;gap:10px;min-height:0" class="rise d' + (i + 2) + '">' + tag(p[0], 'solid') + '<div class="shot fill phone-box hover-lift" style="background:var(--panel)">' + frag(p[1], 'contain') + '</div></div>'; }).join('') + '</div>'; } },
 
   { id: 'demo', title: 'Coba demo', theme: 'dark', html: function () { return '' +
     '<div class="g fill" style="grid-template-columns:1fr 1.6fr;gap:24px">' +
-      '<div style="align-self:center"><h2 class="rise" tabindex="-1">Coba Langsung:<br>Pemilih Mesin</h2><p class="soft rise d1" style="margin-top:14px">Contoh fitur dari Tahap 1. Data mesin di demo ini masih contoh, kecuali harga paket Joelly.</p>' +
+      '<div style="align-self:center"><h2 class="rise" tabindex="-1">Coba Langsung:<br>Pemilih Mesin</h2><p class="soft rise d1" style="margin-top:14px">Termasuk di semua paket. Data mesin di demo ini masih contoh, kecuali harga paket Joelly.</p>' +
       '<ul class="dot-list rise d2" style="margin-top:12px"><li>Pembeli menjawab empat pertanyaan.</li><li>Sistem menyarankan mesin, lengkap dengan alasan.</li><li>Admin menerima pesan lengkap.</li></ul>' +
       '<p class="rise d3" style="margin-top:22px"><a class="pill-btn" href="' + DEMO_URL + '" target="_blank" rel="noopener">Buka halaman penuh <i>' + ARROW + '</i></a></p></div>' +
       '<div class="shot rise d2 mock-box" style="min-height:420px"><iframe class="demo-frame" src="' + DEMO_URL + '" title="Demo Pemilih Mesin"></iframe></div></div>'; } },
@@ -1005,7 +1031,7 @@ var SLIDES = [
         '<div class="card" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px"><p class="small soft">Sebelumnya, perkiraan kami</p><p class="soft" style="font-size:clamp(17px,1.5vw,22px);font-weight:500">' + r[1] + '</p></div></div>'; } },
 
   { id: 'komitmen', title: 'Komitmen kami', theme: 'dark', html: function () {
-    var items = [['Semuanya milik Bapak/Ibu', 'Domain, hosting, akun WhatsApp, dan data pelanggan atas nama usaha.'], ['Penjualan tidak terganggu', 'Website lama tetap menyala sampai yang baru siap.'], ['Tim diajari sampai bisa', 'Pelatihan langsung untuk admin, plus panduan video tiap fitur.'], ['Bisa berhenti per tahap', 'Tiap tahap berdiri sendiri, tanpa kewajiban lanjut.']];
+    var items = [['Semuanya milik Bapak/Ibu', 'Domain, hosting, akun WhatsApp, dan data pelanggan atas nama usaha.'], ['Penjualan tidak terganggu', 'Website lama tetap menyala sampai yang baru siap.'], ['Tim diajari sampai bisa', 'Pelatihan langsung untuk admin, plus panduan video tiap fitur.'], ['Selesai dalam 1 bulan', 'Jadwal kerja jelas sejak hari pertama, dan Bapak/Ibu bisa memantau progresnya.']];
     return '<div class="g fill" style="grid-template-columns:1fr 1.5fr;gap:28px;align-items:center">' +
       '<div><h2 class="rise" tabindex="-1">Empat Komitmen<br>Kami</h2><p class="lead soft rise d1" style="margin-top:14px">Supaya keputusan ini aman bagi usaha Bapak/Ibu.</p></div>' +
       '<div class="g" style="grid-template-columns:1fr 1fr">' + items.map(function (it, i) {
@@ -1050,7 +1076,7 @@ var SLIDES = [
     return '<h1 class="rise" tabindex="-1" style="font-size:min(5.6vw,10vh);margin:6px 0 20px">Ngobrol 45 Menit,<br>Lalu Putuskan</h1>' +
       '<div class="g fill" style="grid-template-columns:1.35fr 1fr;gap:20px">' +
         photo('foto-paket-joelly.jpg', 'Paket usaha Joelly dari katalog Purnama Eskrim', 'rise d1') +
-        '<div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px" class="rise d2"><div><h3>Langkah berikutnya</h3><ul class="dot-list"><li>Ngobrol di toko Bantul atau lewat video call.</li><li>Coba Pemilih Mesin dengan data mesin asli.</li><li>Kalau cocok, mulai Tahap 1.</li></ul></div>' +
+        '<div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px" class="rise d2"><div><h3>Langkah berikutnya</h3><ul class="dot-list"><li>Ngobrol di toko Bantul atau lewat video call.</li><li>Coba Pemilih Mesin dengan data mesin asli.</li><li>Pilih paket, sistem siap dalam 1 bulan.</li></ul></div>' +
         '<div class="contacts"><a href="https://wa.me/' + SENDER.wa + '?text=' + msg + '" target="_blank" rel="noopener"><i>' + ARROW + '</i>WhatsApp ' + SENDER.phone + '</a><span><i>D</i>' + SENDER.name + '</span><span><i>45</i>Tanpa kewajiban melanjutkan</span></div></div></div>'; } }
 ];
 
@@ -1065,10 +1091,34 @@ SLIDES.push({ id: 'erp', title: 'Sistem ERP', theme: 'light', html: function () 
       '<p class="small soft rise d3" style="margin-top:auto">Semua nama dan angka hanya contoh.</p></div>' +
     '<div class="shot rise d2 erp-box" style="background:transparent">' + frag(uiERP(state.erp), 'contain') + '</div></div>'; } });
 
-/* Urutan: solusi lebih dulu, data kondisi sekarang sebagai pendukung, harga paling akhir */
-var ORDER = ['mulai', 'solusi', 'fitur', 'operasional', 'erp', 'mockup-website', 'website', 'mockup-paket', 'mockup-chat',
-  'mockup-pelanggan', 'demo', 'layanan', 'tahap', 'mudah', 'komitmen', 'masalah', 'fondasi', 'gratis',
-  'investasi', 'biaya', 'balik-modal', 'penutup'];
+/* Pilihan paket: semua selesai dalam 1 bulan */
+var PAKET = [
+  { name: 'Website', price: 'Rp 5 juta', for: 'Supaya mudah ditemukan dan dipilih pembeli.', items: [
+    'Website proper PIP Machinery dan Purnama', 'Katalog mesin, bahan, gerobak, dan paket usaha', 'Pemilih Mesin dan hitung modal',
+    'Tombol WhatsApp, jadwal coba mesin, dan form gerobak', 'Siap dicari di Google'] },
+  { name: 'Bisnis', price: 'Rp 10 juta', for: 'Supaya semua penjualan tercatat rapi.', items: [
+    'Semua isi paket Website', 'ERP: Dasbor, Penjualan, Prospek, dan Stok', 'Satu nomor WhatsApp untuk banyak admin',
+    'Pengingat follow up calon pembeli', 'Lacak pesanan untuk pelanggan'] },
+  { name: 'Lengkap', price: 'Rp 13 juta', for: 'Supaya pelanggan terus kembali memesan.', rec: true, items: [
+    'Semua isi paket Bisnis', 'ERP: Produksi Gerobak, Servis, dan Keuangan', 'Halaman mitra dan pengingat pesan ulang',
+    'QR di setiap mesin untuk tutorial dan garansi', 'Laporan bulanan untuk pemilik'] }
+];
+if (state.paket === undefined) state.paket = 2;
+SLIDES.push({ id: 'harga', title: 'Pilihan paket', theme: 'light', html: function () {
+  return '<div class="row" style="margin:4px 0 16px"><h2 class="rise" tabindex="-1">Pilihan Paket</h2><p class="small soft rise d1" style="max-width:40ch">Semua paket selesai dalam <b>1 bulan</b>. Pilih yang paling pas, bisa naik paket kapan saja.</p></div>' +
+    '<div class="pk-grid">' + PAKET.map(function (p, i) {
+      var on = state.paket === i, msg = encodeURIComponent('Halo Dar, saya tertarik dengan Paket ' + p.name + ' (' + p.price + ') untuk PIP Machinery.');
+      return '<div class="pk rise d' + (i + 2) + (on ? ' on' : '') + '">' +
+        '<button class="pk-sel" type="button" data-paket="' + i + '" aria-pressed="' + on + '">' +
+          '<span class="pk-top"><h3>Paket ' + p.name + '</h3>' + (p.rec ? '<span class="pk-badge">Paling lengkap</span>' : '') + '</span>' +
+          '<span class="small pk-for">' + p.for + '</span>' +
+          '<b class="num pk-price">' + p.price + '</b><span class="small pk-for">Sekali bayar · selesai 1 bulan</span></button>' +
+        '<ul class="pk-list">' + p.items.map(function (it) { return '<li>' + it + '</li>'; }).join('') + '</ul>' +
+        '<a class="pk-cta" href="https://wa.me/' + SENDER.wa + '?text=' + msg + '" target="_blank" rel="noopener">Ambil paket ini</a></div>'; }).join('') + '</div>' +
+    '<p class="small soft rise d5 pk-note"><b>Semua paket sudah termasuk:</b> pelatihan tim, panduan video, dan pendampingan 3 bulan gratis (lalu Rp 500 ribu per bulan). Bayar 50% di awal dan 50% saat serah terima. Domain, hosting, dan WhatsApp API ditagihkan terpisah atas nama Bapak/Ibu.</p>'; } });
+
+/* Urutan ringkas: solusi, bukti, harga, lalu penutup */
+var ORDER = ['mulai', 'solusi', 'erp', 'mockup-website', 'mockup-pelanggan', 'demo', 'harga', 'komitmen', 'penutup'];
 SLIDES = ORDER.map(function (id) { return SLIDES.filter(function (s) { return s.id === id; })[0]; });
 
 /* ---------- Mesin slide ---------- */
@@ -1150,6 +1200,7 @@ deck.addEventListener('click', function (e) {
   if (d.spread) { state.spread = d.spread; return draw('[data-spread="' + d.spread + '"]'); }
   if (d.role !== undefined) { state.role = +d.role; return draw('[data-role="' + d.role + '"]'); }
   if (d.admin) { state.adminView = d.admin; return draw('[data-admin="' + d.admin + '"]'); }
+  if (d.paket !== undefined) { state.paket = +d.paket; return draw('[data-paket="' + d.paket + '"]'); }
   if (d.erp) { var inMock = !!t.closest('.erp'); state.erp = d.erp; draw(inMock ? '.erp-pick[data-erp="' + d.erp + '"]' : '[data-erp="' + d.erp + '"]'); var sec = deck.firstElementChild; sec.classList.add('on'); return; }
   if (d.pick !== undefined) { state.picks[+d.pick] = !state.picks[+d.pick]; return draw('[data-pick="' + d.pick + '"]'); }
   if (d.all) { state.picks = [true, true, true]; return draw('[data-all="1"]'); }
