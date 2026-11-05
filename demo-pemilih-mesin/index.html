@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Demo Pemilih Mesin</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<style>
+  :root {
+    --navy: #072d59;
+    --navy-soft: #23497a;
+    --orange: #ea580c;
+    --orange-deep: #b4410b;
+    --paper: #dbf2fc;
+    --white: #ffffff;
+    --line: #b6dcee;
+    --muted: #3f5a78;
+    --plate-line: #23497a;
+    --plate-muted: #ffffff;
+    --warn-bg: #ffe8d9;
+    --display: "Satoshi", "Segoe UI", sans-serif;
+    --body: "Satoshi", "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; font-synthesis: none; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--navy); font: 400 17px/1.5 var(--body); }
+  h1, h2, h3, p, dl, dd, ul { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  button, input { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--orange-deep); outline-offset: 2px; }
+  h2:focus { outline: none; }
+
+  .demo-bar { background: var(--navy); color: var(--white); font-size: 14px; padding: 8px 16px; text-align: center; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header.site { padding: 20px 0 16px; border-bottom: 2px solid var(--navy); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .brand { font: 700 24px/1 var(--display); letter-spacing: .02em; }
+  .brand span { color: var(--orange-deep); }
+  .site-note { font-size: 14px; color: var(--muted); }
+
+  main { padding: 32px 0 56px; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
+
+  .step-count { font-weight: 600; font-size: 15px; color: var(--orange-deep); margin-bottom: 6px; }
+  h1 { font: 700 clamp(34px, 5vw, 46px)/1.05 var(--display); margin-bottom: 10px; }
+  h2.q { font: 700 clamp(30px, 4.4vw, 40px)/1.08 var(--display); margin-bottom: 6px; }
+  h1 + .q-help + .step-count + h2.q { font-size: 26px; }
+  .q-help { color: var(--muted); margin-bottom: 20px; max-width: 54ch; }
+  .opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .opt { text-align: left; background: var(--white); border: 1.5px solid var(--line); border-radius: 4px; padding: 14px 16px; min-height: 76px; cursor: pointer; display: block; width: 100%; transition: border-color .12s, background-color .12s; }
+  .opt:hover { border-color: var(--navy); }
+  .opt[aria-pressed="true"] { border-color: var(--navy); background: var(--navy); color: var(--white); }
+  .opt[aria-pressed="true"] small { color: var(--plate-muted); }
+  .opt strong { display: block; font-weight: 600; font-size: 18px; line-height: 1.25; }
+  .opt small { display: block; font-size: 15px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+
+  .nav-row { margin-top: 20px; min-height: 44px; }
+  .link-btn { background: none; border: 0; padding: 10px 0; cursor: pointer; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; color: var(--navy); }
+  .link-btn:hover { color: var(--orange-deep); }
+
+  .sheet { border-top: 2px solid var(--navy); padding-top: 12px; position: sticky; top: 16px; }
+  .sheet h3 { font: 700 20px/1.2 var(--display); margin-bottom: 8px; }
+  .sheet-row { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 9px 0; text-align: left; }
+  button.sheet-row { cursor: pointer; }
+  button.sheet-row:hover b { text-decoration: underline; text-underline-offset: 3px; }
+  .sheet-row span { display: block; font-size: 14px; color: var(--muted); }
+  .sheet-row b { font-weight: 600; }
+  .sheet-row b.empty { color: #8a8d93; font-weight: 400; }
+
+  /* Hasil */
+  .result { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; }
+  .result h2.q { margin-bottom: 18px; }
+  .plate { background: var(--navy); color: var(--white); border-radius: 4px; padding: 24px; }
+  .plate-kicker { color: var(--orange); font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .plate h3 { font: 700 clamp(30px, 4vw, 40px)/1.05 var(--display); }
+  .plate-desc { color: #fff; margin-top: 8px; }
+  .plate dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 20px; border-top: 1px solid var(--plate-line); }
+  .plate dl div { padding: 12px 12px 0 0; }
+  .plate dt { font-size: 14px; color: var(--plate-muted); }
+  .plate dd { font: 700 24px/1.1 var(--display); margin-top: 2px; }
+  .plate-src { font-size: 14px; color: var(--plate-muted); margin-top: 16px; }
+
+  .checks { margin-top: 24px; }
+  .checks h3, .needs h3, .alt h3, .send h3 { font: 700 23px/1.2 var(--display); margin-bottom: 8px; }
+  .check { padding: 10px 0 10px 28px; border-bottom: 1px solid var(--line); position: relative; }
+  .check::before { content: ""; position: absolute; left: 2px; top: 17px; width: 12px; height: 6px; border-left: 2.5px solid var(--navy); border-bottom: 2.5px solid var(--navy); transform: rotate(-45deg); }
+  .check.warn { background: var(--warn-bg); padding-left: 36px; padding-right: 10px; border-bottom-color: var(--orange-deep); }
+  .check.warn::before { content: "!"; left: 14px; top: 9px; width: auto; height: auto; border: 0; transform: none; font-weight: 700; color: var(--orange-deep); font-size: 18px; }
+
+  .needs { margin-top: 28px; }
+  .needs p { color: var(--muted); margin-bottom: 8px; }
+  .needs li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .alt { margin-top: 28px; }
+  .alt-card { background: var(--white); border: 1.5px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+  .alt-card strong { font-weight: 600; font-size: 18px; display: block; }
+  .alt-card span { color: var(--muted); font-size: 15px; }
+
+  .send { background: var(--white); border: 1.5px solid var(--navy); border-radius: 4px; padding: 20px; position: sticky; top: 16px; }
+  .send > p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .field { display: block; margin-bottom: 10px; font-weight: 600; font-size: 15px; }
+  .field input { display: block; width: 100%; margin-top: 4px; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 4px; background: var(--white); font-weight: 400; font-size: 17px; }
+  .field input:focus { border-color: var(--navy); }
+  .bubble { background: #e7f3e4; border-radius: 4px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 15px; line-height: 1.45; margin: 14px 0; }
+  .bubble-label { font-size: 14px; font-weight: 600; color: var(--muted); margin-top: 14px; }
+  .bubble-label + .bubble { margin-top: 4px; }
+  .cta { display: block; width: 100%; text-align: center; text-decoration: none; background: var(--orange); color: #fff; font-weight: 600; font-size: 18px; border: 0; border-radius: 4px; padding: 13px 16px; cursor: pointer; }
+  .cta:hover { background: #c2410c; }
+  .plate-kicker { color: #fff !important; }
+  .brand-logo { display: block; height: 52px; width: auto; }
+  .cta-phone { display: none; }
+  .cta-note { font-size: 14px; color: var(--muted); margin-top: 8px; }
+  .cta2 { display: block; text-align: center; margin-top: 10px; padding: 10px; font-weight: 600; color: var(--navy); }
+  .again { margin-top: 24px; }
+
+  @media (max-width: 860px) {
+    main { padding: 24px 0 40px; }
+    .layout, .result { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .sheet, .send { position: static; }
+    .cta-phone { display: block; margin-top: 12px; }
+    .sheet.is-empty { display: none; }
+  }
+  @media (max-width: 520px) {
+    .options { grid-template-columns: minmax(0, 1fr); }
+    .opt { min-height: 0; }
+    .site-note { display: none; }
+    .plate { padding: 20px 16px; }
+    .plate dd { font-size: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="demo-bar">Contoh demo untuk presentasi, belum tayang resmi. Sebagian besar data mesin masih contoh.</div>
+<div class="wrap">
+  <header class="site">
+    <img class="brand-logo" src="../pitch-deck/assets/logo-pip-machinery.jpg" alt="PIP Machinery">
+    <div class="site-note">Pemilih Mesin</div>
+  </header>
+  <main id="app"></main>
+</div>
+
+<script>
+/* ===== Ganti bagian ini dengan data asli PIP Machinery ===== */
+var WA_NUMBER = ''; // contoh: '6285136695415'. Selama kosong, pengguna memilih sendiri kontak tujuan.
+
+// source: 'contoh' = perlu diganti data asli; 'publik' = harga dari website Purnama Eskrim.
+var MACHINES = [
+  { id: 'soft-meja', name: 'Mesin Soft Ice Cream Meja', products: ['soft'], cap: [1, 1], capLabel: '50–150 porsi/hari', watt: 1500, from: 15, to: 25, source: 'contoh',
+    desc: 'Muat di booth kecil atau meja kasir. Pas untuk memulai soft ice cream tanpa toko besar.' },
+  { id: 'soft-berdiri', name: 'Mesin Soft Ice Cream Berdiri', products: ['soft'], cap: [2, 2], capLabel: 'di atas 150 porsi/hari', watt: 2500, from: 28, to: 45, source: 'contoh',
+    desc: 'Untuk lokasi ramai yang melayani antrean panjang tanpa jeda.' },
+  { id: 'hard-mixer', name: 'Paket Hard Es Krim dengan Mixer', products: ['hard'], cap: [0, 0], capLabel: 'di bawah 50 porsi/hari', watt: 500, from: 3, to: 6, source: 'contoh',
+    desc: 'Hard es krim bisa dibuat dengan mixer dan freezer, tanpa mesin khusus. Modal paling ringan.' },
+  { id: 'wir-128y', name: 'Mesin Hard Eskrim WIR-128Y', products: ['hard'], cap: [1, 2], capLabel: '50 porsi/hari ke atas', watt: 1200, from: 10, to: 18, source: 'contoh',
+    desc: 'Proses simpel dengan hasil es krim yang stabil, untuk produksi harian yang lebih besar.' },
+  { id: 'joelly', name: 'Paket Usaha Joelly Es Krim', products: ['gelato'], cap: [0, 1], capLabel: 'hingga 150 porsi/hari', watt: 500, from: 10, to: 10, source: 'publik',
+    desc: 'Konsep tampilan gelato dengan modal minim: freezer 300 L, mixer, peralatan, bahan awal, dan waffle.' },
+  { id: 'puter', name: 'Paket Es Puter Premium', products: ['puter'], cap: [0, 1], capLabel: 'hingga 150 porsi/hari', watt: 400, from: 6, to: 12, source: 'contoh',
+    desc: 'Es puter tradisional dengan konsep premium, bisa disesuaikan dengan kebutuhan usaha.' },
+  { id: 'bingsoo', name: 'Paket Usaha Es Bingsoo', products: ['bingsoo'], cap: [0, 1], capLabel: 'hingga 150 porsi/hari', watt: 800, from: 12, to: 20, source: 'contoh',
+    desc: 'Mesin dan perlengkapan untuk mulai menjual dessert khas Korea.' },
+  { id: 'potong', name: 'Paket PIP Es Potong', products: ['potong'], cap: [0, 1], capLabel: 'hingga 150 porsi/hari', watt: 500, from: 8, to: 14, source: 'contoh',
+    desc: 'Jajanan klasik yang disukai banyak kalangan, dilengkapi video tutorial pembuatan.' }
+];
+
+var NEEDS = {
+  soft: ['Bahan soft es krim Joelly, lebih dari 15 rasa. Cukup campur air, 1 kg untuk 3 liter', 'Cone dan waffle produksi sendiri', 'Topping pasta dan oreo crumb'],
+  hard: ['Bahan hard es krim Joelly, lebih dari 15 rasa', 'Cone, waffle, dan kertas pegangan', 'Topping pasta dan oreo crumb'],
+  gelato: ['Bahan khusus mitra Joelly, varian diperbarui per tiga bulan', 'Waffle kerucut, waffle mangkok, dan cone', 'Kertas pegangan waffle, bisa dengan merek sendiri'],
+  puter: ['Bahan es krim', 'Cone dan waffle', 'Topping'],
+  bingsoo: ['Bahan dan topping bingsoo', 'Kemasan cup', 'Cup sealer bila dijual untuk dibawa pulang'],
+  potong: ['Bahan es potong', 'Topping', 'Kemasan']
+};
+/* ===== Akhir bagian data ===== */
+
+var QUESTIONS = [
+  { key: 'product', sheet: 'Mau jual', title: 'Mau jual es krim jenis apa?', help: 'Jenis produk menentukan mesinnya. Kalau belum yakin, kami bantu bandingkan.',
+    options: [
+      { v: 'soft', label: 'Soft ice cream', hint: 'Lembut, keluar dari mesin ke cone' },
+      { v: 'hard', label: 'Hard es krim', hint: 'Disimpan di freezer, disajikan dengan scoop' },
+      { v: 'gelato', label: 'Semi gelato', hint: 'Tampilan gelato, modal lebih ringan' },
+      { v: 'puter', label: 'Es puter', hint: 'Tradisional dengan konsep premium' },
+      { v: 'bingsoo', label: 'Es bingsoo', hint: 'Dessert es serut khas Korea' },
+      { v: 'potong', label: 'Es potong', hint: 'Jajanan klasik, mudah dijual' },
+      { v: 'any', label: 'Belum yakin', hint: 'Pilihkan sesuai modal dan lokasi saya' }
+    ] },
+  { key: 'target', sheet: 'Target', title: 'Berapa porsi yang ingin dijual per hari?', help: 'Perkiraan saja. Ini untuk memastikan mesin tidak kekecilan saat ramai.',
+    options: [
+      { v: 0, label: 'Di bawah 50 porsi', hint: 'Mulai kecil atau tambahan menu' },
+      { v: 1, label: '50–150 porsi', hint: 'Booth atau stand di lokasi ramai' },
+      { v: 2, label: 'Di atas 150 porsi', hint: 'Toko, mal, atau area wisata' }
+    ] },
+  { key: 'power', sheet: 'Listrik', title: 'Berapa daya listrik di lokasi usaha?', help: 'Lihat di meteran PLN. Pilih yang paling mendekati.',
+    options: [
+      { v: 900, label: '900 VA', hint: 'Banyak dipakai di rumah' },
+      { v: 1300, label: '1.300 VA', hint: '' },
+      { v: 2200, label: '2.200 VA atau lebih', hint: 'Ruko atau toko' },
+      { v: 0, label: 'Belum tahu', hint: 'Akan kami bantu cek' }
+    ] },
+  { key: 'budget', sheet: 'Anggaran', title: 'Berapa anggaran untuk mesin?', help: 'Belum termasuk sewa tempat. Jawaban ini hanya untuk menyaring pilihan.',
+    options: [
+      { v: 5, label: 'Di bawah Rp 5 juta', hint: '' },
+      { v: 15, label: 'Rp 5–15 juta', hint: '' },
+      { v: 30, label: 'Rp 15–30 juta', hint: '' },
+      { v: 999, label: 'Di atas Rp 30 juta', hint: '' }
+    ] }
+];
+
+// Daya yang aman dipakai mesin, setelah menyisakan kebutuhan lain di lokasi.
+var USABLE = { 900: 700, 1300: 1000, 2200: 1800 };
+
+var state = { step: 0, answers: {}, name: '', city: '' };
+
+function pick(q, v) { return QUESTIONS[q].options.filter(function (o) { return o.v === v; })[0]; }
+function answerLabel(i) { var q = QUESTIONS[i], a = state.answers[q.key]; return a === undefined ? '' : pick(i, a).label; }
+function priceText(m) { return m.from === m.to ? 'Rp ' + m.from + ' juta' : 'Rp ' + m.from + '–' + m.to + ' juta'; }
+function wattText(w) { return w.toLocaleString('id-ID') + ' W'; }
+
+function score(m) {
+  var a = state.answers, s = 0;
+  if (a.product !== 'any') { if (m.products.indexOf(a.product) < 0) return -999; s += 100; }
+  if (a.target >= m.cap[0] && a.target <= m.cap[1]) s += 30;
+  else if (a.target > m.cap[1]) s -= 40 * (a.target - m.cap[1]);
+  else s -= 10 * (m.cap[0] - a.target);
+  if (a.power && m.watt > USABLE[a.power]) s -= 35;
+  if (m.from > a.budget) s -= 50 + (m.from - a.budget);
+  else s += 30;
+  return s;
+}
+
+function ranked() {
+  return MACHINES.map(function (m) { return { m: m, s: score(m) }; })
+    .filter(function (x) { return x.s > -999; })
+    .sort(function (x, y) { return y.s - x.s || x.m.from - y.m.from; })
+    .map(function (x) { return x.m; });
+}
+
+function checks(m) {
+  var a = state.answers, out = [];
+  if (a.product !== 'any') out.push({ t: 'Sesuai rencana Anda menjual ' + pick(0, a.product).label.toLowerCase() + '.' });
+  else out.push({ t: 'Pilihan ini paling sesuai dengan modal, target, dan listrik yang Anda isi.' });
+
+  if (a.target > m.cap[1]) out.push({ warn: 1, t: 'Kapasitas ' + m.capLabel + ', di bawah target Anda ' + answerLabel(1).toLowerCase() + '. Tanyakan opsi tambahan unit ke admin.' });
+  else if (a.target < m.cap[0]) out.push({ warn: 1, t: 'Kapasitas ' + m.capLabel + ', lebih besar dari target Anda saat ini.' });
+  else out.push({ t: 'Kapasitas ' + m.capLabel + ', sesuai target Anda.' });
+
+  if (!a.power) out.push({ warn: 1, t: 'Mesin butuh sekitar ' + wattText(m.watt) + '. Cek daya di lokasi sebelum membeli, admin bisa bantu.' });
+  else if (m.watt > USABLE[a.power]) out.push({ warn: 1, t: 'Mesin butuh sekitar ' + wattText(m.watt) + ', terlalu besar untuk ' + answerLabel(2) + '. Perlu naik daya atau jalur listrik terpisah.' });
+  else out.push({ t: 'Butuh sekitar ' + wattText(m.watt) + ', masih aman untuk ' + answerLabel(2) + '.' });
+
+  if (m.from > a.budget) out.push({ warn: 1, t: 'Harga mulai ' + 'Rp ' + m.from + ' juta, di atas anggaran Anda. Tanyakan pilihan paket yang lebih kecil ke admin.' });
+  else out.push({ t: 'Harga masuk dalam anggaran Anda.' });
+  return out;
+}
+
+function message(m, demo) {
+  var lines = ['Halo PIP Machinery, saya dari Pemilih Mesin di website.', ''];
+  if (state.name.trim()) lines.push('Nama: ' + state.name.trim());
+  if (state.city.trim()) lines.push('Kota: ' + state.city.trim());
+  lines.push('Mau jual: ' + answerLabel(0));
+  lines.push('Target: ' + answerLabel(1) + ' per hari');
+  lines.push('Listrik: ' + answerLabel(2));
+  lines.push('Anggaran: ' + answerLabel(3));
+  lines.push('Rekomendasi: ' + m.name);
+  lines.push('');
+  lines.push(demo ? 'Saya ingin jadwalkan coba mesin ini. Kapan bisa datang?' : 'Mohon info harga terbaru dan ketersediaannya.');
+  return lines.join('\n');
+}
+function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
+
+function sheetHTML() {
+  var empty = state.step === 0 && state.answers.product === undefined;
+  var rows = QUESTIONS.map(function (q, i) {
+    var val = answerLabel(i);
+    if (val) return '<li><button class="sheet-row" type="button" data-goto="' + i + '" aria-label="Ubah ' + q.sheet + ': ' + val + '"><span>' + q.sheet + '</span><b>' + val + '</b></button></li>';
+    return '<li><div class="sheet-row"><span>' + q.sheet + '</span><b class="empty">Belum diisi</b></div></li>';
+  }).join('');
+  return '<aside class="sheet' + (empty ? ' is-empty' : '') + '" aria-label="Jawaban Anda"><h3>Kebutuhan Anda</h3><ul>' + rows + '</ul></aside>';
+}
+
+function renderStep() {
+  var i = state.step, q = QUESTIONS[i], current = state.answers[q.key];
+  var intro = i === 0 ? '<h1>Mesin mana yang pas untuk usaha Anda?</h1><p class="q-help">Jawab empat pertanyaan, langsung dapat rekomendasi mesin. Sebelum beli, mesinnya tetap bisa dicoba di toko kami.</p>' : '';
+  var opts = q.options.map(function (o, n) {
+    return '<button class="opt" type="button" data-opt="' + n + '" aria-pressed="' + (current === o.v) + '"><strong>' + o.label + '</strong>' + (o.hint ? '<small>' + o.hint + '</small>' : '') + '</button>';
+  }).join('');
+  document.getElementById('app').innerHTML =
+    '<div class="layout"><section>' + intro +
+    '<p class="step-count">Pertanyaan ' + (i + 1) + ' dari ' + QUESTIONS.length + '</p>' +
+    '<h2 class="q" tabindex="-1">' + q.title + '</h2>' +
+    (i === 0 ? '' : '<p class="q-help">' + q.help + '</p>') +
+    '<div class="options" style="' + (i === 0 ? 'margin-top:16px' : '') + '">' + opts + '</div>' +
+    '<div class="nav-row">' + (i > 0 ? '<button class="link-btn" type="button" data-back>Kembali</button>' : '') + '</div>' +
+    '</section>' + sheetHTML() + '</div>';
+}
+
+function renderResult() {
+  var list = ranked(), m = list[0], a = state.answers;
+  var alt = list.filter(function (x) { return x.id !== m.id; })[0];
+  var needKey = m.products[0];
+  var src = m.source === 'publik'
+    ? 'Harga dari halaman Paket Usaha Purnama Eskrim. Kebutuhan listrik masih data contoh.'
+    : 'Harga dan spesifikasi masih data contoh untuk demo.';
+
+  var checkHTML = checks(m).map(function (c) { return '<li class="check' + (c.warn ? ' warn' : '') + '">' + c.t + '</li>'; }).join('');
+  var needHTML = NEEDS[needKey].map(function (n) { return '<li>' + n + '</li>'; }).join('');
+  var altHTML = alt
+    ? '<section class="alt"><h3>Pilihan lain</h3><div class="alt-card"><strong>' + alt.name + '</strong><span>' + priceText(alt) + ' · ' + alt.capLabel + ' · ' + wattText(alt.watt) + '</span></div></section>'
+    : '';
+
+  document.getElementById('app').innerHTML =
+    '<div class="result"><section>' +
+      '<h2 class="q" tabindex="-1">Rekomendasi untuk usaha Anda</h2>' +
+      '<div class="plate">' +
+        '<p class="plate-kicker">Paling sesuai</p>' +
+        '<h3>' + m.name + '</h3>' +
+        '<p class="plate-desc">' + m.desc + '</p>' +
+        '<dl><div><dt>Perkiraan</dt><dd>' + priceText(m) + '</dd></div>' +
+        '<div><dt>Kapasitas</dt><dd>' + m.capLabel.replace('/hari', '') + '</dd></div>' +
+        '<div><dt>Listrik</dt><dd>± ' + wattText(m.watt) + '</dd></div></dl>' +
+        '<p class="plate-src">' + src + '</p>' +
+      '</div>' +
+      '<a class="cta cta-phone" id="cta-phone" target="_blank" rel="noopener">Kirim lewat WhatsApp</a>' +
+      '<section class="checks"><h3>Kenapa mesin ini</h3><ul>' + checkHTML + '</ul></section>' +
+      '<section class="needs"><h3>Yang akan rutin Anda butuhkan</h3><p>Semua tersedia dalam satu tempat di Purnama Eskrim.</p><ul>' + needHTML + '</ul></section>' +
+      altHTML +
+      '<div class="again"><button class="link-btn" type="button" data-restart>Ulangi dari awal</button></div>' +
+    '</section>' +
+    '<aside class="send" aria-label="Kirim ke admin">' +
+      '<h3>Lanjut bicara dengan admin</h3>' +
+      '<p>Jawaban Anda ikut terkirim, jadi tidak perlu menjelaskan dari awal.</p>' +
+      '<label class="field">Nama (boleh dikosongkan)<input id="f-name" type="text" autocomplete="name" value=""></label>' +
+      '<label class="field">Kota (boleh dikosongkan)<input id="f-city" type="text" autocomplete="address-level2" value=""></label>' +
+      '<p class="bubble-label" id="bubble-label">Pesan yang diterima admin</p>' +
+      '<div class="bubble" id="bubble" aria-labelledby="bubble-label"></div>' +
+      '<a class="cta" id="cta" target="_blank" rel="noopener">Kirim lewat WhatsApp</a>' +
+      (WA_NUMBER ? '' : '<p class="cta-note">Di demo ini Anda memilih sendiri kontak tujuannya, jadi tidak ada pesan yang masuk ke admin.</p>') +
+      '<a class="cta2" id="cta-demo" target="_blank" rel="noopener">Jadwalkan coba mesin</a>' +
+    '</aside></div>';
+
+  document.getElementById('f-name').value = state.name;
+  document.getElementById('f-city').value = state.city;
+  refreshMessage(m);
+  ['f-name', 'f-city'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      state.name = document.getElementById('f-name').value;
+      state.city = document.getElementById('f-city').value;
+      refreshMessage(m);
+    });
+  });
+}
+
+function refreshMessage(m) {
+  document.getElementById('bubble').textContent = message(m, false);
+  document.getElementById('cta').href = waLink(message(m, false));
+  document.getElementById('cta-phone').href = waLink(message(m, false));
+  document.getElementById('cta-demo').href = waLink(message(m, true));
+}
+
+function render() {
+  if (state.step >= QUESTIONS.length) renderResult(); else renderStep();
+  var h = document.querySelector('h2.q');
+  if (h && render.started) { h.focus({ preventScroll: true }); window.scrollTo(0, 0); }
+  render.started = true;
+}
+
+document.getElementById('app').addEventListener('click', function (e) {
+  var opt = e.target.closest('[data-opt]');
+  if (opt) {
+    var q = QUESTIONS[state.step];
+    state.answers[q.key] = q.options[+opt.getAttribute('data-opt')].v;
+    state.step += 1;
+    // Saat mengubah satu jawaban, lewati pertanyaan yang sudah terisi.
+    while (state.step < QUESTIONS.length && state.answers[QUESTIONS[state.step].key] !== undefined) state.step += 1;
+    return render();
+  }
+  if (e.target.closest('[data-back]')) { state.step -= 1; return render(); }
+  var g = e.target.closest('[data-goto]');
+  if (g) { state.step = +g.getAttribute('data-goto'); return render(); }
+  if (e.target.closest('[data-restart]')) { state = { step: 0, answers: {}, name: '', city: '' }; return render(); }
+});
+
+render();
+</script>
+</body>
+</html>

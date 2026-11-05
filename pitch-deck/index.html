@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Penawaran untuk PIP Machinery dan Purnama Eskrim</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<style>
+  :root {
+    /* Palet: Seal Blue (primer), Navy Blue (sekunder), Oranye (aksen) */
+    --seal: #dbf2fc;
+    --navy: #072d59;
+    --accent: #ea580c;
+    --blue: var(--navy);          /* teks, tag, dan tombol sekunder */
+    --night: var(--navy);         /* latar slide gelap */
+    --deep: #072d59;              /* teks di atas latar terang */
+    --orange: var(--accent);      /* aksen oranye */
+    --orange-soft: #ffa268;
+    --paper: var(--seal);         /* latar slide terang */
+    --panel: #ffffff;             /* kartu di atas Seal Blue */
+    --card: #eaf7fd;              /* latar dalam mockup */
+    --line: #b6dcee;
+    --muted: #3f5a78;
+    --night-line: rgba(219,242,252,.28);
+    --night-soft: #ffffff;        /* teks di atas warna: putih */
+    --font: "Satoshi", "Segoe UI", sans-serif;
+    --r-frame: 28px;
+    --r-card: 18px;
+    --t: min(3.3vw, 6.2vh);      /* ukuran judul slide */
+  }
+  * { box-sizing: border-box; font-synthesis: none; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--font); font-size: clamp(15px, 1.12vw, 18px); line-height: 1.45; color: var(--deep); background: var(--night); }
+  h1, h2, h3, h4, p, ul, ol, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  h1:focus, h2:focus { outline: none; }
+  .arrow { width: 1em; height: 1em; display: block; }
+
+  /* ---------- Slide dan bingkai ---------- */
+  .slide { min-height: 100dvh; padding: 18px 18px 84px; display: flex; }
+  .slide.dark { background: var(--night); color: #fff; }
+  .slide.light { background: var(--paper); color: var(--deep); }
+  .frame { flex: 1; display: flex; flex-direction: column; border-radius: var(--r-frame); padding: 18px 28px 28px; min-height: 0; }
+  .dark .frame { box-shadow: inset 0 0 0 1.5px var(--night-line); }
+  .light .frame { box-shadow: inset 0 0 0 1.5px var(--line); }
+  .head { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr auto; align-items: center; gap: 16px; font-size: 14px; font-weight: 500; padding-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .brand img { width: 30px; height: 30px; object-fit: cover; object-position: 8% 50%; border-radius: 8px; background: #fff; }
+  .head .contact { border-radius: 999px; padding: 8px 16px; font-weight: 700; white-space: nowrap; }
+  .dark .head .contact { box-shadow: inset 0 0 0 1.5px var(--orange); color: #fff; }
+  .light .head .contact { box-shadow: inset 0 0 0 1.5px var(--blue); color: var(--blue); }
+  .content { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+  h1 { font-size: min(6.4vw, 11.5vh); font-weight: 900; line-height: .98; letter-spacing: -.035em; }
+  h2 { font-size: var(--t); font-weight: 900; line-height: 1.04; letter-spacing: -.03em; }
+  h3 { font-size: clamp(17px, 1.35vw, 22px); font-weight: 900; line-height: 1.15; letter-spacing: -.01em; }
+  .lead { font-size: clamp(16px, 1.3vw, 21px); line-height: 1.45; }
+  .dark .soft { color: var(--night-soft); }
+  .light .soft { color: var(--muted); }
+  .small { font-size: clamp(13px, .95vw, 15px); line-height: 1.45; }
+  .dark .life .soft, .dark .card.white .soft { color: var(--muted); }
+  .light .tbl { background: var(--panel); }
+  .light .photo { background: var(--panel); }
+  .num { font-weight: 900; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+
+  /* Tombol pil dengan panah bulat */
+  .pill-btn { display: inline-flex; align-items: center; gap: 14px; border: 0; border-radius: 999px; padding: 7px 7px 7px 22px; font-weight: 700; background: var(--orange); color: #fff; transition: transform .18s ease, background-color .18s ease; }
+  .pill-btn i { width: 40px; height: 40px; border-radius: 50%; background: var(--deep); color: #fff; display: grid; place-items: center; font-size: 18px; transition: transform .25s ease; }
+  .pill-btn:hover { background: #c2410c; }
+  .pill-btn:hover i { transform: translateX(3px) rotate(-45deg); }
+  .pill-btn:active { transform: scale(.98); }
+  .tag { display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; padding: 5px 6px 5px 16px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .tag i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; }
+  .light .tag, .tag.solid { background: var(--blue); color: #fff; }
+  .light .tag i, .tag.solid i { background: #fff; color: var(--blue); }
+  .tag.line { background: none; color: #fff; box-shadow: inset 0 0 0 1.5px #fff; }
+  .tag.line i { background: #fff; color: var(--orange); }
+  button.tag { border: 0; transition: transform .15s ease, background-color .15s ease; }
+  button.tag:hover { transform: translateY(-1px); }
+  .tag[aria-pressed="false"] { background: var(--panel); color: var(--blue); }
+  .tag[aria-pressed="false"] i { background: var(--blue); color: #fff; }
+
+  .card { border-radius: var(--r-card); padding: 20px; }
+  .light .card { background: var(--panel); }
+  .dark .card.white { background: #fff; color: var(--deep); }
+  .card.orange { background: var(--orange); color: #fff; }
+  .card.blue { background: var(--blue); color: #fff; }
+  .card.night { background: rgba(255,255,255,.07); color: #fff; }
+  .card.orange .card-top, .card .card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .round-arrow { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; flex: none; font-size: 16px; }
+  .orange .round-arrow { background: #fff; color: var(--orange); }
+  .light .round-arrow { background: var(--blue); color: #fff; }
+  .hover-lift { transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease; }
+  .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,20,60,.18); }
+  .photo { border-radius: var(--r-card); overflow: hidden; background: #fff; position: relative; }
+  .photo { min-height: 200px; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo.contain img { object-fit: contain; padding: 14px; }
+  .dot-list li { position: relative; padding-left: 22px; margin-top: 10px; }
+  .dot-list li::before { content: ""; position: absolute; left: 0; top: .42em; width: 11px; height: 11px; border-radius: 50%; background: var(--orange); }
+
+  /* ---------- Gerak masuk ---------- */
+  .rise { opacity: 0; transform: translateY(22px); }
+  .slide.on .rise { animation: rise .7s cubic-bezier(.16,1,.3,1) forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .slide.on .d1 { animation-delay: .08s; } .slide.on .d2 { animation-delay: .16s; } .slide.on .d3 { animation-delay: .24s; }
+  .slide.on .d4 { animation-delay: .32s; } .slide.on .d5 { animation-delay: .40s; } .slide.on .d6 { animation-delay: .48s; }
+  .line-draw { transform: scaleX(0); transform-origin: left center; }
+  .slide.on .line-draw { animation: draw 1.2s .3s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes draw { to { transform: none; } }
+  .bar-fill { transform: scaleX(0); transform-origin: left center; }
+  .slide.on .bar-fill { animation: draw .9s .35s cubic-bezier(.2,.8,.2,1) forwards; }
+  @media (prefers-reduced-motion: reduce) {
+    .rise, .line-draw, .bar-fill { opacity: 1 !important; transform: none !important; animation: none !important; }
+    * { transition: none !important; }
+  }
+
+  /* ---------- Tata letak tiap slide ---------- */
+  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+  .g { display: grid; gap: 16px; min-height: 0; }
+  .fill { flex: 1; min-height: 0; }
+
+  .cover-top { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; padding: 10px 0 22px; }
+  .cover-band { flex: 1; min-height: 240px; border-radius: 22px; overflow: hidden; position: relative; background: #fff; display: grid; grid-template-columns: 1.7fr 1fr; }
+  .float { position: absolute; z-index: 3; border-radius: 16px; box-shadow: 0 18px 40px rgba(0,20,60,.3); }
+  .float-note { right: 24px; top: 22px; background: #fff; color: var(--deep); padding: 12px 16px; display: flex; gap: 12px; align-items: center; animation: bob 5s ease-in-out infinite; }
+  .float-note i { width: 38px; height: 38px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; color: #fff; font-style: normal; font-weight: 900; }
+  .float-note b { display: block; }
+  .float-stat { left: 22px; bottom: 22px; background: var(--orange); color: #fff; padding: 12px 18px; animation: bob 6s 1s ease-in-out infinite; }
+  .float-stat b { font-size: 28px; font-weight: 900; display: block; line-height: 1; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 34px; }
+  .timeline::before { content: none; }
+  .tl-line { position: absolute; left: 0; right: 0; top: 10px; height: 3px; background: var(--orange); border-radius: 3px; }
+  .tl-step { position: relative; }
+  .tl-step::before { content: ""; position: absolute; left: 22px; top: -31px; width: 18px; height: 18px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px var(--seal); }
+  .tl-step .tag { margin-bottom: 14px; }
+
+  .life { background: #fff; color: var(--deep); border-radius: var(--r-card); padding: 20px 22px; display: flex; flex-direction: column; }
+  .life ol { position: relative; margin-top: 14px; }
+  .life ol::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--orange); }
+  .life li { position: relative; padding: 0 0 12px 26px; }
+  .life li::before { content: ""; position: absolute; left: 0; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--orange); }
+  .life li b { display: block; }
+
+  .tbl { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1.5px var(--line); }
+  .tbl th { background: var(--blue); color: #fff; text-align: left; font-weight: 700; padding: 11px 16px; font-size: 15px; }
+  .tbl td { padding: 10px 16px; border-top: 1.5px solid var(--line); vertical-align: top; font-size: clamp(14px, 1vw, 16px); line-height: 1.38; }
+  .tbl td + td { font-weight: 700; }
+
+  .stat-card b.num { font-size: min(3.6vw, 6vh); display: block; }
+  .shot { border-radius: 14px; overflow: hidden; position: relative; background: #fff; }
+
+  .bars .b { display: grid; grid-template-columns: 90px 1fr 70px; gap: 12px; align-items: center; margin-top: 12px; font-weight: 700; }
+  .bars .track { height: 22px; background: var(--seal); border-radius: 6px; overflow: hidden; }
+  .bars .bar-fill { height: 100%; background: var(--blue); border-radius: 6px; }
+  .bars .b:nth-child(odd) .bar-fill { background: var(--orange); }
+  .prog { display: grid; grid-template-columns: 1fr 64px; gap: 12px; align-items: center; margin-top: 10px; }
+  .prog .p-label { background: var(--navy); color: #fff; border-radius: 999px; padding: 8px 16px; font-weight: 700; font-size: 14px; position: relative; overflow: hidden; }
+  .prog .p-label .bar-fill { position: absolute; top: 0; bottom: 0; left: 0; background: var(--orange); border-radius: 999px; }
+  .prog .p-label span { position: relative; }
+
+  .contacts { display: grid; gap: 10px; }
+  .contacts a, .contacts span { display: flex; align-items: center; gap: 12px; background: var(--orange); color: #fff; border-radius: 999px; padding: 6px 18px 6px 6px; font-weight: 700; }
+  .contacts i { width: 34px; height: 34px; border-radius: 50%; background: #fff; color: var(--orange); display: grid; place-items: center; font-style: normal; font-size: 15px; }
+
+  .field-row { display: block; margin-top: 16px; font-weight: 500; }
+  .field-row output { font-weight: 900; float: right; }
+  .field-row input { width: 100%; margin-top: 8px; accent-color: var(--orange); height: 24px; }
+
+  .demo-frame { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+
+  /* ---------- Mockup tampilan produk (data-ui) ---------- */
+  .frag { position: relative; overflow: hidden; width: 100%; height: 100%; min-height: 0; }
+  .frag > .frag-in { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  [data-ui] { font-family: var(--font); color: #18233a; text-align: left; line-height: 1.35; }
+  [data-ui] h4, [data-ui] p { margin: 0; }
+  .ui-site { width: 1120px; background: #fff; }
+  .w-nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 30px; }
+  .w-nav img { height: 52px; width: auto; }
+  .w-links { display: flex; gap: 24px; font-weight: 500; font-size: 16px; align-items: center; }
+  .w-links b { background: var(--orange); color: #fff; padding: 9px 18px; border-radius: 999px; font-weight: 700; }
+  .w-hero { background: var(--blue); color: #fff; display: grid; grid-template-columns: 1.1fr 1fr; padding: 34px 30px 0; gap: 14px; margin: 0 16px; border-radius: 18px 18px 0 0; }
+  .w-hero h4 { font-size: 50px; font-weight: 900; line-height: 1; letter-spacing: -.03em; }
+  .w-hero p { color: #fff; font-size: 18px; margin: 14px 0 20px; }
+  .w-cta { display: flex; gap: 10px; padding-bottom: 32px; }
+  .w-cta span { padding: 12px 20px; font-weight: 700; font-size: 16px; background: rgba(255,255,255,.14); border-radius: 999px; }
+  .w-cta span:first-child { background: var(--orange); color: #fff; }
+  .w-hero-img { background: #fff; align-self: end; padding: 12px; border-radius: 14px 14px 0 0; }
+  .w-hero-img img { width: 100%; height: 250px; object-fit: contain; animation: bob 6s ease-in-out infinite; }
+  .w-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 18px 30px 26px; }
+  .w-cat { background: var(--card); padding: 12px; border-radius: 14px; transition: transform .2s ease; }
+  .w-cat img { width: 100%; height: 100px; object-fit: contain; }
+  .w-cat b { display: block; font-size: 16px; margin-top: 6px; }
+  .w-cat small { font-size: 14px; color: #4c5870; }
+
+  .ui-screen { width: 360px; height: 720px; background: #fff; display: flex; flex-direction: column; }
+  .p-head { background: var(--blue); color: #fff; padding: 20px 20px 18px; }
+  .p-head small { display: block; font-size: 15px; color: #fff; opacity: .9; }
+  .p-head b { font-size: 26px; font-weight: 900; line-height: 1.08; display: block; letter-spacing: -.01em; }
+  .p-body { flex: 1; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; }
+  .p-photo { background: var(--card); padding: 10px; border-radius: 14px; }
+  .p-photo img { width: 100%; height: 180px; object-fit: contain; }
+  .p-name { font-size: 25px; font-weight: 900; line-height: 1.1; color: var(--blue); }
+  .p-spec { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; }
+  .p-spec dt { color: #4c5870; }
+  .p-spec dd { margin: 0; font-weight: 700; text-align: right; }
+  .p-btn { display: block; text-align: center; padding: 14px; font-weight: 700; background: var(--orange); color: #fff; border-radius: 999px; }
+  .p-btn.alt { background: var(--card); color: var(--blue); }
+  .p-foot { margin-top: auto; display: grid; gap: 8px; }
+  .p-track li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding-bottom: 16px; position: relative; }
+  .p-track li::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: #fff; margin-top: 2px; box-shadow: inset 0 0 0 2px #b9c4d8; z-index: 1; }
+  .p-track li::after { content: ""; position: absolute; left: 8px; top: 20px; bottom: 0; width: 2px; background: #d6deeb; }
+  .p-track li:last-child::after { display: none; }
+  .p-track li.done::before { background: var(--blue); box-shadow: none; }
+  .p-track li.now::before { background: var(--orange); box-shadow: none; animation: ring 1.8s ease-out infinite; }
+  .p-track b { display: block; font-size: 17px; }
+  .p-track small { color: #4c5870; font-size: 14px; }
+  .p-alert { background: #ffe8d9; padding: 12px 14px; font-weight: 500; border-radius: 12px; }
+  .p-item { display: grid; grid-template-columns: 58px 1fr auto; gap: 12px; align-items: center; }
+  .p-item img { width: 58px; height: 58px; object-fit: contain; background: var(--card); border-radius: 12px; }
+  .p-item b { display: block; font-size: 16px; line-height: 1.2; }
+  .p-item small { color: #4c5870; font-size: 14px; }
+  .p-action { display: flex; justify-content: space-between; align-items: center; background: var(--card); padding: 14px; font-weight: 700; border-radius: 12px; }
+  .p-action span { color: var(--blue); }
+
+  .a-shell { width: 1120px; height: 600px; display: grid; grid-template-columns: 200px 1fr; background: #eef2f8; font-size: 15px; }
+  .a-side { padding: 16px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .a-side img { height: 48px; width: auto; align-self: flex-start; margin-bottom: 14px; mix-blend-mode: multiply; }
+  .a-side span { padding: 8px 10px; font-weight: 500; display: flex; justify-content: space-between; border-radius: 8px; }
+  .a-side span.on { background: #dbe3f1; font-weight: 700; color: var(--blue); }
+  .a-side em { font-style: normal; color: #4c5870; }
+  .a-sheet { position: relative; background: #fff; margin: 10px 10px 10px 0; border: 1px solid #e1e6ef; border-radius: 14px; padding: 20px 22px; overflow: hidden; }
+  .a-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .a-title h4 { font-size: 27px; font-weight: 900; color: var(--blue); }
+  .a-title b { background: var(--blue); color: #fff; padding: 8px 14px; font-size: 14px; border-radius: 999px; }
+  .a-title small { color: #4c5870; font-size: 14px; font-weight: 500; }
+  .a-tabs { display: flex; gap: 20px; box-shadow: inset 0 -1px 0 #e1e6ef; margin-bottom: 4px; }
+  .a-tabs span { padding: 0 0 9px; color: #4c5870; font-weight: 500; }
+  .a-tabs span.on { color: var(--blue); font-weight: 700; box-shadow: inset 0 -2px 0 var(--orange); }
+  .a-table { width: 100%; border-collapse: collapse; }
+  .a-table th { font-weight: 500; color: #4c5870; font-size: 14px; text-align: left; padding: 9px 8px 9px 0; }
+  .a-table td { padding: 12px 8px 12px 0; border-top: 1px solid #edf0f5; vertical-align: top; }
+  .a-table td b { display: block; font-weight: 700; }
+  .a-table td small { color: #4c5870; font-size: 13px; }
+  .a-pill { display: inline-block; padding: 4px 10px; font-size: 13px; font-weight: 700; white-space: nowrap; background: #eef2f8; color: var(--blue); border-radius: 999px; }
+  .a-pill.new { background: var(--blue); color: #fff; }
+  .a-pill.hot { background: #ffe8d9; color: #b4410b; }
+  .a-kpis { display: grid; grid-template-columns: repeat(4, 1fr); background: #f5f7fb; margin-bottom: 16px; border-radius: 12px; }
+  .a-kpis div { padding: 14px 16px; }
+  .a-kpis small { display: block; color: #4c5870; font-size: 14px; }
+  .a-kpis b { display: block; font-size: 28px; font-weight: 900; line-height: 1.15; color: var(--blue); }
+  .a-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 26px; }
+  .a-cols h5 { margin: 0 0 10px; font-size: 17px; font-weight: 900; color: var(--blue); }
+  .a-bar { display: grid; grid-template-columns: 110px 1fr 84px; gap: 10px; align-items: center; margin-bottom: 9px; }
+  .a-bar i { display: block; height: 18px; background: var(--blue); border-radius: 4px; transform-origin: left center; }
+  .slide.on .a-bar i { animation: draw 1s .3s cubic-bezier(.2,.8,.2,1) both; }
+  .a-bar b { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .a-list p { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid #edf0f5; }
+  .a-list p:first-of-type { border-top: 0; }
+  .a-list small { color: #b4410b; font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .a-toast { position: absolute; right: 16px; bottom: 16px; background: var(--blue); color: #fff; font-weight: 700; padding: 12px 16px; border-radius: 12px; border-left: 6px solid var(--orange); box-shadow: 0 10px 24px rgba(0,30,82,.25); z-index: 2; }
+  .slide.on .a-toast { animation: pop .6s 1.2s cubic-bezier(.2,.8,.2,1) both; }
+  .slide.on .a-table tr.fresh td { animation: flash 2.6s 1.4s ease-out both; }
+
+  .c-head { display: flex; align-items: center; gap: 12px; }
+  .c-logo { width: 44px; height: 44px; object-fit: contain; background: #fff; border-radius: 50%; padding: 3px; }
+  .c-body { flex: 1; background: #edf1f8; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; overflow: hidden; }
+  .bub { max-width: 86%; padding: 10px 12px; line-height: 1.38; background: #fff; border-radius: 3px 14px 14px 14px; }
+  .bub.out { align-self: flex-end; background: #d6e4fa; border-radius: 14px 3px 14px 14px; }
+  .slide.on .seq { animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }
+  .c-card { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .c-card b { text-align: right; }
+  .c-btn { grid-column: 1 / -1; font-style: normal; text-align: center; background: var(--orange); color: #fff; font-weight: 700; padding: 9px; margin-top: 6px; border-radius: 999px; animation: nudge 3.2s ease-in-out infinite; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; align-self: flex-end; }
+  .chips span { background: #fff; color: var(--blue); font-weight: 700; padding: 7px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px #b9c9e6; }
+
+  .k-wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; padding: 18px 30px 30px; }
+  .k-photo { border-radius: 18px; overflow: hidden; }
+  .k-photo img { width: 100%; height: 520px; object-fit: cover; }
+  .k-crumb { color: #4c5870; font-size: 15px; }
+  .k-title { font-size: 40px; font-weight: 900; line-height: 1.02; color: var(--blue); letter-spacing: -.03em; margin-top: 6px; }
+  .k-price { font-size: 34px; font-weight: 900; color: var(--orange); margin-top: 10px; }
+  .k-note { color: #4c5870; margin-top: 6px; font-size: 16px; }
+  .k-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-top: 16px; font-size: 16px; }
+  .k-list span { padding-left: 18px; position: relative; }
+  .k-list span::before { content: ""; position: absolute; left: 0; top: .45em; width: 9px; height: 9px; border-radius: 50%; background: var(--orange); }
+  .k-calc { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--card); margin-top: 18px; border-radius: 14px; }
+  .k-calc span { padding: 12px 14px; }
+  .k-calc small { display: block; color: #4c5870; font-size: 14px; }
+  .k-calc b { display: block; font-size: 19px; font-weight: 900; color: var(--blue); }
+  .pulse-btn { animation: nudge 3.2s ease-in-out infinite; }
+
+  @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes flash { 0% { background: #ffe8d9; } 100% { background: transparent; } }
+  @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(234,88,12,.55); } 100% { box-shadow: 0 0 0 12px rgba(234,88,12,0); } }
+  @keyframes nudge { 0%, 86%, 100% { transform: none; } 90% { transform: scale(1.05); } 94% { transform: scale(.98); } }
+  @media (prefers-reduced-motion: reduce) { .seq, .a-toast, .a-table td, .a-bar i, .p-track li::before, .w-hero-img img, .pulse-btn, .c-btn, .float { animation: none !important; } }
+
+  /* ---------- Navigasi ---------- */
+  .pager { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 20; display: flex; align-items: center; gap: 10px; background: #fff; color: var(--deep); border-radius: 999px; padding: 6px; box-shadow: 0 10px 30px rgba(0,20,60,.25); }
+  .pager button { width: 42px; height: 42px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--blue); color: #fff; font-size: 18px; transition: transform .15s ease, background-color .15s ease; }
+  .pager button:hover { background: var(--orange); color: #fff; }
+  .pager button[disabled] { opacity: .3; pointer-events: none; }
+  .pager .where { min-width: 230px; text-align: center; font-weight: 700; font-size: 14px; }
+  .pager .where span { color: var(--muted); font-weight: 500; }
+  .progress { position: fixed; left: 0; top: 0; height: 4px; background: var(--orange); z-index: 21; transition: width .4s ease; }
+
+  /* ---------- Mockup ERP ---------- */
+  .erp { width: 1280px; height: 760px; display: grid; grid-template-columns: 224px 1fr; background: #e7f2f9; font-size: 14px; color: #13233b; border-radius: 18px; overflow: hidden; }
+  .erp svg { width: 18px; height: 18px; flex: none; }
+  .erp-side { background: var(--navy); color: #fff; padding: 18px 14px; display: flex; flex-direction: column; gap: 3px; }
+  .erp-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; margin: 0 6px 20px; }
+  .erp-logo img { width: 36px; height: 36px; border-radius: 9px; background: #fff; object-fit: cover; object-position: 8% 50%; }
+  .erp-logo small { display: block; font-weight: 400; font-size: 12px; opacity: .7; }
+  .erp-nav { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 10px; color: #fff; opacity: .75; cursor: pointer; font-weight: 500; transition: background-color .15s ease, opacity .15s ease; }
+  .erp-nav:hover { opacity: 1; background: rgba(255,255,255,.06); }
+  .erp-nav.on { opacity: 1; background: rgba(255,255,255,.13); font-weight: 700; }
+  .erp-nav em { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 700; background: var(--orange); color: #fff; border-radius: 999px; padding: 1px 8px; }
+  .erp-user { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .erp-user small { display: block; font-size: 12px; opacity: .7; }
+  .av { width: 34px; height: 34px; border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 13px; flex: none; }
+  .erp-main { display: flex; flex-direction: column; min-width: 0; }
+  .erp-top { height: 62px; display: flex; align-items: center; gap: 14px; padding: 0 22px 0 20px; }
+  .erp-search { flex: 1; max-width: 420px; display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 10px; padding: 9px 14px; color: #6b7f95; }
+  .erp-date { margin-left: auto; background: #fff; border-radius: 10px; padding: 9px 14px; font-weight: 500; }
+  .erp-bell { position: relative; width: 38px; height: 38px; border-radius: 10px; background: #fff; display: grid; place-items: center; color: var(--navy); }
+  .erp-bell i { position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: ring 1.8s ease-out infinite; }
+  .erp-sheet { flex: 1; min-height: 0; margin: 0 12px 12px 0; background: #fff; border-radius: 16px; border: 1px solid #d6e6f0; padding: 20px 22px; overflow: hidden; display: flex; flex-direction: column; gap: 16px; }
+  .erp-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .erp-title h4 { font-size: 25px; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
+  .erp-title small { color: #6b7f95; font-size: 13px; }
+  .erp-acts { display: flex; gap: 8px; }
+  .eb { border-radius: 9px; padding: 8px 14px; font-weight: 500; font-size: 13px; box-shadow: inset 0 0 0 1px #d6e6f0; color: var(--navy); }
+  .eb.pri { background: var(--orange); color: #fff; box-shadow: none; font-weight: 700; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .kpi { background: #f3f9fc; border-radius: 12px; padding: 14px 16px; }
+  .kpi small { display: block; color: #6b7f95; font-size: 13px; }
+  .kpi b { display: block; font-size: 26px; font-weight: 700; color: var(--navy); letter-spacing: -.02em; margin: 4px 0 2px; }
+  .kpi em { font-style: normal; font-size: 12.5px; color: #6b7f95; }
+  .kpi em.up { color: #17794a; font-weight: 500; }
+  .kpi.warn { background: #fff1e6; }
+  .kpi.warn b { color: #b4410b; }
+  .grid2 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 14px; flex: 1; min-height: 0; }
+  .panel { border: 1px solid #e3eef5; border-radius: 12px; padding: 14px 16px; min-height: 0; overflow: hidden; }
+  .panel h5 { margin: 0 0 8px; font-size: 15px; font-weight: 700; color: var(--navy); }
+  .p-row { display: flex; justify-content: space-between; align-items: center; }
+  .seg { display: flex; background: #f3f9fc; border-radius: 8px; padding: 3px; font-size: 12.5px; }
+  .seg > * { padding: 4px 10px; border-radius: 6px; }
+  .seg b { background: #fff; box-shadow: 0 1px 2px rgba(7,45,89,.12); }
+  .erp svg.erp-chart { width: 100%; height: auto; display: block; margin-top: 6px; }
+  .slide.on .draw-line { stroke-dasharray: 900; stroke-dashoffset: 900; animation: dash 1.6s .2s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes dash { to { stroke-dashoffset: 0; } }
+  .mix { display: flex; gap: 18px; font-size: 13px; margin-top: 4px; }
+  .mix i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .todo li { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid #eef4f8; }
+  .todo li:first-child { border-top: 0; }
+  .todo small { display: block; color: #6b7f95; font-size: 12.5px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex: none; }
+  .dot.o { background: var(--orange); } .dot.b { background: var(--navy); } .dot.g { background: #2aa36b; }
+  .tabs2 { display: flex; gap: 22px; box-shadow: inset 0 -1px 0 #e3eef5; }
+  .tabs2 > * { padding-bottom: 9px; color: #6b7f95; font-weight: 500; }
+  .tabs2 b { color: var(--navy); box-shadow: inset 0 -2px 0 var(--orange); }
+  .et { width: 100%; border-collapse: collapse; }
+  .et th { text-align: left; font-weight: 500; font-size: 12.5px; color: #6b7f95; padding: 6px 10px 8px 0; }
+  .et td { padding: 10px 10px 10px 0; border-top: 1px solid #eef4f8; vertical-align: middle; }
+  .et td small { display: block; color: #6b7f95; font-size: 12.5px; }
+  .et .r { text-align: right; }
+  .slide.on .et tr.fresh td { animation: flash 2.6s .9s ease-out both; }
+  .st { display: inline-block; border-radius: 999px; padding: 4px 10px; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+  .st.ok { background: #e2f5eb; color: #17794a; } .st.warn { background: #fff0e4; color: #b4410b; }
+  .st.info { background: #e3f1fb; color: #0b4f8c; } .st.mute { background: #eef2f6; color: #4b5d73; }
+  .lvl { display: block; height: 8px; border-radius: 99px; background: #eef4f8; overflow: hidden; }
+  .lvl i { display: block; height: 100%; border-radius: 99px; background: var(--navy); }
+  .lvl i.low { background: var(--orange); }
+  .et td .lvl + small { margin-top: 4px; }
+  .kb { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: 1; min-height: 0; }
+  .kb-col { background: #f3f9fc; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .kb-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 4px 4px; }
+  .kb-head em { font-style: normal; font-size: 12px; font-weight: 700; background: #fff; border-radius: 999px; padding: 1px 8px; color: var(--navy); }
+  .kb-card { background: #fff; border-radius: 10px; padding: 11px 12px; box-shadow: 0 1px 2px rgba(7,45,89,.08); display: flex; flex-direction: column; gap: 3px; }
+  .kb-card.hot { box-shadow: inset 3px 0 0 var(--orange), 0 1px 2px rgba(7,45,89,.08); }
+  .kb-card span { color: #3f5a78; font-size: 13px; }
+  .kb-card small { color: #6b7f95; font-size: 12.5px; }
+  .kb-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+  .kb-foot strong { color: var(--orange); font-size: 13px; }
+
+  /* ERP versi HP */
+  .erp.m { width: 390px; height: auto; grid-template-columns: 1fr; border-radius: 16px; font-size: 14px; }
+  .erp.m .erp-side { display: none; }
+  .erp.m .erp-top { height: auto; padding: 12px 10px; flex-wrap: wrap; gap: 8px; }
+  .erp.m .erp-search { max-width: none; order: 3; flex-basis: 100%; }
+  .erp.m .erp-date { margin-left: 0; }
+  .erp.m .erp-bell { margin-left: auto; }
+  .erp.m .erp-sheet { margin: 0 8px 8px; padding: 16px 14px; gap: 14px; }
+  .erp.m .erp-title { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .erp.m .erp-title h4 { font-size: 23px; }
+  .erp.m .kpis { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+  .erp.m .kpi { padding: 12px; }
+  .erp.m .kpi b { font-size: 22px; }
+  .erp.m .grid2 { grid-template-columns: 1fr; }
+  .erp.m .mix { flex-wrap: wrap; gap: 6px 14px; }
+  .erp.m .kb { grid-template-columns: 1fr !important; }
+  .erp.m .tabs2 { gap: 14px; flex-wrap: wrap; font-size: 13px; }
+  .erp.m .et td, .erp.m .et th { padding-right: 8px; }
+  .erp.m [data-v="penjualan"] .et tr > :nth-child(3), .erp.m [data-v="penjualan"] .et tr > :nth-child(5),
+  .erp.m [data-v="stok"] .et tr > :nth-child(2), .erp.m [data-v="stok"] .et tr > :nth-child(4),
+  .erp.m [data-v="servis"] .et tr > :nth-child(3), .erp.m [data-v="servis"] .et tr > :nth-child(5),
+  .erp.m [data-v="keuangan"] .et tr > :nth-child(2), .erp.m [data-v="keuangan"] .et tr > :nth-child(4), .erp.m [data-v="keuangan"] .et tr > :nth-child(6) { display: none; }
+
+  /* Website dan halaman paket versi HP */
+  .ui-site.m { width: 390px; border-radius: 16px; overflow: hidden; }
+  .ui-site.m .w-nav { padding: 10px 14px; }
+  .ui-site.m .w-nav img { height: 40px; }
+  .ui-site.m .w-links span { display: none; }
+  .ui-site.m .w-links b { padding: 8px 14px; font-size: 14px; }
+  .ui-site.m .w-hero { grid-template-columns: 1fr; margin: 0 10px; padding: 22px 18px 0; border-radius: 16px 16px 0 0; }
+  .ui-site.m .w-hero h4 { font-size: 32px; }
+  .ui-site.m .w-hero p { font-size: 16px; margin: 10px 0 16px; }
+  .ui-site.m .w-cta { flex-wrap: wrap; padding-bottom: 20px; }
+  .ui-site.m .w-cta span { font-size: 15px; padding: 11px 16px; }
+  .ui-site.m .w-hero-img img { height: 190px; }
+  .ui-site.m .w-cats { grid-template-columns: 1fr 1fr; padding: 14px; gap: 10px; }
+  .ui-site.m .k-wrap { grid-template-columns: 1fr; padding: 10px 14px 20px; gap: 16px; }
+  .ui-site.m .k-photo img { height: 260px; }
+  .ui-site.m .k-title { font-size: 30px; }
+  .ui-site.m .k-price { font-size: 28px; }
+  .ui-site.m .k-list { grid-template-columns: 1fr; font-size: 15px; }
+  .ui-site.m .k-calc b { font-size: 16px; }
+
+  .erp-list { display: grid; gap: 4px; }
+  .erp-pick { display: flex; align-items: center; gap: 12px; border: 0; background: transparent; color: var(--navy); padding: 10px 12px; border-radius: 12px; font-weight: 500; text-align: left; transition: background-color .15s ease; }
+  .erp-pick svg { width: 18px; height: 18px; opacity: .7; }
+  .erp-pick:hover { background: rgba(255,255,255,.7); }
+  .erp-pick.on { background: var(--navy); color: #fff; font-weight: 700; }
+  .erp-pick.on svg { opacity: 1; }
+  .erp-desc { background: #fff; border-radius: 14px; padding: 14px 16px; line-height: 1.5; }
+  .erp-box { min-height: 0; }
+
+  /* ---------- Minimalis: lebih sedikit elemen, lebih banyak ruang ---------- */
+  .frame { box-shadow: none !important; padding: 26px 48px 32px; }
+  .head { grid-template-columns: 1fr auto; padding-bottom: 22px; font-size: 14px; }
+  .head .contact { box-shadow: none !important; padding: 0; font-weight: 500; opacity: .8; }
+  .dark .head .contact { color: #fff; }
+  .light .head .contact { color: var(--navy); }
+  h1 { font-weight: 700; letter-spacing: -.04em; }
+  h2 { font-weight: 700; letter-spacing: -.03em; }
+  h3 { font-weight: 700; }
+  .num { font-weight: 700; }
+  .label { font-size: 14px; font-weight: 500; opacity: .7; white-space: nowrap; }
+  .tag { padding: 7px 16px; font-weight: 500; }
+  .tag i { display: none; }
+  .tag[aria-pressed="true"] { background: var(--navy); color: #fff; }
+  .light .tag[aria-pressed="false"] { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1px var(--line); }
+  .dark .tag[aria-pressed="false"] { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px var(--night-line); }
+  .dark .tag[aria-pressed="true"] { background: #fff; color: var(--navy); }
+  .card { border-radius: 20px; padding: 24px; }
+  .hover-lift:hover { transform: translateY(-2px); box-shadow: none; }
+  .dark .card.orange { background: rgba(255,255,255,.05); color: #fff; box-shadow: inset 0 0 0 1px var(--night-line); }
+  .dark .card.orange::before { content: ""; display: block; width: 28px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 16px; }
+  .dark .card.orange .small { opacity: .7; }
+  .dark .card.orange.fill::before { content: none; }
+  .dark .card.orange.fill { background: transparent; box-shadow: none; padding: 0; }
+  .dot-list li { padding-left: 18px; }
+  .dot-list li::before { width: 6px; height: 6px; top: .62em; }
+  .tl-step::before { width: 12px; height: 12px; top: -28px; left: 0; box-shadow: none; }
+  .tl-line { height: 1px; top: 11px; background: var(--navy); opacity: .25; }
+  .tl-step .label { display: block; font-size: 16px; font-weight: 700; opacity: 1; color: var(--navy); margin-bottom: 8px; }
+  .tbl { box-shadow: none; border-radius: 0; background: transparent !important; }
+  .tbl th { background: transparent; color: var(--muted); font-weight: 500; font-size: 14px; padding: 0 16px 10px 0; border-bottom: 1px solid var(--line); }
+  .tbl td { border-top: 0; border-bottom: 1px solid var(--line); padding: 12px 16px 12px 0; }
+  .life { box-shadow: none; }
+  .float-note { box-shadow: 0 12px 30px rgba(7,45,89,.18); }
+  .pill-btn { padding: 6px 6px 6px 20px; font-weight: 500; }
+  .pill-btn i { width: 36px; height: 36px; }
+  .contacts a, .contacts span { font-weight: 500; }
+  .pager { padding: 4px; gap: 6px; box-shadow: 0 6px 20px rgba(7,45,89,.15); }
+  .pager button { width: 34px; height: 34px; font-size: 15px; }
+  .pager .where { min-width: 180px; font-weight: 500; font-size: 13px; }
+  .progress { height: 2px; }
+  .rise { transform: translateY(12px); }
+
+  /* ---------- HP ---------- */
+  @media (max-width: 900px) {
+    :root { --t: 30px; }
+    body { font-size: 16px; }
+    .slide { padding: 10px 10px 80px; }
+    .frame { padding: 14px 14px 18px; border-radius: 22px; }
+    .head { grid-template-columns: 1fr auto; }
+    .head .mid { display: none; }
+    .head .contact { padding: 6px 12px; font-size: 13px; }
+    h1 { font-size: 38px !important; }
+    .num[style*="font-size"] { font-size: 34px !important; }
+    .cover-top, .split, .g { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: none !important; }
+    .g > * { grid-column: auto !important; grid-row: auto !important; }
+    .cover-band { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .cover-band .frag-wrap { height: 420px; overflow: hidden; }
+    .card.orange.fill { grid-template-columns: minmax(0, 1fr) !important; gap: 26px !important; }
+    .demo-frame { height: 640px; }
+    .slide h2[style*="font-size"] { font-size: 30px !important; }
+    .erp-pick { padding: 9px 10px; }
+    .cover-band .photo { height: 200px; }
+    .timeline { grid-template-columns: minmax(0, 1fr); padding-top: 0; padding-left: 28px; }
+    .tl-line { left: 8px; right: auto; top: 0; bottom: 0; width: 3px; height: auto; }
+    .tl-step::before { left: -28px; top: 4px; }
+    .mock-box, .phone-box, .erp-box { height: auto !important; min-height: 0 !important; flex: none !important; }
+    .shot { background: transparent !important; }
+    .erp-list { grid-template-columns: 1fr 1fr; }
+    .hide-m { display: none; }
+    .phone-box .frag { max-width: 340px; margin: 0 auto; }
+    .stat-card b.num { font-size: 44px; }
+    .row { flex-wrap: wrap; }
+    .pager .where { min-width: 150px; }
+    .pager .where span { display: none; }
+    .float-note { right: 10px; top: 10px; padding: 8px 10px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main id="deck"></main>
+<nav class="pager" aria-label="Navigasi slide">
+  <button id="prev" type="button" aria-label="Slide sebelumnya">←</button>
+  <p class="where" id="where" aria-live="polite"></p>
+  <button id="next" type="button" aria-label="Slide berikutnya">→</button>
+</nav>
+
+<script>
+/* ===== Data pengirim dan sumber gambar ===== */
+var SENDER = { name: 'Dar Dev', phone: '0813 1150 6025', wa: '6281311506025' };
+var DEMO_URL = '../demo-pemilih-mesin/index.html';
+var BUNDLE = 13; // harga semua tahap sekaligus, dalam juta
+// Foto produk dari website Purnama Eskrim. Perlu internet saat dibuka.
+var FOTO = 'https://purnama-eskrim.com/wp-content/uploads/2022/03/';
+var LOGO = 'assets/logo-pip-machinery.jpg';
+/* ========================================== */
+
+var ARROW = '<svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var state = { erp: 'dasbor', spread: 'akun', stage: 0, role: 0, adminView: 'prospek', picks: [true, false, false], marginPaket: 2, customers: 50, marginOrder: 100 };
+
+var STAGES = [
+  { name: 'Tahap 1', short: 'Mudah ditemukan dan dipilih', price: 5, time: '3–4 minggu', weeks: 4 },
+  { name: 'Tahap 2', short: 'Semua tercatat di satu tempat', price: 5, time: '5–6 minggu', weeks: 6 },
+  { name: 'Tahap 3', short: 'Pelanggan kembali memesan', price: 4, time: '4–5 minggu', weeks: 5 }
+];
+var ROLES = [
+  ['Calon pembeli', 'Tanya harga lewat chat, lalu menunggu balasan.', 'Membandingkan mesin dan menghitung modal kapan saja.'],
+  ['Pelanggan bahan', 'Mengetik pesanan dari awal setiap kali pesan.', 'Sekali tekan, pesanan terakhir langsung terisi.'],
+  ['Mitra paket', 'Menanyakan varian baru dan harga lewat chat.', 'Masuk halaman mitra, lihat varian baru, langsung pesan.'],
+  ['Pemilik mesin', 'Mencari video lama saat mesin ada kendala.', 'Scan QR di mesin, panduannya langsung muncul.'],
+  ['Admin', 'Menjawab hal yang sama di banyak nomor.', 'Chat masuk sudah lengkap: mesin yang diminati dan kotanya.'],
+  ['Gudang', 'Pesanan datang lewat pesan terusan.', 'Daftar kirim hari ini sudah rapi, resi cukup sekali masuk.'],
+  ['Teknisi', 'Keluhan datang tanpa data mesin.', 'Tipe mesin, tanggal beli, dan garansi langsung terlihat.'],
+  ['Pemilik usaha', 'Menunggu rekap, sulit tahu kanal yang menghasilkan.', 'Semua angka penting ada di satu layar.']
+];
+var GAPS = [
+  ['Belum ada PIP Machinery, katalog mesin, dan gerobak custom', 'Halaman PIP Machinery dengan katalog mesin, gerobak, dan paket'],
+  ['Hanya 3 halaman, belum ada halaman tiap produk', 'Halaman per produk: foto, spesifikasi, video QC, tombol WhatsApp'],
+  ['Pencarian kami belum menemukan PIP Machinery', 'Ditulis untuk pencarian seperti “mesin es krim”, lalu didaftarkan ke Google'],
+  ['Ada harga dan angka yang tidak konsisten', 'Harga tersimpan di satu tempat, admin bisa mengubahnya sendiri'],
+  ['Silver, Gold, dan Platinum hanya tampil satu harga', 'Halaman paket yang membandingkan isi dan harga'],
+  ['Tampilan di HP belum rapi, judul menimpa subjudul', 'Desain baru yang dimulai dari HP']
+];
+var FIXES = [
+  ['Paket Usaha', 'Tertulis 70 porsi “satu bulan”, padahal hitungannya 70 porsi per hari.'],
+  ['Paket Usaha', 'Harga paket Rp 10 juta, tetapi tabel balik modal memakai Rp 8 juta.'],
+  ['Paket Usaha', 'Ada pilihan Silver, Gold, dan Platinum, tetapi hanya tampil satu harga.'],
+  ['Beranda', 'Waffle Marble Jumbo Rp 280, lebih murah dari Marble Standar Rp 800.'],
+  ['Kontak', 'Telepon tertulis (0272) di satu tempat dan (0274) di tempat lain.'],
+  ['HP dan Instagram', 'Judul beranda menimpa subjudul, dan bio @pip.machinery tanpa tautan.']
+];
+
+function juta(n) { return 'Rp ' + String(n).replace('.', ',') + ' juta'; }
+function pickedTotal() {
+  var n = state.picks.filter(Boolean).length, sum = 0;
+  state.picks.forEach(function (p, i) { if (p) sum += STAGES[i].price; });
+  return { n: n, sum: n === 3 ? BUNDLE : sum, full: sum };
+}
+function tag(text) { return '<span class="label">' + text + '</span>'; }
+function ra() { return ''; }
+function photo(name, alt, cls, style) { return '<figure class="photo ' + (cls || '') + '"' + (style ? ' style="' + style + '"' : '') + '><img src="' + FOTO + name + '" alt="' + alt + '"></figure>'; }
+function isMobile() { return window.innerWidth <= 900; }
+// Di HP semua mockup selebar layar, tingginya mengikuti isi (mode auto)
+function frag(html, mode) { return '<div class="frag" data-mode="' + (isMobile() ? 'auto' : (mode || 'width')) + '"><div class="frag-in">' + html + '</div></div>'; }
+function count(to, prefix, suffix) { return '<span class="count" data-to="' + to + '" data-prefix="' + (prefix || '') + '" data-suffix="' + (suffix || '') + '">' + (prefix || '') + to + (suffix || '') + '</span>'; }
+
+/* ---------- Mockup ---------- */
+function uiWebsite() { return '' +
+  '<div class="ui-site' + (isMobile() ? ' m' : '') + '" data-ui role="img" aria-label="Contoh beranda website PIP Machinery">' +
+    '<div class="w-nav"><img src="' + LOGO + '" alt=""><div class="w-links"><span>Mesin</span><span>Bahan</span><span>Gerobak</span><span>Paket Usaha</span><b>Chat admin</b></div></div>' +
+    '<div class="w-hero"><div><h4>Mesin dan bahan es krim dalam satu tempat</h4><p>Dari memilih mesin sampai pesan bahan rutin. Melayani seluruh Indonesia sejak 2013.</p><div class="w-cta"><span class="pulse-btn">Cari mesin yang cocok</span><span>Hitung modal usaha</span></div></div>' +
+    '<div class="w-hero-img"><img src="' + FOTO + 'mesin-soft-ice-cream-crop.png" alt=""></div></div>' +
+    '<div class="w-cats">' +
+      '<div class="w-cat"><img src="' + FOTO + 'mesin-soft-ice-cream-crop.png" alt=""><b>Mesin es krim</b><small>Soft dan hard</small></div>' +
+      '<div class="w-cat"><img src="' + FOTO + 'bahan-baku-eskrim-2-crop.png" alt=""><b>Bahan Joelly</b><small>Lebih dari 15 rasa</small></div>' +
+      '<div class="w-cat"><img src="' + FOTO + 'waffle-kerucut-biasa.jpg" alt=""><b>Cone dan waffle</b><small>Produksi sendiri</small></div>' +
+      '<div class="w-cat"><img src="' + FOTO + 'toping-pasta.jpg" alt=""><b>Topping</b><small>Pasta dan oreo crumb</small></div>' +
+    '</div></div>'; }
+function uiProduct() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh halaman produk mesin di HP">' +
+    '<div class="p-body"><div class="p-photo"><img src="' + FOTO + 'mesin-soft-ice-cream-crop.png" alt=""></div>' +
+    '<p class="p-name">Mesin Soft Ice Cream Meja</p>' +
+    '<dl class="p-spec"><dt>Kapasitas</dt><dd>50–150 porsi/hari</dd><dt>Listrik</dt><dd>± 1.500 W</dd><dt>Dukungan</dt><dd>Garansi dan teknisi</dd></dl>' +
+    '<div class="p-action" style="font-weight:500">Video QC sebelum dikirim <span>Putar</span></div>' +
+    '<div class="p-foot"><span class="p-btn pulse-btn">Tanya lewat WhatsApp</span><span class="p-btn alt">Jadwalkan coba mesin</span></div></div></div>'; }
+function uiTrack() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh halaman lacak pesanan">' +
+    '<div class="p-head"><small>Pesanan PIP-2047</small><b>Gerobak custom dan mesin</b></div>' +
+    '<div class="p-body"><ol class="p-track">' +
+      '<li class="done"><span><b>Pesanan diterima</b><small>27 Oktober</small></span></li>' +
+      '<li class="done"><span><b>Produksi gerobak</b><small>Selesai 2 November</small></span></li>' +
+      '<li class="done"><span><b>Quality control</b><small>Selesai 4 November, ada video</small></span></li>' +
+      '<li class="now"><span><b>Packing</b><small>Dikerjakan hari ini</small></span></li>' +
+      '<li><span><b>Dikirim ke Surabaya</b><small>Nomor resi muncul di sini</small></span></li>' +
+    '</ol><div class="p-foot"><span class="p-btn">Lihat video QC</span><span class="p-btn alt">Chat admin</span></div></div></div>'; }
+function uiReorder() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh halaman pesan ulang bahan">' +
+    '<div class="p-head"><small>Halaman mitra</small><b>Halo, Bu Rina</b></div>' +
+    '<div class="p-body"><p class="p-alert">Bahan diperkirakan habis 3 hari lagi.</p><p style="font-weight:700">Pesanan terakhir</p>' +
+      '<div class="p-item"><img src="' + FOTO + 'bahan-baku-eskrim-2-crop.png" alt=""><span><b>Bahan soft Joelly coklat</b><small>Kemasan 1 kg</small></span><b>5</b></div>' +
+      '<div class="p-item"><img src="' + FOTO + 'bahan-baku-eskrim-1-crop.png" alt=""><span><b>Bahan soft Joelly vanila</b><small>Kemasan 1 kg</small></span><b>5</b></div>' +
+      '<div class="p-item"><img src="' + FOTO + 'cone-45.jpg" alt=""><span><b>Cone 4,5 cm</b><small>Per 500 pcs</small></span><b>1</b></div>' +
+      '<div class="p-foot"><span class="p-btn pulse-btn">Pesan lagi</span><span class="p-btn alt">Ubah pesanan</span></div></div></div>'; }
+function uiQR() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh halaman setelah scan QR di mesin">' +
+    '<div class="p-head"><small>Hasil scan QR di mesin</small><b>Mesin Soft Ice Cream Meja</b></div>' +
+    '<div class="p-body"><div class="p-photo"><img src="' + FOTO + 'mesin-soft-ice-cream-crop.png" alt=""></div>' +
+      '<p class="p-alert">Garansi aktif sampai Maret 2027.</p>' +
+      '<div class="p-action">Video tutorial <span>Buka</span></div><div class="p-action">Lapor kendala <span>Kirim</span></div><div class="p-action">Pesan bahan <span>Pilih</span></div></div></div>'; }
+function bub(text, cls, delay) { return '<p class="bub seq ' + (cls || '') + '" style="animation-delay:' + delay + 's">' + text + '</p>'; }
+function uiChat() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh chat prospek dari Pemilih Mesin di layar admin">' +
+    '<div class="p-head c-head"><span><small>Prospek baru · dari Pemilih Mesin</small><b>Rina, Surabaya</b></span></div>' +
+    '<div class="c-body">' +
+      bub('Halo PIP Machinery, saya dari Pemilih Mesin.<br><br>Mau jual: Soft ice cream<br>Target: 50–150 porsi per hari<br>Listrik: 1.300 VA<br>Anggaran: Rp 15–30 juta<br><b>Rekomendasi: Mesin Soft Ice Cream Meja</b>', 'in', .3) +
+      bub('Halo Bu Rina, mesin ini ready di Bantul. Mau coba langsung, atau lewat video call dulu?', 'out', 1.3) +
+      bub('Video call dulu. Besok jam 10 bisa?', 'in', 2.3) +
+      '<div class="chips seq" style="animation-delay:3.1s"><span>Jadwalkan video call</span><span>Kirim brosur</span></div>' +
+    '</div></div>'; }
+function uiReminder() { return '' +
+  '<div class="ui-screen" data-ui role="img" aria-label="Contoh pengingat pesan ulang bahan di HP pelanggan">' +
+    '<div class="p-head c-head"><img src="' + LOGO + '" alt="" class="c-logo"><span><small>Pesan dari</small><b>PIP Machinery</b></span></div>' +
+    '<div class="c-body">' +
+      bub('Halo Bu Rina, bahan soft coklat diperkirakan habis 3 hari lagi. Mau pesan seperti bulan lalu?', 'in', .3) +
+      '<div class="bub in seq c-card" style="animation-delay:1s"><span>Bahan soft Joelly coklat</span><b>5 kg</b><span>Bahan soft Joelly vanila</span><b>5 kg</b><span>Cone 4,5 cm</span><b>500 pcs</b><em class="c-btn">Pesan lagi</em></div>' +
+      bub('Ya, kirim seperti biasa ya.', 'out', 2) +
+      bub('Siap, pesanan PIP-2063 dibuat. Dikirim besok, resi kami kabari.', 'in', 2.8) +
+    '</div></div>'; }
+function uiPaket() { return '' +
+  '<div class="ui-site' + (isMobile() ? ' m' : '') + '" data-ui role="img" aria-label="Contoh halaman paket usaha Joelly">' +
+    '<div class="w-nav"><img src="' + LOGO + '" alt=""><div class="w-links"><span>Mesin</span><span>Bahan</span><span>Gerobak</span><span style="color:var(--orange);font-weight:700">Paket Usaha</span><b>Chat admin</b></div></div>' +
+    '<div class="k-wrap"><div class="k-photo"><img src="' + FOTO + 'foto-paket-joelly.jpg" alt=""></div>' +
+    '<div><p class="k-crumb">Paket Usaha / Joelly Es Krim</p><h4 class="k-title">Paket Usaha Joelly Es Krim</h4>' +
+      '<p class="k-price">Rp 10.000.000</p><p class="k-note">Mitra tinggal menyediakan lokasi. Merek boleh memakai nama usaha sendiri.</p>' +
+      '<div class="k-list"><span>Freezer 300 liter</span><span>Mixer dan baskom</span><span>Scoop dan timbangan digital</span><span>Bahan baku dan resep</span><span>Waffle dan cone, 500 pcs per jenis</span><span>Kaos seragam dan video tutorial</span></div>' +
+      '<div class="k-calc"><span><small>Penjualan</small><b>70 porsi per hari</b></span><span><small>Laba bersih</small><b>Rp 4,8 juta/bulan</b></span><span><small>Balik modal</small><b>± 2 bulan</b></span></div>' +
+      '<div class="w-cta" style="padding:16px 0 0"><span class="pulse-btn">Daftar jadi mitra</span><span style="background:var(--card);color:var(--blue)">Tanya lewat WhatsApp</span></div>' +
+    '</div></div></div>'; }
+function uiAdmin(view) {
+  var side = '<div class="a-side"><img src="' + LOGO + '" alt="">' +
+    '<span class="' + (view === 'prospek' ? 'on' : '') + '">Prospek <em>6</em></span><span>Order <em>3</em></span><span>Stok</span><span>Pelanggan</span><span class="' + (view === 'dasbor' ? 'on' : '') + '">Dasbor</span></div>';
+  function row(n, k, w, a, st, cl) { return '<tr class="' + (n === 'Rina' ? 'fresh' : '') + '"><td><b>' + n + '</b><small>' + k + '</small></td><td>' + w + '</td><td>' + a + '</td><td><span class="a-pill ' + cl + '">' + st + '</span></td></tr>'; }
+  var main = view === 'prospek' ?
+    '<div class="a-toast">Prospek baru dari Pemilih Mesin: Rina, Surabaya</div>' +
+    '<div class="a-title"><h4>Prospek</h4><b>Tambah prospek</b></div>' +
+    '<div class="a-tabs"><span class="on">Semua 6</span><span>Baru 2</span><span>Follow up 2</span><span>Jadi order 1</span><span>Selesai 1</span></div>' +
+    '<table class="a-table"><tr><th>Nama dan kota</th><th>Minat</th><th>Asal</th><th>Status</th></tr>' +
+    row('Rina', 'Surabaya', 'Mesin Soft Ice Cream Meja', 'Pemilih Mesin', 'Baru', 'new') +
+    row('Agus', 'Semarang', 'Paket Usaha Joelly', 'Instagram', 'Baru', 'new') +
+    row('Dewi', 'Medan', 'Paket Es Bingsoo', 'Website', 'Follow up hari ini', 'hot') +
+    row('Bayu', 'Malang', 'Gerobak custom', 'Instagram', 'Follow up besok', 'hot') +
+    row('Sari', 'Solo', 'Mesin Hard Eskrim WIR-128Y', 'Website', 'Jadi order', '') +
+    row('Dimas', 'Bogor', 'Cup sealer otomatis', 'Shopee', 'Selesai', '') + '</table>'
+    :
+    '<div class="a-title"><h4>Dasbor November</h4><small>Angka contoh</small></div>' +
+    '<div class="a-kpis"><div><small>Penjualan</small><b>Rp 140 juta</b></div><div><small>Chat masuk</small><b>120</b></div><div><small>Jadi order</small><b>24</b></div><div><small>Pesan ulang</small><b>38</b></div></div>' +
+    '<div class="a-cols"><div><h5>Penjualan per lini</h5>' +
+      '<div class="a-bar"><span>Mesin</span><i style="width:100%"></i><b>Rp 62 jt</b></div>' +
+      '<div class="a-bar"><span>Bahan</span><i style="width:77%"></i><b>Rp 48 jt</b></div>' +
+      '<div class="a-bar"><span>Paket usaha</span><i style="width:48%"></i><b>Rp 30 jt</b></div>' +
+      '<h5 style="margin-top:20px">Asal chat</h5>' +
+      '<div class="a-bar"><span>Instagram</span><i style="width:100%"></i><b>52</b></div>' +
+      '<div class="a-bar"><span>Website</span><i style="width:77%"></i><b>40</b></div>' +
+      '<div class="a-bar"><span>Pemilih Mesin</span><i style="width:35%"></i><b>18</b></div>' +
+      '<div class="a-bar"><span>Shopee</span><i style="width:19%"></i><b>10</b></div>' +
+    '</div><div class="a-list"><h5>Pelanggan mulai jarang pesan</h5>' +
+      '<p><span>Toko Es Maju, Klaten</span><small>45 hari lalu</small></p><p><span>Bu Lina, Madiun</span><small>38 hari lalu</small></p><p><span>Kedai Dingin, Kediri</span><small>31 hari lalu</small></p>' +
+      '<h5 style="margin-top:20px">Kirim hari ini</h5><p><span>Pesanan PIP-2047, Surabaya</span><small>Packing</small></p><p><span>Pesanan PIP-2051, Bantul</span><small>Siap</small></p></div></div>';
+  return '<div class="a-shell" data-ui role="img" aria-label="Contoh layar admin">' + side + '<div class="a-sheet">' + main + '</div></div>';
+}
+
+/* ---------- ERP PIP Machinery (semua angka contoh, saling konsisten) ---------- */
+var ICON = {
+  dasbor: '<path d="M3 3h6v8H3zM11 3h6v5h-6zM11 10h6v7h-6zM3 13h6v4H3z"/>',
+  penjualan: '<path d="M3 4h2l2 9h9l2-6H6"/><circle cx="8" cy="16.5" r="1.3"/><circle cx="15" cy="16.5" r="1.3"/>',
+  prospek: '<circle cx="7" cy="7" r="3"/><path d="M2 17c0-3 2.5-5 5-5s5 2 5 5M13 6.5a2.6 2.6 0 1 1 0 5M14.5 12.5c2 .5 3.5 2.3 3.5 4.5"/>',
+  stok: '<path d="M10 2 3 6v8l7 4 7-4V6zM3 6l7 4 7-4M10 10v8"/>',
+  produksi: '<path d="M3 17h14M5 17V9l4 3V9l4 3V5h3v12"/>',
+  servis: '<path d="M14 3a4 4 0 0 0-5 5L3 14l3 3 6-6a4 4 0 0 0 5-5l-2.5 2.5-2-.5-.5-2z"/>',
+  keuangan: '<rect x="2.5" y="5" width="15" height="11" rx="2"/><path d="M13 10.5h4.5M2.5 8h15"/>',
+  bell: '<path d="M5 14V9a5 5 0 0 1 10 0v5l1.5 2h-13zM8.5 18a1.7 1.7 0 0 0 3 0"/>',
+  search: '<circle cx="9" cy="9" r="5.5"/><path d="m13 13 4 4"/>'
+};
+function ic(name) { return '<svg viewBox="0 0 20 20" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + ICON[name] + '</g></svg>'; }
+var ERP_MODS = [
+  ['dasbor', 'Dasbor', '', 'Ringkasan penjualan, order aktif, prospek baru, dan hal yang perlu ditindaklanjuti hari ini.'],
+  ['penjualan', 'Penjualan', '18', 'Semua order mesin, bahan, dan paket usaha, lengkap dengan status bayar dan kirim.'],
+  ['prospek', 'Prospek', '6', 'Calon pembeli dari Instagram, website, Pemilih Mesin, dan Shopee, disusun per tahap.'],
+  ['stok', 'Stok', '4', 'Stok mesin, bahan, cone, dan topping dengan peringatan saat di bawah batas minimum.'],
+  ['produksi', 'Produksi Gerobak', '', 'Alur gerobak custom dari desain sampai dikirim, termasuk bukti QC.'],
+  ['servis', 'Servis', '2', 'Tiket purna jual dari scan QR di mesin: garansi, teknisi, dan jadwal kunjungan.'],
+  ['keuangan', 'Keuangan', '1', 'Faktur, DP, pelunasan, dan piutang yang jatuh tempo.']
+];
+function st(text, cls) { return '<span class="st ' + cls + '">' + text + '</span>'; }
+function erpChart() {
+  var vals = [96, 104, 99, 118, 125, 140.2], labels = ['Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov'];
+  var W = 560, H = 190, pad = 26, min = 80, max = 150;
+  var pts = vals.map(function (v, i) { return [pad + i * (W - pad * 2) / 5, H - 28 - (v - min) / (max - min) * (H - 50)]; });
+  var line = pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+  var area = 'M' + pts[0][0] + ',' + (H - 28) + ' L' + line.split(' ').join(' L') + ' L' + pts[5][0] + ',' + (H - 28) + ' Z';
+  return '<svg class="erp-chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Penjualan Juni sampai November naik dari Rp 96 juta ke Rp 140 juta">' +
+    [100, 120, 140].map(function (g) { var y = H - 28 - (g - min) / (max - min) * (H - 50); return '<line x1="' + pad + '" x2="' + (W - pad) + '" y1="' + y + '" y2="' + y + '" stroke="#e6eef4"/><text x="0" y="' + (y + 4) + '" font-size="11" fill="#6b7f95">' + g + '</text>'; }).join('') +
+    '<path d="' + area + '" fill="rgba(234,88,12,.10)"/>' +
+    '<polyline class="draw-line" points="' + line + '" fill="none" stroke="#ea580c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>' +
+    pts.map(function (p, i) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (i === 5 ? 5.5 : 3.5) + '" fill="' + (i === 5 ? '#ea580c' : '#fff') + '" stroke="#ea580c" stroke-width="2"/><text x="' + p[0] + '" y="' + (H - 8) + '" font-size="12" text-anchor="middle" fill="#6b7f95">' + labels[i] + '</text>'; }).join('') +
+    '<text x="' + (pts[5][0] - 8) + '" y="' + (pts[5][1] - 12) + '" font-size="13" font-weight="700" text-anchor="end" fill="#072d59">Rp 140,2 jt</text></svg>';
+}
+function erpView(v) {
+  if (v === 'dasbor') return '' +
+    '<div class="erp-title"><div><h4>Selamat pagi, tim PIP</h4><small>Jumat, 6 November 2026 · data contoh</small></div><div class="erp-acts"><span class="eb">Unduh laporan</span><span class="eb pri">+ Order baru</span></div></div>' +
+    '<div class="kpis">' +
+      '<div class="kpi seq" style="animation-delay:.1s"><small>Penjualan November</small><b>Rp 140,2 jt</b><em class="up">+12% dari Oktober</em></div>' +
+      '<div class="kpi seq" style="animation-delay:.18s"><small>Order aktif</small><b>18</b><em>6 menunggu kirim</em></div>' +
+      '<div class="kpi seq" style="animation-delay:.26s"><small>Prospek baru</small><b>32</b><em class="up">9 dari Pemilih Mesin</em></div>' +
+      '<div class="kpi seq warn" style="animation-delay:.34s"><small>Stok di bawah minimum</small><b>4 item</b><em>Perlu dipesan minggu ini</em></div></div>' +
+    '<div class="grid2"><div class="panel"><div class="p-row"><h5>Penjualan 6 bulan terakhir</h5><span class="seg"><b>Bulanan</b><span>Mingguan</span></span></div>' + erpChart() +
+      '<div class="mix"><span><i style="background:#072d59"></i>Mesin Rp 62 jt</span><span><i style="background:#ea580c"></i>Bahan Rp 48,2 jt</span><span><i style="background:#8fc3e3"></i>Paket usaha Rp 30 jt</span></div></div>' +
+      '<div class="panel"><h5>Perlu tindakan hari ini</h5><ul class="todo">' +
+        '<li><span class="dot o"></span><span><b>3 prospek</b> menunggu follow up<small>Dewi, Medan · Bayu, Malang · +1</small></span></li>' +
+        '<li><span class="dot o"></span><span><b>2 tiket servis</b> menunggu teknisi<small>T-118 Madiun · T-120 Kediri</small></span></li>' +
+        '<li><span class="dot b"></span><span><b>1 faktur</b> jatuh tempo hari ini<small>INV-1098 · Kedai Dingin · Rp 1,2 jt</small></span></li>' +
+        '<li><span class="dot b"></span><span><b>4 item stok</b> di bawah minimum<small>Vanila, waffle, WIR-128Y, kertas waffle</small></span></li>' +
+        '<li><span class="dot g"></span><span><b>PIP-2051</b> siap dikirim<small>Toko Es Maju, Klaten</small></span></li></ul></div></div>';
+
+  if (v === 'penjualan') {
+    var rows = [
+      ['PIP-2056', 'Rina', 'Surabaya', 'Mesin Soft Ice Cream Meja', 'Rp 18,0 jt', st('Menunggu DP', 'warn'), st('Penawaran', 'mute'), 1],
+      ['PIP-2055', 'Kedai Dingin', 'Kediri', 'Bahan soft 10 kg', 'Rp 1,2 jt', st('Belum bayar', 'warn'), st('Baru', 'info')],
+      ['PIP-2053', 'Dewi', 'Medan', 'Paket Es Bingsoo', 'Rp 15,0 jt', st('DP 50%', 'info'), st('Produksi', 'info')],
+      ['PIP-2052', 'Sari', 'Solo', 'Mesin Hard WIR-128Y', 'Rp 14,9 jt', st('Lunas', 'ok'), st('QC', 'info')],
+      ['PIP-2051', 'Toko Es Maju', 'Klaten', 'Bahan 20 kg + cone 1.000', 'Rp 2,4 jt', st('Lunas', 'ok'), st('Siap kirim', 'ok')],
+      ['PIP-2047', 'Bayu', 'Malang', 'Gerobak custom + mesin', 'Rp 21,5 jt', st('DP 50%', 'info'), st('Packing', 'info')],
+      ['PIP-2044', 'Bu Lina', 'Madiun', 'Bahan soft 15 kg', 'Rp 1,8 jt', st('Lunas', 'ok'), st('Selesai', 'mute')]
+    ];
+    return '<div class="erp-title"><div><h4>Penjualan</h4><small>18 order aktif · November 2026</small></div><div class="erp-acts"><span class="eb">Filter</span><span class="eb pri">+ Order baru</span></div></div>' +
+      '<div class="tabs2"><b>Semua 18</b><span>Menunggu bayar 4</span><span>Diproses 8</span><span>Siap kirim 6</span></div>' +
+      '<table class="et"><tr><th>No. order</th><th>Pelanggan</th><th>Item</th><th class="r">Total</th><th>Pembayaran</th><th>Status</th></tr>' +
+      rows.map(function (r) { return '<tr' + (r[7] ? ' class="fresh"' : '') + '><td><b>' + r[0] + '</b></td><td><b>' + r[1] + '</b><small>' + r[2] + '</small></td><td>' + r[3] + '</td><td class="r"><b>' + r[4] + '</b></td><td>' + r[5] + '</td><td>' + r[6] + '</td></tr>'; }).join('') + '</table>';
+  }
+
+  if (v === 'prospek') {
+    var cols = [
+      ['Baru', [['Rina', 'Surabaya', 'Mesin Soft Ice Cream Meja', 'Rp 18 jt', 'Pemilih Mesin', 1], ['Agus', 'Semarang', 'Paket Usaha Joelly', 'Rp 10 jt', 'Instagram']]],
+      ['Dihubungi', [['Dewi', 'Medan', 'Paket Es Bingsoo', 'Rp 15 jt', 'Website'], ['Bayu', 'Malang', 'Gerobak custom', 'Rp 7 jt', 'Instagram']]],
+      ['Coba mesin', [['Hendra', 'Yogyakarta', 'Mesin Soft Berdiri', 'Rp 32 jt', 'Datang ke toko']]],
+      ['Negosiasi', [['Maya', 'Purwokerto', 'Paket Es Puter', 'Rp 9 jt', 'Shopee']]]
+    ];
+    return '<div class="erp-title"><div><h4>Prospek</h4><small>6 prospek berjalan · nilai potensi Rp 91 jt</small></div><div class="erp-acts"><span class="eb">Asal: semua kanal</span><span class="eb pri">+ Prospek</span></div></div>' +
+      '<div class="kb" style="grid-template-columns:repeat(4,1fr)">' + cols.map(function (c, ci) {
+        return '<div class="kb-col"><div class="kb-head"><b>' + c[0] + '</b><em>' + c[1].length + '</em></div>' + c[1].map(function (p, pi) {
+          return '<div class="kb-card seq' + (p[5] ? ' hot' : '') + '" style="animation-delay:' + (.1 + ci * .08 + pi * .05) + 's"><b>' + p[0] + ', ' + p[1] + '</b><span>' + p[2] + '</span><div class="kb-foot"><small>' + p[4] + '</small><strong>' + p[3] + '</strong></div></div>'; }).join('') + '</div>'; }).join('') + '</div>';
+  }
+
+  if (v === 'stok') {
+    var items = [
+      ['Bahan soft Joelly coklat', 'Bahan', 42, 30, 'kg'], ['Bahan soft Joelly vanila', 'Bahan', 18, 30, 'kg'],
+      ['Cone 4,5 cm', 'Cone dan waffle', 3200, 2000, 'pcs'], ['Waffle kerucut standar', 'Cone dan waffle', 900, 1000, 'pcs'],
+      ['Mesin Soft Ice Cream Meja', 'Mesin', 3, 2, 'unit'], ['Mesin Hard WIR-128Y', 'Mesin', 1, 2, 'unit'],
+      ['Topping pasta coklat', 'Topping', 12, 10, 'kg'], ['Kertas pegangan waffle', 'Perlengkapan', 400, 500, 'lembar']
+    ];
+    return '<div class="erp-title"><div><h4>Stok</h4><small>Gudang Bantul · 4 item di bawah minimum</small></div><div class="erp-acts"><span class="eb">Stok masuk</span><span class="eb pri">Buat pesanan ke pemasok</span></div></div>' +
+      '<table class="et"><tr><th>Item</th><th>Kategori</th><th class="r">Stok</th><th style="width:26%">Terhadap minimum</th><th>Status</th></tr>' +
+      items.map(function (it) { var low = it[2] < it[3], pct = Math.min(100, it[2] / (it[3] * 2) * 100);
+        return '<tr><td><b>' + it[0] + '</b></td><td>' + it[1] + '</td><td class="r"><b>' + it[2].toLocaleString('id-ID') + '</b> ' + it[4] + '</td><td><span class="lvl"><i class="' + (low ? 'low' : '') + '" style="width:' + pct + '%"></i></span><small>min. ' + it[3].toLocaleString('id-ID') + ' ' + it[4] + '</small></td><td>' + (low ? st('Pesan ulang', 'warn') : st('Aman', 'ok')) + '</td></tr>'; }).join('') + '</table>';
+  }
+
+  if (v === 'produksi') {
+    var steps = [
+      ['Desain', [['PIP-2058', 'Kopi dan Es, Bandung', 'Gerobak 1,5 m · branding', 20]]],
+      ['Produksi', [['PIP-2053', 'Dewi, Medan', 'Gerobak bingsoo', 55]]],
+      ['QC', [['PIP-2052', 'Sari, Solo', 'Mesin WIR-128Y', 80]]],
+      ['Packing', [['PIP-2047', 'Bayu, Malang', 'Gerobak + mesin soft', 90]]],
+      ['Dikirim', [['PIP-2040', 'Kios Dingin, Jakarta', 'Resi JNT 8821…', 100]]]
+    ];
+    return '<div class="erp-title"><div><h4>Produksi Gerobak</h4><small>5 pekerjaan berjalan · rata-rata 9 hari kerja</small></div><div class="erp-acts"><span class="eb">Jadwal minggu ini</span><span class="eb pri">+ Pesanan custom</span></div></div>' +
+      '<div class="kb">' + steps.map(function (s, si) {
+        return '<div class="kb-col"><div class="kb-head"><b>' + s[0] + '</b><em>' + s[1].length + '</em></div>' + s[1].map(function (j) {
+          return '<div class="kb-card seq" style="animation-delay:' + (.1 + si * .08) + 's"><b>' + j[0] + '</b><span>' + j[1] + '</span><small>' + j[2] + '</small><span class="lvl" style="margin-top:8px"><i style="width:' + j[3] + '%"></i></span>' + (s[0] === 'QC' ? '<div class="kb-foot"><small>Video QC</small><strong>Kirim ke pelanggan</strong></div>' : '') + '</div>'; }).join('') + '</div>'; }).join('') + '</div>';
+  }
+
+  if (v === 'servis') {
+    var tk = [
+      ['T-120', 'Kedai Dingin, Kediri', 'Mesin Soft Ice Cream Meja', 'Hasil es terlalu cair', 'Aktif s/d Jan 2027', st('Menunggu teknisi', 'warn'), 1],
+      ['T-118', 'Bu Lina, Madiun', 'Mesin Soft Ice Cream Meja', 'Mesin berbunyi keras', 'Aktif s/d Mar 2027', st('Menunggu teknisi', 'warn')],
+      ['T-119', 'Dimas, Bogor', 'Cup sealer otomatis', 'Suhu tidak stabil', 'Aktif s/d Jun 2027', st('Video call besok', 'info')],
+      ['T-117', 'Toko Es Maju, Klaten', 'Mesin Hard WIR-128Y', 'Ganti dinamo', 'Habis', st('Selesai', 'ok')]
+    ];
+    return '<div class="erp-title"><div><h4>Servis dan Garansi</h4><small>Tiket masuk lewat scan QR di mesin</small></div><div class="erp-acts"><span class="eb">Jadwal teknisi</span><span class="eb pri">+ Tiket</span></div></div>' +
+      '<div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi warn"><small>Menunggu teknisi</small><b>2</b></div><div class="kpi"><small>Rata-rata selesai</small><b>2,4 hari</b></div><div class="kpi"><small>Mesin bergaransi aktif</small><b>47 unit</b></div></div>' +
+      '<table class="et"><tr><th>Tiket</th><th>Pelanggan</th><th>Mesin</th><th>Keluhan</th><th>Garansi</th><th>Status</th></tr>' +
+      tk.map(function (t) { return '<tr' + (t[6] ? ' class="fresh"' : '') + '><td><b>' + t[0] + '</b></td><td>' + t[1] + '</td><td>' + t[2] + '</td><td>' + t[3] + '</td><td>' + t[4] + '</td><td>' + t[5] + '</td></tr>'; }).join('') + '</table>';
+  }
+
+  return '' +
+    '<div class="erp-title"><div><h4>Keuangan</h4><small>November 2026 · data contoh</small></div><div class="erp-acts"><span class="eb">Ekspor ke Excel</span><span class="eb pri">+ Faktur</span></div></div>' +
+    '<div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi"><small>Kas masuk November</small><b>Rp 118,6 jt</b><em class="up">dari 41 pembayaran</em></div><div class="kpi"><small>Piutang berjalan</small><b>Rp 24,3 jt</b><em>5 faktur</em></div><div class="kpi warn"><small>Jatuh tempo hari ini</small><b>Rp 1,2 jt</b><em>1 faktur</em></div></div>' +
+    '<table class="et"><tr><th>Faktur</th><th>Order</th><th>Pelanggan</th><th class="r">Tagihan</th><th class="r">Sisa</th><th>Jatuh tempo</th><th>Status</th></tr>' +
+    [['INV-1098', 'PIP-2055', 'Kedai Dingin', 'Rp 1,2 jt', 'Rp 1,2 jt', 'Hari ini', st('Jatuh tempo', 'warn')],
+     ['INV-1102', 'PIP-2047', 'Bayu', 'Rp 21,5 jt', 'Rp 10,75 jt', '12 Nov', st('DP masuk', 'info')],
+     ['INV-1104', 'PIP-2053', 'Dewi', 'Rp 15,0 jt', 'Rp 7,5 jt', '18 Nov', st('DP masuk', 'info')],
+     ['INV-1101', 'PIP-2052', 'Sari', 'Rp 14,9 jt', 'Rp 0', '—', st('Lunas', 'ok')],
+     ['INV-1099', 'PIP-2051', 'Toko Es Maju', 'Rp 2,4 jt', 'Rp 0', '—', st('Lunas', 'ok')]].map(function (r) {
+      return '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td><td class="r">' + r[3] + '</td><td class="r"><b>' + r[4] + '</b></td><td>' + r[5] + '</td><td>' + r[6] + '</td></tr>'; }).join('') + '</table>';
+}
+function uiERP(view) {
+  return '<div class="erp' + (isMobile() ? ' m' : '') + '" data-ui role="img" aria-label="Contoh sistem ERP PIP Machinery, modul ' + view + '">' +
+    '<aside class="erp-side"><div class="erp-logo"><img src="' + LOGO + '" alt=""><span>PIP Machinery<small>Sistem usaha</small></span></div>' +
+      ERP_MODS.map(function (m) { return '<button type="button" class="erp-nav' + (m[0] === view ? ' on' : '') + '" data-erp="' + m[0] + '">' + ic(m[0]) + '<span>' + m[1] + '</span>' + (m[2] ? '<em>' + m[2] + '</em>' : '') + '</button>'; }).join('') +
+      '<div class="erp-user"><span class="av">AT</span><span><b>Admin Toko</b><small>Bantul</small></span></div></aside>' +
+    '<div class="erp-main"><div class="erp-top"><span class="erp-search">' + ic('search') + 'Cari order, pelanggan, atau produk</span><span class="erp-date">November 2026</span><span class="erp-bell">' + ic('bell') + '<i></i></span><span class="av">AT</span></div>' +
+      '<div class="erp-sheet" data-v="' + view + '">' + erpView(view) + '</div></div></div>';
+}
+
+/* ---------- Slide ---------- */
+var SLIDES = [
+  { id: 'mulai', title: 'Pembuka', theme: 'dark', html: function () { return '' +
+    '<div class="cover-top"><h1 class="rise" tabindex="-1" style="font-size:min(5.5vw,10vh)">Pembeli Mesin Jadi<br>Pelanggan Tetap</h1>' +
+    '<div class="rise d2"><p class="lead soft">Penawaran sistem digital untuk PIP Machinery dan Purnama Eskrim: lebih mudah menjual, semua tercatat, dan pelanggan kembali memesan.</p>' +
+    '<p style="margin-top:22px"><button class="pill-btn" type="button" data-go="1">Lihat penawaran <i>' + ARROW + '</i></button></p></div></div>' +
+    '<div class="cover-band rise d3"><div class="frag-wrap">' + frag(uiWebsite(), 'width') + '</div>' +
+      photo('foto-paket-joelly.jpg', 'Paket usaha Joelly dari katalog Purnama Eskrim', '', 'border-radius:0') +
+      '<div class="float float-note"><i>+1</i><span><b>Prospek baru</b><span class="small">Rina, Surabaya · Pemilih Mesin</span></span></div>' +
+      '</div>'; } },
+
+  { id: 'masalah', title: 'Kondisi sekarang', theme: 'light', html: function () {
+    var sets = {
+      akun: ['@pip.machinery', '@purnamaeskrim.admin', '@purnama.eskrim', '@purnamaeskrim, posting terbaru Maret 2021'],
+      nomor: ['0822 4380 1668, di website', '0851 3669 5414, di @purnama.eskrim', '0851 3669 5415, di @purnamaeskrim.admin', '0878 2216 4699, di @purnamaeskrim'],
+      web: ['Website memuat bahan, cone, dan paket Joelly', 'Belum ada katalog mesin dan gerobak custom', 'Belum ada es puter, bingsoo, dan es potong']
+    };
+    function stat(k, n, label, desc) { return '<div class="card stat-card rise d' + (k === 'akun' ? 2 : k === 'nomor' ? 3 : 4) + '"><b class="num">' + count(n) + '</b><h3 style="margin:10px 0 6px">' + label + '</h3><p class="small soft">' + desc + '</p><p style="margin-top:14px"><button class="tag" type="button" data-spread="' + k + '" aria-pressed="' + (state.spread === k) + '">Lihat rincian<i>' + ARROW + '</i></button></p></div>'; }
+    return '<div class="row" style="margin:6px 0 18px"><h2 class="rise" tabindex="-1">Kenapa Solusi Ini<br>Dibutuhkan</h2>' + tag('Data kondisi sekarang') + '</div>' +
+      '<div class="g fill" style="grid-template-columns:1fr 1.35fr 1.35fr 1.35fr">' +
+        photo('mesin-soft-ice-cream-crop.png', 'Mesin soft ice cream dari katalog Purnama Eskrim', 'contain rise d1', 'background:var(--card)') +
+        stat('akun', 4, 'Akun Instagram', 'Dua akun baru, dua lainnya punya ribuan pengikut.') +
+        stat('nomor', 4, 'Nomor kontak', 'Nomornya berbeda di tiap kanal, chat ikut terpencar.') +
+        stat('web', 0, 'Halaman PIP Machinery', 'Website yang ada belum memuat lini mesin.') +
+        '<div class="card rise d5" style="grid-column:2/5"><p class="small soft" style="margin-bottom:6px">Rincian yang dipilih · data publik per 6 November 2026</p><ul class="dot-list" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">' + sets[state.spread].map(function (s) { return '<li style="margin-top:6px">' + s + '</li>'; }).join('') + '</ul></div>' +
+      '</div>'; } },
+
+  { id: 'solusi', title: 'Kekurangan dan solusi', theme: 'dark', html: function () {
+    var items = [
+      ['Website proper', 'Halaman PIP Machinery dengan katalog mesin, gerobak, dan paket, siap dicari di Google.', 'Mesin sulit ditemukan di internet', 'Tahap 1'],
+      ['Pusat chat dan prospek', 'Satu nomor untuk banyak admin. Setiap chat tercatat, ada pengingat follow up.', 'Chat masuk tidak tercatat', 'Tahap 2'],
+      ['Pengingat dan halaman mitra', 'Pelanggan diingatkan saat bahan hampir habis, lalu pesan ulang sekali tekan.', 'Pembeli mesin belum tentu kembali', 'Tahap 3'],
+      ['QR di setiap mesin', 'Sekali scan: tutorial, garansi, lapor kendala, dan pesan bahan.', 'Panduan harus ditanyakan dulu', 'Tahap 3']
+    ];
+    return '<div class="g fill" style="grid-template-columns:.85fr 1.5fr;gap:28px;align-items:center">' +
+      '<div><h2 class="rise" tabindex="-1">Empat Solusi<br>dari Kami</h2>' +
+        '<p class="lead soft rise d1" style="margin-top:16px">Satu sistem yang menyambungkan penjualan mesin dengan penjualan bahan yang berulang.</p>' +
+        '<p class="rise d2" style="margin-top:22px;font-weight:700;color:var(--orange)">Pendekatan kami</p>' +
+        '<ul class="dot-list rise d2"><li>Mulai dari yang paling cepat terasa.</li><li>WhatsApp tetap jadi tempat berjualan.</li><li>Setiap tahap berdiri sendiri.</li></ul></div>' +
+      '<div class="g" style="grid-template-columns:1fr 1fr">' + items.map(function (it, i) {
+        return '<div class="card orange hover-lift rise d' + (i + 2) + '" style="display:flex;flex-direction:column;gap:10px">' +
+          '<div class="card-top" style="margin:0"><h3 style="font-size:clamp(20px,1.7vw,28px)">' + it[0] + '</h3>' + ra() + '</div>' +
+          '<p>' + it[1] + '</p>' +
+          '<p class="small" style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;gap:10px;opacity:.85"><span>Mengatasi: ' + it[2].toLowerCase() + '</span><b>' + it[3] + '</b></p></div>'; }).join('') + '</div></div>'; } },
+
+  { id: 'tahap', title: 'Tiga tahap', theme: 'light', html: function () {
+    var steps = [
+      ['Ngobrol dan demo', 'Koreksi temuan kami, lalu coba Pemilih Mesin dengan data mesin asli Bapak/Ibu.'],
+      ['Tahap 1', 'Website proper, Pemilih Mesin, hitung modal, jadwal coba mesin, dan form gerobak custom.'],
+      ['Tahap 2', 'Satu nomor untuk banyak admin, pengingat follow up, order, stok, lacak pesanan, dan dasbor.'],
+      ['Tahap 3', 'Halaman mitra, pengingat bahan habis, dan QR di setiap mesin untuk layanan purna jual.']
+    ];
+    return '<div class="g" style="grid-template-columns:1.2fr 1fr auto;align-items:start;margin:6px 0 10px"><h2 class="rise" tabindex="-1">Tiga Tahap, Bisa<br>Berhenti Kapan Saja</h2>' +
+      '<div class="rise d1"><h3>Cara kerja kita</h3><p class="small soft" style="margin-top:6px">Setiap tahap selesai dan dipakai dulu. Tahap berikutnya hanya dilanjutkan kalau manfaatnya sudah terasa.</p></div>' + tag('Tahapannya') + '</div>' +
+      '<div class="fill" style="display:flex;align-items:center"><div class="timeline" style="width:100%"><div class="tl-line line-draw"></div>' + steps.map(function (s, i) {
+        return '<div class="tl-step rise d' + (i + 2) + '">' + tag(s[0], 'solid') + '<p>' + s[1] + '</p></div>'; }).join('') + '</div></div>'; } },
+
+  { id: 'fitur', title: 'Fitur', theme: 'dark', html: function () {
+    var cards = [
+      ['Website proper', 'Katalog mesin, bahan, gerobak, dan paket usaha. Siap dicari di Google.'],
+      ['Pemilih Mesin', 'Empat pertanyaan, pembeli langsung dapat saran mesin dan hitungan modal.'],
+      ['Pusat chat dan order', 'Satu nomor untuk banyak admin. Prospek, order, dan stok tercatat.'],
+      ['Mitra dan QR mesin', 'Pesan ulang bahan, pengingat, serta tutorial dan garansi lewat QR.']
+    ];
+    return '<div class="g fill" style="grid-template-columns:1.45fr 1fr;gap:20px">' +
+      '<div style="display:flex;flex-direction:column;min-height:0"><h2 class="rise" tabindex="-1">Fitur yang Kami Bangun</h2>' +
+        '<div class="g fill" style="grid-template-columns:1fr 1fr;margin-top:20px">' + cards.map(function (c, i) {
+          return '<div class="card orange hover-lift rise d' + (i + 1) + '"><div class="card-top">' + tag(c[0], 'line') + '</div><p>' + c[1] + '</p></div>'; }).join('') + '</div></div>' +
+      '<div class="life rise d3"><p class="tag solid" style="align-self:flex-start">Perjalanan pelanggan<i>' + ARROW + '</i></p><ol>' +
+        '<li><b>Menemukan</b><span class="small soft">Website proper dan Google</span></li>' +
+        '<li><b>Memilih</b><span class="small soft">Pemilih Mesin dan hitung modal</span></li>' +
+        '<li><b>Membeli</b><span class="small soft">Chat lengkap ke admin</span></li>' +
+        '<li><b>Menerima</b><span class="small soft">Lacak pesanan sampai resi</span></li>' +
+        '<li><b>Pesan ulang</b><span class="small soft">Pengingat dan halaman mitra</span></li></ol>' +
+        '<p class="small" style="margin-top:auto;font-weight:700;color:var(--blue)">Mesin dijual sekali. Bahan dijual berulang.</p></div></div>'; } },
+
+  { id: 'fondasi', title: 'Modal yang sudah ada', theme: 'light', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1.25fr 1fr;gap:20px">' +
+      '<div style="display:flex;flex-direction:column;gap:16px"><h2 class="rise" tabindex="-1">Modal yang Siap<br>Dipakai Sistem Ini</h2>' +
+        '<p class="rise d1">' + tag('Kanal penjualan sekarang') + '</p>' +
+        '<table class="tbl rise d2"><tr><th>Kanal</th><th>Kondisi</th></tr>' +
+        '<tr><td>Website</td><td>3 halaman, sejak 2022</td></tr><tr><td>Instagram</td><td>4 akun, 5.699 pengikut</td></tr>' +
+        '<tr><td>WhatsApp dan telepon</td><td>4 nomor berbeda</td></tr><tr><td>Marketplace</td><td>1 toko Shopee</td></tr></table>' +
+        '<p class="small soft rise d3">Data publik per 6 November 2026.</p></div>' +
+      '<div class="g" style="grid-template-rows:repeat(3,1fr)">' +
+        '<div class="card stat-card rise d2"><p class="small soft">Berdiri sejak</p><b class="num">' + count(2013) + '</b><p class="small soft" style="margin-top:6px">CV. Maurindo Purnama Abadi, Bantul</p></div>' +
+        '<div class="card stat-card rise d3"><p class="small soft">Varian rasa bahan Joelly</p><b class="num">' + count(15, '', '+') + '</b><p class="small soft" style="margin-top:6px">Cone dan waffle juga produksi sendiri</p></div>' +
+        '<div class="card stat-card blue rise d4"><p class="small" style="color:var(--night-soft)">Layanan yang jarang dimiliki</p><b class="num" style="font-size:min(2.2vw,4vh);margin-top:6px">QC via video call, teknisi, tutorial gratis</b></div>' +
+      '</div></div>'; } },
+
+  { id: 'layanan', title: 'Layanan kami', theme: 'light', html: function () {
+    var items = [
+      ['Desain dan pembuatan', 'Website, pusat chat, dan halaman pelanggan dalam warna dan logo PIP Machinery.'],
+      ['Memasukkan data lama', 'Katalog produk dan daftar pelanggan yang sudah ada dipindahkan ke sistem.'],
+      ['Pelatihan tim', 'Admin, gudang, dan teknisi diajari langsung sampai bisa.'],
+      ['Panduan video', 'Setiap fitur punya video singkat untuk karyawan baru.'],
+      ['Pendampingan 3 bulan', 'Perbaikan, penyesuaian kecil, dan pertanyaan tim kami tangani.'],
+      ['Laporan rutin', 'Ringkasan angka penjualan dan chat setiap bulan untuk pemilik.']
+    ];
+    return '<div class="row" style="margin:6px 0 18px"><h2 class="rise" tabindex="-1">Yang Kami Kerjakan<br>untuk Bapak/Ibu</h2><p class="small soft rise d1" style="max-width:34ch">Bukan hanya membuat sistem, tetapi memastikan tim benar-benar memakainya.</p></div>' +
+      '<div class="g fill" style="grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr">' + items.map(function (it, i) {
+        return '<div class="card hover-lift rise d' + (i % 6 + 1) + '" style="display:flex;flex-direction:column;gap:10px"><div class="card-top"><h3>' + it[0] + '</h3>' + ra() + '</div><p class="soft">' + it[1] + '</p></div>'; }).join('') + '</div>'; } },
+
+  { id: 'website', title: 'Website proper', theme: 'light', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1.6fr 1fr;gap:20px">' +
+      '<div style="display:flex;flex-direction:column;gap:16px"><div class="row"><h2 class="rise" tabindex="-1">Isi Website Proper<br>dari Kami</h2>' + tag('Tahap 1') + '</div>' +
+        '<table class="tbl rise d2"><tr><th style="width:56%">Yang kami buat</th><th>Mengatasi</th></tr>' + GAPS.map(function (g) { return '<tr><td style="font-weight:700">' + g[1] + '</td><td class="soft" style="font-weight:400">' + g[0] + '</td></tr>'; }).join('') + '</table></div>' +
+      '<div class="shot rise d3 phone-box" style="background:var(--panel)">' + frag(uiProduct(), 'contain') + '</div></div>'; } },
+
+  { id: 'operasional', title: 'Tampilan yang dipakai', theme: 'dark', html: function () {
+    var cols = [
+      ['Untuk pembeli', uiWebsite(), 'width', 'Website dan Pemilih Mesin. Pembeli menemukan, membandingkan, lalu chat dengan info lengkap.'],
+      ['Untuk tim', uiERP('dasbor'), 'width', 'Sistem ERP: penjualan, prospek, stok, produksi, servis, dan keuangan di satu tempat.'],
+      ['Untuk pelanggan', uiTrack(), 'width', 'Lacak pesanan, pesan ulang bahan, dan scan QR di mesin, cukup dari HP.']
+    ];
+    return '<h2 class="rise" tabindex="-1" style="text-align:center;margin:4px 0 18px">Tampilan yang Akan Dipakai Setiap Hari</h2>' +
+      '<div class="card orange fill rise d1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:18px">' + cols.map(function (c, i) {
+        return '<div style="display:flex;flex-direction:column;gap:12px;min-height:0">' + tag(c[0], 'line') + '<div class="shot fill mock-box hover-lift" style="min-height:160px">' + frag(c[1], c[2]) + '</div><p class="small" style="font-weight:500">' + c[3] + '</p></div>'; }).join('') + '</div>'; } },
+
+  { id: 'mockup-website', title: 'Mockup website', theme: 'light', html: function () { return '' +
+    '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Tampilan Website Baru</h2><p class="small soft rise d1" style="max-width:42ch">Beranda di laptop dan halaman produk di HP. Foto dari katalog Purnama, teks dan spesifikasi masih contoh.</p></div>' +
+    '<div class="g fill" style="grid-template-columns:1fr 300px">' +
+      '<div class="shot rise d2 mock-box" style="background:var(--panel)">' + frag(uiWebsite(), 'width') + '</div>' +
+      '<div class="shot rise d3 phone-box" style="background:var(--panel)">' + frag(uiProduct(), 'width') + '</div></div>'; } },
+
+  { id: 'mockup-paket', title: 'Mockup paket usaha', theme: 'dark', html: function () { return '' +
+    '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Halaman Paket Usaha</h2><p class="small soft rise d1" style="max-width:46ch">Isi, harga, dan hitungan balik modal paket Joelly dari website sekarang, disusun ulang supaya calon mitra langsung paham.</p></div>' +
+    '<div class="shot fill rise d2 mock-box" style="min-height:300px">' + frag(uiPaket(), 'width') + '</div>'; } },
+
+  { id: 'mockup-chat', title: 'Mockup chat', theme: 'light', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1fr 1.5fr;gap:24px;align-items:center">' +
+      '<div><h2 class="rise" tabindex="-1">Chat Masuk<br>Sudah Lengkap</h2><p class="lead soft rise d1" style="margin-top:14px">Admin tidak perlu bertanya dari awal, dan pelanggan lama diingatkan sebelum bahannya habis.</p>' +
+      '<ul class="dot-list rise d2" style="margin-top:14px"><li><b>Kiri, untuk admin.</b> Jawaban Pemilih Mesin masuk utuh dengan label prospek.</li><li><b>Kanan, untuk pelanggan.</b> Pengingat pesan ulang, hanya untuk pelanggan yang setuju.</li></ul></div>' +
+      '<div class="g" style="grid-template-columns:1fr 1fr;height:100%">' +
+        '<div class="shot rise d2 phone-box" style="background:var(--panel)">' + frag(uiChat(), 'contain') + '</div>' +
+        '<div class="shot rise d3 phone-box" style="background:var(--panel)">' + frag(uiReminder(), 'contain') + '</div></div></div>'; } },
+
+  { id: 'mockup-admin', title: 'Mockup admin', theme: 'dark', html: function () {
+    var v = state.adminView;
+    return '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Layar Admin dan Pemilik</h2>' +
+      '<p class="rise d1" style="display:flex;gap:8px;flex-wrap:wrap"><button class="tag" type="button" data-admin="prospek" aria-pressed="' + (v === 'prospek') + '">Prospek, untuk admin<i>' + ARROW + '</i></button><button class="tag" type="button" data-admin="dasbor" aria-pressed="' + (v === 'dasbor') + '">Dasbor, untuk pemilik<i>' + ARROW + '</i></button></p></div>' +
+      '<div class="shot fill rise d2 mock-box" style="min-height:300px">' + frag(uiAdmin(v), 'width') + '</div>' +
+      '<p class="small soft" style="margin-top:10px">Nama dan angka di layar ini hanya contoh.</p>'; } },
+
+  { id: 'mockup-pelanggan', title: 'Mockup pelanggan', theme: 'light', html: function () { return '' +
+    '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Layar untuk Pelanggan</h2><p class="small soft rise d1" style="max-width:40ch">Tanpa aplikasi tambahan. Cukup dibuka lewat tautan atau QR yang menempel di mesin.</p></div>' +
+    '<div class="g fill" style="grid-template-columns:repeat(3,1fr)">' +
+      [['Lacak pesanan', uiTrack()], ['Pesan ulang bahan', uiReorder()], ['Scan QR di mesin', uiQR()]].map(function (p, i) {
+        return '<div style="display:flex;flex-direction:column;gap:10px;min-height:0" class="rise d' + (i + 2) + '">' + tag(p[0], 'solid') + '<div class="shot fill phone-box hover-lift" style="background:var(--panel)">' + frag(p[1], 'contain') + '</div></div>'; }).join('') + '</div>'; } },
+
+  { id: 'demo', title: 'Coba demo', theme: 'dark', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1fr 1.6fr;gap:24px">' +
+      '<div style="align-self:center"><h2 class="rise" tabindex="-1">Coba Langsung:<br>Pemilih Mesin</h2><p class="soft rise d1" style="margin-top:14px">Contoh fitur dari Tahap 1. Data mesin di demo ini masih contoh, kecuali harga paket Joelly.</p>' +
+      '<ul class="dot-list rise d2" style="margin-top:12px"><li>Pembeli menjawab empat pertanyaan.</li><li>Sistem menyarankan mesin, lengkap dengan alasan.</li><li>Admin menerima pesan lengkap.</li></ul>' +
+      '<p class="rise d3" style="margin-top:22px"><a class="pill-btn" href="' + DEMO_URL + '" target="_blank" rel="noopener">Buka halaman penuh <i>' + ARROW + '</i></a></p></div>' +
+      '<div class="shot rise d2 mock-box" style="min-height:420px"><iframe class="demo-frame" src="' + DEMO_URL + '" title="Demo Pemilih Mesin"></iframe></div></div>'; } },
+
+  { id: 'mudah', title: 'Yang jadi lebih mudah', theme: 'light', html: function () {
+    var r = ROLES[state.role];
+    return '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Apa Saja yang Jadi<br>Lebih Mudah</h2>' + tag('Pilih satu peran') + '</div>' +
+      '<p class="rise d1" style="display:flex;gap:8px;flex-wrap:wrap">' + ROLES.map(function (x, i) { return '<button class="tag" type="button" data-role="' + i + '" aria-pressed="' + (state.role === i) + '">' + x[0] + '<i>' + ARROW + '</i></button>'; }).join('') + '</p>' +
+      '<div class="g fill rise d2" style="grid-template-columns:1.6fr 1fr;margin-top:18px" aria-live="polite">' +
+        '<div class="card blue" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px"><p class="small" style="color:#fff;font-weight:700">Dengan sistem dari kami</p><p class="num" style="font-size:min(3.4vw,6vh);line-height:1.08">' + r[2] + '</p></div>' +
+        '<div class="card" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px"><p class="small soft">Sebelumnya, perkiraan kami</p><p class="soft" style="font-size:clamp(17px,1.5vw,22px);font-weight:500">' + r[1] + '</p></div></div>'; } },
+
+  { id: 'komitmen', title: 'Komitmen kami', theme: 'dark', html: function () {
+    var items = [['Semuanya milik Bapak/Ibu', 'Domain, hosting, akun WhatsApp, dan data pelanggan atas nama usaha.'], ['Penjualan tidak terganggu', 'Website lama tetap menyala sampai yang baru siap.'], ['Tim diajari sampai bisa', 'Pelatihan langsung untuk admin, plus panduan video tiap fitur.'], ['Bisa berhenti per tahap', 'Tiap tahap berdiri sendiri, tanpa kewajiban lanjut.']];
+    return '<div class="g fill" style="grid-template-columns:1fr 1.5fr;gap:28px;align-items:center">' +
+      '<div><h2 class="rise" tabindex="-1">Empat Komitmen<br>Kami</h2><p class="lead soft rise d1" style="margin-top:14px">Supaya keputusan ini aman bagi usaha Bapak/Ibu.</p></div>' +
+      '<div class="g" style="grid-template-columns:1fr 1fr">' + items.map(function (it, i) {
+        return '<div class="card orange hover-lift rise d' + (i + 2) + '"><div class="card-top"><h3>' + it[0] + '</h3>' + ra() + '</div><p>' + it[1] + '</p></div>'; }).join('') + '</div></div>'; } },
+
+  { id: 'gratis', title: 'Perbaikan gratis', theme: 'light', html: function () { return '' +
+    '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Gratis: Enam Hal<br>untuk Dibetulkan</h2><p class="small soft rise d1" style="max-width:36ch">Silakan dipakai minggu ini, apa pun keputusan atas penawaran ini.</p></div>' +
+    '<table class="tbl rise d2"><tr><th style="width:24%">Lokasi</th><th>Yang perlu dicek</th></tr>' + FIXES.map(function (f) { return '<tr><td style="font-weight:700">' + f[0] + '</td><td style="font-weight:400">' + f[1] + '</td></tr>'; }).join('') + '</table>'; } },
+
+  { id: 'investasi', title: 'Investasi', theme: 'dark', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1.3fr 1fr;gap:28px;align-items:end">' +
+      '<div><p class="num rise" style="font-size:min(11vw,20vh);color:var(--orange)">Investasi</p><h2 class="rise d1" tabindex="-1" style="margin-top:14px">Sekarang, Soal Biaya dan Hasilnya</h2></div>' +
+      '<div class="rise d2"><ul class="dot-list"><li><b>Bisa per tahap.</b> Mulai dari satu tahap, lanjut kalau sudah terbukti.</li><li><b>Bayar bertahap.</b> Sebagian di awal, sisanya saat serah terima.</li><li><b>Ada hitungannya.</b> Kapan biaya kembali, dengan angka Bapak/Ibu sendiri.</li></ul>' +
+      '<p style="margin-top:22px"><button class="pill-btn" type="button" data-go="next">Lihat biaya <i>' + ARROW + '</i></button></p></div></div>'; } },
+
+  { id: 'biaya', title: 'Biaya', theme: 'light', html: function () {
+    var t = pickedTotal();
+    return '<div class="row" style="margin:6px 0 16px"><h2 class="rise" tabindex="-1">Biaya dan Lama Pengerjaan</h2><span class="tag rise d1">Total pilihan: ' + (t.n === 0 ? 'Rp 0' : juta(t.sum)) + '<i>' + ARROW + '</i></span></div>' +
+      '<div class="g fill" style="grid-template-columns:repeat(4,1fr)">' + STAGES.map(function (s, i) { var on = state.picks[i];
+        return '<button class="card stat-card hover-lift rise d' + (i + 1) + '" type="button" data-pick="' + i + '" aria-pressed="' + on + '" style="border:0;text-align:left;display:flex;flex-direction:column;justify-content:space-between;' + (on ? 'background:var(--blue);color:#fff' : '') + '"><span class="small" style="font-weight:700">' + s.name + (on ? ' · dipilih' : ' · klik untuk pilih') + '</span><span><b class="num" style="margin:8px 0">' + juta(s.price) + '</b><span class="small" style="opacity:.85">' + s.short + '</span></span></button>'; }).join('') +
+        '<button class="card stat-card orange hover-lift rise d4" type="button" data-all="1" style="border:0;text-align:left;display:flex;flex-direction:column;justify-content:space-between"><span class="small" style="font-weight:700">Semua tahap sekaligus</span><span><b class="num" style="margin:8px 0">Rp 13 juta</b><span class="small">Hemat Rp 1 juta · klik untuk pilih semua</span></span></button></div>' +
+      '<div class="g" style="grid-template-columns:1.3fr 1fr;margin-top:16px">' +
+        '<div class="card rise d5"><h3>Lama pengerjaan, dalam minggu</h3><div class="bars">' + STAGES.map(function (s) { return '<div class="b"><span>' + s.name + '</span><span class="track"><span class="bar-fill" style="display:block;width:' + (s.weeks / 6 * 100) + '%"></span></span><span>' + s.time.replace(' minggu', '') + '</span></div>'; }).join('') + '</div></div>' +
+        '<div class="card rise d6"><h3>Cara bayar dan perawatan</h3>' +
+          '<div class="prog"><span class="p-label"><span class="bar-fill" style="width:50%"></span><span>Bayar di awal</span></span><b>50%</b></div>' +
+          '<div class="prog"><span class="p-label"><span class="bar-fill" style="width:100%"></span><span>Saat serah terima</span></span><b>50%</b></div>' +
+          '<p class="small soft" style="margin-top:12px">Perawatan gratis 3 bulan, lalu Rp 500 ribu per bulan. Domain, hosting, dan WhatsApp API ditagihkan terpisah atas nama Bapak/Ibu.</p></div></div>'; } },
+
+  { id: 'balik-modal', title: 'Balik modal', theme: 'dark', html: function () { return '' +
+    '<div class="g fill" style="grid-template-columns:1fr 1.2fr;gap:24px;align-items:center">' +
+      '<div><h2 class="rise" tabindex="-1">Kapan Biayanya<br>Kembali</h2><p class="soft rise d1" style="margin-top:14px">Geser angkanya sesuai kondisi usaha Bapak/Ibu.</p>' +
+        '<div class="rise d2"><label class="field-row">Untung per paket usaha <output id="o-paket"></output><input type="range" id="i-paket" min="0.5" max="5" step="0.5" value="' + state.marginPaket + '"></label>' +
+        '<label class="field-row">Pelanggan yang pesan 1 kali lagi per bulan <output id="o-cust"></output><input type="range" id="i-cust" min="10" max="300" step="10" value="' + state.customers + '"></label>' +
+        '<label class="field-row">Untung per pesanan bahan <output id="o-order"></output><input type="range" id="i-order" min="50" max="500" step="50" value="' + state.marginOrder + '"></label></div>' +
+        '<p class="small soft rise d3" style="margin-top:16px">Angka awal hanya contoh, bukan janji hasil. Paket Rp 10 juta dari halaman Paket Usaha, dengan contoh untung 20%.</p></div>' +
+      '<div class="g" style="grid-template-columns:1fr 1fr">' +
+        '<div class="card orange rise d2"><p class="small" style="font-weight:700">Tahap 1, Rp 5 juta, kembali setelah</p><b class="num" id="r-paket" style="font-size:min(5vw,9vh);display:block;margin-top:14px"></b></div>' +
+        '<div class="card white rise d3"><p class="small" style="font-weight:700;color:var(--blue)">Semua tahap, Rp ' + BUNDLE + ' juta, kembali dalam</p><b class="num" id="r-bulan" style="font-size:min(5vw,9vh);display:block;margin-top:14px;color:var(--blue)"></b></div></div></div>'; } },
+
+  { id: 'penutup', title: 'Langkah berikutnya', theme: 'light', html: function () {
+    var msg = encodeURIComponent('Halo Dar, saya tertarik membahas penawaran sistem digital untuk PIP Machinery dan Purnama Eskrim.');
+    return '<h1 class="rise" tabindex="-1" style="font-size:min(5.6vw,10vh);margin:6px 0 20px">Ngobrol 45 Menit,<br>Lalu Putuskan</h1>' +
+      '<div class="g fill" style="grid-template-columns:1.35fr 1fr;gap:20px">' +
+        photo('foto-paket-joelly.jpg', 'Paket usaha Joelly dari katalog Purnama Eskrim', 'rise d1') +
+        '<div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px" class="rise d2"><div><h3>Langkah berikutnya</h3><ul class="dot-list"><li>Ngobrol di toko Bantul atau lewat video call.</li><li>Coba Pemilih Mesin dengan data mesin asli.</li><li>Kalau cocok, mulai Tahap 1.</li></ul></div>' +
+        '<div class="contacts"><a href="https://wa.me/' + SENDER.wa + '?text=' + msg + '" target="_blank" rel="noopener"><i>' + ARROW + '</i>WhatsApp ' + SENDER.phone + '</a><span><i>D</i>' + SENDER.name + '</span><span><i>45</i>Tanpa kewajiban melanjutkan</span></div></div></div>'; } }
+];
+
+/* Slide ERP: daftar modul di kiri, sistem yang bisa diklik di kanan */
+SLIDES.push({ id: 'erp', title: 'Sistem ERP', theme: 'light', html: function () {
+  var cur = ERP_MODS.filter(function (m) { return m[0] === state.erp; })[0];
+  return '<div class="g fill erp-slide" style="grid-template-columns:300px 1fr;gap:28px">' +
+    '<div style="display:flex;flex-direction:column;gap:14px;min-height:0"><h2 class="rise" tabindex="-1" style="font-size:min(2.8vw,5.2vh)">Sistem ERP<br>PIP Machinery</h2>' +
+      '<p class="small soft rise d1">Satu sistem untuk penjualan, stok, produksi, servis, dan keuangan. Klik modulnya.</p>' +
+      '<div class="erp-list rise d2">' + ERP_MODS.map(function (m) { return '<button type="button" class="erp-pick' + (m[0] === state.erp ? ' on' : '') + '" data-erp="' + m[0] + '" aria-pressed="' + (m[0] === state.erp) + '">' + ic(m[0]) + '<span>' + m[1] + '</span></button>'; }).join('') + '</div>' +
+      '<p class="small rise d3 erp-desc" aria-live="polite"><b>' + cur[1] + '.</b> ' + cur[3] + '</p>' +
+      '<p class="small soft rise d3" style="margin-top:auto">Semua nama dan angka hanya contoh.</p></div>' +
+    '<div class="shot rise d2 erp-box" style="background:transparent">' + frag(uiERP(state.erp), 'contain') + '</div></div>'; } });
+
+/* Urutan: solusi lebih dulu, data kondisi sekarang sebagai pendukung, harga paling akhir */
+var ORDER = ['mulai', 'solusi', 'fitur', 'operasional', 'erp', 'mockup-website', 'website', 'mockup-paket', 'mockup-chat',
+  'mockup-pelanggan', 'demo', 'layanan', 'tahap', 'mudah', 'komitmen', 'masalah', 'fondasi', 'gratis',
+  'investasi', 'biaya', 'balik-modal', 'penutup'];
+SLIDES = ORDER.map(function (id) { return SLIDES.filter(function (s) { return s.id === id; })[0]; });
+
+/* ---------- Mesin slide ---------- */
+var deck = document.getElementById('deck'), current = 0, started = false;
+function head() {
+  return '<div class="head"><span class="brand"><img src="' + LOGO + '" alt="">PIP Machinery</span>' +
+    '<span class="contact"><span class="hide-m">' + SENDER.name + ' · </span>' + SENDER.phone + '</span></div>';
+}
+function layoutFits() {
+  [].forEach.call(document.querySelectorAll('.frag'), function (f) {
+    var inner = f.firstElementChild, c = inner.firstElementChild;
+    var w = c.offsetWidth, h = c.offsetHeight, bw = f.clientWidth, bh = f.clientHeight;
+    if (!w || !h || !bw) return;
+    var mode = f.dataset.mode, s;
+    if (mode === 'contain') s = Math.min(bw / w, bh / h); else s = bw / w;
+    if (mode === 'auto') f.style.height = Math.round(h * s) + 'px';
+    inner.style.transform = 'scale(' + s + ')';
+    inner.style.left = mode === 'contain' ? ((bw - w * s) / 2) + 'px' : '0px';
+    inner.style.top = mode === 'contain' ? Math.max(0, (bh - h * s) / 2) + 'px' : '0px';
+  });
+}
+function runCounts() {
+  [].forEach.call(deck.querySelectorAll('.count'), function (el) {
+    var to = +el.dataset.to, pre = el.dataset.prefix, suf = el.dataset.suffix, start = to > 100 ? to - 40 : 0, t0 = null;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 900), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(start + (to - start) * e) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+function drawCalc() {
+  var el = document.getElementById('r-paket');
+  if (!el) return;
+  var paket = Math.ceil(5 / state.marginPaket);
+  var bulan = BUNDLE / (state.customers * state.marginOrder / 1000);
+  el.textContent = paket + ' paket';
+  document.getElementById('r-bulan').textContent = bulan < 1 ? '< 1 bulan' : '± ' + Math.round(bulan) + ' bulan';
+  document.getElementById('o-paket').textContent = juta(state.marginPaket);
+  document.getElementById('o-cust').textContent = state.customers;
+  document.getElementById('o-order').textContent = 'Rp ' + state.marginOrder + ' ribu';
+}
+function draw(keepFocusOn) {
+  var s = SLIDES[current];
+  document.body.style.background = s.theme === 'dark' ? 'var(--night)' : 'var(--paper)';
+  deck.innerHTML = '<section class="slide ' + s.theme + (keepFocusOn ? ' on still' : '') + '" aria-label="' + s.title + '"><div class="frame">' + head() + '<div class="content">' + s.html() + '</div></div></section>';
+  var sec = deck.firstElementChild;
+  if (keepFocusOn) {
+    [].forEach.call(sec.querySelectorAll('.rise,.line-draw,.bar-fill,.seq,.a-toast,.a-bar i'), function (el) { el.style.animation = 'none'; el.style.opacity = '1'; el.style.transform = 'none'; });
+  } else {
+    requestAnimationFrame(function () { sec.classList.add('on'); runCounts(); });
+  }
+  drawCalc();
+  layoutFits();
+  if (keepFocusOn) { var again = deck.querySelector(keepFocusOn); if (again) again.focus(); }
+}
+function go(i, fromHash) {
+  current = Math.max(0, Math.min(SLIDES.length - 1, i));
+  draw();
+  document.getElementById('prev').disabled = current === 0;
+  document.getElementById('next').disabled = current === SLIDES.length - 1;
+  document.getElementById('where').innerHTML = (current + 1) + ' / ' + SLIDES.length + ' <span>· ' + SLIDES[current].title + '</span>';
+  document.getElementById('progress').style.width = ((current + 1) / SLIDES.length * 100) + '%';
+  if (!fromHash) { try { history.replaceState(null, '', '#' + SLIDES[current].id); } catch (e) {} }
+  window.scrollTo(0, 0);
+  if (started) { var h = deck.querySelector('h1, h2'); if (h) h.focus({ preventScroll: true }); }
+  started = true;
+}
+document.getElementById('prev').onclick = function () { go(current - 1); };
+document.getElementById('next').onclick = function () { go(current + 1); };
+deck.addEventListener('click', function (e) {
+  var t = e.target.closest('button');
+  if (!t) return;
+  var d = t.dataset;
+  if (d.go) return go(d.go === 'next' ? current + 1 : +d.go);
+  if (d.spread) { state.spread = d.spread; return draw('[data-spread="' + d.spread + '"]'); }
+  if (d.role !== undefined) { state.role = +d.role; return draw('[data-role="' + d.role + '"]'); }
+  if (d.admin) { state.adminView = d.admin; return draw('[data-admin="' + d.admin + '"]'); }
+  if (d.erp) { var inMock = !!t.closest('.erp'); state.erp = d.erp; draw(inMock ? '.erp-pick[data-erp="' + d.erp + '"]' : '[data-erp="' + d.erp + '"]'); var sec = deck.firstElementChild; sec.classList.add('on'); return; }
+  if (d.pick !== undefined) { state.picks[+d.pick] = !state.picks[+d.pick]; return draw('[data-pick="' + d.pick + '"]'); }
+  if (d.all) { state.picks = [true, true, true]; return draw('[data-all="1"]'); }
+});
+deck.addEventListener('input', function (e) {
+  var id = e.target.id, v = +e.target.value;
+  if (id === 'i-paket') state.marginPaket = v;
+  if (id === 'i-cust') state.customers = v;
+  if (id === 'i-order') state.marginOrder = v;
+  drawCalc();
+});
+document.addEventListener('keydown', function (e) {
+  if (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') go(current + 1);
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') go(current - 1);
+});
+var wasMobile = isMobile();
+window.addEventListener('resize', function () {
+  if (isMobile() !== wasMobile) { wasMobile = isMobile(); draw('h1, h2'); } else layoutFits();
+});
+window.addEventListener('load', layoutFits);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutFits);
+deck.addEventListener('load', function (e) { if (e.target.tagName === 'IMG') layoutFits(); }, true);
+function fromHash() {
+  var id = location.hash.slice(1), i = SLIDES.map(function (s) { return s.id; }).indexOf(id);
+  return i < 0 ? 0 : i;
+}
+window.addEventListener('hashchange', function () { var i = fromHash(); if (i !== current) go(i, true); });
+go(fromHash(), true);
+</script>
+</body>
+</html>
