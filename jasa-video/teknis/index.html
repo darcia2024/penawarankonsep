@@ -120,6 +120,51 @@
   /* Pilihan gaya video */
   .styles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px 20px; margin-top: 40px; }
   .st { display: flex; flex-direction: column; }
+
+  /* Gaya utama: isometrik, empat adegan */
+  .st.feat { grid-column: 1 / -1; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+  .st.feat .lbl { margin-top: 0; }
+  .st.feat h3 { font-size: clamp(24px, 2.4vw, 32px); }
+  .st.feat > div > p { font-size: 16px; max-width: 46em; }
+  .st.feat .rec { margin-top: 12px; }
+  .scenes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+  .scenes li { background: var(--soft); border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--muted); line-height: 1.45; }
+  .scenes li b { display: block; color: var(--ink); font-size: 14.5px; }
+  .scenes li small { display: block; color: var(--pink-dark); font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+  .st.feat .pick { margin-top: 18px; padding-top: 0; max-width: 260px; }
+  @keyframes q1 { 0%, 23% { opacity: 1; } 25%, 98% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes q2 { 0%, 23% { opacity: 0; } 25%, 48% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes q3 { 0%, 48% { opacity: 0; } 50%, 73% { opacity: 1; } 75%, 100% { opacity: 0; } }
+  @keyframes q4 { 0%, 73% { opacity: 0; } 75%, 98% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes p1 { 0% { transform: scaleX(0); } 25%, 100% { transform: scaleX(1); } }
+  @keyframes p2 { 0%, 25% { transform: scaleX(0); } 50%, 100% { transform: scaleX(1); } }
+  @keyframes p3 { 0%, 50% { transform: scaleX(0); } 75%, 100% { transform: scaleX(1); } }
+  @keyframes p4 { 0%, 75% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+  .s0 { background: #dfe8ea; color: #16313a; }
+  .s0 .world { animation: isoCam 12s ease-in-out infinite; transform-origin: 50% 58%; }
+  @keyframes isoCam { 0%, 20% { transform: scale(1); } 27%, 46% { transform: scale(1.55) translate(0, -2%); } 53%, 70% { transform: scale(1.2) translate(-8%, 4%); } 77%, 100% { transform: scale(1); } }
+  .s0 .spin { animation: tawaf 10s linear infinite; }
+  .s0 .spin2 { animation: tawaf 14s linear infinite; }
+  @keyframes tawaf { to { transform: rotate(-360deg); } }
+  .s0 .q { position: absolute; inset: 0; opacity: 0; }
+  .s0 .q1 { animation: q1 12s infinite; } .s0 .q2 { animation: q2 12s infinite; } .s0 .q3 { animation: q3 12s infinite; } .s0 .q4 { animation: q4 12s infinite; }
+  .s0 .dots i:nth-child(n)::after { animation-duration: 12s; }
+  .s0 .dots i:nth-child(1)::after { animation-name: p1; } .s0 .dots i:nth-child(2)::after { animation-name: p2; } .s0 .dots i:nth-child(3)::after { animation-name: p3; } .s0 .dots i:nth-child(4)::after { animation-name: p4; }
+  .s0 .u { position: absolute; left: 6cqw; top: 7cqw; font-size: 3.6cqw; font-weight: 600; opacity: .75; }
+  .s0 .ttl { position: absolute; top: 13cqw; left: 6cqw; right: 6cqw; font-family: var(--head); font-weight: 800; font-size: 9.6cqw; line-height: 1.02; letter-spacing: -.03em; }
+  .s0 .tag { display: inline-block; background: #16313a; color: #fff; font-family: var(--head); font-weight: 800; font-size: 4cqw; letter-spacing: .04em; padding: 1cqw 2.5cqw; border-radius: 1.5cqw; }
+  .s0 .q2 .tag, .s0 .q3 .tag, .s0 .q4 .tag { position: absolute; top: 13cqw; left: 6cqw; }
+  .s0 .big { position: absolute; top: 21cqw; left: 6cqw; right: 6cqw; font-family: var(--head); font-weight: 800; font-size: 9cqw; line-height: 1.05; letter-spacing: -.03em; }
+  .s0 .card { position: absolute; left: 6cqw; right: 6cqw; top: 22cqw; background: rgba(255,255,255,.94); border-radius: 4cqw; padding: 4cqw; box-shadow: 0 2cqw 5cqw rgba(22,49,58,.18); }
+  .s0 .card .ar { font-size: 6.6cqw; line-height: 1.75; text-align: center; color: #16313a; }
+  .s0 .card p { font-size: 4.2cqw; text-align: center; margin-top: 1cqw; color: #3d5560; }
+  .s0 .card ul { display: grid; gap: 2cqw; }
+  .s0 .card li { display: flex; gap: 2cqw; font-size: 4.4cqw; font-weight: 600; line-height: 1.3; }
+  .s0 .card li::before { content: "✓"; flex: none; width: 5.4cqw; height: 5.4cqw; border-radius: 50%; background: #2f9a6a; color: #fff; display: grid; place-items: center; font-size: 3.4cqw; }
+  .s0 .kw { position: absolute; left: 6cqw; right: 6cqw; bottom: 22cqw; text-align: center; font-weight: 700; font-size: 5.6cqw; line-height: 1.75; }
+  .s0 .kw .l { background: #111; color: #fff; padding: .8cqw 2cqw; border-radius: 1.5cqw; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .s0 .kw .on { padding: 0 .6cqw; border-radius: 1cqw; animation: kw 12s infinite; }
+  @keyframes kw { 0%, 5% { background: #ffd84d; color: #111; } 5.5%, 100% { background: transparent; color: #fff; } }
   .pv { position: relative; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; container-type: inline-size; box-shadow: 0 10px 24px rgba(13,12,34,.12); }
   .pv svg.a { position: absolute; inset: 0; width: 100%; height: 100%; }
   .pv .t { position: absolute; left: 8cqw; right: 8cqw; top: 13cqw; font-family: var(--head); font-weight: 800; font-size: 10.5cqw; line-height: 1.02; letter-spacing: -.03em; }
@@ -139,135 +184,209 @@
   .st .pick a:hover { border-color: var(--ink); }
   .st.top .pick a { background: var(--ink); color: #fff; border-color: var(--ink); }
   .pv { isolation: isolate; flex: none; }
-  .pv .cap { position: absolute; left: 7cqw; right: 7cqw; text-align: center; }
-  @keyframes a-blink { 50% { opacity: 0; } }
-  @keyframes a-draw { 0% { stroke-dashoffset: 160; opacity: 1; } 45%, 88% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-  @keyframes a-fade { 0% { opacity: 0; transform: translateY(2cqw); } 20%, 100% { opacity: 1; transform: none; } }
+  .pv svg.a { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .pv .ar { font-family: "Amiri", serif; direction: rtl; }
+  /* Dua adegan per contoh: pertanyaan, lalu dalil. Satu putaran 9 detik. */
+  .pv .scA, .pv .scB { position: absolute; inset: 0; }
+  .pv .scA { animation: scA 9s infinite; }
+  .pv .scB { opacity: 0; animation: scB 9s infinite; }
+  @keyframes scA { 0%, 46% { opacity: 1; } 52%, 95% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes scB { 0%, 46% { opacity: 0; } 52%, 95% { opacity: 1; } 100% { opacity: 0; } }
+  .pv .dots { position: absolute; z-index: 5; top: 3cqw; left: 6cqw; right: 6cqw; display: flex; gap: 1.5cqw; }
+  .pv .dots i { flex: 1; height: .8cqw; border-radius: 1cqw; background: rgba(255,255,255,.35); overflow: hidden; }
+  .pv .dots i::after { content: ""; display: block; height: 100%; background: #fff; transform-origin: left; animation: dotA 9s linear infinite; }
+  .pv .dots i + i::after { animation-name: dotB; }
+  .pv .dots.dk i { background: rgba(0,0,0,.15); }
+  .pv .dots.dk i::after { background: #222; }
+  @keyframes dotA { 0% { transform: scaleX(0); } 49% { transform: scaleX(1); } 100% { transform: scaleX(1); } }
+  @keyframes dotB { 0%, 49% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes bob { 50% { transform: translateY(-3cqw); } }
+  @keyframes draw { 0% { stroke-dashoffset: 300; } 40%, 100% { stroke-dashoffset: 0; } }
+  @keyframes rise { 0%, 52% { opacity: 0; transform: translateY(4cqw); } 60%, 100% { opacity: 1; transform: none; } }
+  @keyframes pop { 0%, 54% { opacity: 0; transform: scale(.4) rotate(-12deg); } 60% { opacity: 1; transform: scale(1.15) rotate(4deg); } 64%, 100% { opacity: 1; transform: scale(1) rotate(-3deg); } }
+  @keyframes type { 0%, 52% { clip-path: inset(0 0 0 100%); } 70%, 100% { clip-path: inset(0 0 0 0); } }
+  @keyframes typeL { 0%, 52% { clip-path: inset(0 100% 0 0); } 72%, 100% { clip-path: inset(0 0 0 0); } }
 
-  /* 1 Pixel art */
-  .s1 { background: linear-gradient(#3d7fd6, #79b4ef 50%, #cfe8fb 74%); }
+  /* 1 Pixel art: layar game 8-bit */
+  .s1 { background: #4f97e6; font-family: "Press Start 2P", monospace; color: #fff; }
   .s1 svg { shape-rendering: crispEdges; }
-  .s1 .cl { animation: a-drift 14s linear infinite; }
-  .s1 .walk { animation: a-walk 9s steps(36) infinite; }
-  @keyframes a-drift { from { transform: translateX(-30px); } to { transform: translateX(100px); } }
-  @keyframes a-walk { from { transform: translateX(-8px); } to { transform: translateX(96px); } }
-  .s1 .t { font-family: "Press Start 2P", monospace; font-weight: 400; font-size: 4.6cqw; line-height: 1.7; letter-spacing: 0; color: #fff; text-shadow: .7cqw .7cqw 0 #1d3f73; }
-  .s1 .box { position: absolute; left: 6cqw; right: 6cqw; bottom: 7cqw; background: #16163a; border: .9cqw solid #fff; box-shadow: 0 0 0 .9cqw #16163a; padding: 3cqw; color: #fff; font-family: "Press Start 2P", monospace; font-size: 3.6cqw; line-height: 1.8; }
+  .s1 .cl { animation: drift 16s linear infinite; }
+  @keyframes drift { from { transform: translateX(-40px); } to { transform: translateX(100px); } }
+  .s1 .walk { animation: walk 4.5s steps(18) infinite; }
+  @keyframes walk { from { transform: translateX(0); } to { transform: translateX(36px); } }
+  .s1 .item { animation: bobS 1s steps(2) infinite; }
+  @keyframes bobS { 50% { transform: translateY(-2px); } }
+  .s1 .hud { position: absolute; top: 7cqw; left: 6cqw; right: 6cqw; display: flex; justify-content: space-between; font-size: 3.6cqw; text-shadow: .6cqw .6cqw 0 #1d3f73; }
+  .s1 .hud b { color: #ff4d6d; font-weight: 400; }
+  .s1 .ttl { position: absolute; top: 17cqw; left: 6cqw; right: 6cqw; font-size: 5cqw; line-height: 1.7; text-shadow: .7cqw .7cqw 0 #1d3f73; }
+  .s1 .box { position: absolute; left: 5cqw; right: 5cqw; bottom: 6cqw; background: #16163a; border: 1cqw solid #fff; box-shadow: 0 0 0 1cqw #16163a; padding: 3cqw; font-size: 3.4cqw; line-height: 1.9; }
   .s1 .box b { color: #ffd84d; font-weight: 400; }
-  .s1 .box::after { content: "▼"; position: absolute; right: 2.5cqw; bottom: 1cqw; font-size: 3cqw; animation: a-blink 1s steps(2) infinite; }
+  .s1 .box .cur { animation: blink .8s steps(2) infinite; }
+  .s1 .scB { background: rgba(10,10,40,.55); }
+  .s1 .panel { position: absolute; left: 6cqw; right: 6cqw; top: 26cqw; background: #16163a; border: 1cqw solid #fff; box-shadow: 0 0 0 1cqw #16163a, 1.6cqw 1.6cqw 0 1cqw rgba(0,0,0,.35); padding: 4cqw 4cqw 3cqw; text-align: center; }
+  .s1 .panel .ar { font-size: 6.4cqw; line-height: 1.7; color: #ffd84d; }
+  .s1 .panel p { font-size: 3.2cqw; line-height: 1.9; margin-top: 2cqw; }
+  .s1 .panel small { display: block; margin-top: 2cqw; font-size: 2.8cqw; color: #8fd0ff; }
+  .s1 .lose { position: absolute; left: 0; right: 0; top: 122cqw; text-align: center; font-size: 5cqw; color: #ff4d6d; text-shadow: .7cqw .7cqw 0 #000; animation: blink .6s steps(2) infinite; }
 
-  /* 2 Papan kapur */
-  .s2 { background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.08), transparent 55%), #22382c; box-shadow: inset 0 0 0 7px #8a5a2e, inset 0 0 0 9px #5e3b1c, 0 10px 24px rgba(13,12,34,.12); }
-  .s2 .t { font-family: "Caveat", cursive; font-weight: 700; font-size: 12.5cqw; line-height: .95; letter-spacing: 0; color: rgba(255,255,255,.93); text-shadow: 0 0 .6cqw rgba(255,255,255,.35); top: 11cqw; }
-  .s2 .dr { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 160; animation: a-draw 5s ease-in-out infinite; }
-  .s2 .dr.red { stroke: #ff9a9a; stroke-width: 1.6; animation-delay: .8s; }
-  .s2 .dr.yel { stroke: #ffe58a; }
-  .s2 .cap { bottom: 10cqw; font-family: "Caveat", cursive; font-weight: 700; font-size: 9.5cqw; color: #ffe58a; }
+  /* 2 Papan kapur: guru di majelis */
+  .s2 { background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,.09), transparent 55%), radial-gradient(ellipse at 75% 80%, rgba(255,255,255,.06), transparent 50%), #22382c; box-shadow: inset 0 0 0 7px #8a5a2e, inset 0 0 0 9px #5e3b1c; font-family: "Caveat", cursive; color: rgba(255,255,255,.92); }
+  .s2 .tray { position: absolute; left: 0; right: 0; bottom: 0; height: 4cqw; background: #6b4423; }
+  .s2 .tray::before { content: ""; position: absolute; left: 20cqw; top: -1.4cqw; width: 9cqw; height: 2cqw; border-radius: 1cqw; background: #f4f1e8; box-shadow: 14cqw .3cqw 0 -.2cqw #ffe58a; }
+  .s2 .les { position: absolute; top: 8cqw; right: 8cqw; font-size: 5.5cqw; opacity: .65; }
+  .s2 .ttl { position: absolute; top: 15cqw; left: 8cqw; right: 8cqw; font-weight: 700; font-size: 12.5cqw; line-height: .95; text-shadow: 0 0 .6cqw rgba(255,255,255,.35); }
+  .s2 .dr { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 300; animation: draw 4.5s ease-out infinite; }
+  .s2 .dr.y { stroke: #ffe58a; }
+  .s2 .q { position: absolute; font-weight: 700; font-size: 12cqw; color: #ffe58a; animation: bob 2s ease-in-out infinite; }
+  .s2 .scB .ar { position: absolute; top: 24cqw; left: 6cqw; right: 6cqw; text-align: center; font-size: 8.4cqw; line-height: 1.85; color: #fff; text-shadow: 0 0 .5cqw rgba(255,255,255,.5); animation: typeL 9s steps(14) infinite; }
+  .s2 .scB .ar span { border: .5cqw solid #ffe58a; border-radius: 50%; padding: 0 1.5cqw; }
+  .s2 .scB .tr { position: absolute; top: 72cqw; left: 8cqw; right: 8cqw; font-weight: 700; font-size: 8.5cqw; line-height: 1; color: #ffe58a; animation: rise 9s ease-out infinite; }
+  .s2 .scB .src { position: absolute; bottom: 12cqw; left: 8cqw; font-size: 6cqw; opacity: .75; }
 
-  /* 3 Sketsa menyala */
-  .s3 { background: radial-gradient(circle at 50% 62%, #16163a 0, #05050a 70%); }
-  .s3 .t { color: #fff; font-weight: 700; text-shadow: 0 0 2cqw rgba(125,249,255,.8); }
-  .s3 .g { fill: none; stroke: #7df9ff; stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 1px #7df9ff) drop-shadow(0 0 3px #7df9ff); stroke-dasharray: 220; animation: a-draw3 6s ease-in-out infinite; }
-  .s3 .g.p { stroke: #ff4fd8; filter: drop-shadow(0 0 1px #ff4fd8) drop-shadow(0 0 3px #ff4fd8); animation-delay: 1.2s; }
-  @keyframes a-draw3 { 0% { stroke-dashoffset: 220; opacity: 1; } 50%, 90% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: .15; } }
-  .s3 .cap { bottom: 12cqw; font-size: 6cqw; font-weight: 700; color: #fff; line-height: 1.6; }
-  .s3 .cap span { border: .4cqw solid #7df9ff; border-radius: 2cqw; padding: 1cqw 2.5cqw; box-shadow: 0 0 2cqw rgba(125,249,255,.5); }
-  .s3 .cap b { color: #ff7ae2; text-shadow: 0 0 2cqw #ff4fd8; }
+  /* 3 Sketsa menyala: neon di malam hari */
+  .s3 { background: #07070f; color: #fff; }
+  .s3 .floor { position: absolute; left: -30%; right: -30%; bottom: -4%; height: 42%; background: repeating-linear-gradient(90deg, rgba(255,79,216,.45) 0 .4cqw, transparent .4cqw 9cqw), repeating-linear-gradient(0deg, rgba(255,79,216,.45) 0 .4cqw, transparent .4cqw 7cqw); transform: perspective(40cqw) rotateX(62deg); transform-origin: 50% 100%; -webkit-mask: linear-gradient(transparent, #000 60%); mask: linear-gradient(transparent, #000 60%); }
+  .s3 .moon { position: absolute; left: 50%; top: 40%; width: 46cqw; height: 46cqw; margin-left: -23cqw; border-radius: 50%; background: radial-gradient(circle, rgba(255,79,216,.35), transparent 65%); }
+  .s3 .g { fill: none; stroke: #7df9ff; stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 1px #7df9ff) drop-shadow(0 0 3px #7df9ff); stroke-dasharray: 300; animation: draw 4.5s ease-out infinite; }
+  .s3 .g.p { stroke: #ff4fd8; filter: drop-shadow(0 0 1px #ff4fd8) drop-shadow(0 0 3px #ff4fd8); animation: flick 3s steps(1) infinite; }
+  @keyframes flick { 0%, 18%, 22%, 60%, 64%, 100% { opacity: 1; } 20%, 62% { opacity: .2; } }
+  .s3 .ttl { position: absolute; top: 12cqw; left: 7cqw; right: 7cqw; font-weight: 800; font-size: 10cqw; line-height: 1.02; letter-spacing: -.02em; text-shadow: 0 0 1cqw #7df9ff, 0 0 3cqw rgba(125,249,255,.6); }
+  .s3 .scB .ar { position: absolute; top: 26cqw; left: 6cqw; right: 6cqw; text-align: center; font-size: 8.4cqw; line-height: 1.8; color: #d9feff; text-shadow: 0 0 1cqw #7df9ff, 0 0 3cqw #7df9ff; animation: rise 9s ease-out infinite; }
+  .s3 .scB .ln { position: absolute; left: 20cqw; right: 20cqw; top: 75cqw; height: .7cqw; background: #ff4fd8; box-shadow: 0 0 2cqw #ff4fd8; }
+  .s3 .scB .tr { position: absolute; top: 80cqw; left: 8cqw; right: 8cqw; text-align: center; font-weight: 700; font-size: 6cqw; line-height: 1.3; }
+  .s3 .scB .tr b { color: #ff7ae2; text-shadow: 0 0 2cqw #ff4fd8; }
+  .s3 .scB .src { position: absolute; bottom: 12cqw; left: 0; right: 0; text-align: center; font-size: 4cqw; color: #ff7ae2; letter-spacing: .1em; }
 
-  /* 4 3D retro */
-  .s4 { background: linear-gradient(#6f86a3 0, #b7b3a6 55%, #5d584c 100%); }
-  .s4 svg.a { animation: a-cam 9s ease-in-out infinite alternate; transform-origin: 50% 65%; }
-  @keyframes a-cam { to { transform: scale(1.1) translateX(-3%); } }
-  .s4::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 30%, rgba(225,220,205,.4) 55%, transparent 80%); pointer-events: none; }
-  .s4 .t { color: #fff; font-family: var(--font); font-weight: 800; font-style: italic; text-transform: uppercase; font-size: 8.4cqw; letter-spacing: -.02em; text-shadow: .5cqw .5cqw 0 #1a2340; z-index: 2; }
-  .s4 .box { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; bottom: 7cqw; padding: 3cqw 4cqw; border-radius: 2.5cqw; background: linear-gradient(rgba(30,50,140,.9), rgba(10,20,70,.94)); border: .6cqw solid #cfd8ff; color: #fff; font-size: 4.6cqw; line-height: 1.4; box-shadow: 0 1cqw 3cqw rgba(0,0,0,.4); }
+  /* 4 3D retro: game petualangan lama */
+  .s4 { background: linear-gradient(#55708f 0, #a9a79a 52%, #5d584c 100%); color: #fff; }
+  .s4 svg.a { animation: cam 9s ease-in-out infinite alternate; transform-origin: 50% 65%; }
+  @keyframes cam { to { transform: scale(1.12) translateX(-3%); } }
+  .s4 .fog { position: absolute; inset: 0; background: linear-gradient(transparent 32%, rgba(225,220,205,.45) 55%, transparent 80%); }
+  .s4 .logo { position: absolute; top: 14cqw; left: 0; right: 0; text-align: center; font-weight: 800; font-style: italic; font-size: 14cqw; letter-spacing: -.03em; line-height: .9; color: #fff; -webkit-text-stroke: .6cqw #1a2340; paint-order: stroke fill; text-shadow: 0 1.2cqw 0 #1a2340; }
+  .s4 .logo small { display: block; margin-top: 3cqw; font-size: 4.6cqw; font-style: normal; letter-spacing: .25em; -webkit-text-stroke: 0; text-shadow: .4cqw .4cqw 0 #1a2340; }
+  .s4 .q { position: absolute; top: 42cqw; left: 8cqw; right: 8cqw; text-align: center; font-weight: 700; font-size: 6.4cqw; line-height: 1.2; text-shadow: .4cqw .4cqw 0 #1a2340; }
+  .s4 .start { position: absolute; bottom: 14cqw; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 5cqw; letter-spacing: .15em; animation: blink 1.2s steps(2) infinite; text-shadow: .4cqw .4cqw 0 #1a2340; }
+  .s4 .menu { position: absolute; right: 6cqw; top: 30cqw; padding: 2.5cqw 3.5cqw; border-radius: 2cqw; background: linear-gradient(rgba(30,50,140,.92), rgba(10,20,70,.95)); border: .5cqw solid #cfd8ff; font-size: 4.4cqw; line-height: 1.7; }
+  .s4 .menu b { color: #ffd84d; }
+  .s4 .menu .x { color: #ff8a8a; }
+  .s4 .box { position: absolute; left: 5cqw; right: 5cqw; bottom: 6cqw; padding: 3cqw 4cqw; border-radius: 2.5cqw; background: linear-gradient(rgba(30,50,140,.92), rgba(10,20,70,.95)); border: .6cqw solid #cfd8ff; font-size: 4.4cqw; line-height: 1.4; }
   .s4 .box small { display: block; color: #ffd84d; font-weight: 700; font-size: 3.8cqw; }
-  .s4 .box span { display: block; animation: a-type 5s steps(24) infinite; }
-  @keyframes a-type { 0% { clip-path: inset(0 100% 0 0); } 55%, 100% { clip-path: inset(0 0 0 0); } }
+  .s4 .box .ar { display: block; font-size: 5.8cqw; line-height: 1.6; text-align: right; animation: type 9s steps(16) infinite; }
+  .s4 .box span { display: block; animation: typeL 9s steps(20) infinite; }
 
   /* 5 Komik */
-  .s5 { background: #ffe14d; }
-  .s5 .bub { position: absolute; top: 9cqw; left: 32cqw; right: 6cqw; background: #fff; border: .9cqw solid #111; border-radius: 6cqw; padding: 3cqw; font-family: "Bangers", cursive; font-size: 6.6cqw; line-height: 1.05; letter-spacing: .02em; color: #111; text-align: center; }
+  .s5 { background: #ffe14d; font-family: "Bangers", cursive; color: #111; letter-spacing: .02em; }
+  .s5 .bub { position: absolute; top: 7cqw; left: 34cqw; right: 6cqw; background: #fff; border: .9cqw solid #111; border-radius: 6cqw; padding: 3cqw; font-size: 6.6cqw; line-height: 1.05; text-align: center; animation: bob 2.4s ease-in-out infinite; }
   .s5 .bub::after { content: ""; position: absolute; left: 6cqw; bottom: -4cqw; width: 5cqw; height: 5cqw; background: #fff; border-right: .9cqw solid #111; border-bottom: .9cqw solid #111; transform: skewX(30deg) rotate(30deg); }
-  .s5 .nar { position: absolute; top: 57%; left: 6cqw; background: #ffe14d; border: .8cqw solid #111; padding: 1cqw 2.5cqw; font-family: "Bangers", cursive; font-size: 5.4cqw; letter-spacing: .03em; color: #111; z-index: 2; }
-  .s5 .pop { transform-box: fill-box; transform-origin: center; animation: a-pop 1.6s ease-in-out infinite; }
-  @keyframes a-pop { 0%, 100% { transform: scale(1) rotate(-4deg); } 50% { transform: scale(1.12) rotate(3deg); } }
-  .s5 .shake { transform-box: fill-box; transform-origin: center; animation: a-shake 1.6s ease-in-out infinite; }
-  @keyframes a-shake { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+  .s5 .think { position: absolute; top: 108cqw; left: 10cqw; right: 10cqw; text-align: center; font-size: 8cqw; }
+  .s5 .shake { transform-box: fill-box; transform-origin: center; animation: shk 1.4s ease-in-out infinite; }
+  @keyframes shk { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+  .s5 .nar { position: absolute; top: 9cqw; left: 6cqw; background: #ffe14d; border: .8cqw solid #111; padding: 1cqw 2.5cqw; font-size: 5.4cqw; z-index: 2; }
+  .s5 .burst { transform-box: fill-box; transform-origin: center; animation: pop 9s ease-out infinite; }
+  .s5 .scroll { position: absolute; left: 7cqw; right: 7cqw; bottom: 8cqw; background: #fff; border: .9cqw solid #111; padding: 3cqw; text-align: center; box-shadow: 1.5cqw 1.5cqw 0 #111; }
+  .s5 .scroll .ar { font-size: 6.4cqw; line-height: 1.6; letter-spacing: 0; }
+  .s5 .scroll p { font-size: 6cqw; line-height: 1; margin-top: 1.5cqw; color: #e5484d; }
 
   /* 6 Vektor datar */
-  .s6 { background: #f6f1e7; }
-  .s6 .sun { animation: a-sun 6s ease-in-out infinite alternate; }
-  @keyframes a-sun { from { transform: translateY(8px); } to { transform: translateY(-4px); } }
-  .s6 .btl { animation: a-slide 4s ease-out infinite; }
-  @keyframes a-slide { 0% { transform: translateX(30px); opacity: 0; } 20%, 100% { transform: none; opacity: 1; } }
-  .s6 .stp { transform-box: fill-box; transform-origin: center; animation: a-stamp 4s ease-out infinite; }
-  @keyframes a-stamp { 0%, 35% { transform: scale(2.2); opacity: 0; } 45%, 100% { transform: scale(1); opacity: 1; } }
-  .s6 .t { color: #1f5a4a; }
+  .s6 { background: #f6f1e7; color: #1f5a4a; }
+  .s6 .sun { animation: sun 9s ease-in-out infinite alternate; }
+  @keyframes sun { from { transform: translateY(8px); } to { transform: translateY(-4px); } }
+  .s6 .btl { animation: slide 4.5s ease-out infinite; }
+  @keyframes slide { 0% { transform: translateX(30px); opacity: 0; } 20%, 100% { transform: none; opacity: 1; } }
+  .s6 .stp { transform-box: fill-box; transform-origin: center; animation: stamp 4.5s ease-out infinite; }
+  @keyframes stamp { 0%, 40% { transform: scale(2.2); opacity: 0; } 50%, 100% { transform: scale(1); opacity: 1; } }
+  .s6 .ttl { position: absolute; top: 12cqw; left: 8cqw; right: 8cqw; font-family: var(--head); font-weight: 800; font-size: 10.5cqw; line-height: 1.02; letter-spacing: -.03em; }
+  .s6 .u { position: absolute; left: 8cqw; top: 7.5cqw; font-size: 3.8cqw; font-weight: 600; opacity: .7; }
+  .s6 .card { position: absolute; left: 7cqw; right: 7cqw; top: 30cqw; background: #fff; border-radius: 5cqw; padding: 5cqw; box-shadow: 0 2cqw 5cqw rgba(31,90,74,.15); animation: rise 9s ease-out infinite; }
+  .s6 .card .ar { font-size: 6.6cqw; line-height: 1.7; text-align: center; }
+  .s6 .card p { font-size: 4.4cqw; text-align: center; margin-top: 1cqw; color: #3d5a50; }
+  .s6 .chips { display: grid; gap: 2cqw; margin-top: 4cqw; }
+  .s6 .chips span { display: flex; justify-content: space-between; align-items: center; padding: 2.4cqw 3.5cqw; border-radius: 3cqw; font-weight: 700; font-size: 4.6cqw; }
+  .s6 .chips .ok { background: #e3f1e8; color: #1f5a4a; }
+  .s6 .chips .no { background: #fde4e4; color: #b42318; }
 
-  /* 7 Minimalis tinta */
-  .s7 { background: #efe9dc; background-image: radial-gradient(rgba(0,0,0,.07) .5px, transparent .8px); background-size: 4px 4px; }
-  .s7 svg.a { animation: a-zoom 12s ease-in-out infinite alternate; transform-origin: 50% 70%; }
-  @keyframes a-zoom { to { transform: scale(1.08); } }
-  .s7 .t { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 12.5cqw; line-height: .98; letter-spacing: -.01em; color: #111; animation: a-fade 6s ease-out infinite; }
-  .s7 .t em { font-style: italic; color: #6b5a3c; }
+  /* 7 Tinta minimalis */
+  .s7 { background: #efe9dc; background-image: radial-gradient(rgba(0,0,0,.07) .5px, transparent .8px); background-size: 4px 4px; color: #111; }
+  .s7 svg.a { animation: zoom 9s ease-in-out infinite alternate; transform-origin: 50% 70%; }
+  @keyframes zoom { to { transform: scale(1.08); } }
+  .s7 .ttl { position: absolute; top: 12cqw; left: 8cqw; right: 8cqw; font-family: "Instrument Serif", Georgia, serif; font-size: 12.5cqw; line-height: .98; }
+  .s7 .ttl em { color: #6b5a3c; }
   .s7 .foot { position: absolute; left: 0; right: 0; bottom: 8cqw; text-align: center; font-family: "Instrument Serif", Georgia, serif; font-size: 4.4cqw; letter-spacing: .25em; text-transform: uppercase; color: #6b5a3c; }
+  .s7 .scB .ar { position: absolute; top: 30cqw; left: 6cqw; right: 6cqw; text-align: center; font-weight: 700; font-size: 11cqw; line-height: 1.6; animation: rise 9s ease-out infinite; }
+  .s7 .scB hr { position: absolute; left: 38cqw; right: 38cqw; top: 104cqw; margin: 0; border: 0; height: .3cqw; background: #111; }
+  .s7 .scB .tr { position: absolute; top: 110cqw; left: 10cqw; right: 10cqw; text-align: center; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 6.4cqw; line-height: 1.15; color: #3f3524; }
 
   /* 8 CGI motion */
-  .s8 { background: radial-gradient(circle at 50% 42%, #fff6e8 0, #f2d9b8 42%, #c99a6a 100%); }
-  .s8 .t { color: #3a1f0a; z-index: 2; }
-  .s8 .bt { position: absolute; left: 50%; top: 56%; width: 28cqw; animation: a-float 4s ease-in-out infinite; z-index: 2; }
-  @keyframes a-float { 0%, 100% { transform: translate(-50%, -50%) rotate(-7deg); } 50% { transform: translate(-50%, -60%) rotate(7deg); } }
+  .s8 { background: radial-gradient(circle at 50% 42%, #fff6e8 0, #f2d9b8 42%, #c99a6a 100%); color: #3a1f0a; }
+  .s8 .ttl { position: absolute; top: 12cqw; left: 8cqw; right: 8cqw; font-family: var(--head); font-weight: 800; font-size: 10.5cqw; line-height: 1.02; letter-spacing: -.03em; z-index: 2; }
+  .s8 .bt { position: absolute; left: 50%; top: 58%; width: 28cqw; animation: float 4.5s ease-in-out infinite; z-index: 2; }
+  @keyframes float { 0%, 100% { transform: translate(-50%, -50%) rotate(-7deg); } 50% { transform: translate(-50%, -60%) rotate(7deg); } }
   .s8 .bt .cp { width: 12cqw; height: 8cqw; margin: 0 auto; border-radius: 1.6cqw 1.6cqw .6cqw .6cqw; background: linear-gradient(90deg, #7a5618, #f6d77e 35%, #fff4cc 45%, #b8892e 70%, #5e4313); }
   .s8 .bt .nk { width: 6cqw; height: 2.6cqw; margin: 0 auto; background: linear-gradient(90deg, #8a7a6a, #efe7dc, #8a7a6a); }
   .s8 .bt .bd { position: relative; height: 30cqw; border-radius: 4.5cqw; background: linear-gradient(100deg, transparent 10%, rgba(255,255,255,.75) 14%, transparent 22%), linear-gradient(90deg, #a85a22, #f2a65a 30%, #ffd9a8 46%, #e8893c 66%, #7a3e14); box-shadow: inset 0 -3cqw 4cqw rgba(90,40,10,.45), inset 0 2cqw 3cqw rgba(255,255,255,.35); }
   .s8 .bt .bd::after { content: "ATTAR"; position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); font-size: 3.6cqw; font-weight: 700; letter-spacing: .3em; color: rgba(255,255,255,.9); }
-  .s8 .shd { position: absolute; left: 50%; top: 82%; width: 34cqw; height: 5cqw; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(rgba(70,35,10,.45), transparent 70%); animation: a-shd 4s ease-in-out infinite; }
-  @keyframes a-shd { 50% { transform: translateX(-50%) scale(.75); opacity: .6; } }
-  .s8 .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 10%, #f0c48a 40%, #9a5a24 100%); box-shadow: 0 2cqw 3cqw rgba(90,50,20,.3); animation: a-bob 3s ease-in-out infinite; }
-  .s8 .o1 { width: 8cqw; height: 8cqw; left: 12cqw; top: 46%; }
-  .s8 .o2 { width: 5cqw; height: 5cqw; right: 14cqw; top: 40%; animation-delay: -1s; }
-  .s8 .o3 { width: 6cqw; height: 6cqw; right: 10cqw; top: 66%; animation-delay: -2s; }
-  @keyframes a-bob { 50% { transform: translateY(-4cqw); } }
-  .s8 .cap { bottom: 7cqw; font-size: 5.8cqw; font-weight: 700; color: #3a1f0a; }
-  .s8 .cap b { background: #fff; border-radius: 1.5cqw; padding: 0 1.5cqw; }
+  .s8 .shd { position: absolute; left: 50%; top: 84%; width: 34cqw; height: 5cqw; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(rgba(70,35,10,.45), transparent 70%); }
+  .s8 .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 10%, #f0c48a 40%, #9a5a24 100%); box-shadow: 0 2cqw 3cqw rgba(90,50,20,.3); animation: bob 3s ease-in-out infinite; }
+  .s8 .o1 { width: 8cqw; height: 8cqw; left: 12cqw; top: 48%; }
+  .s8 .o2 { width: 5cqw; height: 5cqw; right: 14cqw; top: 42%; animation-delay: -1s; }
+  .s8 .o3 { width: 6cqw; height: 6cqw; right: 10cqw; top: 68%; animation-delay: -2s; }
+  .s8 .glass { position: absolute; left: 8cqw; right: 8cqw; top: 30cqw; padding: 6cqw 5cqw; border-radius: 6cqw; background: linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.45)); box-shadow: inset 0 0 0 .4cqw rgba(255,255,255,.9), 0 4cqw 8cqw rgba(90,50,20,.3); transform: perspective(80cqw) rotateY(-14deg) rotateX(6deg); animation: tilt 9s ease-in-out infinite; text-align: center; }
+  @keyframes tilt { 50% { transform: perspective(80cqw) rotateY(10deg) rotateX(-4deg); } }
+  .s8 .glass .ar { font-size: 7cqw; line-height: 1.7; }
+  .s8 .glass p { margin-top: 2cqw; font-weight: 700; font-size: 5cqw; line-height: 1.25; }
+  .s8 .xorb { position: absolute; right: 9cqw; top: 22cqw; width: 14cqw; height: 14cqw; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 8cqw; background: radial-gradient(circle at 35% 30%, #ffb3b3 0 8%, #e5484d 45%, #8a1c1f 100%); box-shadow: 0 2cqw 4cqw rgba(138,28,31,.35); animation: pop 9s ease-out infinite; }
 
   /* 9 Balok mainan */
-  .s9 { background: linear-gradient(#5ec2f2, #a8e0fa); }
-  .s9 .t { color: #fff; text-shadow: 0 .8cqw 0 #1a5e8a; }
-  .s9 .bp { position: absolute; left: 0; right: 0; bottom: 0; height: 28%; background: radial-gradient(circle, #5fcf6e 34%, #2f9a40 38%, transparent 42%) 0 0 / 6cqw 6cqw, #3aa84a; box-shadow: inset 0 1.2cqw 0 #4fbf5e; }
-  .s9 .kb { position: absolute; left: 50%; bottom: 28%; width: 36cqw; transform: translateX(-50%); display: flex; flex-direction: column-reverse; }
-  .s9 .br { position: relative; height: 8cqw; margin-top: .4cqw; background: #1c1c1c; border-radius: .8cqw; box-shadow: inset -1cqw -1cqw 0 rgba(0,0,0,.45), inset 1cqw 1cqw 0 rgba(255,255,255,.12); animation: a-drop 6s cubic-bezier(.3,1.4,.5,1) infinite both; }
-  .s9 .br::before { content: ""; position: absolute; left: 1cqw; right: 1cqw; top: -2cqw; height: 2cqw; background: radial-gradient(ellipse at 50% 100%, #2c2c2c 60%, transparent 64%) 0 0 / 6.8cqw 2cqw repeat-x; }
-  .s9 .br.gd { height: 4cqw; background: #e2b33c; }
-  .s9 .br.gd::before { background-image: radial-gradient(ellipse at 50% 100%, #f2c85a 60%, transparent 64%); }
-  .s9 .br:nth-child(2) { animation-delay: .35s; }
-  .s9 .br:nth-child(3) { animation-delay: .7s; }
-  .s9 .br:nth-child(4) { animation-delay: 1.05s; }
-  @keyframes a-drop { 0% { transform: translateY(-70cqw); opacity: 0; } 12% { transform: none; opacity: 1; } 88% { transform: none; opacity: 1; } 100% { transform: none; opacity: 0; } }
-  .s9 .mf { position: absolute; right: 9cqw; bottom: 28%; width: 9cqw; display: grid; justify-items: center; animation: a-bob 1.2s ease-in-out infinite; }
+  .s9 { background: #5ec2f2; color: #fff; }
+  .s9 .ttl { position: absolute; top: 12cqw; left: 8cqw; right: 8cqw; font-family: var(--head); font-weight: 800; font-size: 10.5cqw; line-height: 1.02; letter-spacing: -.03em; text-shadow: 0 .8cqw 0 #1a5e8a; }
+  .s9 .bp { position: absolute; left: 0; right: 0; bottom: 0; height: 26%; background: radial-gradient(circle, #5fcf6e 34%, #2f9a40 38%, transparent 42%) 0 0 / 6cqw 6cqw, #3aa84a; box-shadow: inset 0 1.2cqw 0 #4fbf5e; }
+  .s9 .kb { position: absolute; left: 50%; bottom: 26%; width: 36cqw; transform: translateX(-50%); display: flex; flex-direction: column-reverse; }
+  .s9 .br { position: relative; height: 8cqw; margin-top: .4cqw; background: #1c1c1c; border-radius: .8cqw; box-shadow: inset -1cqw -1cqw 0 rgba(0,0,0,.45), inset 1cqw 1cqw 0 rgba(255,255,255,.12); animation: drop 4.5s cubic-bezier(.3,1.4,.5,1) infinite both; }
+  .s9 .br::before { content: ""; position: absolute; left: 1cqw; right: 1cqw; top: -2cqw; height: 2cqw; background: radial-gradient(ellipse at 50% 100%, var(--stud, #2c2c2c) 60%, transparent 64%) 0 0 / 6.8cqw 2cqw repeat-x; }
+  .s9 .br.gd { height: 4cqw; background: #e2b33c; --stud: #f2c85a; }
+  .s9 .br:nth-child(2) { animation-delay: .3s; } .s9 .br:nth-child(3) { animation-delay: .6s; } .s9 .br:nth-child(4) { animation-delay: .9s; }
+  @keyframes drop { 0% { transform: translateY(-70cqw); opacity: 0; } 14% { transform: none; opacity: 1; } 100% { transform: none; opacity: 1; } }
+  .s9 .mf { position: absolute; right: 9cqw; bottom: 26%; width: 9cqw; display: grid; justify-items: center; animation: bob 1.2s ease-in-out infinite; }
   .s9 .mf i { display: block; }
-  .s9 .mf .hd { width: 6cqw; height: 6cqw; border-radius: 1.4cqw; background: #f6c932; box-shadow: inset -1cqw 0 0 rgba(0,0,0,.12); }
+  .s9 .mf .hd { width: 6cqw; height: 6cqw; border-radius: 1.4cqw; background: #f6c932; }
   .s9 .mf .tr { width: 9cqw; height: 7cqw; margin-top: .4cqw; background: #fff; clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%); }
   .s9 .mf .lg { width: 8cqw; height: 6cqw; background: #fff; border-top: .5cqw solid #ddd; }
+  .s9 .tile { position: absolute; left: 8cqw; right: 8cqw; top: 30cqw; background: #fff; color: #111; border-radius: 2cqw; padding: 5cqw 4cqw 4cqw; text-align: center; box-shadow: inset -1.2cqw -1.2cqw 0 #d9d9d9; animation: rise 9s ease-out infinite; }
+  .s9 .tile::before { content: ""; position: absolute; left: 3cqw; right: 3cqw; top: -2.4cqw; height: 2.4cqw; background: radial-gradient(ellipse at 50% 100%, #f2f2f2 60%, transparent 64%) 0 0 / 9cqw 2.4cqw repeat-x; }
+  .s9 .tile .ar { font-size: 6.6cqw; line-height: 1.7; }
+  .s9 .tile p { font-weight: 700; font-size: 4.6cqw; margin-top: 1cqw; }
+  .s9 .row { position: absolute; left: 8cqw; right: 8cqw; top: 96cqw; display: flex; gap: 2cqw; }
+  .s9 .row b { flex: 1; display: grid; place-items: center; height: 13cqw; border-radius: 1.4cqw; font-weight: 800; font-size: 4.6cqw; box-shadow: inset -1cqw -1cqw 0 rgba(0,0,0,.25); animation: pop 9s ease-out infinite; }
+  .s9 .row .r { background: #e5484d; } .s9 .row .g { background: #2f9a40; animation-delay: .3s; }
 
   /* 10 3D sinematik */
-  .s10 { background: radial-gradient(ellipse at 50% 35%, #3a302a 0, #120e0c 60%, #000 100%); }
+  .s10 { background: radial-gradient(ellipse at 50% 35%, #3a302a 0, #120e0c 60%, #000 100%); color: #fff; }
   .s10 .fab { position: absolute; left: -25%; right: -25%; bottom: -6%; height: 52%; background: repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 .6cqw, transparent .6cqw 1.4cqw), repeating-linear-gradient(90deg, rgba(0,0,0,.07) 0 .6cqw, transparent .6cqw 1.4cqw), linear-gradient(#f2eee6, #b9b1a3); transform: perspective(120cqw) rotateX(42deg); transform-origin: 50% 100%; }
-  .s10::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 62%, transparent 40%, rgba(0,0,0,.7) 100%); pointer-events: none; z-index: 1; }
-  .s10 .drop { position: absolute; left: 50%; top: 34%; width: 6cqw; height: 8cqw; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 35% 30%, #fff 0 8%, #f3b65a 32%, #a8601c 78%); box-shadow: 0 0 3cqw rgba(243,182,90,.6); animation: a-fall 3s ease-in infinite; }
-  @keyframes a-fall { 0% { transform: translate(-50%, -14cqw) scale(.8); opacity: 0; } 15% { opacity: 1; } 58% { transform: translate(-50%, 40cqw) scale(1); opacity: 1; } 62%, 100% { transform: translate(-50%, 40cqw) scale(1.5, .3); opacity: 0; } }
-  .s10 .rip { position: absolute; left: 50%; top: 79%; width: 34cqw; height: 9cqw; margin-left: -17cqw; border: .6cqw solid rgba(243,182,90,.8); border-radius: 50%; animation: a-rip 3s ease-out infinite; }
-  @keyframes a-rip { 0%, 58% { transform: scale(0); opacity: 0; } 62% { transform: scale(.2); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
-  .s10 .stn { position: absolute; left: 50%; top: 80%; width: 20cqw; height: 5cqw; margin-left: -10cqw; border-radius: 50%; background: radial-gradient(rgba(214,140,50,.75), transparent 70%); animation: a-stn 3s ease-out infinite; }
-  @keyframes a-stn { 0%, 58% { transform: scale(0); } 80%, 100% { transform: scale(1); } }
-  .s10 .zc { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; top: 14cqw; text-align: center; font-family: var(--font); font-weight: 800; font-size: 8.6cqw; line-height: 1.05; text-transform: uppercase; color: #fff; -webkit-text-stroke: 1.4cqw #000; paint-order: stroke fill; }
-  .s10 .zc b { color: #ffd84d; font-weight: 800; }
-  .s10 .zs { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; bottom: 9cqw; text-align: center; font-weight: 800; font-size: 6cqw; text-transform: uppercase; color: #fff; -webkit-text-stroke: 1cqw #000; paint-order: stroke fill; }
+  .s10 .vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 62%, transparent 40%, rgba(0,0,0,.75) 100%); }
+  .s10 .drop { position: absolute; left: 50%; top: 34%; width: 6cqw; height: 8cqw; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 35% 30%, #fff 0 8%, #f3b65a 32%, #a8601c 78%); box-shadow: 0 0 3cqw rgba(243,182,90,.6); animation: fall 4.5s ease-in infinite; }
+  @keyframes fall { 0% { transform: translate(-50%, -14cqw) scale(.8); opacity: 0; } 15% { opacity: 1; } 58% { transform: translate(-50%, 40cqw) scale(1); opacity: 1; } 62%, 100% { transform: translate(-50%, 40cqw) scale(1.5, .3); opacity: 0; } }
+  .s10 .rip { position: absolute; left: 50%; top: 79%; width: 34cqw; height: 9cqw; margin-left: -17cqw; border: .6cqw solid rgba(243,182,90,.8); border-radius: 50%; animation: rip 4.5s ease-out infinite; }
+  @keyframes rip { 0%, 58% { transform: scale(0); opacity: 0; } 62% { transform: scale(.2); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+  .s10 .zc { position: absolute; left: 5cqw; right: 5cqw; top: 14cqw; text-align: center; font-weight: 800; font-size: 8.6cqw; line-height: 1.05; text-transform: uppercase; -webkit-text-stroke: 1.4cqw #000; paint-order: stroke fill; }
+  .s10 .zc b { color: #ffd84d; }
+  .s10 .scB { background: radial-gradient(ellipse at 50% 45%, #2a2118 0, #000 75%); }
+  .s10 .scB .lbl2 { position: absolute; top: 18cqw; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 7cqw; color: #ffd84d; -webkit-text-stroke: 1cqw #000; paint-order: stroke fill; }
+  .s10 .scB .ar { position: absolute; top: 34cqw; left: 6cqw; right: 6cqw; text-align: center; font-weight: 700; font-size: 9.6cqw; line-height: 1.7; color: #fff; text-shadow: 0 0 2cqw rgba(243,182,90,.4); animation: rise 9s ease-out infinite; }
+  .s10 .scB .tr { position: absolute; top: 84cqw; left: 10cqw; right: 10cqw; text-align: center; font-size: 5cqw; line-height: 1.35; color: #d9d2c6; }
+  .s10 .scB .zs { position: absolute; left: 5cqw; right: 5cqw; bottom: 16cqw; text-align: center; font-weight: 800; font-size: 6.4cqw; line-height: 1.1; text-transform: uppercase; -webkit-text-stroke: 1cqw #000; paint-order: stroke fill; }
+  .s10 .scB .zs b { color: #ffd84d; }
+
+  .styles .pv { cursor: zoom-in; }
+  .zoom { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; overflow: visible; }
+  .zoom::backdrop { background: rgba(13,12,34,.82); }
+  .zoom .pv { width: min(380px, 86vw, calc((100vh - 120px) * 9 / 16)); border-radius: 22px; cursor: default; box-shadow: 0 30px 60px rgba(0,0,0,.4); }
+  .zoom .cap2 { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 16px; }
+  .zoom button { border: 0; border-radius: 9999px; padding: 9px 16px; font: inherit; font-size: 14px; background: #fff; color: var(--ink); cursor: pointer; }
 
   @media (prefers-reduced-motion: reduce) {
     .pv, .pv * { animation: none !important; }
-    .s2 .dr, .s3 .g { stroke-dashoffset: 0; }
+    .pv .scB { opacity: 0; }
   }
 
   footer { padding: 28px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
@@ -299,6 +418,9 @@
     .caption { padding: 20px; font-size: 14px; }
     .checklist { grid-template-columns: minmax(0, 1fr); }
     .styles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; margin-top: 28px; }
+    .st.feat { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 16px; }
+    .st.feat .pv { width: min(100%, 300px); justify-self: center; }
+    .scenes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .st h3 { font-size: 16px; }
     .st p { font-size: 13px; }
     .st .fit { font-size: 12.5px; }
@@ -342,23 +464,97 @@
   <div class="wrap">
     <span class="kicker">Langkah pertama</span>
     <h2>Pilih gaya video Sidi</h2>
-    <p class="sub">Ini 10 gaya animasi yang sedang ramai di Reels. Setiap contoh di bawah bergerak dan memakai topik yang sama, yaitu parfum saat ihram, supaya mudah dibandingkan. Gaya yang dipilih dipakai di semua video agar akun mudah dikenali.</p>
+    <p class="sub">Paling atas gaya isometrik yang paling mirip contoh dari Sidi, lalu 10 gaya animasi yang sedang ramai di Reels. Setiap contoh bergerak per adegan, dari pertanyaan sampai dalilnya, dan memakai topik yang sama, yaitu parfum saat ihram, supaya mudah dibandingkan. Klik contohnya untuk melihat lebih besar. Gaya yang dipilih dipakai di semua video agar akun mudah dikenali.</p>
 
     <div class="styles">
+
+      <article class="st feat" data-n="" data-name="Isometrik masjid">
+        <div class="pv s0">
+          <svg class="a world" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect x="65" y="18" width="9" height="44" fill="#c4d0d6"/><rect x="67.5" y="10" width="4" height="8" fill="#c4d0d6"/><circle cx="69.5" cy="26" r="2.6" fill="#eef3f5"/>
+            <polygon points="-2,80 45,52 45,62 -2,90" fill="#eadfc6"/>
+            <polygon points="45,52 92,80 92,90 45,62" fill="#d9caab"/>
+            <path d="M3,84 L42,61" stroke="#b9a988" stroke-width="4" stroke-dasharray="1.6 1.4"/>
+            <path d="M48,61 L87,84" stroke="#a8977a" stroke-width="4" stroke-dasharray="1.6 1.4"/>
+            <polygon points="45,62 92,90 45,118 -2,90" fill="#f7f4ee" stroke="#d5ccbb" stroke-width=".4"/>
+            <path d="M21,76 L68,104 M10,83 L57,111 M33,69 L80,97 M69,76 L22,104 M80,83 L33,111 M57,69 L10,97" stroke="#e7e0d2" stroke-width=".35"/>
+            <g transform="translate(45 96) scale(1 .55)">
+              <circle r="27" fill="none" stroke="#3b82f6" stroke-width=".9" stroke-dasharray="2.4 1.8"/>
+              <g class="spin" fill="#fff" stroke="#7d8a92" stroke-width=".35">
+                <circle cx="22" cy="0" r="1.6"/><circle cx="19.05" cy="11" r="1.6"/><circle cx="11" cy="19.05" r="1.6"/><circle cx="0" cy="22" r="1.6"/><circle cx="-11" cy="19.05" r="1.6"/><circle cx="-19.05" cy="11" r="1.6"/><circle cx="-22" cy="0" r="1.6"/><circle cx="-19.05" cy="-11" r="1.6"/><circle cx="-11" cy="-19.05" r="1.6"/><circle cx="0" cy="-22" r="1.6"/><circle cx="11" cy="-19.05" r="1.6"/><circle cx="19.05" cy="-11" r="1.6"/>
+              </g>
+              <g class="spin2" fill="#fff" stroke="#7d8a92" stroke-width=".35">
+                <circle cx="30.9" cy="8.3" r="1.6"/><circle cx="22.6" cy="22.6" r="1.6"/><circle cx="8.3" cy="30.9" r="1.6"/><circle cx="-8.3" cy="30.9" r="1.6"/><circle cx="-22.6" cy="22.6" r="1.6"/><circle cx="-30.9" cy="8.3" r="1.6"/><circle cx="-30.9" cy="-8.3" r="1.6"/><circle cx="-22.6" cy="-22.6" r="1.6"/><circle cx="-8.3" cy="-30.9" r="1.6"/><circle cx="8.3" cy="-30.9" r="1.6"/><circle cx="22.6" cy="-22.6" r="1.6"/><circle cx="30.9" cy="-8.3" r="1.6"/>
+              </g>
+            </g>
+            <polygon points="45,74 60,82 45,90 30,82" fill="#2b2b2b"/>
+            <polygon points="30,82 45,90 45,107 30,99" fill="#0f0f0f"/>
+            <polygon points="45,90 60,82 60,99 45,107" fill="#1c1c1c"/>
+            <polygon points="30,86 45,94 45,96.5 30,88.5" fill="#c9a048"/>
+            <polygon points="45,94 60,86 60,88.5 45,96.5" fill="#b8913f"/>
+            <polygon points="49,96 53,94 53,104 49,106" fill="#c9a048" opacity=".7"/>
+            <g transform="translate(58 101)"><polygon points="0,-3 2.5,-1.6 0,-.2 -2.5,-1.6" fill="#e8c873"/><polygon points="-2.5,-1.6 0,-.2 0,2 -2.5,.6" fill="#c9a048"/><polygon points="0,-.2 2.5,-1.6 2.5,.6 0,2" fill="#b08a35"/></g>
+          </svg>
+          <span class="u">@febriian_alief</span>
+          <div class="q q1">
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+            <p class="kw"><span class="l"><span class="on" style="animation-delay:.3s">Bolehkah</span> <span class="on" style="animation-delay:.8s">pakai</span> <span class="on" style="animation-delay:1.3s">parfum</span> <span class="on" style="animation-delay:1.8s">saat</span> <span class="on" style="animation-delay:2.3s">ihram?</span></span></p>
+          </div>
+          <div class="q q2">
+            <span class="tag">JAWABANNYA</span>
+            <p class="big">Setelah niat ihram, tidak boleh.</p>
+            <p class="kw"><span class="l"><span class="on" style="animation-delay:3.3s">Setelah</span> <span class="on" style="animation-delay:3.9s">niat,</span> <span class="on" style="animation-delay:4.5s">tidak</span> <span class="on" style="animation-delay:5.1s">boleh.</span></span></p>
+          </div>
+          <div class="q q3">
+            <span class="tag">DALILNYA</span>
+            <div class="card"><p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p><p>HR. Bukhari &amp; Muslim</p></div>
+            <p class="kw"><span class="l"><span class="on" style="animation-delay:6.3s">Jangan</span> <span class="on" style="animation-delay:6.9s">pakai</span> <span class="on" style="animation-delay:7.5s">kain</span> <span class="on" style="animation-delay:8.1s">berwewangian.</span></span></p>
+          </div>
+          <div class="q q4">
+            <span class="tag">TIPS</span>
+            <div class="card"><ul><li>Pakai wewangian sebelum niat</li><li>Bawa sabun tanpa pewangi</li></ul></div>
+            <p class="kw"><span class="l"><span class="on" style="animation-delay:9.3s">Siapkan</span> <span class="on" style="animation-delay:9.9s">sebelum</span> <span class="on" style="animation-delay:10.5s">niat</span> <span class="on" style="animation-delay:11.1s">ihram.</span></span></p>
+          </div>
+          <div class="dots dk"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div>
+          <div class="lbl"><h3>Isometrik masjid</h3></div>
+          <span class="rec">Paling mirip contoh Raudhah yang Sidi kirim</span>
+          <p>Denah Masjidil Haram dilihat dari atas miring. Jamaah bergerak thawaf, kamera mendekat dan bergeser di setiap bagian, dan subtitle menyorot kata yang sedang diucapkan.</p>
+          <ol class="scenes">
+            <li><small>0–3 detik</small><b>Hook</b>Pertanyaan muncul di atas denah masjid.</li>
+            <li><small>3–10 detik</small><b>Jawaban</b>Kamera mendekat ke Ka'bah, jawaban satu kalimat.</li>
+            <li><small>10–45 detik</small><b>Dalil</b>Teks Arab, terjemah, lalu pendapat mazhab.</li>
+            <li><small>45–60 detik</small><b>Tips</b>Hal praktis dan ajakan bertanya di komentar.</li>
+          </ol>
+          <p class="fit"><b>Cocok untuk:</b> tata cara dan lokasi, seperti miqat, Raudhah, thawaf, dan sa'i.</p>
+          <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+        </div>
+      </article>
 
       <article class="st" data-n="1" data-name="Pixel art">
         <div class="pv s1">
           <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect x="64" y="22" width="12" height="12" fill="#ffd84d"/><rect x="62" y="24" width="16" height="8" fill="#ffd84d"/>
-            <g class="cl" fill="#fff"><rect x="8" y="58" width="16" height="4"/><rect x="11" y="55" width="9" height="3"/><rect x="40" y="70" width="12" height="3"/><rect x="42" y="68" width="7" height="2"/></g>
+            <rect x="64" y="34" width="12" height="12" fill="#ffd84d"/><rect x="62" y="36" width="16" height="8" fill="#ffd84d"/>
+            <g class="cl" fill="#fff"><rect x="8" y="58" width="16" height="4"/><rect x="11" y="55" width="9" height="3"/><rect x="40" y="72" width="12" height="3"/><rect x="42" y="70" width="7" height="2"/></g>
             <g fill="#a9cdee"><rect x="70" y="66" width="7" height="50"/><rect x="72" y="58" width="3" height="8"/><rect x="4" y="96" width="10" height="20"/><rect x="16" y="90" width="8" height="26"/><rect x="58" y="92" width="10" height="24"/><rect x="80" y="88" width="10" height="28"/></g>
             <rect x="0" y="116" width="90" height="44" fill="#eadfc6"/>
-            <g fill="#d8caa8"><rect x="0" y="124" width="90" height="1"/><rect x="0" y="134" width="90" height="1"/></g>
+            <g fill="#d8caa8"><rect x="0" y="124" width="90" height="1"/><rect x="0" y="134" width="90" height="1"/><rect x="20" y="116" width="1" height="18"/><rect x="60" y="116" width="1" height="18"/></g>
             <rect x="33" y="84" width="24" height="32" fill="#151515"/><rect x="33" y="90" width="24" height="3" fill="#d4a940"/><rect x="40" y="102" width="6" height="14" fill="#d4a940"/>
-            <g class="walk"><rect x="2" y="104" width="3" height="3" fill="#2b2b2b"/><rect x="1" y="107" width="5" height="6" fill="#fff"/><rect x="2" y="113" width="1" height="3" fill="#c68a5a"/><rect x="4" y="113" width="1" height="3" fill="#c68a5a"/></g>
+            <g class="walk"><rect x="10" y="104" width="3" height="3" fill="#2b2b2b"/><rect x="9" y="107" width="5" height="6" fill="#fff"/><rect x="9" y="107" width="5" height="1" fill="#ddd"/><rect x="10" y="113" width="1" height="3" fill="#c68a5a"/><rect x="12" y="113" width="1" height="3" fill="#c68a5a"/></g>
+            <g class="item"><rect x="66" y="104" width="5" height="7" fill="#ff5fa2"/><rect x="67" y="102" width="3" height="2" fill="#ffd84d"/><rect x="67" y="106" width="1" height="3" fill="#fff"/><rect x="67" y="96" width="3" height="1" fill="#fff"/><rect x="69" y="97" width="1" height="2" fill="#fff"/><rect x="68" y="99" width="1" height="1" fill="#fff"/></g>
           </svg>
-          <p class="t">BOLEHKAH PAKAI PARFUM SAAT IHRAM?</p>
-          <div class="box">SETELAH NIAT: <b>DILARANG!</b></div>
+          <div class="scA">
+            <div class="hud"><span>LV.1 IHRAM</span><b>♥♥♥</b></div>
+            <p class="ttl">BOLEHKAH PAKAI PARFUM SAAT IHRAM?</p>
+            <div class="box">AMBIL ITEM INI?<br><b>▶ YA</b> &nbsp; TIDAK <span class="cur">_</span></div>
+          </div>
+          <div class="scB">
+            <div class="hud"><span>LV.1 IHRAM</span><b>♥♥♡</b></div>
+            <div class="panel"><p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p><p>JANGAN PAKAI KAIN YANG KENA WEWANGIAN</p><small>HR. BUKHARI &amp; MUSLIM</small></div>
+            <p class="lose">−1 ♥ DILARANG!</p>
+          </div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>01</i><h3>Pixel art</h3></div>
         <p>Gambar kotak-kotak seperti game jadul. Unik dan cepat menarik perhatian.</p>
@@ -368,13 +564,22 @@
 
       <article class="st" data-n="2" data-name="Papan kapur">
         <div class="pv s2">
-          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <path class="dr yel" d="M9,60 Q40,56 80,60"/>
-            <path class="dr" d="M36,92 L36,118 Q36,121 39,121 L53,121 Q56,121 56,118 L56,92 Q56,88 51,88 L41,88 Q36,88 36,92 Z M41,88 L41,82 L51,82 L51,88 M60,84 l6,-3 M61,89 l7,0 M60,94 l6,3"/>
-            <path class="dr red" d="M26,78 L66,128 M66,78 L26,128"/>
-          </svg>
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
-          <p class="cap">setelah niat → tidak boleh!</p>
+          <span class="les">Pelajaran 1</span>
+          <div class="scA">
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path class="dr y" d="M9,64 Q40,60 80,64"/>
+              <path class="dr" d="M34,92 L34,122 Q34,125 37,125 L53,125 Q56,125 56,122 L56,92 Q56,88 51,88 L39,88 Q34,88 34,92 Z M40,88 L40,82 L50,82 L50,88 M60,84 l7,-3 M61,90 l8,0 M60,96 l7,3 M38,100 L52,100 M38,112 L52,112"/>
+            </svg>
+            <span class="q" style="left:14cqw;top:96cqw">?</span><span class="q" style="right:12cqw;top:118cqw;animation-delay:-1s">?</span>
+          </div>
+          <div class="scB">
+            <p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ <span>الزَّعْفَرَانُ</span></p>
+            <p class="tr">↳ za'faran = salah satu wewangian. Jangan dipakai setelah niat!</p>
+            <p class="src">— HR. Bukhari &amp; Muslim</p>
+          </div>
+          <div class="tray"></div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>02</i><h3>Papan kapur</h3></div>
         <p>Coretan kapur di papan tulis hijau, terasa seperti belajar di majelis.</p>
@@ -384,13 +589,22 @@
 
       <article class="st" data-n="3" data-name="Sketsa menyala">
         <div class="pv s3">
-          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <path class="g" d="M28,88 L46,82 L62,88 L44,94 Z M28,88 L28,116 L44,122 L44,94 M44,122 L62,116 L62,88 M28,92 L44,98 L62,92"/>
-            <path class="g" d="M11,128 a34,9 0 1,0 68,0 a34,9 0 1,0 -68,0"/>
-            <path class="g p" d="M70,62 L70,74 Q70,76 72,76 L78,76 Q80,76 80,74 L80,62 Q80,60 77,60 L73,60 Q70,60 70,62 Z M73,60 L73,57 L77,57 L77,60"/>
-          </svg>
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
-          <p class="cap"><span>Setelah niat, <b>wewangian</b> dilarang.</span></p>
+          <div class="moon"></div>
+          <div class="floor"></div>
+          <div class="scA">
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path class="g" d="M28,88 L46,82 L62,88 L44,94 Z M28,88 L28,116 L44,122 L44,94 M44,122 L62,116 L62,88 M28,92 L44,98 L62,92 M36,118 L36,106 L40,107.5 L40,119.5"/>
+              <path class="g p" d="M68,62 L68,76 Q68,78 70,78 L78,78 Q80,78 80,76 L80,62 Q80,60 77,60 L71,60 Q68,60 68,62 Z M71,60 L71,56 L77,56 L77,60 M83,58 l3,-2 M83,62 l4,0"/>
+            </svg>
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+          </div>
+          <div class="scB">
+            <p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p>
+            <div class="ln"></div>
+            <p class="tr">Jangan pakai kain yang terkena <b>wewangian</b>.</p>
+            <p class="src">HR. BUKHARI &amp; MUSLIM</p>
+          </div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>03</i><h3>Sketsa menyala</h3></div>
         <p>Garis yang menyala di latar gelap, digambar sedikit demi sedikit.</p>
@@ -412,8 +626,17 @@
             <polygon points="73,98 76,101 73,104 70,101" fill="#2e2a26"/>
             <polygon points="68,117 73,104 78,117" fill="#f1f1f1"/><polygon points="73,104 78,117 73,117" fill="#c9c9c9"/>
           </svg>
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
-          <div class="box"><small>Pembimbing</small><span>Setelah niat ihram, wewangian dilarang.</span></div>
+          <div class="fog"></div>
+          <div class="scA">
+            <p class="logo">UMRAH<small>BAB 1 · IHRAM</small></p>
+            <p class="q">Bolehkah pakai parfum saat ihram?</p>
+            <p class="start">TEKAN START</p>
+          </div>
+          <div class="scB">
+            <div class="menu"><b>▶</b> Pakai parfum <span class="x">✗</span><br>&nbsp;&nbsp; Tidak jadi</div>
+            <div class="box"><small>Pembimbing</small><span class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</span><span>Setelah niat, wewangian dilarang.</span></div>
+          </div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>04</i><h3>3D retro (era PS2)</h3></div>
         <p>Dunia 3D sederhana dengan kotak dialog seperti game lama. Penjelasan datang dari tokoh pembimbing, tanpa wajah detail.</p>
@@ -423,21 +646,34 @@
 
       <article class="st" data-n="5" data-name="Komik">
         <div class="pv s5">
-          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs><pattern id="ht" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#4fb3e8"/></pattern></defs>
-            <rect x="4" y="4" width="82" height="80" fill="#8fd8ff" stroke="#111" stroke-width="1.6"/>
-            <rect x="4" y="4" width="82" height="80" fill="url(#ht)"/>
-            <path d="M14,84 L18,62 Q26,56 34,62 L38,84 Z" fill="#fff" stroke="#111" stroke-width="1.2"/>
-            <circle cx="26" cy="51" r="7" fill="#f2c89b" stroke="#111" stroke-width="1.2"/>
-            <g class="shake"><rect x="40" y="58" width="8" height="12" rx="1" fill="#ff7ab6" stroke="#111" stroke-width="1"/><rect x="42" y="54" width="4" height="4" fill="#ffd84d" stroke="#111" stroke-width="1"/></g>
-            <rect x="4" y="88" width="82" height="68" fill="#fff" stroke="#111" stroke-width="1.6"/>
-            <g class="pop">
-              <polygon points="45,100 50,110 61,104 57,115 70,118 58,124 64,136 52,130 45,141 40,130 27,135 33,124 21,118 33,114 29,103 40,110" fill="#e5484d" stroke="#111" stroke-width="1.2"/>
-              <text x="45.5" y="124" text-anchor="middle" font-family="Bangers, cursive" font-size="9" fill="#ffd84d" stroke="#111" stroke-width=".5">STOP!</text>
-            </g>
-          </svg>
-          <div class="bub">BOLEHKAH PAKAI PARFUM SAAT IHRAM?!</div>
-          <div class="nar">SETELAH NIAT IHRAM…</div>
+          <div class="scA">
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><pattern id="ht2" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#4fb3e8"/></pattern></defs>
+              <rect x="4" y="4" width="82" height="88" fill="#8fd8ff" stroke="#111" stroke-width="1.6"/>
+              <rect x="4" y="4" width="82" height="88" fill="url(#ht2)"/>
+              <path d="M12,92 L17,66 Q26,59 35,66 L40,92 Z" fill="#fff" stroke="#111" stroke-width="1.2"/>
+              <path d="M17,70 L35,84" stroke="#111" stroke-width=".8"/>
+              <circle cx="26" cy="54" r="7.5" fill="#f2c89b" stroke="#111" stroke-width="1.2"/>
+              <g class="shake"><rect x="42" y="60" width="9" height="13" rx="1" fill="#ff7ab6" stroke="#111" stroke-width="1"/><rect x="44.5" y="56" width="4" height="4" fill="#ffd84d" stroke="#111" stroke-width="1"/><path d="M53,58 l4,-3 M54,63 l5,0 M53,68 l4,3" stroke="#111" stroke-width=".9"/></g>
+              <rect x="4" y="96" width="82" height="60" fill="#fff" stroke="#111" stroke-width="1.6"/>
+              <path d="M10,150 L22,112 M22,150 L34,104 M70,150 L80,116" stroke="#e8e8e8" stroke-width="2"/>
+            </svg>
+            <div class="bub">BOLEH PAKAI PARFUM SAAT IHRAM?!</div>
+            <p class="think">HMM…</p>
+          </div>
+          <div class="scB">
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect x="4" y="4" width="82" height="152" fill="#fff" stroke="#111" stroke-width="1.6"/>
+              <path d="M45,62 L8,30 M45,62 L82,24 M45,62 L86,70 M45,62 L4,84 M45,62 L30,6 M45,62 L64,6" stroke="#ffd84d" stroke-width="2.5"/>
+              <g class="burst">
+                <polygon points="45,36 51,48 64,41 59,54 74,58 60,65 67,79 53,72 45,85 39,72 24,78 31,65 17,58 31,53 26,40 39,47" fill="#e5484d" stroke="#111" stroke-width="1.2"/>
+                <text x="45.5" y="65" text-anchor="middle" font-family="Bangers, cursive" font-size="11" fill="#ffd84d" stroke="#111" stroke-width=".6">STOP!</text>
+              </g>
+            </svg>
+            <div class="nar">SETELAH NIAT IHRAM…</div>
+            <div class="scroll"><p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p><p>JANGAN PAKAI KAIN BERWEWANGIAN!</p></div>
+          </div>
+          <div class="dots dk"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>05</i><h3>Komik</h3></div>
         <p>Panel komik, balon kata, dan efek "STOP!". Ramai dan ekspresif.</p>
@@ -447,19 +683,28 @@
 
       <article class="st" data-n="6" data-name="Vektor datar">
         <div class="pv s6">
-          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <circle class="sun" cx="70" cy="66" r="9" fill="#f2c46d"/>
-            <path d="M0,118 C20,106 40,112 58,108 C72,105 82,108 90,104 L90,160 L0,160Z" fill="#7fae8f"/>
-            <path d="M0,128 C25,118 55,126 90,116 L90,160 L0,160Z" fill="#1f5a4a"/>
-            <rect x="18" y="76" width="30" height="36" rx="1.5" fill="#1b1b1b"/>
-            <rect x="18" y="82" width="30" height="4" fill="#c9a048"/>
-            <rect x="28" y="96" width="9" height="16" rx="1" fill="#c9a048" opacity=".6"/>
-            <g class="btl"><rect x="62" y="96" width="12" height="17" rx="2.5" fill="#ea4c89"/><rect x="65" y="91" width="6" height="5" rx="1" fill="#c9a048"/><rect x="64" y="100" width="2" height="9" rx="1" fill="#fff" opacity=".5"/></g>
-            <g class="stp"><circle cx="68" cy="104" r="11" fill="none" stroke="#e5484d" stroke-width="2"/><path d="M60,112 L76,96" stroke="#e5484d" stroke-width="2"/></g>
-          </svg>
-          <span class="u" style="color:#1f5a4a">@febriian_alief</span>
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
-          <p class="sb"><span>Setelah niat, <mark>wewangian</mark> dilarang.</span></p>
+          <span class="u">@febriian_alief</span>
+          <div class="scA">
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle class="sun" cx="70" cy="66" r="9" fill="#f2c46d"/>
+              <path d="M0,118 C20,106 40,112 58,108 C72,105 82,108 90,104 L90,160 L0,160Z" fill="#7fae8f"/>
+              <path d="M0,128 C25,118 55,126 90,116 L90,160 L0,160Z" fill="#1f5a4a"/>
+              <rect x="18" y="76" width="30" height="36" rx="1.5" fill="#1b1b1b"/>
+              <rect x="18" y="82" width="30" height="4" fill="#c9a048"/>
+              <rect x="28" y="96" width="9" height="16" rx="1" fill="#c9a048" opacity=".6"/>
+              <g class="btl"><rect x="62" y="96" width="12" height="17" rx="2.5" fill="#ea4c89"/><rect x="65" y="91" width="6" height="5" rx="1" fill="#c9a048"/><rect x="64" y="100" width="2" height="9" rx="1" fill="#fff" opacity=".5"/></g>
+              <g class="stp"><circle cx="68" cy="104" r="11" fill="none" stroke="#e5484d" stroke-width="2"/><path d="M60,112 L76,96" stroke="#e5484d" stroke-width="2"/></g>
+            </svg>
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+          </div>
+          <div class="scB">
+            <div class="card">
+              <p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p>
+              <p>HR. Bukhari &amp; Muslim</p>
+              <div class="chips"><span class="ok">Sebelum niat <b>✓</b></span><span class="no">Setelah niat <b>✗</b></span></div>
+            </div>
+          </div>
+          <div class="dots dk"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>06</i><h3>Vektor datar</h3></div>
         <p>Ilustrasi datar yang bersih dan rapi. Paling aman untuk semua usia.</p>
@@ -469,17 +714,25 @@
 
       <article class="st" data-n="7" data-name="Minimalis tinta (gaya Dan Koe)">
         <div class="pv s7">
-          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#111" stroke-linecap="round">
-            <circle cx="45" cy="104" r="24" stroke-width=".5"/>
-            <path d="M4,120 L86,120" stroke-width=".5"/>
-            <path d="M14,126 l8,0 M30,131 l14,0 M54,127 l10,0 M66,134 l12,0" stroke-width=".3"/>
-            <circle cx="45" cy="106.5" r="1.7" fill="#111" stroke="none"/>
-            <path d="M42.6,120 L43.4,109.5 Q45,108.4 46.6,109.5 L47.4,120 Z" fill="#fff" stroke-width=".45"/>
-            <path d="M43.6,110 L46.8,116" stroke-width=".35"/>
-            <path d="M47.4,120 L70,121.5" stroke-width=".3" stroke-dasharray="1 1"/>
-          </svg>
-          <p class="t">Wangi itu indah. <em>Tapi tidak setelah niat.</em></p>
+          <div class="scA">
+            <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#111" stroke-linecap="round">
+              <circle cx="45" cy="104" r="24" stroke-width=".5"/>
+              <path d="M4,120 L86,120" stroke-width=".5"/>
+              <path d="M14,126 l8,0 M30,131 l14,0 M54,127 l10,0 M66,134 l12,0" stroke-width=".3"/>
+              <circle cx="45" cy="106.5" r="1.7" fill="#111" stroke="none"/>
+              <path d="M42.6,120 L43.4,109.5 Q45,108.4 46.6,109.5 L47.4,120 Z" fill="#fff" stroke-width=".45"/>
+              <path d="M43.6,110 L46.8,116" stroke-width=".35"/>
+              <path d="M47.4,120 L70,121.5" stroke-width=".3" stroke-dasharray="1 1"/>
+            </svg>
+            <p class="ttl">Wangi itu indah. <em>Tapi tidak setelah niat.</em></p>
+          </div>
+          <div class="scB">
+            <p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p>
+            <hr>
+            <p class="tr">“Jangan memakai pakaian yang terkena za'faran.”</p>
+          </div>
           <p class="foot">Fikih Umrah</p>
+          <div class="dots dk"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>07</i><h3>Minimalis tinta (gaya Dan Koe)</h3></div>
         <p>Kertas krem, garis tinta tipis, dan satu kalimat besar. Tenang dan berkelas.</p>
@@ -489,11 +742,17 @@
 
       <article class="st" data-n="8" data-name="CGI motion">
         <div class="pv s8">
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
           <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
-          <div class="shd"></div>
-          <div class="bt"><div class="cp"></div><div class="nk"></div><div class="bd"></div></div>
-          <p class="cap">Setelah niat, <b>dilarang.</b></p>
+          <div class="scA">
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+            <div class="shd"></div>
+            <div class="bt"><div class="cp"></div><div class="nk"></div><div class="bd"></div></div>
+          </div>
+          <div class="scB">
+            <div class="glass"><p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p><p>Setelah niat, wewangian dilarang.</p></div>
+            <span class="xorb">✕</span>
+          </div>
+          <div class="dots dk"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>08</i><h3>CGI motion</h3></div>
         <p>Benda 3D mengkilap yang melayang, seperti iklan produk.</p>
@@ -503,10 +762,17 @@
 
       <article class="st" data-n="9" data-name="Balok mainan (gaya Lego)">
         <div class="pv s9">
-          <p class="t">Bolehkah pakai parfum saat ihram?</p>
           <div class="bp"></div>
-          <div class="kb"><div class="br"></div><div class="br"></div><div class="br gd"></div><div class="br"></div></div>
-          <div class="mf"><i class="hd"></i><i class="tr"></i><i class="lg"></i></div>
+          <div class="scA">
+            <p class="ttl">Bolehkah pakai parfum saat ihram?</p>
+            <div class="kb"><div class="br"></div><div class="br"></div><div class="br gd"></div><div class="br"></div></div>
+            <div class="mf"><i class="hd"></i><i class="tr"></i><i class="lg"></i></div>
+          </div>
+          <div class="scB">
+            <div class="tile"><p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p><p>HR. Bukhari &amp; Muslim</p></div>
+            <div class="row"><b class="g">SEBELUM ✓</b><b class="r">SESUDAH ✗</b></div>
+          </div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>09</i><h3>Balok mainan (gaya Lego)</h3></div>
         <p>Semua dibangun dari balok mainan. Lucu dan mudah diingat.</p>
@@ -516,12 +782,20 @@
 
       <article class="st" data-n="10" data-name="3D sinematik (gaya ZackD Films)">
         <div class="pv s10">
-          <div class="fab"></div>
-          <div class="stn"></div>
-          <div class="rip"></div>
-          <div class="drop"></div>
-          <p class="zc">Satu tetes parfum <b>setelah niat…</b></p>
-          <p class="zs">bisa wajib fidyah</p>
+          <div class="scA">
+            <div class="fab"></div>
+            <div class="rip"></div>
+            <div class="drop"></div>
+            <div class="vig"></div>
+            <p class="zc">Satu tetes parfum <b>setelah niat…</b></p>
+          </div>
+          <div class="scB">
+            <p class="lbl2">DALILNYA:</p>
+            <p class="ar">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p>
+            <p class="tr">“Jangan pakai kain yang terkena za'faran.” — HR. Bukhari &amp; Muslim</p>
+            <p class="zs">Sengaja pakai? <b>Wajib fidyah.</b></p>
+          </div>
+          <div class="dots"><i></i><i></i></div>
         </div>
         <div class="lbl"><i>10</i><h3>3D sinematik (gaya ZackD Films)</h3></div>
         <p>Close-up 3D yang dramatis dengan teks besar di tengah. Gaya yang sering viral.</p>
@@ -741,8 +1015,33 @@ Rujukan: (nama kitab atau fatwa)
 </footer>
 
 <script>
+  var dlg = document.createElement('dialog');
+  dlg.className = 'zoom';
+  dlg.setAttribute('aria-label', 'Contoh gaya video diperbesar');
+  document.body.appendChild(dlg);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   document.querySelectorAll('.st').forEach(function (el) {
-    var msg = 'Assalamu\'alaikum, saya pilih gaya video nomor ' + el.dataset.n + ' (' + el.dataset.name + ').';
+    var pv = el.querySelector('.pv');
+    pv.setAttribute('role', 'button');
+    pv.setAttribute('tabindex', '0');
+    pv.setAttribute('aria-label', 'Perbesar contoh gaya ' + el.dataset.name);
+    function open() {
+      dlg.innerHTML = '';
+      var big = pv.cloneNode(true);
+      big.removeAttribute('role'); big.removeAttribute('tabindex'); big.removeAttribute('aria-label');
+      var cap = document.createElement('div');
+      cap.className = 'cap2';
+      cap.innerHTML = '<span></span><button type="button">Tutup</button>';
+      cap.firstChild.textContent = el.dataset.name;
+      cap.lastChild.addEventListener('click', function () { dlg.close(); });
+      dlg.appendChild(big); dlg.appendChild(cap);
+      dlg.showModal();
+    }
+    pv.addEventListener('click', open);
+    pv.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+  document.querySelectorAll('.st').forEach(function (el) {
+    var msg = el.dataset.n ? 'Assalamu\'alaikum, saya pilih gaya video nomor ' + el.dataset.n + ' (' + el.dataset.name + ').' : 'Assalamu\'alaikum, saya pilih gaya video ' + el.dataset.name + '.';
     el.querySelector('.pick a').href = 'https://wa.me/6281311506025?text=' + encodeURIComponent(msg);
   });
 </script>
