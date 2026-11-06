@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Teknis Video Fikih Umrah · Sidi Alief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Amiri:wght@400;700&family=Caveat:wght@600;700&family=Press+Start+2P&family=Bangers&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root {
+    --ink: #0d0c22; --ink-2: #3d3d4e; --muted: #6e6d7a;
+    --pink: #ea4c89; --pink-dark: #d33a75; --pink-soft: #fdeef4;
+    --line: #e7e7e9; --surface: #f3f3f4; --soft: #faf9fb; --white: #fff;
+    --v-cream: #f6f1e7; --v-green: #1f5a4a; --v-gold: #c9a048; --v-hl: #ffd84d;
+    --font: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+    --head: "Bricolage Grotesque", "Mona Sans", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; }
+  b, strong { font-weight: 600; }
+  :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3, .logo { font-family: var(--head); }
+
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .logo { font-size: 22px; font-weight: 800; letter-spacing: -.05em; text-decoration: none; }
+  .logo span { color: var(--pink); }
+  .nav .links { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
+  .nav .links a { text-decoration: none; }
+  .nav .links a:hover { color: var(--muted); }
+
+  .hero { padding: 56px 0 72px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9999px; padding: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; margin-bottom: 24px; }
+  .seg span { padding: 6px 14px; border-radius: 9999px; color: var(--muted); }
+  .seg span.on { color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 2px 6px rgba(13,12,34,.06); }
+  h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.02; letter-spacing: -.045em; max-width: 13em; }
+  h1 em { font-style: normal; color: var(--pink); }
+  .lead { font-size: 19px; color: var(--ink-2); margin-top: 18px; max-width: 38em; }
+  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
+  .fact { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .fact small { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .fact b { display: block; font-family: var(--head); font-size: 22px; font-weight: 700; letter-spacing: -.03em; margin-top: 4px; }
+
+  section { padding: 88px 0; }
+  .soft { background: var(--soft); }
+  .kicker { display: inline-block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--pink); margin-bottom: 10px; }
+  h2 { font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; line-height: 1.06; letter-spacing: -.035em; }
+  .sub { color: var(--muted); font-size: 17px; margin-top: 12px; max-width: 40em; }
+
+  .tbl-box { margin-top: 32px; border: 1px solid var(--line); border-radius: 16px; overflow-x: auto; background: var(--white); }
+  .tbl { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; }
+  .tbl th, .tbl td { padding: 15px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .tbl tr:last-child td, .tbl tr:last-child th { border-bottom: 0; }
+  .tbl thead th { font-size: 13px; font-weight: 600; color: var(--muted); background: var(--soft); white-space: nowrap; }
+  .tbl tbody th { font-weight: 600; width: 30%; }
+  .tbl .d { color: var(--muted); font-size: 14px; }
+  .tbl .nw { white-space: nowrap; }
+  .tbl tr.first td { background: #fff8fb; }
+  .pill { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 9999px; font-size: 12.5px; font-weight: 600; white-space: nowrap; background: var(--surface); }
+  .pill.pink { background: var(--pink); color: var(--white); }
+  .pill.soft { background: var(--pink-soft); color: var(--pink-dark); }
+
+  /* Kerangka video */
+  .frame-grid { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px; align-items: start; margin-top: 40px; }
+  .frame { position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: var(--v-cream); box-shadow: 0 24px 48px rgba(13,12,34,.16); }
+  .frame .art { position: absolute; left: 50%; top: 36%; transform: translate(-50%, -50%); width: 64%; aspect-ratio: 1; }
+  .frame .user { position: absolute; top: 7%; left: 7%; font-size: 10px; font-weight: 600; color: var(--v-green); opacity: .8; }
+  .frame .hook { position: absolute; top: 12%; left: 7%; right: 7%; font-family: var(--head); font-weight: 800; font-size: 21px; line-height: 1.05; letter-spacing: -.03em; color: var(--v-green); }
+  .frame .arab { position: absolute; top: 55%; left: 7%; right: 17%; text-align: center; font-family: "Amiri", serif; font-size: 15px; line-height: 1.55; direction: rtl; color: var(--v-green); }
+  .frame .subt { position: absolute; top: 68.5%; left: 7%; right: 17%; text-align: center; }
+  .frame .subt span { display: inline; background: var(--ink); color: #fff; font-weight: 700; font-size: 13.5px; line-height: 1.75; padding: 3px 6px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .frame .subt mark { background: var(--v-hl); color: var(--ink); border-radius: 4px; padding: 0 3px; }
+  .frame .safe { position: absolute; left: 0; right: 0; bottom: 0; height: 19%; background: repeating-linear-gradient(135deg, rgba(234,76,137,.14) 0 8px, rgba(234,76,137,.04) 8px 16px); border-top: 1.5px dashed var(--pink); display: grid; place-items: center; font-size: 11px; font-weight: 600; color: var(--pink-dark); }
+  .frame .safe-r { position: absolute; right: 0; top: 46%; bottom: 19%; width: 15%; background: repeating-linear-gradient(135deg, rgba(234,76,137,.14) 0 8px, rgba(234,76,137,.04) 8px 16px); border-left: 1.5px dashed var(--pink); }
+  .legend { display: grid; gap: 14px; }
+  .legend li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .legend i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 13px; font-weight: 700; background: var(--ink); color: #fff; }
+  .legend li.warn i { background: var(--pink); }
+  .legend b { display: block; }
+  .legend span { color: var(--muted); font-size: 15px; }
+
+  /* Durasi */
+  .timeline { display: flex; margin-top: 36px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+  .timeline div { padding: 14px 12px; font-size: 13px; border-right: 1px solid rgba(255,255,255,.4); min-width: 0; }
+  .timeline div:last-child { border-right: 0; }
+  .timeline b { display: block; font-size: 14px; }
+  .timeline small { opacity: .8; }
+  .s1 { flex: 5; background: var(--pink); color: #fff; }
+  .s2 { flex: 12; background: #f28fb5; color: var(--ink); }
+  .s3 { flex: 58; background: var(--surface); }
+  .s4 { flex: 15; background: var(--pink-soft); }
+  .s5 { flex: 10; background: var(--ink); color: #fff; }
+
+  /* Palet */
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+  .sw { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--white); }
+  .sw div { height: 84px; }
+  .sw p { padding: 10px 14px; font-size: 13px; }
+  .sw p b { display: block; font-size: 14px; }
+  .sw p span { color: var(--muted); }
+
+  /* Caption */
+  .caption { margin-top: 32px; background: var(--ink); color: #eceaf2; border-radius: 16px; padding: 26px 28px; font-size: 15px; line-height: 1.7; white-space: pre-wrap; font-family: var(--font); overflow-x: auto; }
+  .caption em { font-style: normal; color: #ff8fbb; }
+
+  .note { margin-top: 22px; display: block; background: var(--pink-soft); border-radius: 12px; padding: 16px 18px; color: var(--ink-2); font-size: 15px; }
+  .note b { color: var(--ink); }
+
+  .checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin-top: 32px; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-2); }
+  .checklist li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 6px; border: 1.5px solid var(--pink); background: var(--white); }
+
+  /* Pilihan gaya video */
+  .styles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px 20px; margin-top: 40px; }
+  .st { display: flex; flex-direction: column; }
+  .pv { position: relative; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; container-type: inline-size; box-shadow: 0 10px 24px rgba(13,12,34,.12); }
+  .pv svg.a { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .pv .t { position: absolute; left: 8cqw; right: 8cqw; top: 13cqw; font-family: var(--head); font-weight: 800; font-size: 10.5cqw; line-height: 1.02; letter-spacing: -.03em; }
+  .pv .u { position: absolute; left: 8cqw; top: 5cqw; font-size: 4.2cqw; font-weight: 600; opacity: .7; }
+  .pv .sb { position: absolute; left: 8cqw; right: 8cqw; bottom: 24cqw; text-align: center; font-size: 6.2cqw; font-weight: 700; line-height: 1.7; }
+  .pv .sb span { background: #111; color: #fff; padding: .5cqw 2cqw; border-radius: 1.5cqw; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .pv .sb mark { background: var(--v-hl); color: #111; border-radius: 1cqw; padding: 0 1cqw; }
+  .st .lbl { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+  .st .lbl i { font-style: normal; font-size: 12px; font-weight: 700; color: var(--pink); }
+  .st h3 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+  .st p { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .st .fit { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
+  .st .fit b { color: var(--ink); }
+  .st .rec { display: inline-flex; align-self: flex-start; margin-top: 8px; font-size: 11.5px; font-weight: 600; background: var(--pink-soft); color: var(--pink-dark); border-radius: 9999px; padding: 3px 10px; }
+  .st .pick { margin-top: auto; padding-top: 14px; }
+  .st .pick a { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 40px; border-radius: 9999px; border: 1.5px solid var(--line); font-size: 13.5px; font-weight: 600; text-decoration: none; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
+  .st .pick a:hover { border-color: var(--ink); }
+  .st.top .pick a { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pv { isolation: isolate; flex: none; }
+  .pv .cap { position: absolute; left: 7cqw; right: 7cqw; text-align: center; }
+  @keyframes a-blink { 50% { opacity: 0; } }
+  @keyframes a-draw { 0% { stroke-dashoffset: 160; opacity: 1; } 45%, 88% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes a-fade { 0% { opacity: 0; transform: translateY(2cqw); } 20%, 100% { opacity: 1; transform: none; } }
+
+  /* 1 Pixel art */
+  .s1 { background: linear-gradient(#3d7fd6, #79b4ef 50%, #cfe8fb 74%); }
+  .s1 svg { shape-rendering: crispEdges; }
+  .s1 .cl { animation: a-drift 14s linear infinite; }
+  .s1 .walk { animation: a-walk 9s steps(36) infinite; }
+  @keyframes a-drift { from { transform: translateX(-30px); } to { transform: translateX(100px); } }
+  @keyframes a-walk { from { transform: translateX(-8px); } to { transform: translateX(96px); } }
+  .s1 .t { font-family: "Press Start 2P", monospace; font-weight: 400; font-size: 4.6cqw; line-height: 1.7; letter-spacing: 0; color: #fff; text-shadow: .7cqw .7cqw 0 #1d3f73; }
+  .s1 .box { position: absolute; left: 6cqw; right: 6cqw; bottom: 7cqw; background: #16163a; border: .9cqw solid #fff; box-shadow: 0 0 0 .9cqw #16163a; padding: 3cqw; color: #fff; font-family: "Press Start 2P", monospace; font-size: 3.6cqw; line-height: 1.8; }
+  .s1 .box b { color: #ffd84d; font-weight: 400; }
+  .s1 .box::after { content: "▼"; position: absolute; right: 2.5cqw; bottom: 1cqw; font-size: 3cqw; animation: a-blink 1s steps(2) infinite; }
+
+  /* 2 Papan kapur */
+  .s2 { background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.08), transparent 55%), #22382c; box-shadow: inset 0 0 0 7px #8a5a2e, inset 0 0 0 9px #5e3b1c, 0 10px 24px rgba(13,12,34,.12); }
+  .s2 .t { font-family: "Caveat", cursive; font-weight: 700; font-size: 12.5cqw; line-height: .95; letter-spacing: 0; color: rgba(255,255,255,.93); text-shadow: 0 0 .6cqw rgba(255,255,255,.35); top: 11cqw; }
+  .s2 .dr { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 160; animation: a-draw 5s ease-in-out infinite; }
+  .s2 .dr.red { stroke: #ff9a9a; stroke-width: 1.6; animation-delay: .8s; }
+  .s2 .dr.yel { stroke: #ffe58a; }
+  .s2 .cap { bottom: 10cqw; font-family: "Caveat", cursive; font-weight: 700; font-size: 9.5cqw; color: #ffe58a; }
+
+  /* 3 Sketsa menyala */
+  .s3 { background: radial-gradient(circle at 50% 62%, #16163a 0, #05050a 70%); }
+  .s3 .t { color: #fff; font-weight: 700; text-shadow: 0 0 2cqw rgba(125,249,255,.8); }
+  .s3 .g { fill: none; stroke: #7df9ff; stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 1px #7df9ff) drop-shadow(0 0 3px #7df9ff); stroke-dasharray: 220; animation: a-draw3 6s ease-in-out infinite; }
+  .s3 .g.p { stroke: #ff4fd8; filter: drop-shadow(0 0 1px #ff4fd8) drop-shadow(0 0 3px #ff4fd8); animation-delay: 1.2s; }
+  @keyframes a-draw3 { 0% { stroke-dashoffset: 220; opacity: 1; } 50%, 90% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: .15; } }
+  .s3 .cap { bottom: 12cqw; font-size: 6cqw; font-weight: 700; color: #fff; line-height: 1.6; }
+  .s3 .cap span { border: .4cqw solid #7df9ff; border-radius: 2cqw; padding: 1cqw 2.5cqw; box-shadow: 0 0 2cqw rgba(125,249,255,.5); }
+  .s3 .cap b { color: #ff7ae2; text-shadow: 0 0 2cqw #ff4fd8; }
+
+  /* 4 3D retro */
+  .s4 { background: linear-gradient(#6f86a3 0, #b7b3a6 55%, #5d584c 100%); }
+  .s4 svg.a { animation: a-cam 9s ease-in-out infinite alternate; transform-origin: 50% 65%; }
+  @keyframes a-cam { to { transform: scale(1.1) translateX(-3%); } }
+  .s4::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 30%, rgba(225,220,205,.4) 55%, transparent 80%); pointer-events: none; }
+  .s4 .t { color: #fff; font-family: var(--font); font-weight: 800; font-style: italic; text-transform: uppercase; font-size: 8.4cqw; letter-spacing: -.02em; text-shadow: .5cqw .5cqw 0 #1a2340; z-index: 2; }
+  .s4 .box { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; bottom: 7cqw; padding: 3cqw 4cqw; border-radius: 2.5cqw; background: linear-gradient(rgba(30,50,140,.9), rgba(10,20,70,.94)); border: .6cqw solid #cfd8ff; color: #fff; font-size: 4.6cqw; line-height: 1.4; box-shadow: 0 1cqw 3cqw rgba(0,0,0,.4); }
+  .s4 .box small { display: block; color: #ffd84d; font-weight: 700; font-size: 3.8cqw; }
+  .s4 .box span { display: block; animation: a-type 5s steps(24) infinite; }
+  @keyframes a-type { 0% { clip-path: inset(0 100% 0 0); } 55%, 100% { clip-path: inset(0 0 0 0); } }
+
+  /* 5 Komik */
+  .s5 { background: #ffe14d; }
+  .s5 .bub { position: absolute; top: 9cqw; left: 32cqw; right: 6cqw; background: #fff; border: .9cqw solid #111; border-radius: 6cqw; padding: 3cqw; font-family: "Bangers", cursive; font-size: 6.6cqw; line-height: 1.05; letter-spacing: .02em; color: #111; text-align: center; }
+  .s5 .bub::after { content: ""; position: absolute; left: 6cqw; bottom: -4cqw; width: 5cqw; height: 5cqw; background: #fff; border-right: .9cqw solid #111; border-bottom: .9cqw solid #111; transform: skewX(30deg) rotate(30deg); }
+  .s5 .nar { position: absolute; top: 57%; left: 6cqw; background: #ffe14d; border: .8cqw solid #111; padding: 1cqw 2.5cqw; font-family: "Bangers", cursive; font-size: 5.4cqw; letter-spacing: .03em; color: #111; z-index: 2; }
+  .s5 .pop { transform-box: fill-box; transform-origin: center; animation: a-pop 1.6s ease-in-out infinite; }
+  @keyframes a-pop { 0%, 100% { transform: scale(1) rotate(-4deg); } 50% { transform: scale(1.12) rotate(3deg); } }
+  .s5 .shake { transform-box: fill-box; transform-origin: center; animation: a-shake 1.6s ease-in-out infinite; }
+  @keyframes a-shake { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+
+  /* 6 Vektor datar */
+  .s6 { background: #f6f1e7; }
+  .s6 .sun { animation: a-sun 6s ease-in-out infinite alternate; }
+  @keyframes a-sun { from { transform: translateY(8px); } to { transform: translateY(-4px); } }
+  .s6 .btl { animation: a-slide 4s ease-out infinite; }
+  @keyframes a-slide { 0% { transform: translateX(30px); opacity: 0; } 20%, 100% { transform: none; opacity: 1; } }
+  .s6 .stp { transform-box: fill-box; transform-origin: center; animation: a-stamp 4s ease-out infinite; }
+  @keyframes a-stamp { 0%, 35% { transform: scale(2.2); opacity: 0; } 45%, 100% { transform: scale(1); opacity: 1; } }
+  .s6 .t { color: #1f5a4a; }
+
+  /* 7 Minimalis tinta */
+  .s7 { background: #efe9dc; background-image: radial-gradient(rgba(0,0,0,.07) .5px, transparent .8px); background-size: 4px 4px; }
+  .s7 svg.a { animation: a-zoom 12s ease-in-out infinite alternate; transform-origin: 50% 70%; }
+  @keyframes a-zoom { to { transform: scale(1.08); } }
+  .s7 .t { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 12.5cqw; line-height: .98; letter-spacing: -.01em; color: #111; animation: a-fade 6s ease-out infinite; }
+  .s7 .t em { font-style: italic; color: #6b5a3c; }
+  .s7 .foot { position: absolute; left: 0; right: 0; bottom: 8cqw; text-align: center; font-family: "Instrument Serif", Georgia, serif; font-size: 4.4cqw; letter-spacing: .25em; text-transform: uppercase; color: #6b5a3c; }
+
+  /* 8 CGI motion */
+  .s8 { background: radial-gradient(circle at 50% 42%, #fff6e8 0, #f2d9b8 42%, #c99a6a 100%); }
+  .s8 .t { color: #3a1f0a; z-index: 2; }
+  .s8 .bt { position: absolute; left: 50%; top: 56%; width: 28cqw; animation: a-float 4s ease-in-out infinite; z-index: 2; }
+  @keyframes a-float { 0%, 100% { transform: translate(-50%, -50%) rotate(-7deg); } 50% { transform: translate(-50%, -60%) rotate(7deg); } }
+  .s8 .bt .cp { width: 12cqw; height: 8cqw; margin: 0 auto; border-radius: 1.6cqw 1.6cqw .6cqw .6cqw; background: linear-gradient(90deg, #7a5618, #f6d77e 35%, #fff4cc 45%, #b8892e 70%, #5e4313); }
+  .s8 .bt .nk { width: 6cqw; height: 2.6cqw; margin: 0 auto; background: linear-gradient(90deg, #8a7a6a, #efe7dc, #8a7a6a); }
+  .s8 .bt .bd { position: relative; height: 30cqw; border-radius: 4.5cqw; background: linear-gradient(100deg, transparent 10%, rgba(255,255,255,.75) 14%, transparent 22%), linear-gradient(90deg, #a85a22, #f2a65a 30%, #ffd9a8 46%, #e8893c 66%, #7a3e14); box-shadow: inset 0 -3cqw 4cqw rgba(90,40,10,.45), inset 0 2cqw 3cqw rgba(255,255,255,.35); }
+  .s8 .bt .bd::after { content: "ATTAR"; position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); font-size: 3.6cqw; font-weight: 700; letter-spacing: .3em; color: rgba(255,255,255,.9); }
+  .s8 .shd { position: absolute; left: 50%; top: 82%; width: 34cqw; height: 5cqw; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(rgba(70,35,10,.45), transparent 70%); animation: a-shd 4s ease-in-out infinite; }
+  @keyframes a-shd { 50% { transform: translateX(-50%) scale(.75); opacity: .6; } }
+  .s8 .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 10%, #f0c48a 40%, #9a5a24 100%); box-shadow: 0 2cqw 3cqw rgba(90,50,20,.3); animation: a-bob 3s ease-in-out infinite; }
+  .s8 .o1 { width: 8cqw; height: 8cqw; left: 12cqw; top: 46%; }
+  .s8 .o2 { width: 5cqw; height: 5cqw; right: 14cqw; top: 40%; animation-delay: -1s; }
+  .s8 .o3 { width: 6cqw; height: 6cqw; right: 10cqw; top: 66%; animation-delay: -2s; }
+  @keyframes a-bob { 50% { transform: translateY(-4cqw); } }
+  .s8 .cap { bottom: 7cqw; font-size: 5.8cqw; font-weight: 700; color: #3a1f0a; }
+  .s8 .cap b { background: #fff; border-radius: 1.5cqw; padding: 0 1.5cqw; }
+
+  /* 9 Balok mainan */
+  .s9 { background: linear-gradient(#5ec2f2, #a8e0fa); }
+  .s9 .t { color: #fff; text-shadow: 0 .8cqw 0 #1a5e8a; }
+  .s9 .bp { position: absolute; left: 0; right: 0; bottom: 0; height: 28%; background: radial-gradient(circle, #5fcf6e 34%, #2f9a40 38%, transparent 42%) 0 0 / 6cqw 6cqw, #3aa84a; box-shadow: inset 0 1.2cqw 0 #4fbf5e; }
+  .s9 .kb { position: absolute; left: 50%; bottom: 28%; width: 36cqw; transform: translateX(-50%); display: flex; flex-direction: column-reverse; }
+  .s9 .br { position: relative; height: 8cqw; margin-top: .4cqw; background: #1c1c1c; border-radius: .8cqw; box-shadow: inset -1cqw -1cqw 0 rgba(0,0,0,.45), inset 1cqw 1cqw 0 rgba(255,255,255,.12); animation: a-drop 6s cubic-bezier(.3,1.4,.5,1) infinite both; }
+  .s9 .br::before { content: ""; position: absolute; left: 1cqw; right: 1cqw; top: -2cqw; height: 2cqw; background: radial-gradient(ellipse at 50% 100%, #2c2c2c 60%, transparent 64%) 0 0 / 6.8cqw 2cqw repeat-x; }
+  .s9 .br.gd { height: 4cqw; background: #e2b33c; }
+  .s9 .br.gd::before { background-image: radial-gradient(ellipse at 50% 100%, #f2c85a 60%, transparent 64%); }
+  .s9 .br:nth-child(2) { animation-delay: .35s; }
+  .s9 .br:nth-child(3) { animation-delay: .7s; }
+  .s9 .br:nth-child(4) { animation-delay: 1.05s; }
+  @keyframes a-drop { 0% { transform: translateY(-70cqw); opacity: 0; } 12% { transform: none; opacity: 1; } 88% { transform: none; opacity: 1; } 100% { transform: none; opacity: 0; } }
+  .s9 .mf { position: absolute; right: 9cqw; bottom: 28%; width: 9cqw; display: grid; justify-items: center; animation: a-bob 1.2s ease-in-out infinite; }
+  .s9 .mf i { display: block; }
+  .s9 .mf .hd { width: 6cqw; height: 6cqw; border-radius: 1.4cqw; background: #f6c932; box-shadow: inset -1cqw 0 0 rgba(0,0,0,.12); }
+  .s9 .mf .tr { width: 9cqw; height: 7cqw; margin-top: .4cqw; background: #fff; clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%); }
+  .s9 .mf .lg { width: 8cqw; height: 6cqw; background: #fff; border-top: .5cqw solid #ddd; }
+
+  /* 10 3D sinematik */
+  .s10 { background: radial-gradient(ellipse at 50% 35%, #3a302a 0, #120e0c 60%, #000 100%); }
+  .s10 .fab { position: absolute; left: -25%; right: -25%; bottom: -6%; height: 52%; background: repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 .6cqw, transparent .6cqw 1.4cqw), repeating-linear-gradient(90deg, rgba(0,0,0,.07) 0 .6cqw, transparent .6cqw 1.4cqw), linear-gradient(#f2eee6, #b9b1a3); transform: perspective(120cqw) rotateX(42deg); transform-origin: 50% 100%; }
+  .s10::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 62%, transparent 40%, rgba(0,0,0,.7) 100%); pointer-events: none; z-index: 1; }
+  .s10 .drop { position: absolute; left: 50%; top: 34%; width: 6cqw; height: 8cqw; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 35% 30%, #fff 0 8%, #f3b65a 32%, #a8601c 78%); box-shadow: 0 0 3cqw rgba(243,182,90,.6); animation: a-fall 3s ease-in infinite; }
+  @keyframes a-fall { 0% { transform: translate(-50%, -14cqw) scale(.8); opacity: 0; } 15% { opacity: 1; } 58% { transform: translate(-50%, 40cqw) scale(1); opacity: 1; } 62%, 100% { transform: translate(-50%, 40cqw) scale(1.5, .3); opacity: 0; } }
+  .s10 .rip { position: absolute; left: 50%; top: 79%; width: 34cqw; height: 9cqw; margin-left: -17cqw; border: .6cqw solid rgba(243,182,90,.8); border-radius: 50%; animation: a-rip 3s ease-out infinite; }
+  @keyframes a-rip { 0%, 58% { transform: scale(0); opacity: 0; } 62% { transform: scale(.2); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+  .s10 .stn { position: absolute; left: 50%; top: 80%; width: 20cqw; height: 5cqw; margin-left: -10cqw; border-radius: 50%; background: radial-gradient(rgba(214,140,50,.75), transparent 70%); animation: a-stn 3s ease-out infinite; }
+  @keyframes a-stn { 0%, 58% { transform: scale(0); } 80%, 100% { transform: scale(1); } }
+  .s10 .zc { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; top: 14cqw; text-align: center; font-family: var(--font); font-weight: 800; font-size: 8.6cqw; line-height: 1.05; text-transform: uppercase; color: #fff; -webkit-text-stroke: 1.4cqw #000; paint-order: stroke fill; }
+  .s10 .zc b { color: #ffd84d; font-weight: 800; }
+  .s10 .zs { position: absolute; z-index: 2; left: 5cqw; right: 5cqw; bottom: 9cqw; text-align: center; font-weight: 800; font-size: 6cqw; text-transform: uppercase; color: #fff; -webkit-text-stroke: 1cqw #000; paint-order: stroke fill; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pv, .pv * { animation: none !important; }
+    .s2 .dr, .s3 .g { stroke-dashoffset: 0; }
+  }
+
+  footer { padding: 28px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .wrap { padding: 0 16px; }
+    .nav .wrap { height: 60px; }
+    .nav .links { display: none; }
+    .hero { padding: 32px 0 48px; }
+    .lead { font-size: 17px; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
+    .fact { padding: 14px 16px; }
+    .fact b { font-size: 19px; }
+    section { padding: 56px 0; }
+    .sub { font-size: 16px; }
+    .tbl { font-size: 14px; }
+    .tbl th, .tbl td { padding: 12px 14px; }
+    .tbl.stack thead { display: none; }
+    .tbl.stack tr { display: block; border-bottom: 1px solid var(--line); padding: 10px 0; }
+    .tbl.stack tr:last-child { border-bottom: 0; }
+    .tbl.stack th, .tbl.stack td { display: block; width: auto; border: 0; padding: 2px 14px; }
+    .frame-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .frame { width: 260px; margin: 0 auto; }
+    .timeline { flex-direction: column; }
+    .timeline div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.4); display: flex; justify-content: space-between; gap: 12px; }
+    .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .sw div { height: 60px; }
+    .caption { padding: 20px; font-size: 14px; }
+    .checklist { grid-template-columns: minmax(0, 1fr); }
+    .styles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; margin-top: 28px; }
+    .st h3 { font-size: 16px; }
+    .st p { font-size: 13px; }
+    .st .fit { font-size: 12.5px; }
+  }
+  @media (min-width: 861px) and (max-width: 1080px) {
+    .styles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="../">fikih umrah<span>.</span></a>
+    <div class="links">
+      <a href="#gaya">Gaya video</a>
+      <a href="#format">Format</a>
+      <a href="#tampilan">Tampilan</a>
+      <a href="#suara">Suara</a>
+      <a href="#caption">Caption</a>
+      <a href="#jadwal">Jadwal</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="seg"><span class="on">Teknis video</span><span>Paket Rutin · Bulan 1</span></div>
+    <h1>Standar setiap video <em>Fikih Umrah 1 Menit</em></h1>
+    <p class="lead">Panduan ini jadi pegangan bersama antara Sidi Alief dan tim produksi: ukuran video, susunan isi, tampilan, suara, caption, dan jadwal bulan pertama.</p>
+    <div class="facts">
+      <div class="fact"><small>Akun</small><b>@febriian_alief</b></div>
+      <div class="fact"><small>Jumlah</small><b>8 video</b></div>
+      <div class="fact"><small>Tayang</small><b>Selasa &amp; Jumat</b></div>
+      <div class="fact"><small>Periode</small><b>6 Nov – 5 Des</b></div>
+    </div>
+  </div>
+</header>
+
+<section class="soft" id="gaya">
+  <div class="wrap">
+    <span class="kicker">Langkah pertama</span>
+    <h2>Pilih gaya video Sidi</h2>
+    <p class="sub">Ini 10 gaya animasi yang sedang ramai di Reels. Setiap contoh di bawah bergerak dan memakai topik yang sama, yaitu parfum saat ihram, supaya mudah dibandingkan. Gaya yang dipilih dipakai di semua video agar akun mudah dikenali.</p>
+
+    <div class="styles">
+
+      <article class="st" data-n="1" data-name="Pixel art">
+        <div class="pv s1">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect x="64" y="22" width="12" height="12" fill="#ffd84d"/><rect x="62" y="24" width="16" height="8" fill="#ffd84d"/>
+            <g class="cl" fill="#fff"><rect x="8" y="58" width="16" height="4"/><rect x="11" y="55" width="9" height="3"/><rect x="40" y="70" width="12" height="3"/><rect x="42" y="68" width="7" height="2"/></g>
+            <g fill="#a9cdee"><rect x="70" y="66" width="7" height="50"/><rect x="72" y="58" width="3" height="8"/><rect x="4" y="96" width="10" height="20"/><rect x="16" y="90" width="8" height="26"/><rect x="58" y="92" width="10" height="24"/><rect x="80" y="88" width="10" height="28"/></g>
+            <rect x="0" y="116" width="90" height="44" fill="#eadfc6"/>
+            <g fill="#d8caa8"><rect x="0" y="124" width="90" height="1"/><rect x="0" y="134" width="90" height="1"/></g>
+            <rect x="33" y="84" width="24" height="32" fill="#151515"/><rect x="33" y="90" width="24" height="3" fill="#d4a940"/><rect x="40" y="102" width="6" height="14" fill="#d4a940"/>
+            <g class="walk"><rect x="2" y="104" width="3" height="3" fill="#2b2b2b"/><rect x="1" y="107" width="5" height="6" fill="#fff"/><rect x="2" y="113" width="1" height="3" fill="#c68a5a"/><rect x="4" y="113" width="1" height="3" fill="#c68a5a"/></g>
+          </svg>
+          <p class="t">BOLEHKAH PAKAI PARFUM SAAT IHRAM?</p>
+          <div class="box">SETELAH NIAT: <b>DILARANG!</b></div>
+        </div>
+        <div class="lbl"><i>01</i><h3>Pixel art</h3></div>
+        <p>Gambar kotak-kotak seperti game jadul. Unik dan cepat menarik perhatian.</p>
+        <p class="fit"><b>Cocok untuk:</b> urutan manasik yang dibuat seperti level game.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="2" data-name="Papan kapur">
+        <div class="pv s2">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="dr yel" d="M9,60 Q40,56 80,60"/>
+            <path class="dr" d="M36,92 L36,118 Q36,121 39,121 L53,121 Q56,121 56,118 L56,92 Q56,88 51,88 L41,88 Q36,88 36,92 Z M41,88 L41,82 L51,82 L51,88 M60,84 l6,-3 M61,89 l7,0 M60,94 l6,3"/>
+            <path class="dr red" d="M26,78 L66,128 M66,78 L26,128"/>
+          </svg>
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <p class="cap">setelah niat → tidak boleh!</p>
+        </div>
+        <div class="lbl"><i>02</i><h3>Papan kapur</h3></div>
+        <p>Coretan kapur di papan tulis hijau, terasa seperti belajar di majelis.</p>
+        <p class="fit"><b>Cocok untuk:</b> penjelasan dalil dan hukum.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="3" data-name="Sketsa menyala">
+        <div class="pv s3">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="g" d="M28,88 L46,82 L62,88 L44,94 Z M28,88 L28,116 L44,122 L44,94 M44,122 L62,116 L62,88 M28,92 L44,98 L62,92"/>
+            <path class="g" d="M11,128 a34,9 0 1,0 68,0 a34,9 0 1,0 -68,0"/>
+            <path class="g p" d="M70,62 L70,74 Q70,76 72,76 L78,76 Q80,76 80,74 L80,62 Q80,60 77,60 L73,60 Q70,60 70,62 Z M73,60 L73,57 L77,57 L77,60"/>
+          </svg>
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <p class="cap"><span>Setelah niat, <b>wewangian</b> dilarang.</span></p>
+        </div>
+        <div class="lbl"><i>03</i><h3>Sketsa menyala</h3></div>
+        <p>Garis yang menyala di latar gelap, digambar sedikit demi sedikit.</p>
+        <p class="fit"><b>Cocok untuk:</b> topik yang ingin terasa modern dan dramatis.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="4" data-name="3D retro (era PS2)">
+        <div class="pv s4">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <polygon points="0,98 18,70 36,98" fill="#7d8a92"/><polygon points="18,70 36,98 24,98" fill="#95a1a8"/>
+            <polygon points="26,98 52,62 78,98" fill="#6c7880"/><polygon points="52,62 78,98 58,98" fill="#8b979e"/>
+            <polygon points="0,98 90,98 90,160 0,160" fill="#8d856f"/>
+            <polygon points="0,112 30,102 18,134" fill="#9a917a"/><polygon points="60,104 90,110 78,140" fill="#81796a"/><polygon points="30,140 60,128 54,160 26,160" fill="#9c937c"/>
+            <polygon points="45,78 62,84 45,90 28,84" fill="#3a3a3a"/>
+            <polygon points="28,84 45,90 45,114 28,108" fill="#121212"/>
+            <polygon points="45,90 62,84 62,108 45,114" fill="#242424"/>
+            <polygon points="28,88 45,94 45,97 28,91" fill="#c9a048"/><polygon points="45,94 62,88 62,91 45,97" fill="#a8873a"/>
+            <polygon points="73,98 76,101 73,104 70,101" fill="#2e2a26"/>
+            <polygon points="68,117 73,104 78,117" fill="#f1f1f1"/><polygon points="73,104 78,117 73,117" fill="#c9c9c9"/>
+          </svg>
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <div class="box"><small>Pembimbing</small><span>Setelah niat ihram, wewangian dilarang.</span></div>
+        </div>
+        <div class="lbl"><i>04</i><h3>3D retro (era PS2)</h3></div>
+        <p>Dunia 3D sederhana dengan kotak dialog seperti game lama. Penjelasan datang dari tokoh pembimbing, tanpa wajah detail.</p>
+        <p class="fit"><b>Cocok untuk:</b> kisah jamaah yang mengalami suatu kasus.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="5" data-name="Komik">
+        <div class="pv s5">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><pattern id="ht" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#4fb3e8"/></pattern></defs>
+            <rect x="4" y="4" width="82" height="80" fill="#8fd8ff" stroke="#111" stroke-width="1.6"/>
+            <rect x="4" y="4" width="82" height="80" fill="url(#ht)"/>
+            <path d="M14,84 L18,62 Q26,56 34,62 L38,84 Z" fill="#fff" stroke="#111" stroke-width="1.2"/>
+            <circle cx="26" cy="51" r="7" fill="#f2c89b" stroke="#111" stroke-width="1.2"/>
+            <g class="shake"><rect x="40" y="58" width="8" height="12" rx="1" fill="#ff7ab6" stroke="#111" stroke-width="1"/><rect x="42" y="54" width="4" height="4" fill="#ffd84d" stroke="#111" stroke-width="1"/></g>
+            <rect x="4" y="88" width="82" height="68" fill="#fff" stroke="#111" stroke-width="1.6"/>
+            <g class="pop">
+              <polygon points="45,100 50,110 61,104 57,115 70,118 58,124 64,136 52,130 45,141 40,130 27,135 33,124 21,118 33,114 29,103 40,110" fill="#e5484d" stroke="#111" stroke-width="1.2"/>
+              <text x="45.5" y="124" text-anchor="middle" font-family="Bangers, cursive" font-size="9" fill="#ffd84d" stroke="#111" stroke-width=".5">STOP!</text>
+            </g>
+          </svg>
+          <div class="bub">BOLEHKAH PAKAI PARFUM SAAT IHRAM?!</div>
+          <div class="nar">SETELAH NIAT IHRAM…</div>
+        </div>
+        <div class="lbl"><i>05</i><h3>Komik</h3></div>
+        <p>Panel komik, balon kata, dan efek "STOP!". Ramai dan ekspresif.</p>
+        <p class="fit"><b>Cocok untuk:</b> larangan-larangan ihram.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="6" data-name="Vektor datar">
+        <div class="pv s6">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle class="sun" cx="70" cy="66" r="9" fill="#f2c46d"/>
+            <path d="M0,118 C20,106 40,112 58,108 C72,105 82,108 90,104 L90,160 L0,160Z" fill="#7fae8f"/>
+            <path d="M0,128 C25,118 55,126 90,116 L90,160 L0,160Z" fill="#1f5a4a"/>
+            <rect x="18" y="76" width="30" height="36" rx="1.5" fill="#1b1b1b"/>
+            <rect x="18" y="82" width="30" height="4" fill="#c9a048"/>
+            <rect x="28" y="96" width="9" height="16" rx="1" fill="#c9a048" opacity=".6"/>
+            <g class="btl"><rect x="62" y="96" width="12" height="17" rx="2.5" fill="#ea4c89"/><rect x="65" y="91" width="6" height="5" rx="1" fill="#c9a048"/><rect x="64" y="100" width="2" height="9" rx="1" fill="#fff" opacity=".5"/></g>
+            <g class="stp"><circle cx="68" cy="104" r="11" fill="none" stroke="#e5484d" stroke-width="2"/><path d="M60,112 L76,96" stroke="#e5484d" stroke-width="2"/></g>
+          </svg>
+          <span class="u" style="color:#1f5a4a">@febriian_alief</span>
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <p class="sb"><span>Setelah niat, <mark>wewangian</mark> dilarang.</span></p>
+        </div>
+        <div class="lbl"><i>06</i><h3>Vektor datar</h3></div>
+        <p>Ilustrasi datar yang bersih dan rapi. Paling aman untuk semua usia.</p>
+        <p class="fit"><b>Cocok untuk:</b> topik umum dan jamaah pemula.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="7" data-name="Minimalis tinta (gaya Dan Koe)">
+        <div class="pv s7">
+          <svg class="a" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#111" stroke-linecap="round">
+            <circle cx="45" cy="104" r="24" stroke-width=".5"/>
+            <path d="M4,120 L86,120" stroke-width=".5"/>
+            <path d="M14,126 l8,0 M30,131 l14,0 M54,127 l10,0 M66,134 l12,0" stroke-width=".3"/>
+            <circle cx="45" cy="106.5" r="1.7" fill="#111" stroke="none"/>
+            <path d="M42.6,120 L43.4,109.5 Q45,108.4 46.6,109.5 L47.4,120 Z" fill="#fff" stroke-width=".45"/>
+            <path d="M43.6,110 L46.8,116" stroke-width=".35"/>
+            <path d="M47.4,120 L70,121.5" stroke-width=".3" stroke-dasharray="1 1"/>
+          </svg>
+          <p class="t">Wangi itu indah. <em>Tapi tidak setelah niat.</em></p>
+          <p class="foot">Fikih Umrah</p>
+        </div>
+        <div class="lbl"><i>07</i><h3>Minimalis tinta (gaya Dan Koe)</h3></div>
+        <p>Kertas krem, garis tinta tipis, dan satu kalimat besar. Tenang dan berkelas.</p>
+        <p class="fit"><b>Cocok untuk:</b> nasihat, adab, dan pengingat.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="8" data-name="CGI motion">
+        <div class="pv s8">
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+          <div class="shd"></div>
+          <div class="bt"><div class="cp"></div><div class="nk"></div><div class="bd"></div></div>
+          <p class="cap">Setelah niat, <b>dilarang.</b></p>
+        </div>
+        <div class="lbl"><i>08</i><h3>CGI motion</h3></div>
+        <p>Benda 3D mengkilap yang melayang, seperti iklan produk.</p>
+        <p class="fit"><b>Cocok untuk:</b> topik tentang benda: parfum, sabun, pakaian ihram.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="9" data-name="Balok mainan (gaya Lego)">
+        <div class="pv s9">
+          <p class="t">Bolehkah pakai parfum saat ihram?</p>
+          <div class="bp"></div>
+          <div class="kb"><div class="br"></div><div class="br"></div><div class="br gd"></div><div class="br"></div></div>
+          <div class="mf"><i class="hd"></i><i class="tr"></i><i class="lg"></i></div>
+        </div>
+        <div class="lbl"><i>09</i><h3>Balok mainan (gaya Lego)</h3></div>
+        <p>Semua dibangun dari balok mainan. Lucu dan mudah diingat.</p>
+        <p class="fit"><b>Cocok untuk:</b> menjelaskan tempat dan bangunan.</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+      <article class="st" data-n="10" data-name="3D sinematik (gaya ZackD Films)">
+        <div class="pv s10">
+          <div class="fab"></div>
+          <div class="stn"></div>
+          <div class="rip"></div>
+          <div class="drop"></div>
+          <p class="zc">Satu tetes parfum <b>setelah niat…</b></p>
+          <p class="zs">bisa wajib fidyah</p>
+        </div>
+        <div class="lbl"><i>10</i><h3>3D sinematik (gaya ZackD Films)</h3></div>
+        <p>Close-up 3D yang dramatis dengan teks besar di tengah. Gaya yang sering viral.</p>
+        <p class="fit"><b>Cocok untuk:</b> "apa yang terjadi kalau…".</p>
+        <div class="pick"><a target="_blank" rel="noopener">Pilih gaya ini</a></div>
+      </article>
+
+    </div>
+    <div class="note"><b>Cara memilih:</b> klik "Pilih gaya ini" untuk langsung mengirim pilihan lewat WhatsApp, atau cukup balas nomornya. Sidi juga boleh menggabungkan dua gaya. Contoh di atas dibuat sederhana di halaman web; video aslinya lebih detail. Nama Dan Koe, Lego, dan ZackD Films hanya untuk menyebut gayanya, kami tidak memakai karakter atau merek mereka.</div>
+  </div>
+</section>
+
+<section id="format">
+  <div class="wrap">
+    <span class="kicker">Format file</span>
+    <h2>Spesifikasi video</h2>
+    <p class="sub">Semua video dibuat dengan ukuran yang sama supaya tampil penuh di Reels dan rapi di grid profil.</p>
+    <div class="tbl-box">
+      <table class="tbl stack">
+        <tbody>
+          <tr><th>Rasio dan ukuran</th><td>9:16, 1080 × 1920 piksel</td></tr>
+          <tr><th>Durasi</th><td>55–75 detik (sekitar 1 menit)</td></tr>
+          <tr><th>File</th><td>MP4 (H.264), 30 fps, audio AAC</td></tr>
+          <tr><th>Jenis video</th><td>Motion graphic: ilustrasi, teks bergerak, dan ikon. Tanpa wajah di kamera.</td></tr>
+          <tr><th>Sampul (cover)</th><td>1 gambar 1080 × 1920 dengan judul pertanyaan. Bagian tengah 1080 × 1350 aman untuk tampilan grid profil.</td></tr>
+          <tr><th>Pengiriman</th><td>File MP4 + teks caption dikirim lewat WhatsApp, siap diunggah Sidi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:24px;margin-top:64px">Susunan isi dalam 1 menit</h3>
+    <p class="sub">Polanya sama dengan contoh yang Sidi kirim: pertanyaan, jawaban singkat, penjelasan, lalu tips.</p>
+    <div class="timeline" aria-label="Pembagian durasi video">
+      <div class="s1"><b>Hook</b><small>0–3 dtk</small></div>
+      <div class="s2"><b>Jawaban</b><small>3–10 dtk</small></div>
+      <div class="s3"><b>Penjelasan: dalil dan pendapat 4 mazhab</b><small>10–45 dtk</small></div>
+      <div class="s4"><b>Tips</b><small>45–55 dtk</small></div>
+      <div class="s5"><b>Penutup</b><small>55–60 dtk</small></div>
+    </div>
+    <div class="tbl-box">
+      <table class="tbl">
+        <thead><tr><th>Bagian</th><th>Isi</th><th>Contoh (topik parfum)</th></tr></thead>
+        <tbody>
+          <tr><td class="nw"><b>Hook</b></td><td class="d">Pertanyaan yang sering ditanyakan jamaah</td><td>"Bolehkah pakai parfum saat ihram?"</td></tr>
+          <tr><td class="nw"><b>Jawaban</b></td><td class="d">Jawaban singkat satu kalimat</td><td>"Setelah niat ihram, tidak boleh."</td></tr>
+          <tr><td class="nw"><b>Penjelasan</b></td><td class="d">Dalil (teks Arab + terjemah), lalu pendapat mazhab bila ada perbedaan</td><td>Hadits Aisyah, lalu bedanya parfum yang dipakai sebelum dan sesudah niat</td></tr>
+          <tr><td class="nw"><b>Tips</b></td><td class="d">Hal praktis yang bisa langsung dilakukan</td><td>Pakai parfum sebelum mandi ihram, pilih sabun tanpa wangi</td></tr>
+          <tr><td class="nw"><b>Penutup</b></td><td class="d">Ajakan bertanya di kolom komentar dan mengikuti akun</td><td>"Ada pertanyaan? Tulis di komentar."</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="tampilan">
+  <div class="wrap">
+    <span class="kicker">Tampilan</span>
+    <h2>Tata letak setiap layar</h2>
+    <p class="sub">Aturan ini berlaku untuk gaya apa pun yang dipilih. Teks penting diletakkan di tengah, jauh dari bagian bawah dan kanan layar yang tertutup tombol Instagram.</p>
+    <div class="frame-grid">
+      <div class="frame" role="img" aria-label="Contoh tata letak satu layar video">
+        <svg class="art" viewBox="0 0 200 200" aria-hidden="true">
+          <ellipse cx="100" cy="168" rx="86" ry="14" fill="#e6dccb"/>
+          <rect x="62" y="70" width="76" height="96" rx="3" fill="#1b1b1b"/>
+          <rect x="62" y="88" width="76" height="9" fill="#c9a048"/>
+          <rect x="88" y="128" width="24" height="38" rx="2" fill="#c9a048" opacity=".55"/>
+          <circle cx="36" cy="150" r="5" fill="#1f5a4a"/><rect x="33" y="155" width="6" height="12" rx="3" fill="#1f5a4a"/>
+          <circle cx="160" cy="146" r="5" fill="#1f5a4a"/><rect x="157" y="151" width="6" height="12" rx="3" fill="#1f5a4a"/>
+          <circle cx="150" cy="40" r="10" fill="#c9a048" opacity=".35"/>
+        </svg>
+        <span class="user">@febriian_alief</span>
+        <p class="hook">Bolehkah pakai parfum saat ihram?</p>
+        <p class="arab">وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ</p>
+        <p class="subt"><span>Setelah niat, <mark>wewangian</mark> dilarang.</span></p>
+        <div class="safe-r" aria-hidden="true"></div>
+        <div class="safe" aria-hidden="true">Tertutup tombol Instagram</div>
+      </div>
+      <ol class="legend">
+        <li><i>1</i><p><b>Username kecil di pojok kiri atas</b><span>@febriian_alief tampil sepanjang video, ukurannya kecil dan sedikit transparan, sesuai permintaan Sidi.</span></p></li>
+        <li><i>2</i><p><b>Judul pertanyaan di atas</b><span>Muncul di 3 detik pertama. Ini juga yang terlihat di sampul.</span></p></li>
+        <li><i>3</i><p><b>Ilustrasi di tengah</b><span>Gaya ilustrasi datar atau isometrik seperti contoh Raudhah yang Sidi kirim: Ka'bah, masjid, jamaah tanpa wajah detail.</span></p></li>
+        <li><i>4</i><p><b>Teks Arab untuk dalil</b><span>Ditulis dengan harakat lengkap, diikuti terjemahan di subtitle.</span></p></li>
+        <li><i>5</i><p><b>Subtitle per kata</b><span>Kotak gelap, maksimal 2 baris. Kata yang sedang diucapkan disorot kuning, seperti contoh dari Sidi.</span></p></li>
+        <li class="warn"><i>!</i><p><b>Area aman</b><span>Bagian bawah (sekitar 20%) dan sisi kanan tertutup caption dan tombol Instagram. Tidak ada teks penting di area bergaris pink.</span></p></li>
+      </ol>
+    </div>
+
+    <h3 style="font-size:24px;margin-top:72px">Warna dan huruf</h3>
+    <p class="sub">Usulan awal kami nuansa masjid: krem, hijau tua, dan emas. Warna akhirnya menyesuaikan gaya video yang Sidi pilih, lalu dipakai sama di setiap video supaya akun mudah dikenali.</p>
+    <div class="swatches">
+      <div class="sw"><div style="background:var(--v-cream)"></div><p><b>Krem</b><span>#F6F1E7 · latar</span></p></div>
+      <div class="sw"><div style="background:var(--v-green)"></div><p><b>Hijau tua</b><span>#1F5A4A · judul, teks Arab</span></p></div>
+      <div class="sw"><div style="background:var(--v-gold)"></div><p><b>Emas</b><span>#C9A048 · aksen, ikon</span></p></div>
+      <div class="sw"><div style="background:var(--v-hl)"></div><p><b>Kuning sorot</b><span>#FFD84D · kata aktif</span></p></div>
+    </div>
+    <div class="tbl-box">
+      <table class="tbl stack">
+        <tbody>
+          <tr><th>Judul</th><td>Bricolage Grotesque, tebal</td></tr>
+          <tr><th>Subtitle dan teks biasa</th><td>Mona Sans, tebal, ukuran besar agar terbaca di HP</td></tr>
+          <tr><th>Teks Arab</th><td>Amiri, dengan harakat</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="suara">
+  <div class="wrap">
+    <span class="kicker">Suara</span>
+    <h2>Narasi dan latar suara</h2>
+    <div class="tbl-box">
+      <table class="tbl stack">
+        <tbody>
+          <tr><th>Suara narasi</th><td>Suara AI yang dibuat dari rekaman suara Sidi (voice clone). Hasilnya mirip, tapi mungkin tidak 100% sama.</td></tr>
+          <tr><th>Bahan</th><td>Rekaman suara Sidi, minimal 1 menit, di ruangan sepi. Makin panjang dan jelas, makin mirip.</td></tr>
+          <tr><th>Cadangan</th><td>Kalau hasil clone kurang pas, dipakai suara laki-laki lain yang tenang, sesuai pilihan Sidi.</td></tr>
+          <tr><th>Gaya bicara</th><td>Tenang dan jelas, seperti menjelaskan ke jamaah. Istilah Arab (ihram, miqat, thawaf, sa'i) diucapkan dengan benar.</td></tr>
+          <tr><th>Latar suara</th><td>Tanpa musik. Hanya efek suara halus saat teks atau gambar berganti.</td></tr>
+          <tr><th>Penggunaan</th><td>Suara clone hanya dipakai untuk video akun Sidi, tidak untuk keperluan lain.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="caption">
+  <div class="wrap">
+    <span class="kicker">Caption</span>
+    <h2>Format caption dan rujukan</h2>
+    <p class="sub">Caption mengikuti pola contoh dari Sidi, jadi penonton yang ingin membaca lebih lengkap tetap mendapat penjelasannya.</p>
+<div class="caption"><em>Bolehkah pakai parfum saat ihram?</em>
+
+Jawabannya: (jawaban singkat 1–2 kalimat)
+
+Penjelasannya: (dalil, lalu pendapat mazhab Syafi'i, Hanafi, Maliki, dan Hanbali bila ada perbedaan)
+
+Tips: (hal praktis untuk jamaah)
+
+Rujukan: (nama kitab atau fatwa)
+
+#fikihumrah #umrah #manasikumrah #ihram (5–8 tagar, sesuai topik)</div>
+    <div class="tbl-box">
+      <table class="tbl stack">
+        <thead><tr><th>Rujukan utama</th><th>Dipakai untuk</th></tr></thead>
+        <tbody>
+          <tr><th>Al-Idhah fi Manasik al-Hajj wal-'Umrah (Imam an-Nawawi)</th><td>Pegangan utama manasik</td></tr>
+          <tr><th>Kitab perbandingan 4 mazhab</th><td>Saat ulama berbeda pendapat</td></tr>
+          <tr><th>Fatwa Darul Ifta Mesir</th><td>Masalah kontemporer, misalnya pembalut, obat penunda haid, atau aturan masuk Raudhah</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><b>Naskah selalu dicek Sidi.</b> Setiap naskah dikirim lengkap dengan dalil dan rujukannya. Produksi baru dimulai setelah Sidi menyetujui isinya.</div>
+  </div>
+</section>
+
+<section id="jadwal">
+  <div class="wrap">
+    <span class="kicker">Jadwal bulan 1</span>
+    <h2>8 video, 6 November – 5 Desember</h2>
+    <p class="sub">Naskah dikirim 4 hari sebelum tayang, dan video jadi paling lambat 1 hari sebelum tayang. Topik bisa ditukar kalau Sidi ingin membahas hal lain lebih dulu.</p>
+    <div class="tbl-box">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Topik</th><th>Naskah dikirim</th><th>Video jadi</th><th>Tayang</th></tr></thead>
+        <tbody>
+          <tr class="first"><td>1</td><td>Hukum parfum saat ihram</td><td class="nw">Sab, 7 Nov</td><td class="nw">Sen, 9 Nov</td><td><span class="pill pink">Sel, 10 Nov</span></td></tr>
+          <tr><td>2</td><td>Lupa niat di miqat</td><td class="nw">Sen, 9 Nov</td><td class="nw">Kam, 12 Nov</td><td><span class="pill soft">Jum, 13 Nov</span></td></tr>
+          <tr><td>3</td><td>Larangan-larangan ihram</td><td class="nw">Jum, 13 Nov</td><td class="nw">Sen, 16 Nov</td><td><span class="pill soft">Sel, 17 Nov</span></td></tr>
+          <tr><td>4</td><td>Cadar dan sarung tangan bagi wanita ihram</td><td class="nw">Sen, 16 Nov</td><td class="nw">Kam, 19 Nov</td><td><span class="pill soft">Jum, 20 Nov</span></td></tr>
+          <tr><td>5</td><td>Haid saat umrah</td><td class="nw">Jum, 20 Nov</td><td class="nw">Sen, 23 Nov</td><td><span class="pill soft">Sel, 24 Nov</span></td></tr>
+          <tr><td>6</td><td>Wudhu batal saat thawaf</td><td class="nw">Sen, 23 Nov</td><td class="nw">Kam, 26 Nov</td><td><span class="pill soft">Jum, 27 Nov</span></td></tr>
+          <tr><td>7</td><td>Tata cara sa'i</td><td class="nw">Jum, 27 Nov</td><td class="nw">Sen, 30 Nov</td><td><span class="pill soft">Sel, 1 Des</span></td></tr>
+          <tr><td>8</td><td>Tahallul: cukur atau potong rambut</td><td class="nw">Sen, 30 Nov</td><td class="nw">Kam, 3 Des</td><td><span class="pill soft">Jum, 4 Des</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:24px;margin-top:64px">Alur setiap video</h3>
+    <div class="tbl-box">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Langkah</th><th>Siapa</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Naskah dan rujukan dikirim lewat WhatsApp</td><td><span class="pill">Tim</span></td></tr>
+          <tr class="first"><td>2</td><td>Sidi mengecek isi dan dalil, lalu menyetujui atau memberi koreksi</td><td><span class="pill pink">Sidi</span></td></tr>
+          <tr><td>3</td><td>Produksi: suara, animasi, subtitle, sampul</td><td><span class="pill">Tim</span></td></tr>
+          <tr><td>4</td><td>Video dan caption dikirim untuk dicek</td><td><span class="pill">Tim</span></td></tr>
+          <tr class="first"><td>5</td><td>Sidi menyetujui, atau minta revisi (1× per video)</td><td><span class="pill pink">Sidi</span></td></tr>
+          <tr class="first"><td>6</td><td>Sidi mengunggah sesuai jadwal tayang</td><td><span class="pill pink">Sidi</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <span class="kicker">Sebelum dikirim</span>
+    <h2>Dicek di setiap video</h2>
+    <ul class="checklist">
+      <li>Isi sama persis dengan naskah yang sudah disetujui</li>
+      <li>Teks Arab lengkap harakat dan tidak terbalik</li>
+      <li>Ejaan subtitle sudah dicek, sama dengan suara</li>
+      <li>Tidak ada teks di area bawah dan kanan layar</li>
+      <li>Username @febriian_alief tampil di pojok</li>
+      <li>Durasi 55–75 detik</li>
+      <li>Suara jelas, istilah Arab diucapkan dengan benar</li>
+      <li>Caption lengkap dengan rujukan dan tagar</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Dar Dev · WhatsApp 0813 1150 6025</span>
+    <span>Panduan teknis Paket Rutin, bulan 1</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.st').forEach(function (el) {
+    var msg = 'Assalamu\'alaikum, saya pilih gaya video nomor ' + el.dataset.n + ' (' + el.dataset.name + ').';
+    el.querySelector('.pick a').href = 'https://wa.me/6281311506025?text=' + encodeURIComponent(msg);
+  });
+</script>
+</body>
+</html>
