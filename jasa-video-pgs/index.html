@@ -593,6 +593,12 @@
   .topics li:first-child { background: var(--sky); color: var(--night); border-color: var(--sky); }
   .topics li:first-child span { color: var(--pink); }
   .plan .badge.free { background: var(--pink-soft); color: var(--pink); }
+  .brief { margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: rgba(151,203,239,.12); border: 1px solid rgba(151,203,239,.35); border-radius: 18px; padding: 20px 24px; }
+  .brief p { color: rgba(255,255,255,.85); max-width: 46em; }
+  .brief b { color: #fff; }
+  .brief .btn { flex: none; background: #fff; color: var(--night); border-color: #fff; }
+  .brief .btn:hover { background: var(--sky); border-color: var(--sky); }
+  @media (max-width: 640px) { .brief { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; font-size: 14px; } }
 
   /* Versi ringkas */
   .plan .feat { display: grid; gap: 8px; margin: 14px 0 22px; font-size: 15px; }
@@ -726,6 +732,7 @@
       <li><span>07</span>Potong 3 helai rambut, umrah selesai?</li>
       <li><span>08</span>Umrah berkali-kali dari Tan'im: boleh?</li>
     </ol>
+    <div class="brief rise"><p><b>Punya brief konten sendiri?</b> Misalnya info program umrah, persiapan keberangkatan, atau materi manasik. Kirim saja briefnya, Dar Dev yang buatkan videonya.</p><a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20kami%20dari%20PGS%20Tour%20punya%20brief%20konten%20yang%20mau%20dibuatkan%20videonya." target="_blank" rel="noopener">Kirim brief</a></div>
   </div>
 </section>
 
@@ -733,7 +740,7 @@
   <div class="wrap">
     <div class="head center"><h2 class="rise">Cara kerjanya</h2><p class="sub rise">Video pertama jadi dalam 3 hari.</p></div>
     <ol class="timeline">
-      <li class="rise"><span class="day">Dar Dev</span><h3>Buat naskah</h3><p>Topik dari pertanyaan calon jamaah, lengkap dengan dalil.</p></li>
+      <li class="rise"><span class="day">Dar Dev</span><h3>Buat naskah</h3><p>Topik dari Dar Dev atau dari brief PGS Tour, lengkap dengan dalil.</p></li>
       <li class="rise"><span class="day">PGS Tour</span><h3>Cek dan setujui</h3><p>Sekitar 10 menit lewat WhatsApp. Tidak ada yang tayang tanpa persetujuan.</p></li>
       <li class="rise"><span class="day">Dar Dev</span><h3>Video siap tayang</h3><p>Video, caption, dan hashtag dikirim. Revisi 1× per video.</p></li>
     </ol>
@@ -763,6 +770,7 @@
     <div><h2 class="rise">Pertanyaan</h2></div>
     <div class="faq rise">
       <details open><summary>Videonya seperti apa?</summary><p>Animasi teks, ikon, dan ilustrasi dengan suara narasi. Tidak ada orang yang tampil.</p></details>
+      <details><summary>Bisa minta topik sendiri?</summary><p>Bisa. PGS Tour cukup kirim brief konten lewat WhatsApp, Dar Dev yang buatkan naskah dan videonya.</p></details>
       <details><summary>Siapa yang memeriksa isinya?</summary><p>Pembimbing atau tim PGS Tour. Video baru tayang setelah disetujui.</p></details>
       <details><summary>Perlu kasih password Instagram?</summary><p>Tidak. Dar Dev kirim videonya, tim PGS Tour yang upload. Khusus paket Aktif, akses lewat Meta Business Suite.</p></details>
       <details><summary>Kalau tidak cocok?</summary><p>Paket Perkenalan tanpa ikatan, dan paket bulanan bisa berhenti kapan saja di akhir bulan.</p></details>
