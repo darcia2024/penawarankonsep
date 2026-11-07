@@ -6,6 +6,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `demo-pemilih-mesin/` — demo fitur Pemilih Mesin (data mesin masih contoh).
 - `jasa-video/` — penawaran jasa video dakwah umrah untuk Sidi Alief.
 - `jasa-video-pgs/` — penawaran jasa video edukasi umrah untuk travel PGS Tour.
+- `jasa-video-igh/` — penawaran jasa video edukasi umrah untuk travel IGH Tour.
 
 Foto produk diambil dari purnama-eskrim.com dan font dari Fontshare, jadi halaman perlu koneksi internet.
 Semua nama, angka, dan nomor order di mockup hanya contoh.
