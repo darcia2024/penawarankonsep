@@ -1,0 +1,112 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dar Dev//Fikih Umrah 1 Menit//ID
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Upload Fikih Umrah 1 Menit
+X-WR-TIMEZONE:Asia/Jakarta
+BEGIN:VEVENT
+UID:fikih-umrah-ep01-20261110@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261110T120000Z
+DTEND:20261110T121500Z
+SUMMARY:Upload EP.01 Fikih Umrah: Cium Hajar Aswad\, kena fidyah?
+DESCRIPTION:Unggah video EP.01 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.01 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep02-20261113@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261113T120000Z
+DTEND:20261113T121500Z
+SUMMARY:Upload EP.02 Fikih Umrah: Pesawat lewat miqat\, masih pakai baju biasa?
+DESCRIPTION:Unggah video EP.02 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.02 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep03-20261117@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261117T120000Z
+DTEND:20261117T121500Z
+SUMMARY:Upload EP.03 Fikih Umrah: Garuk kepala\, rambut rontok: kena dam?
+DESCRIPTION:Unggah video EP.03 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.03 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep04-20261120@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261120T120000Z
+DTEND:20261120T121500Z
+SUMMARY:Upload EP.04 Fikih Umrah: Odol mint saat ihram: termasuk wewangian?
+DESCRIPTION:Unggah video EP.04 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.04 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep05-20261124@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261124T120000Z
+DTEND:20261124T121500Z
+SUMMARY:Upload EP.05 Fikih Umrah: Thawaf terputus iqamah: lanjut atau ulang?
+DESCRIPTION:Unggah video EP.05 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.05 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep06-20261127@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261127T120000Z
+DTEND:20261127T121500Z
+SUMMARY:Upload EP.06 Fikih Umrah: Sa'i di jalur perluasan: sah?
+DESCRIPTION:Unggah video EP.06 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.06 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep07-20261201@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261201T120000Z
+DTEND:20261201T121500Z
+SUMMARY:Upload EP.07 Fikih Umrah: Potong 3 helai rambut\, umrah selesai?
+DESCRIPTION:Unggah video EP.07 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.07 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fikih-umrah-ep08-20261204@darcia2024.github.io
+DTSTAMP:20261107T000000Z
+DTSTART:20261204T120000Z
+DTEND:20261204T121500Z
+SUMMARY:Upload EP.08 Fikih Umrah: Umrah berkali-kali dari Tan'im: boleh?
+DESCRIPTION:Unggah video EP.08 ke Instagram @febriian_alief pukul 19.00 WIB. Salin caption yang dikirim lewat WhatsApp. Catatan topik: https://darcia2024.github.io/penawarankonsep/jasa-video/topik/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:1 jam lagi upload EP.08 Fikih Umrah
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
