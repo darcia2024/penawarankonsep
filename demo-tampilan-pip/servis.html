@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Servis PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .tk-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .tk-top h2 { font-size: 20px; }
+  .tk-top p { color: var(--faint); font-size: 13.5px; }
+  .machine { display: flex; gap: 14px; align-items: center; background: var(--paper-2); border-radius: 12px; padding: 14px; margin: 16px 0; }
+  .machine .th { width: 60px; height: 60px; border-radius: 12px; background: #fff; display: grid; place-items: center; flex: none; }
+  .machine b { display: block; }
+  .machine small { color: var(--faint); }
+  .warranty { margin-left: auto; text-align: right; }
+  .kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; font-size: 14px; }
+  .kv dt { color: var(--faint); }
+  .kv dd { font-weight: 600; text-align: right; }
+  .slot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0 16px; }
+  .slot span { border: 1.5px solid var(--line); border-radius: 10px; padding: 9px; text-align: center; font-size: 13px; font-weight: 700; }
+  .slot span small { display: block; font-weight: 500; color: var(--faint); }
+  .slot span.on { border-color: var(--navy); background: var(--navy); color: #fff; }
+  .slot span.on small { color: #b9d0e7; }
+  h3.l { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 18px 0 8px; }
+  .techs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .techs span { display: flex; gap: 8px; align-items: center; border: 1.5px solid var(--line); border-radius: 999px; padding: 4px 12px 4px 4px; font-weight: 700; font-size: 13.5px; }
+  .techs span.on { border-color: var(--orange); background: var(--orange-soft); }
+  .techs .av { width: 26px; height: 26px; font-size: 10.5px; }
+  @media (max-width: 1100px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 560px) { .machine { flex-wrap: wrap; } .warranty { margin-left: 0; text-align: left; width: 100%; } }
+</style>
+</head>
+<body data-page="servis">
+<div class="demo-bar">Contoh tampilan Servis dan garansi. Tiket hanya contoh. <a href="index.html">Semua layar</a></div>
+<div class="app">
+  <aside class="side" data-side></aside>
+  <main class="main">
+    <div class="topbar" data-top></div>
+    <div class="page-head">
+      <div><h1>Servis dan garansi</h1><p>Tiket masuk lewat scan QR di mesin, lengkap dengan data pembelian.</p></div>
+      <div class="acts"><a class="btn" href="#">Jadwal teknisi</a><a class="btn pri" href="#">+ Tiket</a></div>
+    </div>
+    <div class="kpis">
+      <div class="card kpi alert"><small data-ic="servis">Menunggu teknisi</small><b>2</b><span class="delta down">T-118, T-120</span></div>
+      <div class="card kpi"><small data-ic="servis">Dijadwalkan</small><b>1</b><span class="delta"><span>video call besok</span></span></div>
+      <div class="card kpi"><small data-ic="servis">Rata-rata selesai</small><b>2,4 hari</b><span class="delta">▼ 1,1 hari <span>dari Oktober</span></span></div>
+      <div class="card kpi"><small data-ic="servis">Mesin bergaransi aktif</small><b>47 unit</b><span class="delta"><span>dari 61 terdaftar</span></span></div>
+    </div>
+
+    <div class="split">
+      <section class="card">
+        <div class="tabs"><span class="on">Terbuka <em>3</em></span><span>Selesai</span><span>Semua</span></div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Tiket</th><th>Pelanggan</th><th>Mesin</th><th>Keluhan</th><th>Garansi</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td><b>T-120</b><small>5 Nov</small></td><td><b>Kedai Dingin</b><small>Kediri</small></td><td>Soft Meja<small>SM-0152</small></td><td>Hasil es terlalu cair</td><td><span class="pill ok">Aktif</span></td><td><span class="pill warn dot">Menunggu teknisi</span></td></tr>
+            <tr><td><b>T-118</b><small>4 Nov</small></td><td><b>Bu Lina</b><small>Madiun</small></td><td>Soft Meja<small>SM-0187</small></td><td>Mesin berbunyi keras</td><td><span class="pill ok">Aktif</span></td><td><span class="pill warn dot">Menunggu teknisi</span></td></tr>
+            <tr><td><b>T-119</b><small>3 Nov</small></td><td><b>Dimas</b><small>Bogor</small></td><td>Cup sealer<small>CS-0031</small></td><td>Suhu tidak stabil</td><td><span class="pill ok">Aktif</span></td><td><span class="pill dot">Video call 7 Nov</span></td></tr>
+            <tr><td><b>T-117</b><small>28 Okt</small></td><td><b>Toko Es Maju</b><small>Klaten</small></td><td>WIR-128Y<small>WR-0044</small></td><td>Ganti dinamo</td><td><span class="pill mute">Habis</span></td><td><span class="pill ok dot">Selesai</span></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="card">
+        <div class="tk-top"><div><h2>T-120 · Hasil es terlalu cair</h2><p>Masuk 5 Nov, 16.40 lewat scan QR</p></div><span class="pill warn dot">Menunggu teknisi</span></div>
+        <div class="machine"><span class="th"><svg viewBox="0 0 120 110" width="40" height="40"><rect x="30" y="16" width="60" height="74" rx="6" fill="#fff" stroke="#072d59" stroke-width="5"/><path d="M54 76h12l-6 14z" fill="#ea580c"/></svg></span><span><b>Mesin Soft Ice Cream Meja</b><small>SM-0152 · dibeli 20 Jan 2026</small></span><span class="warranty"><span class="pill ok">Garansi aktif</span><small style="display:block;margin-top:4px">s/d Jan 2027 · gratis</small></span></div>
+        <dl class="kv"><dt>Pelanggan</dt><dd>Kedai Dingin, Kediri</dd><dt>Kontak</dt><dd>0857-xxxx-3381</dd><dt>Keterangan</dt><dd>Sejak kemarin sore, setelah ganti rasa</dd></dl>
+        <h3 class="l">Teknisi</h3>
+        <div class="techs"><span class="on"><span class="av">PD</span>Pak Darto</span><span><span class="av t">MI</span>Mas Iwan</span></div>
+        <h3 class="l">Jadwal</h3>
+        <div class="slot"><span class="on">Sabtu<small>7 Nov, 09.00</small></span><span>Senin<small>9 Nov, 10.00</small></span><span>Selasa<small>10 Nov</small></span></div>
+        <div class="seg" style="margin-bottom:16px"><span class="on">Video call</span><span>Kunjungan</span><span>Dibawa ke toko</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn dark" href="#">Simpan jadwal</a><a class="btn" href="#">Tandai selesai</a><a class="btn" href="pelanggan.html">Lihat halaman QR</a></div>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

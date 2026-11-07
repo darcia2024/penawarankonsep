@@ -1,0 +1,73 @@
+/* Hallmark · shape: app screen · genre: editorial · theme: brand · redesign: full
+ * paper: oklch(97.5% 0.008 230) · accent: oklch(55% 0.175 40) · display: Satoshi · body: Satoshi
+ * nav: navy side rail shared with the CRM · signature: the tier ladder, three levels side by side with what each one gives, above the member ledger · states: full, empty (no rewards claimed yet)
+ * axes: light/geometric-sans/chromatic-orange · posture: restrained · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, tiers could belong to any shop; tied every benefit to this shop's own things (bahan Joelly, ongkir, teknisi, garansi mesin) */
+@import url("./crm.css");
+
+.ladder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: var(--space-xl) 0 var(--space-2xl); }
+.tier { padding: var(--space-lg) var(--space-lg) var(--space-lg) 0; border-top: 4px solid var(--c); }
+.tier + .tier { padding-left: var(--space-lg); border-left: 1px solid var(--color-rule); }
+.tier h2 { font-size: var(--text-2xl); letter-spacing: -0.03em; }
+.tier .rule { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--color-ink-2); }
+.tier ul { margin: var(--space-md) 0 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.tier li { padding: var(--space-xs) 0; border-top: 1px solid var(--color-rule); }
+.tier .count { margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); }
+.tier .count b { font-size: var(--text-lg); color: var(--color-ink); font-variant-numeric: tabular-nums; }
+
+.members-work { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); align-items: start; }
+.tbl td .tier-tag { display: inline-flex; align-items: center; gap: var(--space-xs); font-weight: 700; }
+.tbl td .tier-tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.prog { display: grid; gap: var(--space-2xs); min-width: 9rem; }
+.prog .meter { height: 6px; border-radius: 3px; background: var(--color-rule); overflow: hidden; }
+.prog .meter i { display: block; height: 100%; width: var(--p); background: var(--color-ink); border-radius: 3px; }
+.prog small { font-size: var(--text-xs); color: var(--color-muted); }
+.tbl tr.is-open td { background: var(--color-accent-wash); }
+
+/* The member card */
+.member { position: sticky; top: var(--space-lg); }
+.card { background: var(--color-field); color: var(--color-field-ink); border-radius: 12px; padding: var(--space-lg); display: grid; gap: var(--space-lg); }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-md); }
+.card-top img { height: 36px; width: auto; }
+.card-top span { font-size: var(--text-sm); font-weight: 700; color: var(--color-accent-soft); }
+.card h2 { font-size: var(--text-3xl); letter-spacing: -0.03em; line-height: 1; }
+.card .id { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--color-field-muted); font-variant-numeric: tabular-nums; }
+.card-points { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-field-rule); }
+.card-points b { display: block; font-size: var(--text-3xl); line-height: 1; font-variant-numeric: tabular-nums; }
+.card-points small { font-size: var(--text-sm); color: var(--color-field-muted); }
+.card .meter { height: 8px; border-radius: 4px; background: var(--color-field-rule); color: var(--color-field-ink); overflow: hidden; }
+.card .meter i { display: block; height: 100%; width: var(--p); background: var(--color-accent-soft); border-radius: 4px; }
+.card .next { font-size: var(--text-sm); color: var(--color-field-muted); margin-top: var(--space-xs); }
+.card .next b { color: var(--color-field-ink); }
+
+.member h3 { font-size: var(--text-md); margin: var(--space-lg) 0 var(--space-xs); }
+.perks { margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.perks li { padding: var(--space-xs) 0; border-top: 1px solid var(--color-rule); display: flex; justify-content: space-between; gap: var(--space-md); }
+.perks li span { color: var(--color-muted); }
+.ledger { margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.ledger li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: var(--space-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--color-rule); }
+.ledger time { color: var(--color-muted); }
+.ledger b { font-variant-numeric: tabular-nums; }
+.ledger .minus { color: var(--color-accent-2); }
+.member .acts { display: flex; gap: var(--space-xs); flex-wrap: wrap; margin-top: var(--space-lg); }
+
+/* Rewards */
+.rewards { margin-top: var(--space-2xl); }
+.reward-rows { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-rule-strong); }
+.reward-rows li { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) 7rem 8rem; gap: var(--space-md); align-items: baseline; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-rule); }
+.reward-rows b { font-size: var(--text-md); }
+.reward-rows span { font-size: var(--text-sm); color: var(--color-ink-2); }
+.reward-rows strong { font-variant-numeric: tabular-nums; text-align: right; }
+.reward-rows em { font-style: normal; font-size: var(--text-sm); color: var(--color-muted); text-align: right; }
+
+@media (max-width: 75rem) {
+  .members-work { grid-template-columns: minmax(0, 1fr); }
+  .member { position: static; max-width: 560px; }
+}
+@media (max-width: 60rem) {
+  .ladder { grid-template-columns: minmax(0, 1fr); }
+  .tier, .tier + .tier { padding: var(--space-lg) 0; border-left: 0; }
+  .reward-rows li { grid-template-columns: minmax(0, 1fr) auto; }
+  .reward-rows li span { grid-column: 1 / -1; grid-row: 2; }
+  .reward-rows em { display: none; }
+}

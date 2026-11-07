@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pusat Chat PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .inbox { display: grid; grid-template-columns: 320px minmax(0, 1fr) 280px; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); min-height: 640px; }
+  .threads { border-right: 1px solid var(--line); }
+  .threads-head { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; gap: 6px; flex-wrap: wrap; }
+  .threads-head span { font-size: 12.5px; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: var(--bg); color: var(--muted); }
+  .threads-head span.on { background: var(--navy); color: #fff; }
+  .th { display: flex; gap: 11px; padding: 13px 16px; border-bottom: 1px solid var(--line-2); }
+  .th.on { background: #f2f8fd; box-shadow: inset 3px 0 0 var(--orange); }
+  .th .body { min-width: 0; flex: 1; }
+  .th .r1 { display: flex; justify-content: space-between; gap: 8px; }
+  .th b { font-size: 14px; }
+  .th time { font-size: 12px; color: var(--faint); flex: none; }
+  .th p { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 2px 0 6px; }
+  .th .tags { display: flex; gap: 5px; align-items: center; }
+  .th em { font-style: normal; margin-left: auto; background: var(--orange); color: #fff; font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 0 7px; line-height: 19px; }
+  .conv { display: flex; flex-direction: column; min-width: 0; }
+  .conv-head { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .conv-head b { font-size: 16px; display: block; }
+  .conv-head small { color: var(--faint); font-size: 12.5px; }
+  .conv-head .r { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .msgs { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #f6fafc; }
+  .lead-card { border: 1px solid #f6cfb5; background: #fff; border-radius: 12px; overflow: hidden; max-width: 82%; }
+  .lead-card div.h { background: var(--orange-soft); color: var(--orange-deep); font-weight: 700; font-size: 12.5px; padding: 7px 12px; }
+  .lead-card dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 5px 14px; padding: 12px; font-size: 13.5px; }
+  .lead-card dt { color: var(--faint); }
+  .lead-card dd { font-weight: 600; }
+  .compose { border-top: 1px solid var(--line); padding: 12px 16px; }
+  .quick { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .quick span { border: 1px solid var(--line); border-radius: 999px; font-size: 12.5px; font-weight: 700; padding: 5px 11px; color: var(--navy); }
+  .field { display: flex; gap: 8px; align-items: center; border: 1.5px solid var(--line); border-radius: 10px; padding: 6px 6px 6px 14px; color: var(--faint); }
+  .field span { flex: 1; font-size: 14px; }
+  .info { border-left: 1px solid var(--line); padding: 18px; }
+  .info h3 { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 18px 0 8px; }
+  .info h3:first-of-type { margin-top: 14px; }
+  .info .kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 12px; font-size: 13.5px; }
+  .info .kv dt { color: var(--faint); }
+  .info .kv dd { font-weight: 600; text-align: right; }
+  .note { background: #fffbea; border: 1px solid #f3e3a3; border-radius: 10px; padding: 10px 12px; font-size: 13px; }
+  @media (max-width: 1250px) { .inbox { grid-template-columns: 300px minmax(0, 1fr); } .info { display: none; } }
+  @media (max-width: 900px) { .inbox { grid-template-columns: minmax(0, 1fr); } .threads .th:nth-child(n+4) { display: none; } .threads { border-right: 0; border-bottom: 1px solid var(--line); } }
+  @media (max-width: 560px) { .msgs { padding: 14px; } .lead-card, .bub { max-width: 94%; } .conv-head .r { margin-left: 0; } }
+</style>
+</head>
+<body data-page="chat">
+<div class="demo-bar">Contoh tampilan Pusat Chat. Percakapan hanya contoh, tidak ada pesan terkirim. <a href="index.html">Semua layar</a></div>
+<div class="app">
+  <aside class="side" data-side></aside>
+  <main class="main">
+    <div class="topbar" data-top></div>
+    <div class="page-head">
+      <div><h1>Pusat chat</h1><p>Satu nomor WhatsApp dan DM Instagram, dibagi ke 2 admin. Setiap chat tercatat.</p></div>
+      <div class="acts"><span class="pill ok dot">WhatsApp tersambung</span><span class="pill dot">Instagram tersambung</span></div>
+    </div>
+
+    <div class="inbox">
+      <div class="threads">
+        <div class="threads-head"><span class="on">Semua 12</span><span>Belum dibalas 4</span><span>Saya</span><span>Prospek</span></div>
+        <div class="th on"><span class="av o">RN</span><div class="body"><div class="r1"><b>Rina, Surabaya</b><time>08.12</time></div><p>Halo PIP Machinery, saya dari Pemilih Mesin…</p><div class="tags"><span class="src pm">Pemilih Mesin</span><span class="pill mute">Nisa</span><em>1</em></div></div></div>
+        <div class="th"><span class="av p">AG</span><div class="body"><div class="r1"><b>Agus, Semarang</b><time>07.41</time></div><p>Lokasi saya di dekat kampus, kira-kira cocok?</p><div class="tags"><span class="src ig">Instagram</span><span class="pill mute">Rudi</span><em>2</em></div></div></div>
+        <div class="th"><span class="av t">BL</span><div class="body"><div class="r1"><b>Bu Lina, Madiun</b><time>07.05</time></div><p>Mesin saya bunyinya keras sejak kemarin</p><div class="tags"><span class="src">Servis</span><span class="pill mute">Nisa</span></div></div></div>
+        <div class="th"><span class="av g">KD</span><div class="body"><div class="r1"><b>Kedai Dingin, Kediri</b><time>Kemarin</time></div><p>Siap, order PIP-2055 sudah dibuat.</p><div class="tags"><span class="src">Pelanggan</span><span class="pill mute">Nisa</span></div></div></div>
+        <div class="th"><span class="av">HD</span><div class="body"><div class="r1"><b>Hendra, Yogyakarta</b><time>Kemarin</time></div><p>Besok jadi coba mesin yang berdiri ya, jam 10.</p><div class="tags"><span class="src">Coba mesin</span><span class="pill mute">Rudi</span></div></div></div>
+        <div class="th"><span class="av o">MY</span><div class="body"><div class="r1"><b>Maya, Purwokerto</b><time>4 Nov</time></div><p>Kalau ambil paket puter, bisa bonus bahan?</p><div class="tags"><span class="src sp">Shopee</span><span class="pill mute">Rudi</span></div></div></div>
+      </div>
+
+      <div class="conv">
+        <div class="conv-head"><span class="av o">RN</span><span><b>Rina, Surabaya</b><small>WhatsApp · nomor bersama PIP Machinery</small></span><div class="r"><span class="pill warn">Prospek baru</span><a class="btn sm" href="crm.html">Lihat di CRM</a></div></div>
+        <div class="msgs">
+          <p class="bub-sys">Hari ini</p>
+          <div class="lead-card"><div class="h">Dari Pemilih Mesin di website</div><dl><dt>Mau jual</dt><dd>Soft ice cream</dd><dt>Target</dt><dd>50–150 porsi per hari</dd><dt>Listrik</dt><dd>1.300 VA</dd><dt>Anggaran</dt><dd>Rp 15–30 juta</dd><dt>Rekomendasi</dt><dd>Mesin Soft Ice Cream Meja</dd></dl></div>
+          <div class="bub in">Halo PIP Machinery, mohon info harga terbaru dan ketersediaannya ya.<time>08.12</time></div>
+          <p class="bub-sys">Chat dialihkan otomatis ke Nisa</p>
+          <div class="bub out">Halo Bu Rina, mesin ini ready di Bantul, harganya Rp 18 juta sudah termasuk garansi 12 bulan. Mau coba langsung di toko, atau lewat video call dulu?<time>08.20 · Nisa</time></div>
+          <div class="bub in">Video call dulu. Besok jam 10 bisa?<time>08.24</time></div>
+        </div>
+        <div class="compose">
+          <div class="quick"><span>Jadwalkan video call</span><span>Kirim brosur</span><span>Kirim hitungan modal</span><span>Buat order</span></div>
+          <div class="field"><span>Tulis balasan sebagai Nisa…</span><span class="btn pri sm" style="flex:none">Kirim</span></div>
+        </div>
+      </div>
+
+      <aside class="info">
+        <div style="text-align:center"><span class="av o" style="width:56px;height:56px;font-size:18px;margin:0 auto 8px">RN</span><b style="font-size:16px">Rina</b><p class="faint" style="font-size:13px">Surabaya · calon pembeli</p></div>
+        <h3>Data prospek</h3>
+        <dl class="kv"><dt>Tahap</dt><dd>Baru</dd><dt>Minat</dt><dd>Soft Meja</dd><dt>Nilai</dt><dd>Rp 18 jt</dd><dt>Follow up</dt><dd>Hari ini 13.00</dd></dl>
+        <h3>Ditangani</h3>
+        <div style="display:flex;gap:8px;align-items:center"><span class="av o" style="width:28px;height:28px;font-size:11px">NS</span><b style="font-size:14px">Nisa</b><span class="btn sm" style="margin-left:auto">Alihkan</span></div>
+        <h3>Catatan tim</h3>
+        <p class="note">Lokasi di dekat kampus. Tanyakan apakah perlu gerobak sekalian.</p>
+      </aside>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

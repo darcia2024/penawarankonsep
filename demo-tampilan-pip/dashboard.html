@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dasbor PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .row2 { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
+  .row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+  .chart { width: 100%; height: auto; }
+  .donut { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 18px; align-items: center; }
+  .donut .legend { flex-direction: column; gap: 10px; }
+  .donut .legend span { justify-content: space-between; width: 100%; }
+  .donut .legend b { color: var(--ink); }
+  .bars li { display: grid; grid-template-columns: 100px minmax(0, 1fr) 46px; gap: 10px; align-items: center; padding: 7px 0; font-size: 13.5px; }
+  .bars li b { text-align: right; }
+  .greet { background: linear-gradient(110deg, var(--navy) 0%, #0f4682 100%); color: #fff; border: 0; display: flex; justify-content: space-between; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .greet h2 { font-size: 20px; }
+  .greet p { color: #b9d0e7; font-size: 14px; margin-top: 2px; }
+  .greet .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .greet .chips span { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+  .greet .chips b { color: #ffb98f; }
+  @media (max-width: 1100px) { .row2, .row3 { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 560px) { .donut { grid-template-columns: minmax(0, 1fr); justify-items: center; } .donut .legend { width: 100%; } }
+</style>
+</head>
+<body data-page="dasbor">
+<div class="demo-bar">Contoh tampilan dasbor. Angka hanya contoh, tombol belum berfungsi. <a href="index.html">Semua layar</a></div>
+<div class="app">
+  <aside class="side" data-side></aside>
+  <main class="main">
+    <div class="topbar" data-top></div>
+
+    <div class="page-head">
+      <div><h1>Dasbor</h1><p>Ringkasan November 2026, diperbarui otomatis dari order, chat, dan gudang.</p></div>
+      <div class="acts"><span class="seg"><span>Minggu</span><span class="on">Bulan</span><span>Tahun</span></span><a class="btn" href="#">Unduh laporan</a><a class="btn pri" href="#">+ Order baru</a></div>
+    </div>
+
+    <div class="card greet">
+      <div><h2>Selamat pagi, Nisa</h2><p>Ada 9 hal yang perlu ditindaklanjuti hari ini.</p></div>
+      <div class="chips"><span><b>3</b> prospek follow up</span><span><b>2</b> tiket servis</span><span><b>1</b> faktur jatuh tempo</span><span><b>3</b> order siap kirim</span></div>
+    </div>
+
+    <div class="kpis">
+      <div class="card kpi"><small data-ic="penjualan">Penjualan November</small><b>Rp 140,2 jt</b><span class="delta">▲ 12% <span>dari Oktober</span></span>
+        <svg class="spark" viewBox="0 0 84 32" aria-hidden="true"><polyline points="0,26 14,22 28,24 42,16 56,13 70,8 84,4" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      <div class="card kpi"><small data-ic="gudang">Order aktif</small><b>18</b><span class="delta">6 <span>menunggu dikirim</span></span>
+        <svg class="spark" viewBox="0 0 84 32" aria-hidden="true"><polyline points="0,20 14,18 28,22 42,14 56,16 70,12 84,10" fill="none" stroke="#072d59" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      <div class="card kpi"><small data-ic="crm">Prospek baru</small><b>32</b><span class="delta">▲ 9 <span>dari Pemilih Mesin</span></span>
+        <svg class="spark" viewBox="0 0 84 32" aria-hidden="true"><polyline points="0,28 14,24 28,20 42,22 56,14 70,10 84,6" fill="none" stroke="#072d59" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      <div class="card kpi alert"><small data-ic="gudang">Stok di bawah minimum</small><b>4 item</b><span class="delta down">Perlu dipesan <span>minggu ini</span></span></div>
+    </div>
+
+    <div class="row2">
+      <section class="card">
+        <div class="card-head"><div><h2>Penjualan 6 bulan terakhir</h2><small>dalam juta rupiah</small></div><div class="legend"><span><i style="background:#ea580c"></i>2026</span><span><i style="background:#b6dcee"></i>2025</span></div></div>
+        <svg class="chart" viewBox="0 0 620 230" role="img" aria-label="Penjualan Juni sampai November 2026 naik dari 96 ke 140 juta">
+          <g font-size="11" fill="#7489a1">
+            <line x1="40" x2="610" y1="30" y2="30" stroke="#e7f1f7"/><text x="0" y="34">150</text>
+            <line x1="40" x2="610" y1="80" y2="80" stroke="#e7f1f7"/><text x="0" y="84">120</text>
+            <line x1="40" x2="610" y1="130" y2="130" stroke="#e7f1f7"/><text x="4" y="134">90</text>
+            <line x1="40" x2="610" y1="180" y2="180" stroke="#e7f1f7"/><text x="4" y="184">60</text>
+          </g>
+          <polyline points="70,165 178,160 286,170 394,150 502,140 590,128" fill="none" stroke="#b6dcee" stroke-width="2.5" stroke-dasharray="5 5"/>
+          <path d="M70,140 L178,127 L286,135 L394,103 L502,92 L590,47 L590,200 L70,200 Z" fill="url(#g1)"/>
+          <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ea580c" stop-opacity=".22"/><stop offset="1" stop-color="#ea580c" stop-opacity="0"/></linearGradient></defs>
+          <polyline points="70,140 178,127 286,135 394,103 502,92 590,47" fill="none" stroke="#ea580c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          <g fill="#fff" stroke="#ea580c" stroke-width="2"><circle cx="70" cy="140" r="4"/><circle cx="178" cy="127" r="4"/><circle cx="286" cy="135" r="4"/><circle cx="394" cy="103" r="4"/><circle cx="502" cy="92" r="4"/></g>
+          <circle cx="590" cy="47" r="6" fill="#ea580c" stroke="#fff" stroke-width="2"/>
+          <g transform="translate(518 6)"><rect width="88" height="28" rx="6" fill="#072d59"/><text x="44" y="18" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Rp 140,2 jt</text></g>
+          <g font-size="12" fill="#7489a1" text-anchor="middle"><text x="70" y="222">Jun</text><text x="178" y="222">Jul</text><text x="286" y="222">Agu</text><text x="394" y="222">Sep</text><text x="502" y="222">Okt</text><text x="590" y="222" font-weight="700" fill="#072d59">Nov</text></g>
+        </svg>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>Perlu tindakan hari ini</h2><a class="btn sm" href="#">Semua</a></div>
+        <ul class="list">
+          <li><span class="ic o" data-ic="crm"></span><span><b>3 prospek menunggu follow up</b><small>Rina, Surabaya · Wulan, Medan · Agus</small></span></li>
+          <li><span class="ic o" data-ic="servis"></span><span><b>2 tiket servis menunggu teknisi</b><small>T-118 Madiun · T-120 Kediri</small></span></li>
+          <li><span class="ic" data-ic="keuangan"></span><span><b>Faktur INV-1098 jatuh tempo</b><small>Kedai Dingin · Rp 1,2 jt</small></span><span class="end pill warn">Hari ini</span></li>
+          <li><span class="ic" data-ic="gudang"></span><span><b>4 item stok di bawah minimum</b><small>Vanila, waffle, WIR-128Y, kertas waffle</small></span></li>
+          <li><span class="ic g" data-ic="penjualan"></span><span><b>PIP-2051 siap dikirim</b><small>Toko Es Maju, Klaten · lunas</small></span><span class="end pill ok">Siap</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="row3">
+      <section class="card">
+        <div class="card-head"><h2>Penjualan per lini</h2><small>November</small></div>
+        <div class="donut">
+          <svg viewBox="0 0 42 42" width="140" height="140" role="img" aria-label="Mesin 44 persen, bahan 34 persen, paket 22 persen">
+            <circle cx="21" cy="21" r="15.9" fill="none" stroke="#e7f1f7" stroke-width="6"/>
+            <circle cx="21" cy="21" r="15.9" fill="none" stroke="#072d59" stroke-width="6" stroke-dasharray="44 56" stroke-dashoffset="25"/>
+            <circle cx="21" cy="21" r="15.9" fill="none" stroke="#ea580c" stroke-width="6" stroke-dasharray="34 66" stroke-dashoffset="81"/>
+            <circle cx="21" cy="21" r="15.9" fill="none" stroke="#8fc3e3" stroke-width="6" stroke-dasharray="22 78" stroke-dashoffset="47"/>
+            <text x="21" y="20" text-anchor="middle" font-size="5" font-weight="700" fill="#0b2440">140,2</text><text x="21" y="26" text-anchor="middle" font-size="3" fill="#7489a1">juta</text>
+          </svg>
+          <div class="legend"><span><span><i style="background:#072d59"></i> Mesin</span><b>Rp 62 jt</b></span><span><span><i style="background:#ea580c"></i> Bahan</span><b>Rp 48,2 jt</b></span><span><span><i style="background:#8fc3e3"></i> Paket usaha</span><b>Rp 30 jt</b></span></div>
+        </div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>Asal chat masuk</h2><small>120 chat</small></div>
+        <ul class="bars">
+          <li><span>Instagram</span><span class="meter"><i style="width:100%"></i></span><b>52</b></li>
+          <li><span>Website</span><span class="meter"><i style="width:77%"></i></span><b>40</b></li>
+          <li><span>Pemilih Mesin</span><span class="meter"><i class="o" style="width:35%"></i></span><b>18</b></li>
+          <li><span>Shopee</span><span class="meter"><i style="width:19%"></i></span><b>10</b></li>
+        </ul>
+        <p class="faint" style="font-size:13px;margin-top:10px">24 chat jadi order · konversi 20%</p>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>Pelanggan mulai jarang pesan</h2></div>
+        <ul class="list">
+          <li><span class="av">PJ</span><span><b>Pak Joko, Sleman</b><small>Pesan terakhir 45 hari lalu</small></span><span class="end btn sm">Ingatkan</span></li>
+          <li><span class="av t">EN</span><span><b>Es Teler Mbak Nur, Klaten</b><small>38 hari lalu</small></span><span class="end btn sm">Ingatkan</span></li>
+          <li><span class="av p">KD</span><span><b>Kedai Dingin, Kediri</b><small>31 hari lalu</small></span><span class="end btn sm">Ingatkan</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="card-head"><h2>Order terbaru</h2><a class="btn sm" href="penjualan.html">Buka Penjualan</a></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Order</th><th>Pelanggan</th><th>Item</th><th class="r">Total</th><th>Bayar</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>PIP-2056</b><small>6 Nov</small></td><td><div class="who"><span class="av o">RN</span><span><b>Rina</b><small>Surabaya</small></span></div></td><td>Mesin Soft Ice Cream Meja</td><td class="r"><b>Rp 18 jt</b></td><td><span class="pill warn dot">Menunggu DP</span></td><td><span class="pill mute">Penawaran</span></td></tr>
+          <tr><td><b>PIP-2055</b><small>5 Nov</small></td><td><div class="who"><span class="av p">KD</span><span><b>Kedai Dingin</b><small>Kediri</small></span></div></td><td>Bahan soft 10 kg</td><td class="r"><b>Rp 1,2 jt</b></td><td><span class="pill warn dot">Jatuh tempo</span></td><td><span class="pill">Baru</span></td></tr>
+          <tr><td><b>PIP-2053</b><small>1 Nov</small></td><td><div class="who"><span class="av t">DW</span><span><b>Dewi</b><small>Medan</small></span></div></td><td>Paket Es Bingsoo</td><td class="r"><b>Rp 15 jt</b></td><td><span class="pill dot">DP 50%</span></td><td><span class="pill">Produksi</span></td></tr>
+          <tr><td><b>PIP-2052</b><small>4 Nov</small></td><td><div class="who"><span class="av g">SR</span><span><b>Sari</b><small>Solo</small></span></div></td><td>Mesin Hard WIR-128Y</td><td class="r"><b>Rp 14,9 jt</b></td><td><span class="pill ok dot">Lunas</span></td><td><span class="pill">QC</span></td></tr>
+          <tr><td><b>PIP-2051</b><small>4 Nov</small></td><td><div class="who"><span class="av">TM</span><span><b>Toko Es Maju</b><small>Klaten</small></span></div></td><td>Bahan 18 kg + cone 1.000</td><td class="r"><b>Rp 2,4 jt</b></td><td><span class="pill ok dot">Lunas</span></td><td><span class="pill ok">Siap kirim</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

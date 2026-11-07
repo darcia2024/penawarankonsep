@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Stok dan Produksi PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .lvl { display: grid; gap: 4px; min-width: 140px; }
+  .lvl small { font-size: 12px; color: var(--faint); }
+  .board { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .job .progress { margin-top: 10px; }
+  .job .meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--faint); margin-top: 6px; }
+  h2.sec { font-size: 18px; margin: 28px 0 12px; }
+  @media (max-width: 1250px) { .board { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 900px) { .board { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body data-page="gudang">
+<div class="demo-bar">Contoh tampilan Stok dan Produksi. Stok dan pekerjaan hanya contoh. <a href="index.html">Semua layar</a></div>
+<div class="app">
+  <aside class="side" data-side></aside>
+  <main class="main">
+    <div class="topbar" data-top></div>
+    <div class="page-head">
+      <div><h1>Stok dan produksi</h1><p>Gudang Bantul · stok berkurang otomatis saat order dikirim</p></div>
+      <div class="acts"><a class="btn" href="#">Stok masuk</a><a class="btn pri" href="#">Pesan ke pemasok</a></div>
+    </div>
+
+    <div class="kpis">
+      <div class="card kpi"><small data-ic="gudang">Jenis barang</small><b>17</b><span class="delta"><span>mesin, bahan, cone, topping</span></span></div>
+      <div class="card kpi alert"><small data-ic="gudang">Di bawah minimum</small><b>4 item</b><span class="delta down">Pesan minggu ini</span></div>
+      <div class="card kpi"><small data-ic="penjualan">Siap dikirim hari ini</small><b>3 order</b><span class="delta"><span>PIP-2047, 2050, 2051</span></span></div>
+      <div class="card kpi"><small data-ic="servis">Gerobak dikerjakan</small><b>5</b><span class="delta"><span>rata-rata 9 hari kerja</span></span></div>
+    </div>
+
+    <section class="card">
+      <div class="card-head"><h2>Stok gudang</h2><span class="seg"><span class="on">Semua</span><span>Mesin</span><span>Bahan</span><span>Cone</span></span></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Barang</th><th>Kategori</th><th class="r">Stok</th><th>Terhadap minimum</th><th class="r">Harga jual</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>Bahan soft Joelly vanila</b></td><td>Bahan</td><td class="r"><b>18</b> kg</td><td><div class="lvl"><span class="meter"><i class="o" style="width:30%"></i></span><small>min. 30 kg</small></div></td><td class="r">Rp 120.000/kg</td><td><span class="pill warn">Pesan ulang</span></td></tr>
+          <tr class="hl"><td><b>Mesin Hard Eskrim WIR-128Y</b></td><td>Mesin</td><td class="r"><b>1</b> unit</td><td><div class="lvl"><span class="meter"><i class="o" style="width:25%"></i></span><small>min. 2 unit</small></div></td><td class="r">Rp 14,9 jt</td><td><span class="pill warn">Pesan ulang</span></td></tr>
+          <tr class="hl"><td><b>Waffle kerucut standar</b></td><td>Cone dan waffle</td><td class="r"><b>9</b> pak</td><td><div class="lvl"><span class="meter"><i class="o" style="width:45%"></i></span><small>min. 10 pak</small></div></td><td class="r">Rp 85.000/pak</td><td><span class="pill warn">Pesan ulang</span></td></tr>
+          <tr class="hl"><td><b>Kertas pegangan waffle</b></td><td>Perlengkapan</td><td class="r"><b>4</b> pak</td><td><div class="lvl"><span class="meter"><i class="o" style="width:40%"></i></span><small>min. 5 pak</small></div></td><td class="r">Rp 25.000/pak</td><td><span class="pill warn">Pesan ulang</span></td></tr>
+          <tr><td><b>Bahan soft Joelly coklat</b></td><td>Bahan</td><td class="r"><b>42</b> kg</td><td><div class="lvl"><span class="meter"><i style="width:70%"></i></span><small>min. 30 kg</small></div></td><td class="r">Rp 120.000/kg</td><td><span class="pill ok">Aman</span></td></tr>
+          <tr><td><b>Mesin Soft Ice Cream Meja</b></td><td>Mesin</td><td class="r"><b>3</b> unit</td><td><div class="lvl"><span class="meter"><i style="width:75%"></i></span><small>min. 2 unit</small></div></td><td class="r">Rp 18 jt</td><td><span class="pill ok">Aman</span></td></tr>
+          <tr><td><b>Cone 4,5 cm</b></td><td>Cone dan waffle</td><td class="r"><b>6</b> pak</td><td><div class="lvl"><span class="meter"><i style="width:75%"></i></span><small>min. 4 pak</small></div></td><td class="r">Rp 120.000/pak</td><td><span class="pill ok">Aman</span></td></tr>
+          <tr><td><b>Topping pasta coklat</b></td><td>Topping</td><td class="r"><b>12</b> kg</td><td><div class="lvl"><span class="meter"><i style="width:60%"></i></span><small>min. 10 kg</small></div></td><td class="r">Rp 95.000/kg</td><td><span class="pill ok">Aman</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <h2 class="sec">Produksi gerobak dan QC</h2>
+    <div class="board">
+      <div class="col"><div class="col-head"><span><i style="background:#8fc3e3"></i>Desain</span><em>1</em></div>
+        <div class="deal job"><b>PIP-2058</b><p>Kopi dan Es, Bandung<br>Gerobak 1,5 m · branding</p><span class="meter progress"><i style="width:20%"></i></span><div class="meta"><span>Desain dikirim</span><span>Hari 1</span></div></div></div>
+      <div class="col"><div class="col-head"><span><i style="background:#2f7fc1"></i>Produksi</span><em>1</em></div>
+        <div class="deal job"><b>PIP-2053</b><p>Dewi, Medan<br>Gerobak bingsoo warna mint</p><span class="meter progress"><i style="width:55%"></i></span><div class="meta"><span>Rangka dan cat</span><span>Hari 5</span></div></div></div>
+      <div class="col"><div class="col-head"><span><i style="background:#6a58c9"></i>QC</span><em>1</em></div>
+        <div class="deal job hot"><b>PIP-2052</b><p>Sari, Solo<br>Mesin WIR-128Y</p><span class="meter progress"><i class="o" style="width:80%"></i></span><div class="meta"><span>Video QC belum dikirim</span><span>Hari 2</span></div></div></div>
+      <div class="col"><div class="col-head"><span><i style="background:#ea580c"></i>Packing</span><em>1</em></div>
+        <div class="deal job"><b>PIP-2047</b><p>Bayu, Malang<br>Gerobak + mesin soft</p><span class="meter progress"><i style="width:90%"></i></span><div class="meta"><span>Menunggu pelunasan</span><span>Hari 9</span></div></div></div>
+      <div class="col"><div class="col-head"><span><i style="background:#17733f"></i>Dikirim</span><em>1</em></div>
+        <div class="deal job"><b>PIP-2040</b><p>Kios Dingin, Jakarta<br>Resi JNT 8821 0441 7</p><span class="meter progress"><i style="width:100%;background:var(--ok)"></i></span><div class="meta"><span>Dalam perjalanan</span><span>4 Nov</span></div></div></div>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

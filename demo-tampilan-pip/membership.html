@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Membership, PIP Machinery</title>
+<meta name="description" content="Contoh tampilan program membership PIP Machinery: tingkat member, poin belanja bahan, dan hadiah tukar poin.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap">
+<link rel="stylesheet" href="crm/membership.css">
+</head>
+<body>
+<a class="skip" href="#main">Langsung ke isi</a>
+<p class="demo-note">Contoh tampilan Membership. Nama dan angka contoh, tombol belum tersambung. <a href="index.html">Semua layar</a></p>
+<div class="shell">
+  <aside class="rail">
+    <a class="rail-brand" href="dashboard.html"><img src="assets/logo-pip-machinery-light.png" alt="PIP Machinery" width="570" height="222"><small>Sistem usaha, toko Bantul</small></a>
+    <nav aria-label="Menu sistem">
+      <a class="go" href="dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dasbor</a>
+      <a class="go" href="crm.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/></svg>Prospek<span class="n">6</span></a>
+      <a class="go" href="membership.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M13 10h5M13 14h3"/></svg>Membership</a>
+      <a class="go" href="chat.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Pusat chat<span class="n">4</span></a>
+      <a class="go" href="penjualan.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>Penjualan</a>
+      <a class="go" href="gudang.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg>Stok dan produksi</a>
+      <a class="go" href="servis.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg>Servis</a>
+      <a class="go" href="keuangan.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Keuangan</a>
+      <p>Untuk pembeli</p>
+      <a class="go" href="landing.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>Landing page</a>
+      <a class="go" href="pelanggan.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>Layar pelanggan</a>
+    </nav>
+    <details class="rail-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Menu sistem di HP">
+        <a class="go" href="dashboard.html">Dasbor</a>
+        <a class="go" href="crm.html">Prospek</a>
+        <a class="go" href="membership.html" aria-current="page">Membership</a>
+        <a class="go" href="chat.html">Pusat chat</a>
+        <a class="go" href="penjualan.html">Penjualan</a>
+        <a class="go" href="gudang.html">Stok dan produksi</a>
+        <a class="go" href="servis.html">Servis</a>
+        <a class="go" href="keuangan.html">Keuangan</a>
+        <a class="go" href="landing.html">Landing page</a>
+      </nav>
+    </details>
+    <div class="rail-user"><b>Nisa</b>Admin, toko Bantul</div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="head">
+      <div>
+        <h1>Membership</h1>
+        <p>Pelanggan bahan naik tingkat dari total belanja <b>6 bulan terakhir</b>. Setiap belanja bahan jadi poin yang bisa ditukar.</p>
+      </div>
+      <div class="head-acts">
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="visually-hidden">Cari member</span><input type="search" name="q" placeholder="Cari nama atau nomor member" autocomplete="off"></label>
+        <a class="btn btn--quiet" href="#hadiah">Atur hadiah</a>
+        <a class="btn" href="#member">Daftarkan member</a>
+      </div>
+    </div>
+
+    <section class="ladder" aria-label="Tingkat member">
+      <div class="tier" style="--c: var(--color-stage-4)">
+        <h2>Reguler</h2>
+        <p class="rule">Otomatis untuk setiap pembeli mesin atau paket.</p>
+        <ul><li>1 poin tiap belanja bahan Rp 10.000</li><li>Pengingat sebelum bahan habis</li><li>Tutorial dan QR di mesin</li></ul>
+        <p class="count"><b>3</b> member</p>
+      </div>
+      <div class="tier" style="--c: var(--color-stage-2)">
+        <h2>Gold</h2>
+        <p class="rule">Belanja bahan Rp 5 jt dalam 6 bulan.</p>
+        <ul><li>Diskon bahan 5%</li><li>Poin 1,5 kali</li><li>Gratis ongkir untuk Pulau Jawa</li></ul>
+        <p class="count"><b>3</b> member</p>
+      </div>
+      <div class="tier" style="--c: var(--color-accent)">
+        <h2>Platinum</h2>
+        <p class="rule">Belanja bahan Rp 15 jt dalam 6 bulan.</p>
+        <ul><li>Diskon bahan 10%</li><li>Poin 2 kali, teknisi datang 1×24 jam</li><li>Garansi mesin tambah 6 bulan</li></ul>
+        <p class="count"><b>1</b> member</p>
+      </div>
+    </section>
+
+    <div class="members-work" id="member">
+      <section aria-labelledby="daftar-h">
+        <div class="sheet-head"><h2 id="daftar-h">Daftar member</h2><small>7 member, urut dari belanja terbesar</small></div>
+        <table class="tbl">
+          <thead><tr><th scope="col">Member</th><th scope="col">Tingkat</th><th scope="col" class="num">Belanja 6 bulan</th><th scope="col" class="num">Poin</th><th scope="col">Ke tingkat berikutnya</th></tr></thead>
+          <tbody>
+            <tr><td>Toko Es Maju, Klaten</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-accent)"><i></i>Platinum</span></td><td data-l="Belanja" class="num">Rp 16,8 jt</td><td data-l="Poin" class="num">3.360</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 100%"></i></span><small>Tingkat tertinggi</small></span></td></tr>
+            <tr class="is-open"><td>Bu Lina, Madiun</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-2)"><i></i>Gold</span></td><td data-l="Belanja" class="num">Rp 11,8 jt</td><td data-l="Poin" class="num">1.770</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 79%"></i></span><small>Rp 3,2 jt lagi ke Platinum</small></span></td></tr>
+            <tr><td>Kedai Dingin, Kediri</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-2)"><i></i>Gold</span></td><td data-l="Belanja" class="num">Rp 7,2 jt</td><td data-l="Poin" class="num">1.080</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 48%"></i></span><small>Rp 7,8 jt lagi ke Platinum</small></span></td></tr>
+            <tr><td>Es Teler Mbak Nur, Klaten</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-2)"><i></i>Gold</span></td><td data-l="Belanja" class="num">Rp 5,6 jt</td><td data-l="Poin" class="num">840</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 37%"></i></span><small>Rp 9,4 jt lagi ke Platinum</small></span></td></tr>
+            <tr><td>Pak Joko, Sleman</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-4)"><i></i>Reguler</span></td><td data-l="Belanja" class="num">Rp 2,1 jt</td><td data-l="Poin" class="num">210</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 42%"></i></span><small>Rp 2,9 jt lagi ke Gold</small></span></td></tr>
+            <tr><td>Rumah Es Ayu, Sleman</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-4)"><i></i>Reguler</span></td><td data-l="Belanja" class="num">Rp 1,0 jt</td><td data-l="Poin" class="num">100</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 20%"></i></span><small>Rp 4 jt lagi ke Gold</small></span></td></tr>
+            <tr><td>Kios Dingin, Jakarta</td><td data-l="Tingkat"><span class="tier-tag" style="--c: var(--color-stage-4)"><i></i>Reguler</span></td><td data-l="Belanja" class="num">Rp 0,6 jt</td><td data-l="Poin" class="num">60</td><td data-l="Berikutnya"><span class="prog"><span class="meter"><i style="--p: 12%"></i></span><small>Rp 4,4 jt lagi ke Gold</small></span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <aside class="member" aria-label="Member yang dibuka: Bu Lina">
+        <div class="card">
+          <div class="card-top"><img src="assets/logo-pip-machinery-light.png" alt="PIP Machinery" width="570" height="222"><span>Member Gold</span></div>
+          <div><h2>Bu Lina</h2><p class="id">No. member PIP-M-0187, sejak Maret 2026</p></div>
+          <div>
+            <div class="card-points"><div><b>1.770</b><small>poin</small></div><small>Berlaku sampai 31 Mar 2027</small></div>
+          </div>
+          <div>
+            <div class="meter"><i style="--p: 79%"></i></div>
+            <p class="next"><b>Rp 3,2 jt lagi</b> belanja bahan sebelum 30 Apr 2027 untuk naik ke Platinum.</p>
+          </div>
+        </div>
+        <h3>Keuntungan yang sedang aktif</h3>
+        <ul class="perks"><li>Diskon bahan<span>5%</span></li><li>Kelipatan poin<span>1,5 kali</span></li><li>Ongkir Pulau Jawa<span>Gratis</span></li></ul>
+        <h3>Riwayat poin</h3>
+        <ol class="ledger">
+          <li><time>12 Okt</time><span>Belanja bahan, PIP-2044</span><b>+288</b></li>
+          <li><time>20 Okt</time><span>Tukar topping pasta 1 kg</span><b class="minus">−300</b></li>
+          <li><time>14 Sep</time><span>Belanja bahan, PIP-2029</span><b>+270</b></li>
+        </ol>
+        <div class="acts"><a class="btn" href="#hadiah">Tukar poin</a><a class="btn btn--quiet" href="pelanggan.html">Lihat di halaman mitra</a></div>
+      </aside>
+    </div>
+
+    <section class="rewards" id="hadiah" aria-labelledby="hadiah-h">
+      <div class="sheet-head"><h2 id="hadiah-h">Hadiah tukar poin</h2><small>Bisa diubah admin kapan saja</small></div>
+      <ul class="reward-rows">
+        <li><b>Kaos seragam PIP</b><span>Untuk karyawan booth, ukuran S sampai XL</span><strong>250 poin</strong><em>4 kali ditukar</em></li>
+        <li><b>Topping pasta 1 kg</b><span>Pilih rasa coklat, stroberi, atau vanila</span><strong>300 poin</strong><em>11 kali ditukar</em></li>
+        <li><b>Cone 4,5 cm, 500 pcs</b><span>Dikirim bersama pesanan bahan berikutnya</span><strong>400 poin</strong><em>6 kali ditukar</em></li>
+        <li><b>Kunjungan teknisi gratis</b><span>Servis di luar garansi, area Jawa Tengah dan Yogyakarta</span><strong>1.500 poin</strong><em>Belum pernah</em></li>
+      </ul>
+    </section>
+  </main>
+</div>
+</body>
+</html>

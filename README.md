@@ -5,6 +5,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `pitch-deck/` — presentasi 22 slide, bisa diklik dan nyaman dibuka di HP.
 - `demo-pemilih-mesin/` — demo fitur Pemilih Mesin (data mesin masih contoh).
 - `demo-sistem-pip/` — demo sistem lengkap PIP Machinery: website pembeli, layar pelanggan, dan sistem tim (ERP), dengan alur 10 langkah yang bisa diklik (data contoh di `data.js`).
+- `demo-tampilan-pip/` — contoh tampilan saja, dipisah per layar: landing page, dasbor, CRM, pusat chat, penjualan, stok dan produksi, servis, keuangan, membership, dan layar pelanggan di HP.
 - `jasa-video/` — penawaran jasa video dakwah umrah untuk Sidi Alief.
 - `jasa-video-pgs/` — penawaran jasa video edukasi umrah untuk travel PGS Tour.
 - `jasa-video-igh/` — penawaran jasa video edukasi umrah untuk travel IGH Tour.

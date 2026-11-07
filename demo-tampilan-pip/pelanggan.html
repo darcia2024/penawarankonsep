@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Layar Pelanggan PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { background: radial-gradient(900px 500px at 50% 0%, #e6f6fd, transparent 70%), var(--bg); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 44px 20px 64px; }
+  .head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+  .head img { height: 56px; width: auto; margin: 0 auto 18px; }
+  .head h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; letter-spacing: -.03em; color: var(--navy); }
+  .head p { color: var(--muted); font-size: 17px; margin-top: 10px; }
+  .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .cap { text-align: center; margin-top: 18px; }
+  .cap b { display: block; font-size: 17px; color: var(--navy); }
+  .cap span { color: var(--muted); font-size: 14px; }
+  .ph-head { background: var(--navy); color: #fff; padding: 6px 18px 16px; }
+  .ph-head small { display: block; color: #9fbdd9; font-size: 12px; }
+  .ph-head b { font-size: 17px; line-height: 1.25; display: block; }
+  .ph-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; overflow: hidden; font-size: 13.5px; }
+  .alert { border-radius: 10px; padding: 10px 12px; font-weight: 700; background: var(--warn-bg); color: var(--warn); }
+  .alert.ok { background: var(--ok-bg); color: var(--ok); }
+  .track li { position: relative; padding: 0 0 13px 26px; }
+  .track li::before { content: ""; position: absolute; left: 4px; top: 4px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--line); background: #fff; }
+  .track li::after { content: ""; position: absolute; left: 9.5px; top: 18px; bottom: 0; width: 2px; background: var(--line); }
+  .track li:last-child::after { display: none; }
+  .track li.d::before { background: var(--navy); border-color: var(--navy); }
+  .track li.d::after { background: var(--navy); }
+  .track li.n::before { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 0 4px #fde0cc; }
+  .track b { display: block; font-size: 13.5px; }
+  .track small { color: var(--faint); font-size: 12px; }
+  .act { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-weight: 700; }
+  .act span { color: var(--orange-deep); font-size: 12.5px; }
+  .it { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line-2); }
+  .it img { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; background: var(--paper); flex: none; }
+  .it b { display: block; font-size: 13.5px; }
+  .it small { color: var(--faint); font-size: 12px; }
+  .qty { margin-left: auto; display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 8px; font-weight: 700; flex: none; }
+  .qty i { font-style: normal; width: 24px; text-align: center; color: var(--muted); }
+  .qty span { min-width: 22px; text-align: center; }
+  .total { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; }
+  .cta { background: var(--orange); color: #fff; border-radius: 10px; padding: 12px; text-align: center; font-weight: 700; font-size: 15px; }
+  .qr { display: flex; gap: 12px; align-items: center; }
+  .qr .box { width: 64px; height: 64px; border-radius: 10px; background: var(--paper); display: grid; place-items: center; flex: none; }
+  .vid { border-radius: 10px; background: var(--navy); aspect-ratio: 16 / 9; display: grid; place-items: center; position: relative; }
+  .vid i { width: 38px; height: 38px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; }
+  .vid i::after { content: ""; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
+  .vid small { position: absolute; left: 10px; bottom: 8px; color: #fff; font-size: 11.5px; font-weight: 600; }
+  .back { text-align: center; margin-top: 36px; font-size: 14px; }
+  .back a { color: var(--navy); font-weight: 700; text-decoration: underline; }
+  @media (max-width: 1000px) { .phones { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
+  @media (max-width: 560px) { .wrap { padding: 32px 16px 48px; } }
+</style>
+</head>
+<body>
+<div class="demo-bar">Contoh tampilan layar pelanggan di HP. Data hanya contoh. <a href="index.html">Semua layar</a></div>
+<main class="wrap">
+  <div class="head">
+    <img src="assets/logo-pip-machinery.png" alt="PIP Machinery">
+    <h1>Dibuka pelanggan dari HP, tanpa aplikasi</h1>
+    <p>Tautannya dikirim lewat WhatsApp, atau muncul saat stiker QR di mesin di-scan.</p>
+  </div>
+
+  <div class="phones">
+    <div>
+      <div class="phone"><div class="phone-in">
+        <div class="notch" style="background:var(--navy)"><span style="background:#000"></span></div>
+        <div class="ph-head"><small>Pesanan PIP-2047 · Bayu, Malang</small><b>Gerobak custom dan mesin soft ice cream</b></div>
+        <div class="ph-body">
+          <p class="alert">Sedang dikerjakan: Packing</p>
+          <ol class="track">
+            <li class="d"><b>Pesanan diterima</b><small>27 Okt 2026</small></li>
+            <li class="d"><b>Desain gerobak</b><small>28 Okt, disetujui</small></li>
+            <li class="d"><b>Produksi gerobak</b><small>Selesai 2 Nov</small></li>
+            <li class="d"><b>Quality control</b><small>4 Nov, ada video</small></li>
+            <li class="n"><b>Packing</b><small>Dikerjakan hari ini</small></li>
+            <li><b>Dikirim ke Malang</b><small>Nomor resi muncul di sini</small></li>
+          </ol>
+          <div class="vid"><i></i><small>Video QC sebelum dikirim · 1:24</small></div>
+          <div class="act">Sisa tagihan Rp 10.750.000 <span>Bayar</span></div>
+        </div>
+      </div></div>
+      <p class="cap"><b>Lacak pesanan</b><span>Status, video QC, dan resi tanpa perlu bertanya ke admin.</span></p>
+    </div>
+
+    <div>
+      <div class="phone"><div class="phone-in">
+        <div class="notch" style="background:var(--navy)"><span style="background:#000"></span></div>
+        <div class="ph-head"><small>Halaman mitra · Madiun</small><b>Halo, Bu Lina</b></div>
+        <div class="ph-body">
+          <p class="alert">Bahan diperkirakan habis 3 hari lagi</p>
+          <b style="font-size:14px">Pesan seperti terakhir</b>
+          <div>
+            <div class="it"><img src="https://purnama-eskrim.com/wp-content/uploads/2022/03/bahan-baku-eskrim-2-crop.png" alt=""><span><b>Bahan soft coklat</b><small>Rp 120.000 / kg</small></span><span class="qty"><i>−</i><span>8</span><i>+</i></span></div>
+            <div class="it"><img src="https://purnama-eskrim.com/wp-content/uploads/2022/03/bahan-baku-eskrim-1-crop.png" alt=""><span><b>Bahan soft vanila</b><small>Rp 120.000 / kg</small></span><span class="qty"><i>−</i><span>7</span><i>+</i></span></div>
+            <div class="it"><img src="https://purnama-eskrim.com/wp-content/uploads/2022/03/cone-45.jpg" alt=""><span><b>Cone 4,5 cm</b><small>Rp 120.000 / 500 pcs</small></span><span class="qty"><i>−</i><span>1</span><i>+</i></span></div>
+          </div>
+          <div class="act" style="background:var(--orange-soft);border-color:#f6cfb5">Baru: rasa stroberi <span>Tambah</span></div>
+          <div class="total"><span>Total</span><span>Rp 1.920.000</span></div>
+          <div class="cta">Pesan lagi</div>
+          <div class="act">Mesin Soft Meja SM-0187 <span>Buka QR</span></div>
+        </div>
+      </div></div>
+      <p class="cap"><b>Halaman mitra</b><span>Diingatkan sebelum bahan habis, pesan ulang sekali tekan.</span></p>
+    </div>
+
+    <div>
+      <div class="phone"><div class="phone-in">
+        <div class="notch" style="background:var(--navy)"><span style="background:#000"></span></div>
+        <div class="ph-head"><small>Hasil scan QR · SM-0187</small><b>Mesin Soft Ice Cream Meja</b></div>
+        <div class="ph-body">
+          <div class="qr"><span class="box"><svg viewBox="0 0 120 110" width="44" height="44"><rect x="30" y="16" width="60" height="74" rx="6" fill="#fff" stroke="#072d59" stroke-width="5"/><path d="M54 76h12l-6 14z" fill="#ea580c"/></svg></span><span><b style="font-size:14px">Bu Lina, Madiun</b><small class="faint" style="display:block">Dibeli 14 Maret 2026</small></span></div>
+          <p class="alert ok">Garansi aktif sampai 14 Maret 2027</p>
+          <b style="font-size:14px">Video tutorial</b>
+          <div class="act">Menyalakan dan mendinginkan mesin <span>Putar</span></div>
+          <div class="act">Takaran adonan 1 kg : 3 liter <span>Putar</span></div>
+          <div class="act">Kalau hasil es terlalu cair <span>Putar</span></div>
+          <div class="act" style="background:var(--warn-bg);border-color:#f6cfb5;color:var(--warn)">Lapor kendala ke teknisi <span>Kirim</span></div>
+          <div class="act">Pesan bahan <span>Pilih</span></div>
+        </div>
+      </div></div>
+      <p class="cap"><b>Scan QR di mesin</b><span>Tutorial, garansi, lapor kendala, dan pesan bahan.</span></p>
+    </div>
+  </div>
+  <p class="back"><a href="index.html">Kembali ke semua layar</a></p>
+</main>
+</body>
+</html>

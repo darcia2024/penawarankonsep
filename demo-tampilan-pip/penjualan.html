@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Penjualan PIP Machinery</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .order-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+  .order-head h2 { font-size: 20px; }
+  .order-head p { color: var(--faint); font-size: 13.5px; }
+  .stepper { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; margin: 18px 0 6px; }
+  .stepper div { font-size: 11.5px; font-weight: 700; color: var(--faint); }
+  .stepper div::before { content: ""; display: block; height: 5px; border-radius: 3px; background: var(--line); margin-bottom: 6px; }
+  .stepper div.done { color: var(--navy); }
+  .stepper div.done::before { background: var(--navy); }
+  .stepper div.now { color: var(--orange-deep); }
+  .stepper div.now::before { background: var(--orange); }
+  .item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line-2); }
+  .item .th { width: 48px; height: 48px; border-radius: 10px; background: var(--paper); display: grid; place-items: center; flex: none; }
+  .item .th svg { width: 30px; height: 30px; }
+  .item b { display: block; font-size: 14.5px; }
+  .item small { color: var(--faint); }
+  .item .p { margin-left: auto; font-weight: 700; }
+  .sum { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; font-size: 14px; margin-top: 14px; }
+  .sum span { color: var(--muted); }
+  .sum b { text-align: right; }
+  .sum .big { font-size: 17px; color: var(--ink); }
+  .pay-bar { height: 10px; border-radius: 5px; background: var(--line-2); overflow: hidden; margin: 14px 0 6px; display: flex; }
+  .pay-bar i { background: var(--ok); }
+  .qc { margin-top: 14px; border-radius: 12px; background: var(--navy); color: #fff; aspect-ratio: 16 / 8; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .qc .play { width: 52px; height: 52px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; }
+  .qc .play::after { content: ""; border-left: 15px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+  .qc small { position: absolute; left: 12px; bottom: 10px; font-weight: 600; font-size: 12.5px; }
+  @media (max-width: 1100px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 560px) { .stepper { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 10px; } }
+</style>
+</head>
+<body data-page="penjualan">
+<div class="demo-bar">Contoh tampilan Penjualan. Order dan angka hanya contoh. <a href="index.html">Semua layar</a></div>
+<div class="app">
+  <aside class="side" data-side></aside>
+  <main class="main">
+    <div class="topbar" data-top></div>
+    <div class="page-head">
+      <div><h1>Penjualan</h1><p>18 order aktif · mesin, bahan, gerobak, dan paket usaha · November 2026</p></div>
+      <div class="acts"><a class="btn" href="#">Filter</a><a class="btn" href="#">Ekspor</a><a class="btn pri" href="#">+ Order baru</a></div>
+    </div>
+
+    <div class="split">
+      <section class="card">
+        <div class="tabs"><span class="on">Semua <em>18</em></span><span>Menunggu bayar <em>4</em></span><span>Diproses <em>8</em></span><span>Siap kirim <em>6</em></span><span>Selesai</span></div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Order</th><th>Pelanggan</th><th>Item</th><th class="r">Total</th><th>Bayar</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>PIP-2058</b><small>5 Nov</small></td><td><b>Kopi dan Es</b><small>Bandung</small></td><td>Gerobak custom 1,5 m</td><td class="r"><b>Rp 3,5 jt</b></td><td><span class="pill dot">DP 50%</span></td><td><span class="pill">Desain</span></td></tr>
+            <tr><td><b>PIP-2056</b><small>6 Nov</small></td><td><b>Rina</b><small>Surabaya</small></td><td>Mesin Soft Ice Cream Meja</td><td class="r"><b>Rp 18 jt</b></td><td><span class="pill warn dot">Menunggu DP</span></td><td><span class="pill mute">Penawaran</span></td></tr>
+            <tr><td><b>PIP-2055</b><small>5 Nov</small></td><td><b>Kedai Dingin</b><small>Kediri</small></td><td>Bahan soft 10 kg</td><td class="r"><b>Rp 1,2 jt</b></td><td><span class="pill warn dot">Jatuh tempo</span></td><td><span class="pill">Baru</span></td></tr>
+            <tr><td><b>PIP-2053</b><small>1 Nov</small></td><td><b>Dewi</b><small>Medan</small></td><td>Paket Es Bingsoo + gerobak</td><td class="r"><b>Rp 15 jt</b></td><td><span class="pill dot">DP 50%</span></td><td><span class="pill">Produksi</span></td></tr>
+            <tr><td><b>PIP-2052</b><small>4 Nov</small></td><td><b>Sari</b><small>Solo</small></td><td>Mesin Hard WIR-128Y</td><td class="r"><b>Rp 14,9 jt</b></td><td><span class="pill ok dot">Lunas</span></td><td><span class="pill">QC</span></td></tr>
+            <tr><td><b>PIP-2051</b><small>4 Nov</small></td><td><b>Toko Es Maju</b><small>Klaten</small></td><td>Bahan 18 kg + cone 1.000</td><td class="r"><b>Rp 2,4 jt</b></td><td><span class="pill ok dot">Lunas</span></td><td><span class="pill ok">Siap kirim</span></td></tr>
+            <tr class="hl"><td><b>PIP-2047</b><small>27 Okt</small></td><td><b>Bayu</b><small>Malang</small></td><td>Gerobak custom + mesin soft</td><td class="r"><b>Rp 21,5 jt</b></td><td><span class="pill dot">DP 50%</span></td><td><span class="pill">Packing</span></td></tr>
+            <tr><td><b>PIP-2044</b><small>12 Okt</small></td><td><b>Bu Lina</b><small>Madiun</small></td><td>Bahan soft 15 kg</td><td class="r"><b>Rp 1,9 jt</b></td><td><span class="pill ok dot">Lunas</span></td><td><span class="pill mute">Selesai</span></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="card">
+        <div class="order-head"><div><h2>PIP-2047</h2><p>Bayu, Malang · dibuat 27 Okt 2026 · dari Instagram</p></div><span class="pill">Packing</span></div>
+        <div class="stepper"><div class="done">Bayar DP</div><div class="done">Desain</div><div class="done">Produksi</div><div class="done">QC</div><div class="now">Packing</div><div>Dikirim</div></div>
+        <div class="item"><span class="th"><svg viewBox="0 0 120 110"><path d="M14 40h80v36H14z M20 40l6-18h56l6 18" fill="#fff" stroke="#072d59" stroke-width="5"/><circle cx="32" cy="88" r="9" fill="#072d59"/><circle cx="76" cy="88" r="9" fill="#072d59"/><rect x="26" y="50" width="40" height="14" fill="#ea580c"/></svg></span><span><b>Gerobak Custom 1,5 m</b><small>Branding "Es Krim Bayu" · oranye putih</small></span><span class="p">Rp 3,5 jt</span></div>
+        <div class="item"><span class="th"><svg viewBox="0 0 120 110"><rect x="30" y="16" width="60" height="74" rx="6" fill="#fff" stroke="#072d59" stroke-width="5"/><path d="M54 76h12l-6 14z" fill="#ea580c"/></svg></span><span><b>Mesin Soft Ice Cream Meja</b><small>1 unit · garansi 12 bulan</small></span><span class="p">Rp 18 jt</span></div>
+        <div class="pay-bar"><i style="width:50%"></i></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px"><span class="faint">Dibayar 50%</span><b style="color:var(--warn)">Sisa Rp 10.750.000</b></div>
+        <div class="sum"><span>Total</span><b class="big">Rp 21.500.000</b><span>DP masuk 28 Okt</span><b>Rp 10.750.000</b><span>Faktur</span><b>INV-1090</b></div>
+        <div class="qc"><span class="play"></span><small>Video QC · 4 Nov · terkirim ke pelanggan</small></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><a class="btn dark" href="#">Catat pelunasan</a><a class="btn" href="#">Kirim link lacak</a><a class="btn" href="pelanggan.html">Lihat sisi pelanggan</a></div>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>
