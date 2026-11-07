@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Laporan Topik Fikih Umrah · Bulan 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Amiri:wght@400;700&display=swap">
+<style>
+  /* Gaya mengikuti halaman penawaran: latar putih, tinta biru-hitam, pink, Bricolage + Mona Sans */
+  :root {
+    --ink: #0d0c22; --ink-2: #3d3d4e; --muted: #6e6d7a;
+    --pink: #ea4c89; --pink-dark: #d33a75; --pink-soft: #fdeef4;
+    --violet: #3e34d3;
+    --line: #e7e7e9; --surface: #f3f3f4; --soft: #faf9fb; --white: #ffffff;
+    --green: #1f9d63; --green-soft: #e4f6ec; --amber: #b7791f; --amber-soft: #fdf3e1; --red: #d64545; --red-soft: #fdecec;
+    --font: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+    --head: "Bricolage Grotesque", "Mona Sans", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  button { font: inherit; }
+  a { color: inherit; }
+  b, strong { font-weight: 600; }
+  :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  .chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 9999px; border: 1px solid var(--line); background: var(--white); font-size: 13px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .chip.pink { background: var(--pink-soft); border-color: var(--pink-soft); color: var(--pink-dark); }
+
+  /* Kepala */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .logo { font-family: var(--head); font-size: 22px; font-weight: 800; letter-spacing: -.05em; text-decoration: none; }
+  .logo span { color: var(--pink); }
+  .nav .links { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; }
+  .nav .links a { text-decoration: none; }
+  .nav .links a:hover { color: var(--muted); }
+  .handle { color: var(--muted); }
+
+  header.wrap { padding-top: 40px; padding-bottom: 8px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9999px; padding: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; }
+  .seg span { padding: 6px 14px; border-radius: 9999px; color: var(--muted); }
+  .seg span.on { color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 2px 6px rgba(13,12,34,.06); }
+  h1 { font-family: var(--head); font-weight: 700; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.045em; margin-top: 22px; max-width: 13em; }
+  h1 span { color: var(--pink); }
+  .lead { margin-top: 18px; max-width: 40em; font-size: 19px; color: var(--ink-2); }
+
+  .hud { margin-top: 36px; display: grid; grid-template-columns: 180px 180px minmax(0, 1fr); gap: 12px; }
+  .hud > div { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .hud small { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .hud b { display: block; font-family: var(--head); font-weight: 700; font-size: 26px; letter-spacing: -.03em; margin-top: 2px; }
+  .hud .bar { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+  .meter { height: 10px; background: var(--surface); border-radius: 9999px; overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 0; background: var(--pink); border-radius: 9999px; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+
+  /* Peta episode */
+  .map { margin: 56px 0 0; }
+  .map-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; }
+  .map-head h2 { font-family: var(--head); font-weight: 700; font-size: clamp(26px, 3vw, 36px); letter-spacing: -.035em; line-height: 1.1; }
+  .map-head p { color: var(--muted); font-size: 14px; }
+  .path { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; position: relative; }
+  .path::before { content: ""; position: absolute; left: 6%; right: 6%; top: 34px; border-top: 2px dashed #d6d5dc; z-index: 0; }
+  .node { position: relative; z-index: 1; display: grid; justify-items: center; gap: 6px; background: none; border: 0; cursor: pointer; padding: 0; color: var(--ink); }
+  .node .disc { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 1.5px solid var(--line); font-family: var(--head); font-weight: 700; font-size: 22px; letter-spacing: -.03em; transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s, border-color .2s, color .2s; }
+  .node:hover .disc { transform: translateY(-3px); border-color: var(--ink); }
+  .node.done .disc { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .node.on .disc { background: var(--pink); border-color: var(--pink); color: #fff; box-shadow: 0 0 0 6px var(--pink-soft); }
+  .node .lab { margin-top: 8px; font-weight: 600; font-size: 13.5px; line-height: 1.3; text-align: center; max-width: 11em; }
+  .node .date { font-size: 12.5px; color: var(--muted); }
+  .node .tick { position: absolute; top: -4px; right: calc(50% - 40px); width: 24px; height: 24px; border-radius: 50%; background: var(--pink); color: #fff; display: none; place-items: center; font-weight: 700; font-size: 13px; border: 2px solid #fff; }
+  .node.done .tick { display: grid; }
+
+  /* Panel episode */
+  .panel { background: var(--white); border: 1px solid var(--line); border-radius: 24px; margin: 40px 0 72px; overflow: hidden; scroll-margin-top: 88px; box-shadow: 0 20px 40px rgba(13,12,34,.06); }
+  .p-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 32px 32px 24px; }
+  .p-head h2 { font-family: var(--head); font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -.04em; margin-top: 16px; }
+  .p-head .hook { margin-top: 12px; font-size: 18px; color: var(--ink-2); max-width: 42em; }
+  .check { flex: none; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--line); border-radius: 9999px; padding: 8px 16px 8px 10px; font-weight: 600; font-size: 14px; color: var(--muted); }
+  .check .dot { width: 22px; height: 22px; border-radius: 50%; border: 1.5px dashed #c9c8d0; display: grid; place-items: center; }
+  .check.yes { background: var(--pink-soft); border-color: var(--pink-soft); color: var(--pink-dark); }
+  .check.yes .dot { background: var(--pink); border: 0; }
+  .check.yes .dot::after { content: "✓"; color: #fff; font-weight: 700; font-size: 13px; line-height: 1; }
+
+  .tabs { display: inline-flex; flex-wrap: wrap; gap: 4px; margin: 0 32px; padding: 4px; border: 1px solid var(--line); border-radius: 9999px; }
+  .tabs button { background: transparent; border: 0; border-radius: 9999px; color: var(--muted); padding: 8px 16px; font-weight: 600; font-size: 14px; cursor: pointer; transition: color .2s, background-color .2s; }
+  .tabs button:hover { color: var(--ink); }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .body { padding: 28px 32px 36px; }
+  .body[hidden] { display: none; }
+  .body h3 { font-family: var(--head); font-weight: 700; font-size: 20px; letter-spacing: -.02em; margin: 24px 0 12px; }
+  .body h3:first-child { margin-top: 0; }
+  .pts { display: grid; gap: 12px; }
+  .pts li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; color: var(--ink-2); }
+  .pts li::before { content: ""; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%; background: var(--pink-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.6L14 7.5' fill='none' stroke='%23ea4c89' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat; }
+  .ar { font-family: "Amiri", serif; direction: rtl; font-size: 24px; line-height: 1.9; color: var(--ink); }
+  .dalil { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; }
+  .dalil small { display: block; color: var(--muted); font-size: 13px; }
+  .grid2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: start; }
+
+  .mz { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .mz li { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--white); }
+  .mz li b { display: block; font-family: var(--head); font-weight: 700; font-size: 20px; letter-spacing: -.02em; margin-bottom: 8px; }
+  .mz li .v { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 9999px; font-weight: 600; font-size: 12.5px; margin-bottom: 10px; background: var(--surface); color: var(--ink-2); }
+  .mz li.g .v { background: var(--green-soft); color: var(--green); }
+  .mz li.y .v { background: var(--amber-soft); color: var(--amber); }
+  .mz li.r .v { background: var(--red-soft); color: var(--red); }
+  .mz li p { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+  .note { margin-top: 16px; font-size: 14px; color: var(--muted); max-width: 60em; }
+  .note.box { display: flex; gap: 12px; background: var(--pink-soft); color: var(--ink-2); border-radius: 12px; padding: 14px 18px; }
+
+  .scenes { display: grid; gap: 8px; }
+  .scenes li { display: grid; grid-template-columns: 190px 1fr; gap: 16px; align-items: center; background: var(--soft); border-radius: 12px; padding: 14px 18px; color: var(--ink-2); }
+  .scenes .st { font-weight: 700; font-size: 13px; color: var(--pink-dark); }
+  .scenes .st small { display: block; color: var(--ink); font-weight: 600; font-size: 14.5px; }
+
+  .verify { display: grid; gap: 10px; }
+  .verify li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; color: var(--ink-2); }
+  .verify li::before { content: "?"; display: grid; place-items: center; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--amber-soft); color: var(--amber); font-weight: 700; font-size: 13px; }
+
+  .p-intro { margin-bottom: 14px; color: var(--muted); }
+  .prompt { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; max-height: 380px; overflow: auto; white-space: pre-wrap; font-size: 13.5px; line-height: 1.65; color: var(--ink-2); }
+  .copy { margin-top: 16px; display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: 9999px; background: var(--ink); color: var(--white); border: 0; font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color .2s, transform .15s; }
+  .copy:hover { background: var(--ink-2); }
+  .copy:active { transform: scale(.98); }
+
+  .vid { display: grid; grid-template-columns: 290px 1fr; gap: 36px; align-items: start; }
+  .phone { padding: 10px; border-radius: 40px; background: #1b1b1f; box-shadow: 0 24px 48px rgba(13,12,34,.18); }
+  .phone video { width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 30px; display: block; }
+  .save .chip { margin-bottom: 14px; }
+  .save p { color: var(--ink-2); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (max-width: 960px) {
+    .path { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 28px; }
+    .path::before { display: none; }
+    .mz { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid2, .vid { grid-template-columns: 1fr; }
+    .phone { max-width: 290px; }
+    .hud { grid-template-columns: 1fr 1fr; }
+    .hud .bar { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 15px; line-height: 1.5; }
+    .wrap { padding: 0 16px; }
+    .nav .wrap { height: 54px; }
+    .logo { font-size: 19px; }
+    .nav .links { gap: 0; font-size: 13px; }
+    .nav .links .handle { display: none; }
+    .nav .links a { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 9999px; }
+
+    header.wrap { padding-top: 14px; padding-bottom: 0; }
+    .seg { font-size: 10.5px; padding: 3px; }
+    .seg span { padding: 4px 10px; }
+    h1 { font-size: 30px; line-height: 1.05; letter-spacing: -.04em; margin-top: 14px; }
+    .lead { margin-top: 10px; font-size: 15px; line-height: 1.5; }
+
+    /* Ringkasan: satu kartu */
+    .hud { margin-top: 18px; grid-template-columns: 1fr 1fr; gap: 0; background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+    .hud > div { background: none; border: 0; border-radius: 0; padding: 0; }
+    .hud small { font-size: 10.5px; }
+    .hud b { font-size: 19px; }
+    .hud .bar { grid-column: 1 / -1; margin-top: 10px; gap: 6px; }
+    .meter { height: 8px; }
+
+    /* Episode: satu baris yang bisa digeser */
+    .map { margin-top: 26px; }
+    .map-head { flex-direction: row; align-items: baseline; margin-bottom: 10px; }
+    .map-head h2 { font-size: 20px; }
+    .map-head p { font-size: 12.5px; }
+    .path { display: flex; gap: 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; margin: 0 -16px; padding: 6px 16px 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .path::-webkit-scrollbar { display: none; }
+    .path::before { display: block; left: 40px; right: auto; width: calc(8 * 80px - 40px); top: 29px; }
+    .node { flex: 0 0 76px; scroll-snap-align: start; gap: 2px; }
+    .node .disc { width: 46px; height: 46px; font-size: 16px; }
+    .node.on .disc { box-shadow: 0 0 0 4px var(--pink-soft); }
+    .node .tick { top: -3px; right: 10px; width: 18px; height: 18px; font-size: 10px; border-width: 1.5px; }
+    .node .lab { margin-top: 6px; font-size: 11.5px; line-height: 1.25; max-width: 7em; }
+    .node .date { font-size: 10.5px; }
+
+    /* Panel */
+    .panel { border-radius: 18px; margin: 18px 0 32px; box-shadow: 0 10px 24px rgba(13,12,34,.06); scroll-margin-top: 64px; }
+    .p-head { flex-direction: column; gap: 12px; padding: 18px 16px 14px; }
+    .p-head .chip { height: 26px; padding: 0 10px; font-size: 11.5px; }
+    .p-head h2 { font-size: 23px; line-height: 1.12; margin-top: 10px; }
+    .p-head .hook { margin-top: 8px; font-size: 14.5px; }
+    .check { padding: 5px 12px 5px 6px; font-size: 12.5px; gap: 8px; }
+    .check .dot { width: 18px; height: 18px; }
+    .check.yes .dot::after { font-size: 11px; }
+
+    .tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; margin: 0 16px; border-radius: 9999px; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tabs button { flex: none; padding: 7px 12px; font-size: 13px; white-space: nowrap; }
+    .body { padding: 18px 16px 22px; }
+    .body h3 { font-size: 17px; margin: 18px 0 10px; }
+    .grid2 { gap: 6px; }
+    .pts { gap: 9px; }
+    .pts li { grid-template-columns: 18px 1fr; gap: 8px; font-size: 14.5px; }
+    .pts li::before { width: 18px; height: 18px; background-size: 16px; }
+    .ar { font-size: 19px; line-height: 1.8; }
+    .dalil { padding: 10px 14px; border-radius: 12px; }
+    .dalil small { font-size: 12px; }
+
+    .mz { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mz li { padding: 12px; border-radius: 12px; }
+    .mz li b { font-size: 16px; margin-bottom: 6px; }
+    .mz li .v { height: 22px; padding: 0 8px; font-size: 11px; margin-bottom: 6px; }
+    .mz li p { font-size: 12.5px; line-height: 1.45; }
+    .note { font-size: 12.5px; margin-top: 12px; }
+    .note.box { padding: 10px 12px; }
+
+    .scenes { gap: 6px; }
+    .scenes li { grid-template-columns: 1fr; gap: 2px; padding: 10px 12px; border-radius: 10px; font-size: 14px; }
+    .scenes .st { font-size: 11.5px; display: flex; gap: 6px; align-items: baseline; }
+    .scenes .st small { display: inline; font-size: 13px; }
+
+    .verify li { font-size: 14.5px; grid-template-columns: 22px 1fr; }
+    .verify li::before { width: 20px; height: 20px; font-size: 12px; }
+
+    .vid { gap: 18px; }
+    .phone { width: 210px; max-width: 210px; margin: 0 auto; padding: 7px; border-radius: 30px; }
+    .phone video { border-radius: 23px; }
+    .save .chip { margin-bottom: 10px; height: 26px; font-size: 12px; }
+    .save p { font-size: 14.5px; }
+
+    footer { padding: 20px 0 28px; font-size: 12.5px; }
+    footer .wrap { flex-direction: column; gap: 6px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="../">fikih umrah<span>.</span></a>
+    <div class="links">
+      <span class="handle">@febriian_alief</span>
+      <a href="../teknis/">Panduan teknis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="seg"><span class="on">Laporan topik</span><span>Paket Rutin · Bulan 1</span></div>
+  <h1>Delapan topik yang <span>jarang dibahas</span></h1>
+  <p class="lead">Untuk Sidi Alief: rencana isi bulan pertama. Topiknya dipilih dari masalah yang sering dialami jamaah tapi jarang dijelaskan, dan urutannya mengikuti perjalanan umrah dari miqat sampai tahallul. Klik tiap episode untuk melihat catatannya.</p>
+  <div class="hud">
+    <div><small>Selesai</small><b id="done-n">1 / 8</b></div>
+    <div><small>Berikutnya</small><b id="next-ep">EP.02</b></div>
+    <div class="bar"><small>Progres 6 Nov – 5 Des 2026</small><div class="meter"><i id="meter"></i></div></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="map" aria-labelledby="map-h">
+    <div class="map-head"><h2 id="map-h">Jadwal episode</h2><p>Tayang setiap Selasa dan Jumat</p></div>
+    <div class="path" id="path"></div>
+  </section>
+
+  <section class="panel" id="panel" aria-live="polite">
+    <div class="p-head">
+      <div>
+        <span class="chip" id="p-chip"></span>
+        <h2 id="p-title"></h2>
+        <p class="hook" id="p-hook"></p>
+      </div>
+      <span class="check" id="p-checkwrap"><span class="dot" aria-hidden="true"></span><span id="p-checklabel">Belum diproduksi</span></span>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="bodies"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dar Dev · WhatsApp 0813 1150 6025</span>
+    <span>Hukum, dalil, dan nomor hadits di sini adalah catatan awal dan akan dicek Sidi sebelum naskah ditulis.</span>
+  </div>
+</footer>
+
+<script>
+var EPS = [
+  {
+    ep: '01', date: 'Sel, 10 Nov', stage: 'Hajar Aswad', short: 'Hajar Aswad wangi',
+    title: 'Cium Hajar Aswad, kena fidyah?',
+    hook: 'Sudah ihram, lalu mencium Hajar Aswad. Ternyata batunya diberi wewangian. Kena fidyah?',
+    done: true, video: 'ep01.mp4', poster: 'ep01.jpg',
+    points: [
+      'Hajar Aswad dan Ka\'bah biasa diberi wewangian oleh pengurus Masjidil Haram.',
+      'Setelah niat ihram, memakai wewangian haram menurut kesepakatan ulama.',
+      'Wewangian sebelum niat yang wanginya masih tercium: boleh menurut Syafi\'i, Hanafi, dan Hanbali. Maliki lebih ketat.',
+      'Sengaja memakai wewangian setelah niat: fidyah. Karena lupa atau tidak tahu: tidak ada fidyah menurut Syafi\'i, segera dibersihkan.',
+      'Tips: pakai wewangian di badan sebelum niat, istilam dari jauh, dan bawa tisu tanpa pewangi.'
+    ],
+    dalil: [
+      { ar: 'وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ أَوْ وَرْسٌ', src: 'HR. Bukhari no. 1542 (sesuai video)' },
+      { ar: 'كُنْتُ أُطَيِّبُ رَسُولَ اللَّهِ ﷺ لِإِحْرَامِهِ حِينَ يُحْرِمُ', src: 'HR. Bukhari no. 1539 (sesuai video)' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'g', 'Boleh', 'Wewangian di badan sebelum niat boleh, walau wanginya masih ada setelah ihram.'],
+      ['Hanafi', 'g', 'Boleh', 'Membolehkan wewangian di badan sebelum niat.'],
+      ['Maliki', 'r', 'Lebih ketat', 'Memakruhkan wewangian yang wanginya masih tersisa setelah ihram.'],
+      ['Hanbali', 'g', 'Boleh', 'Sama dengan Syafi\'i: boleh di badan sebelum niat.']
+    ],
+    scenes: [
+      ['Stage 01 · Hajar Aswad', 'Hook: cium Hajar Aswad, kena fidyah?'],
+      ['Stage 02 · Tenang dulu', 'Belum tentu kena fidyah.'],
+      ['Stage 03 · Miqat', 'Setelah niat, wewangian dilarang.'],
+      ['Stage 04 · Jalur waktu', 'Sebelum ihram berbeda dengan sesudah ihram.'],
+      ['Stage 05 · 4 Mazhab', 'Empat papan mazhab.'],
+      ['Stage 06 · Pilih jalur', 'Sengaja berbeda dengan tidak sengaja.'],
+      ['Stage 07 · Tips', 'Tiga tips aman ihram.'],
+      ['Save point', 'Ajakan bertanya di komentar.']
+    ],
+    verify: ['Episode ini sudah selesai. Gayanya dipakai untuk episode berikutnya.']
+  },
+  {
+    ep: '02', date: 'Jum, 13 Nov', stage: 'Miqat', short: 'Miqat di pesawat',
+    title: 'Pesawat lewat miqat, masih pakai baju biasa?',
+    hook: 'Pilot mengumumkan sebentar lagi mendarat di Jeddah. Kamu baru sadar: miqatnya sudah lewat, dan kamu belum ihram.',
+    points: [
+      'Jamaah dari arah Indonesia melintasi garis yang sejajar dengan miqat (Yalamlam atau Qarnul Manazil) di atas pesawat, sebelum mendarat di Jeddah.',
+      'Menurut jumhur ulama, Jeddah bukan miqat bagi yang datang dari arah tersebut. Melewati miqat tanpa ihram: wajib kembali ke miqat, atau membayar dam bila tidak kembali.',
+      'Ada fatwa MUI yang membolehkan Bandara King Abdulaziz Jeddah sebagai miqat bagi jamaah Indonesia. Ini pendapat yang diperselisihkan.',
+      'Solusi aman: pakai pakaian ihram sejak bandara asal atau saat transit, lalu niat ketika awak kabin mengumumkan pesawat sejajar miqat.',
+      'Hook visual: jam di pesawat berdetak, garis miqat melintas di peta penerbangan.'
+    ],
+    dalil: [
+      { ar: 'هُنَّ لَهُنَّ وَلِمَنْ أَتَى عَلَيْهِنَّ مِنْ غَيْرِ أَهْلِهِنَّ', src: 'Hadits Ibnu Abbas tentang miqat, HR. Bukhari dan Muslim [nomor perlu dicek]' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'r', 'Dam', 'Melewati miqat tanpa ihram lalu tidak kembali: berdosa dan wajib dam. Kembali sebelum memulai manasik: gugur damnya.'],
+      ['Hanafi', 'r', 'Dam', 'Wajib dam bila tidak kembali ke miqat.'],
+      ['Maliki', 'r', 'Dam', 'Wajib dam bila tidak kembali ke miqat.'],
+      ['Hanbali', 'r', 'Dam', 'Wajib dam; kembali setelah berihram tidak menggugurkan dam.']
+    ],
+    note: 'Perincian "kembali sebelum atau sesudah berihram" berbeda antar mazhab, perlu dicek.',
+    scenes: [
+      ['Stage 01 · Kabin', 'Pengumuman pilot, jamaah masih berbaju biasa. Hook.'],
+      ['Stage 02 · Peta terbang', 'Garis miqat melintas di peta penerbangan.'],
+      ['Stage 03 · Gerbang miqat', 'Lewat tanpa ihram = wajib kembali atau dam.'],
+      ['Stage 04 · Bandara Jeddah', 'Papan "fatwa MUI" dan "jumhur" berhadapan.'],
+      ['Stage 05 · 4 Mazhab', 'Empat papan: semua sepakat dam bila tidak kembali.'],
+      ['Stage 06 · Tips', 'Ihram sejak bandara asal, niat saat pengumuman sejajar miqat.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Nomor dan lafaz hadits miqat.', 'Tahun dan isi fatwa MUI tentang Bandara Jeddah sebagai miqat.', 'Perincian dam bila kembali ke miqat setelah berihram.']
+  },
+  {
+    ep: '03', date: 'Sel, 17 Nov', stage: 'Larangan ihram', short: 'Rambut rontok',
+    title: 'Garuk kepala, rambut rontok: kena dam?',
+    hook: 'Lagi ihram, kepala gatal, digaruk. Tiga helai rambut jatuh ke tangan. Panik?',
+    points: [
+      'Sengaja mencabut atau memotong rambut saat ihram hukumnya haram.',
+      'Menurut Syafi\'i (Al-Idhah): tiga helai atau lebih → fidyah penuh. Satu helai → satu mud makanan, dua helai → dua mud.',
+      'Rambut yang rontok sendiri tanpa disengaja, misalnya saat wudhu atau mandi, tidak apa-apa.',
+      'Ragu apakah rontok karena garukan atau memang sudah lepas: tidak wajib fidyah menurut Syafi\'i.',
+      'Tips: garuk dengan ujung jari pelan, keramas tanpa menggosok keras, jangan menyisir.'
+    ],
+    dalil: [
+      { ar: 'وَلَا تَحْلِقُوا رُءُوسَكُمْ حَتَّىٰ يَبْلُغَ الْهَدْيُ مَحِلَّهُ', src: 'QS. Al-Baqarah: 196' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'y', '3 helai', 'Tiga helai atau lebih: fidyah penuh. Kurang dari itu: satu mud per helai.'],
+      ['Hanafi', 'y', '¼ kepala', 'Seperempat kepala atau lebih: dam. Kurang dari itu: sedekah.'],
+      ['Maliki', 'y', 'Perincian', 'Untuk menghilangkan gangguan: fidyah. Sedikit tanpa maksud itu: sedekah segenggam makanan.'],
+      ['Hanbali', 'y', '3 helai', 'Pendapat masyhur: tiga helai atau lebih wajib fidyah.']
+    ],
+    note: 'Fidyah di sini adalah pilihan: menyembelih kambing, puasa tiga hari, atau memberi makan enam orang miskin (QS. Al-Baqarah: 196).',
+    scenes: [
+      ['Stage 01 · Gatal!', 'Tangan menggaruk kepala, tiga helai rambut melayang. Hook.'],
+      ['Stage 02 · Hitung helai', 'Penghitung helai rambut seperti skor game: 1, 2, 3.'],
+      ['Stage 03 · Sengaja?', 'Dua jalur: sengaja (merah) dan rontok sendiri (hijau).'],
+      ['Stage 04 · 4 Mazhab', 'Papan Syafi\'i 3 helai, Hanafi ¼ kepala, dan seterusnya.'],
+      ['Stage 05 · Fidyah', 'Tiga pilihan muncul seperti item: kambing, puasa 3 hari, makan 6 miskin.'],
+      ['Stage 06 · Tips', 'Garuk pelan, jangan menyisir.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Ukuran mud per helai menurut Al-Idhah.', 'Ukuran menurut Maliki dan Hanbali.', 'Hukum ragu rontok karena garukan atau tidak.']
+  },
+  {
+    ep: '04', date: 'Jum, 20 Nov', stage: 'Larangan ihram', short: 'Odol & tisu basah',
+    title: 'Odol mint saat ihram: termasuk wewangian?',
+    hook: 'Pagi di Makkah, sikat gigi pakai odol rasa mint. Lalu terpikir: ini wewangian bukan, ya?',
+    points: [
+      'Patokan wewangian: sesuatu yang tujuan utamanya untuk wangi, seperti parfum, minyak wangi, dan kayu gaharu.',
+      'Pasta gigi tujuan utamanya membersihkan, bukan untuk wangi. Banyak ulama kontemporer membolehkan, tapi lebih hati-hati memilih yang aromanya tidak kuat.',
+      'Deodoran tanpa pewangi boleh. Yang berpewangi termasuk wewangian.',
+      'Sabun, sampo, dan tisu basah berpewangi: sebaiknya diganti versi tanpa pewangi selama ihram, karena diperselisihkan.',
+      'Makanan dan minuman berempah atau beraroma (kopi, kapulaga) yang sudah dimasak: tidak termasuk memakai wewangian menurut banyak ulama.'
+    ],
+    dalil: [
+      { ar: 'وَلَا تَلْبَسُوا مِنَ الثِّيَابِ شَيْئًا مَسَّهُ الزَّعْفَرَانُ أَوْ وَرْسٌ', src: 'HR. Bukhari no. 1542, dalil asal larangan wewangian' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'y', 'Tujuan wangi', 'Yang dilarang adalah benda yang dimaksudkan sebagai wewangian.'],
+      ['Hanafi', 'y', 'Perincian', 'Wangi yang tercampur dalam makanan yang dimasak tidak dihitung.'],
+      ['Maliki', 'y', 'Perincian', 'Membedakan wewangian yang melekat dengan yang sekadar tercium.'],
+      ['Hanbali', 'y', 'Tujuan wangi', 'Serupa Syafi\'i: patokannya benda yang dipakai untuk wangi.']
+    ],
+    note: 'Masalah odol, deodoran, dan tisu basah adalah ijtihad ulama kontemporer, bukan teks mazhab klasik. Sebutkan sebagai "pendapat ulama masa kini".',
+    scenes: [
+      ['Stage 01 · Kamar hotel', 'Sikat gigi di wastafel, tanda tanya di atas odol. Hook.'],
+      ['Stage 02 · Detektor wangi', 'Alat pemindai: "untuk wangi?" ya atau tidak.'],
+      ['Stage 03 · Uji barang', 'Odol, deodoran, sabun, tisu basah lewat pemindai satu per satu.'],
+      ['Stage 04 · Hasil', 'Lampu hijau, kuning, dan merah untuk tiap barang.'],
+      ['Stage 05 · Tips', 'Daftar belanja versi tanpa pewangi.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Patokan wewangian menurut Al-Idhah.', 'Pendapat ulama kontemporer soal pasta gigi.', 'Hukum makanan beraroma yang sudah dimasak per mazhab.']
+  },
+  {
+    ep: '05', date: 'Sel, 24 Nov', stage: 'Thawaf', short: 'Thawaf terputus',
+    title: 'Thawaf terputus iqamah: lanjut atau ulang?',
+    hook: 'Baru empat putaran, iqamah berkumandang. Shaf langsung terbentuk di depanmu. Lalu thawafnya gimana?',
+    points: [
+      'Boleh memutus thawaf untuk shalat fardhu berjamaah.',
+      'Setelah shalat, melanjutkan sisa putaran, tidak perlu mengulang dari awal menurut jumhur ulama.',
+      'Melanjutkannya dari tempat berhenti, atau mengulang putaran yang terputus dari garis Hajar Aswad sebagai bentuk kehati-hatian.',
+      'Bonus: ragu sudah 6 atau 7 putaran? Ambil yang lebih sedikit, karena itu yang yakin.',
+      'Hook visual: penghitung putaran di pojok layar berhenti di angka 4, lalu berlanjut ke 5 setelah shalat.'
+    ],
+    dalil: [
+      { ar: 'إِذَا أُقِيمَتِ الصَّلَاةُ فَلَا صَلَاةَ إِلَّا الْمَكْتُوبَةُ', src: 'HR. Muslim [nomor perlu dicek]' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'g', 'Lanjut', 'Berturut-turut dalam thawaf hukumnya sunnah, jadi boleh melanjutkan.'],
+      ['Hanafi', 'g', 'Lanjut', 'Boleh melanjutkan sisa putaran.'],
+      ['Maliki', 'y', 'Lanjut, ada syarat', 'Berturut-turut itu syarat, tapi shalat fardhu yang diiqamahkan dikecualikan.'],
+      ['Hanbali', 'y', 'Lanjut, ada syarat', 'Berturut-turut itu syarat, kecuali untuk shalat fardhu atau jenazah.']
+    ],
+    scenes: [
+      ['Stage 01 · Putaran 4', 'Penghitung putaran, lalu iqamah berkumandang. Hook.'],
+      ['Stage 02 · Pause', 'Layar "PAUSE" ala game, jamaah membentuk shaf.'],
+      ['Stage 03 · Continue?', 'Pilihan "Lanjut" atau "Ulang dari awal".'],
+      ['Stage 04 · 4 Mazhab', 'Empat papan mazhab.'],
+      ['Stage 05 · Bonus', 'Ragu 6 atau 7? Ambil yang lebih sedikit.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Lafaz dan nomor hadits iqamah.', 'Pendapat Al-Idhah soal melanjutkan dari tempat berhenti.', 'Hukum muwalah (berturut-turut) per mazhab.']
+  },
+  {
+    ep: '06', date: 'Jum, 27 Nov', stage: 'Sa\'i', short: 'Sa\'i jalur baru',
+    title: 'Sa\'i di jalur perluasan: sah?',
+    hook: 'Jalur sa\'i sekarang jauh lebih lebar dari zaman Nabi. Kalau kamu berjalan di bagian yang baru, sa\'imu sah?',
+    points: [
+      'Syarat sa\'i: dilakukan di antara bukit Shafa dan Marwah.',
+      'Mas\'a (tempat sa\'i) diperluas pemerintah Saudi sekitar tahun 2008.',
+      'Saat itu ulama sempat berbeda pendapat, lalu banyak yang menerima berdasarkan kesaksian bahwa bukit Shafa dan Marwah dahulu lebih lebar.',
+      'Sa\'i di lantai atas juga sah, selama masih di atas wilayah Mas\'a.',
+      'Hook visual: peta Mas\'a lama dan baru ditumpuk, garis perluasan menyala.'
+    ],
+    dalil: [
+      { ar: 'إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ', src: 'QS. Al-Baqarah: 158' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'g', 'Sah', 'Selama di antara Shafa dan Marwah. Al-Idhah membahas batas tempat sa\'i.'],
+      ['Hanafi', 'g', 'Sah', 'Patokannya berada di antara dua bukit.'],
+      ['Maliki', 'g', 'Sah', 'Patokannya berada di antara dua bukit.'],
+      ['Hanbali', 'g', 'Sah', 'Patokannya berada di antara dua bukit.']
+    ],
+    note: 'Perbedaan pendapat soal perluasan ada di kalangan ulama kontemporer, bukan antar empat mazhab. Pastikan narasi tidak mengesankan mazhab tertentu menolak.',
+    scenes: [
+      ['Stage 01 · Mas\'a', 'Kamera menyusuri jalur sa\'i yang lebar. Hook.'],
+      ['Stage 02 · Peta lama vs baru', 'Dua lapis peta ditumpuk.'],
+      ['Stage 03 · Bukit Shafa', 'Kamera naik ke bukit, menunjukkan lebarnya.'],
+      ['Stage 04 · Lantai atas', 'Jalur lantai 2 dan 3 menyala hijau.'],
+      ['Stage 05 · Kesimpulan', 'Sah, selama di antara Shafa dan Marwah.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Tahun dan detail perluasan Mas\'a.', 'Siapa saja ulama yang sempat berbeda pendapat.', 'Penjelasan Al-Idhah tentang batas tempat sa\'i.']
+  },
+  {
+    ep: '07', date: 'Sel, 1 Des', stage: 'Tahallul', short: 'Tahallul 3 helai',
+    title: 'Potong 3 helai rambut, umrah selesai?',
+    hook: 'Gunting kecil, potong tiga helai rambut, lalu foto. Umrahmu sudah selesai… atau belum?',
+    points: [
+      'Tahallul (mencukur atau memotong rambut) termasuk rukun umrah menurut Syafi\'i.',
+      'Menurut Syafi\'i (Al-Idhah): minimal tiga helai rambut kepala. Mencukur habis lebih utama bagi laki-laki.',
+      'Perempuan cukup memotong kira-kira seujung jari, tidak mencukur.',
+      'Mazhab lain jauh lebih banyak: Hanafi seperempat kepala, Maliki dan Hanbali meratai seluruh kepala.',
+      'Tips: potong merata di beberapa bagian kepala supaya keluar dari perbedaan pendapat.'
+    ],
+    dalil: [
+      { ar: 'مُحَلِّقِينَ رُءُوسَكُمْ وَمُقَصِّرِينَ', src: 'QS. Al-Fath: 27' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'g', '3 helai', 'Minimal tiga helai. Mencukur habis lebih utama.'],
+      ['Hanafi', 'y', '¼ kepala', 'Minimal seperempat kepala.'],
+      ['Maliki', 'r', 'Seluruh kepala', 'Memotong merata seluruh kepala.'],
+      ['Hanbali', 'r', 'Seluruh kepala', 'Memotong merata seluruh kepala.']
+    ],
+    scenes: [
+      ['Stage 01 · Gunting', 'Tiga helai rambut jatuh, lalu muncul "Umrah selesai?" Hook.'],
+      ['Stage 02 · Meteran', 'Bar ukuran: 3 helai, ¼ kepala, seluruh kepala.'],
+      ['Stage 03 · 4 Mazhab', 'Empat kepala karakter dengan area potong berbeda.'],
+      ['Stage 04 · Laki-laki vs perempuan', 'Cukur habis vs seujung jari.'],
+      ['Stage 05 · Tips', 'Potong merata, keluar dari perbedaan.'],
+      ['Save point', 'Ajakan bertanya.']
+    ],
+    verify: ['Status tahallul (rukun atau wajib) per mazhab.', 'Ukuran untuk perempuan per mazhab.', 'Kutipan Al-Idhah soal tiga helai.']
+  },
+  {
+    ep: '08', date: 'Jum, 4 Des', stage: 'Bonus stage', short: 'Umrah berulang',
+    title: 'Umrah berkali-kali dari Tan\'im: boleh?',
+    hook: 'Mumpung di Makkah, umrah lima kali dari Tan\'im dalam seminggu. Makin banyak makin baik… benarkah?',
+    points: [
+      'Tan\'im (Masjid Aisyah) adalah miqat terdekat bagi yang sudah berada di Makkah.',
+      'Dasarnya: Nabi ﷺ menyuruh Aisyah berumrah dari Tan\'im.',
+      'Menurut Syafi\'i: boleh dan termasuk memperbanyak ibadah.',
+      'Sebagian ulama melihat Nabi dan para sahabat tidak berulang-ulang umrah dari Tan\'im dalam satu perjalanan, dan menyarankan memperbanyak thawaf sunnah.',
+      'Penutup seri yang pas: setelah selesai umrah, apa yang sebaiknya dilakukan di Makkah.'
+    ],
+    dalil: [
+      { ar: 'الْعُمْرَةُ إِلَى الْعُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا', src: 'HR. Bukhari dan Muslim [nomor perlu dicek]' }
+    ],
+    mazhab: [
+      ['Syafi\'i', 'g', 'Boleh', 'Boleh, bahkan dianjurkan memperbanyak umrah.'],
+      ['Hanafi', 'g', 'Boleh', 'Boleh, kecuali di hari Arafah dan hari tasyriq (makruh).'],
+      ['Maliki', 'r', 'Makruh', 'Makruh berumrah lebih dari sekali dalam setahun.'],
+      ['Hanbali', 'y', 'Boleh', 'Boleh. Sebagian ulama Hanbali menyarankan ada jeda waktu.']
+    ],
+    scenes: [
+      ['Stage 01 · Masjid Aisyah', 'Bus bolak-balik Tan\'im, penghitung umrah naik. Hook.'],
+      ['Stage 02 · Kisah Aisyah', 'Ilustrasi singkat kisah umrah Aisyah dari Tan\'im.'],
+      ['Stage 03 · 4 Mazhab', 'Empat papan: hijau, hijau, merah, kuning.'],
+      ['Stage 04 · Alternatif', 'Thawaf sunnah sebagai pilihan lain.'],
+      ['Stage 05 · Game complete', 'Rekap 8 episode, layar "Season 1 selesai".'],
+      ['Save point', 'Ajakan bertanya, sekaligus minta usulan topik bulan depan.']
+    ],
+    verify: ['Nomor hadits "umrah ke umrah".', 'Pendapat Hanafi soal hari makruh berumrah.', 'Pendapat Al-Idhah tentang memperbanyak umrah.']
+  }
+];
+
+function isDone(i) { return !!EPS[i].done; }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+var path = document.getElementById('path');
+EPS.forEach(function (e, i) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'node';
+  b.innerHTML = '<span class="tick">✓</span><span class="disc"><span>' + e.ep + '</span></span><span class="lab">' + esc(e.short) + '</span><span class="date">' + e.date + '</span>';
+  b.addEventListener('click', function () { show(i, true); });
+  path.appendChild(b);
+});
+
+function refreshHud() {
+  var n = 0, next = null;
+  EPS.forEach(function (e, i) { var d = isDone(i); if (d) n++; else if (next === null) next = i; path.children[i].classList.toggle('done', d); });
+  document.getElementById('done-n').textContent = n + ' / 8';
+  document.getElementById('next-ep').textContent = next === null ? 'Selesai!' : 'EP.' + EPS[next].ep;
+  document.getElementById('meter').style.width = (n / 8 * 100) + '%';
+  return next;
+}
+
+var TABS = [['ring', 'Catatan'], ['mz', '4 Mazhab'], ['adegan', 'Adegan'], ['cek', 'Untuk dicek Sidi']];
+var cur = 0, curTab = 'ring';
+
+function show(i, scroll) {
+  cur = i;
+  var e = EPS[i];
+  Array.prototype.forEach.call(path.children, function (n, k) { n.classList.toggle('on', k === i); n.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+  if (path.scrollWidth > path.clientWidth) {
+    var nd = path.children[i];
+    path.scrollTo({ left: Math.max(0, nd.offsetLeft - 16 - nd.offsetWidth - 4), behavior: scroll ? 'smooth' : 'auto' });
+  }
+  document.getElementById('p-chip').textContent = 'EP.' + e.ep + ' · ' + e.stage + ' · ' + e.date;
+  document.getElementById('p-title').textContent = e.title;
+  document.getElementById('p-hook').textContent = e.hook;
+  document.getElementById('p-checkwrap').classList.toggle('yes', isDone(i));
+  document.getElementById('p-checklabel').textContent = isDone(i) ? 'Sudah selesai' : 'Dalam rencana';
+
+  var tabs = TABS.slice();
+  if (e.video) tabs.unshift(['video', 'Videonya']);
+  var tb = document.getElementById('tabs'), bodies = document.getElementById('bodies');
+  tb.innerHTML = ''; bodies.innerHTML = '';
+  if (!tabs.some(function (t) { return t[0] === curTab; })) curTab = tabs[0][0];
+  if (e.video && scroll) curTab = 'video';
+  tabs.forEach(function (t) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.id = 'tab-' + t[0]; b.textContent = t[1];
+    b.setAttribute('aria-controls', 'body-' + t[0]);
+    b.addEventListener('click', function () { curTab = t[0]; selectTab(); });
+    tb.appendChild(b);
+    var d = document.createElement('div');
+    d.className = 'body'; d.id = 'body-' + t[0]; d.setAttribute('role', 'tabpanel'); d.setAttribute('aria-labelledby', 'tab-' + t[0]);
+    d.innerHTML = render(t[0], e);
+    bodies.appendChild(d);
+  });
+  selectTab();
+  if (scroll) document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function selectTab() {
+  Array.prototype.forEach.call(document.querySelectorAll('#tabs button'), function (b) { var on = b.id === 'tab-' + curTab; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; });
+  Array.prototype.forEach.call(document.querySelectorAll('#bodies .body'), function (d) { d.hidden = d.id !== 'body-' + curTab; });
+  var tb = document.getElementById('tabs'), act = document.getElementById('tab-' + curTab);
+  if (act && tb.scrollWidth > tb.clientWidth) tb.scrollTo({ left: Math.max(0, act.offsetLeft - (tb.clientWidth - act.offsetWidth) / 2), behavior: 'smooth' });
+}
+
+function render(t, e) {
+  if (t === 'video') return '<div class="vid"><div class="phone"><video controls playsinline preload="metadata" poster="' + e.poster + '"><source src="' + e.video + '" type="video/mp4"></video></div><div class="save"><p>Episode ini menjadi acuan gaya untuk episode berikutnya: 3D low-poly bergaya game, label <b>STAGE</b> di tiap adegan, papan empat mazhab, jalur pilihan merah dan hijau, lalu layar <b>SAVE GAME</b> di akhir.</p><h3>Isi yang dibahas</h3><ul class="pts">' + e.points.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div></div>';
+  if (t === 'ring') return '<div class="grid2"><div><h3>Poin isi</h3><ul class="pts">' + e.points.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div><div><h3>Dalil</h3>' + e.dalil.map(function (d) { return '<div class="dalil" style="margin-bottom:10px"><p class="ar">' + d.ar + '</p><small>' + esc(d.src) + '</small></div>'; }).join('') + '</div></div>';
+  if (t === 'mz') return '<ul class="mz">' + e.mazhab.map(function (m) { return '<li class="' + m[1] + '"><b>' + esc(m[0]) + '</b><span class="v">' + esc(m[2]) + '</span><p>' + esc(m[3]) + '</p></li>'; }).join('') + '</ul>' + (e.note ? '<p class="note">' + esc(e.note) + '</p>' : '') + '<p class="note">Hijau: boleh atau longgar. Kuning: ada perincian. Merah: lebih ketat.</p>';
+  if (t === 'adegan') return '<ol class="scenes">' + e.scenes.map(function (s) { var p = s[0].split(' · '); return '<li><span class="st">' + esc(p[0]) + (p[1] ? '<small>' + esc(p[1]) + '</small>' : '') + '</span><span>' + esc(s[1]) + '</span></li>'; }).join('') + '</ol>';
+  if (t === 'cek') return '<ul class="verify">' + e.verify.map(function (v) { return '<li>' + esc(v) + '</li>'; }).join('') + '</ul><p class="note box">Mohon Sidi cek poin-poin ini. Naskah ditulis setelah isinya Sidi setujui.</p>';
+  return '';
+}
+
+var nextI = refreshHud();
+show(nextI === null ? 0 : nextI, false);
+</script>
+</body>
+</html>
