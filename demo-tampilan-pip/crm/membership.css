@@ -71,3 +71,36 @@
   .reward-rows li span { grid-column: 1 / -1; grid-row: 2; }
   .reward-rows em { display: none; }
 }
+/* Phones: the ladder becomes a swipe of three tiers, each member fits in three short lines */
+@media (max-width: 40rem) {
+  .ladder { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; gap: var(--space-sm); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; margin: var(--space-md) calc(-1 * var(--space-md)) var(--space-xl); padding: 0 var(--space-md) var(--space-xs); scroll-padding-inline: var(--space-md); scrollbar-width: none; }
+  .ladder::-webkit-scrollbar { display: none; }
+  .tier, .tier + .tier { scroll-snap-align: start; padding: var(--space-md); border: 1px solid var(--color-rule); border-top: 4px solid var(--c); border-radius: var(--radius-card); background: var(--color-paper); }
+  .tier h2 { font-size: var(--text-xl); }
+  .tier .rule { font-size: var(--text-xs); }
+  .tier ul { margin-top: var(--space-sm); }
+  .tier li { padding: var(--space-xs) 0; line-height: 1.35; }
+  .tier .count { margin-top: var(--space-sm); font-size: var(--text-xs); }
+  .tier .count b { font-size: var(--text-md); }
+
+  .head-acts .search { flex-basis: 100%; }
+  .head-acts .btn { flex: 1; }
+  .members-work { gap: var(--space-xl); }
+  .tbl td[data-l="Tingkat"] { grid-column: 2; grid-row: 1; text-align: right; }
+  .tbl td[data-l="Belanja"] { grid-column: 1; grid-row: 2; text-align: left; font-weight: 400; color: var(--color-ink-2); }
+  .tbl td[data-l="Belanja"]::before { content: "Belanja 6 bulan "; }
+  .tbl td[data-l="Poin"] { grid-column: 2; grid-row: 2; }
+  .tbl td[data-l="Poin"]::after { content: " poin"; font-weight: 400; color: var(--color-muted); }
+  .tbl td[data-l="Berikutnya"] { grid-column: 1 / -1; grid-row: 3; padding-top: var(--space-2xs); }
+  .prog { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-sm); min-width: 0; }
+  .tbl tr.is-open { margin-inline: calc(-1 * var(--space-sm)); padding-inline: var(--space-sm); background: var(--color-accent-wash); border-radius: var(--radius-card); }
+  .tbl tr.is-open td { background: none; }
+
+  .card { padding: var(--space-md); gap: var(--space-md); }
+  .card-top img { height: 28px; }
+  .card h2, .card-points b { font-size: var(--text-2xl); }
+  .member h3 { margin-top: var(--space-md); }
+  .member .acts { margin-top: var(--space-md); }
+  .rewards { margin-top: var(--space-xl); }
+  .reward-rows li { padding: var(--space-sm) 0; gap: var(--space-2xs) var(--space-md); }
+}

@@ -189,20 +189,106 @@
   .range .price { text-align: left; }
   .range td:first-child { margin-bottom: var(--space-xs); }
 }
+/* Phones: one compact column, every block tightened so a section reads in about one screen */
 @media (max-width: 40rem) {
-  .nav-pill { gap: var(--space-xs); padding-left: var(--space-sm); }
-  .nav-logo img { height: 34px; }
-  .nav .btn { padding: 0 var(--space-md); }
-  .supplies { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
-  .offer-list { columns: 1; }
-  .way dl { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
-  .way dd { margin-bottom: var(--space-sm); }
+  :root { --section-gap: 48px; --section-gap-s: 40px; }
+  .demo-note { font-size: var(--text-xs); line-height: 1.4; padding: var(--space-2xs) var(--space-md); }
+  .nav { top: var(--space-xs); margin-top: var(--space-xs); }
+  .nav-pill { gap: var(--space-2xs); min-height: 52px; padding: 0 var(--space-2xs) 0 var(--space-sm); }
+  .nav-logo img { height: 28px; }
+  .nav-menu summary { padding: var(--space-xs) var(--space-sm); }
+  .nav .btn { min-height: 44px; padding: 0 var(--space-md); font-size: var(--text-sm); }
+  .btn { min-height: 46px; padding: 0 var(--space-md); font-size: var(--text-sm); }
+
+  .hero { padding-block: var(--space-lg) var(--space-xl); }
+  .hero .container { gap: var(--space-lg); }
+  .hero h1 { font-size: 2.375rem; max-width: 12ch; }
+  .hero .lead { margin-top: var(--space-sm); font-size: var(--text-md); }
+  .hero .btn-row { margin-top: var(--space-lg); flex-wrap: nowrap; gap: var(--space-xs); }
+  .hero .btn-row .btn { flex: 1 1 auto; min-width: 0; }
+  .hero-photo .frame { aspect-ratio: 4 / 3; max-height: 280px; }
+  .caption { font-size: var(--text-xs); margin-top: var(--space-xs); }
+
+  .q > .container { gap: var(--space-lg); }
+  .q-head { padding-top: var(--space-sm); }
+  .q-head h2 { font-size: 1.625rem; line-height: 1.12; max-width: 18ch; }
+  .q-head p { margin-top: var(--space-xs); font-size: var(--text-md); line-height: 1.5; }
+  .q-head p + p { margin-top: var(--space-xs); font-size: var(--text-sm); }
+
+  /* Machines: name and price on one line, capacity and power under it */
+  .range tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2xs) var(--space-md); padding: var(--space-md) 0; }
+  .range td { width: auto; font-size: var(--text-sm); color: var(--color-ink-2); }
+  .range td:not(:first-child)::before { content: none; }
+  .range td:first-child { grid-column: 1; grid-row: 1; margin: 0; font-size: var(--text-md); color: var(--color-ink); }
+  .range td:first-child small { font-size: var(--text-xs); }
+  .range .price { grid-column: 2; grid-row: 1; font-size: var(--text-md); color: var(--color-ink); text-align: right; }
+  .range td[data-l="Kapasitas"] { grid-column: 1; grid-row: 2; }
+  .range td[data-l="Listrik"] { grid-column: 2; grid-row: 2; text-align: right; white-space: nowrap; }
+  .range-foot { flex-direction: column; gap: var(--space-2xs); margin-top: var(--space-md); font-size: var(--text-xs); }
+
+  .ways { gap: var(--space-lg); }
+  .way { padding-top: var(--space-md); }
+  .way h3 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
+  .way dl { grid-template-columns: 6.5rem minmax(0, 1fr); gap: var(--space-xs) var(--space-sm); font-size: var(--text-sm); }
+
+  /* Supplies: thumbnail rows instead of three full-width squares */
+  .supplies { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--color-rule); }
+  .supplies li { display: grid; grid-template-columns: 76px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--space-md); align-items: start; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-rule); }
+  .supplies [data-slot] { grid-row: 1 / span 2; width: 76px; border-radius: 10px; }
+  .supplies [data-slot] > img { padding: var(--space-xs); }
+  .supplies h3 { margin-top: var(--space-2xs); font-size: var(--text-md); }
+  .supplies p { font-size: var(--text-sm); }
+  .remind { padding-top: 0; border-top: 0; gap: var(--space-2xs); }
+  .remind p:first-child { font-size: var(--text-lg); }
+  .remind p:last-child { font-size: var(--text-sm); }
+
+  .offer { gap: var(--space-lg); }
+  .offer-price { font-size: 2.5rem; }
+  .offer-price small { font-size: var(--text-sm); line-height: 1.45; }
+  /* Grid, not columns, so the two items on each row share one top rule */
+  .offer-list { columns: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); line-height: 1.35; }
+  .offer-list li { padding: var(--space-xs) 0; }
+  .field .btn-row { margin-top: var(--space-md); }
+  /* Figures as label and value on one line each */
   .offer-figs { grid-template-columns: minmax(0, 1fr); }
-  .offer-figs div { border-left: 0; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-field-rule); }
+  .offer-figs div, .offer-figs div:first-child { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); padding: var(--space-sm) 0; border-left: 0; border-bottom: 1px solid var(--color-field-rule); }
+  .offer-figs dt { font-size: var(--text-sm); }
+  .offer-figs dd { margin: 0; font-size: var(--text-lg); line-height: 1.2; text-align: right; }
+  .cart-note { padding-top: var(--space-md); font-size: var(--text-sm); }
+
+  .stages li { grid-template-columns: 2rem minmax(0, 1fr); gap: var(--space-sm); padding: var(--space-md) 0; }
+  .stages li::before { font-size: var(--text-xl); }
+  .stages h3 { font-size: var(--text-md); margin-bottom: var(--space-2xs); }
+  .stages p { font-size: var(--text-sm); }
+
+  .rows div { padding: var(--space-md) 0; gap: var(--space-2xs); }
+  .rows dt { font-size: var(--text-md); }
+  .rows dd { font-size: var(--text-sm); }
+
+  .faq-list summary { padding: var(--space-md) 0; font-size: var(--text-md); gap: var(--space-md); }
+  .faq-list summary::after { font-size: var(--text-xl); }
+  .faq-list details p { padding-bottom: var(--space-md); font-size: var(--text-sm); }
+
+  .close .container { gap: var(--space-lg); }
+  .close h2 { font-size: 1.875rem; }
+  .close .btn-row { flex-direction: column; align-items: stretch; gap: var(--space-xs); }
+
+  .footer { padding-block: var(--space-xl) calc(60px + var(--space-xl)); }
+  .footer .container { gap: var(--space-lg); }
+  .footer img { height: 36px; margin-bottom: var(--space-md); }
+  .footer p { font-size: var(--text-sm); }
+  .footer ul { font-size: var(--text-sm); gap: var(--space-xs) var(--space-md); }
+  .footer [data-credits] { font-size: var(--text-xs); margin-top: var(--space-sm); }
+
   .buybar p { display: none; }
-  .buybar .btn-row { margin-left: 0; width: 100%; }
-  .buybar .btn { flex: 1; padding: 0 var(--space-sm); }
-  .buybar .container { min-height: 68px; }
+  .buybar .container { min-height: 60px; padding-block: var(--space-xs); }
+  .buybar .btn-row { margin-left: 0; width: 100%; gap: var(--space-xs); }
+  .buybar .btn { flex: 1; min-height: 44px; padding: 0 var(--space-sm); }
+}
+@media (max-width: 22rem) {
+  .hero h1 { font-size: 2.125rem; }
+  .hero .btn-row { flex-wrap: wrap; }
+  .offer-list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .btn { transition: background-color var(--dur-short) linear; }

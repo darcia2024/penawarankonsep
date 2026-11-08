@@ -14,7 +14,7 @@
   .chart { width: 100%; height: auto; }
   .donut { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 18px; align-items: center; }
   .donut .legend { flex-direction: column; gap: 10px; }
-  .donut .legend span { justify-content: space-between; width: 100%; }
+  .donut .legend > span { justify-content: space-between; width: 100%; }
   .donut .legend b { color: var(--ink); }
   .bars li { display: grid; grid-template-columns: 100px minmax(0, 1fr) 46px; gap: 10px; align-items: center; padding: 7px 0; font-size: 13.5px; }
   .bars li b { text-align: right; }
@@ -25,7 +25,21 @@
   .greet .chips span { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
   .greet .chips b { color: #ffb98f; }
   @media (max-width: 1100px) { .row2, .row3 { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 560px) { .donut { grid-template-columns: minmax(0, 1fr); justify-items: center; } .donut .legend { width: 100%; } }
+  @media (max-width: 560px) {
+    .donut { grid-template-columns: 104px minmax(0, 1fr); gap: 14px; }
+    .donut svg { width: 104px; height: 104px; }
+    .donut .legend { gap: 8px; font-size: 13px; }
+    .greet { gap: 12px; }
+    .greet h2 { font-size: 18px; }
+    .greet p { font-size: 13px; }
+    .greet .chips { gap: 6px; }
+    .greet .chips span { padding: 4px 10px; font-size: 12.5px; }
+    .bars li { grid-template-columns: 92px minmax(0, 1fr) 36px; font-size: 13px; padding: 5px 0; }
+    .row2, .row3 { gap: 12px; margin-bottom: 12px; }
+    /* Grafik mengecil setengah di HP: label sumbu dan penanda diperbesar supaya tetap terbaca (± 11px) */
+    .chart > g:not([transform]) text { font-size: 21px; }
+    .chart > g[transform] { transform: translate(474px, 0) scale(1.55); }
+  }
 </style>
 </head>
 <body data-page="dasbor">

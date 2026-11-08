@@ -34,12 +34,16 @@
     ['hp', 'Layar pelanggan', 'pelanggan.html']
   ];
   var side = document.querySelector('[data-side]');
-  if (side) side.innerHTML = '<a class="side-brand" href="index.html" style="background:none;padding:4px 8px 18px"><img src="assets/logo-pip-machinery-light.png" alt="PIP Machinery"><span><small>Sistem usaha</small></span></a>' +
+  if (side) side.innerHTML = '<a class="side-brand" href="index.html"><img src="assets/logo-pip-machinery-light.png" alt="PIP Machinery"><span><small>Sistem usaha</small></span></a>' +
+    '<nav class="side-nav" aria-label="Menu sistem">' +
     nav.map(function (n) {
       if (n.length === 1) return '<p class="side-label">' + n[0] + '</p>';
       return '<a href="' + n[2] + '"' + (n[0] === page ? ' aria-current="page"' : '') + '>' + ic(n[0]) + '<span>' + n[1] + '</span>' + (n[3] ? '<em>' + n[3] + '</em>' : '') + '</a>';
-    }).join('') +
+    }).join('') + '</nav>' +
     '<div class="side-foot"><span class="av o">NS</span><span><b>Nisa</b><small>Admin · Toko Bantul</small></span></div>';
+  /* Di HP menu jadi satu baris geser: posisikan menu halaman ini di awal baris */
+  var cur = side && side.querySelector('.side-nav [aria-current="page"]');
+  if (cur && cur.parentNode.scrollWidth > cur.parentNode.clientWidth) cur.parentNode.scrollLeft = cur.offsetLeft - 12;
   var top = document.querySelector('[data-top]');
   if (top) top.innerHTML = '<div class="search">' + ic('search') + '<span>Cari order, pelanggan, atau mesin</span><kbd>Ctrl K</kbd></div>' +
     '<div class="topbar-r"><span class="pill mute">Jumat, 6 Nov 2026</span><span class="icon-btn" aria-label="Bantuan">' + ic('help') + '</span><span class="icon-btn" aria-label="Notifikasi">' + ic('bell') + '<i></i></span><span class="av o">NS</span></div>';

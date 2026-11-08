@@ -35,6 +35,24 @@
     .tile.big { grid-column: auto; }
     .tile.big .pv { min-height: 0; aspect-ratio: 16 / 9; }
   }
+  @media (max-width: 560px) {
+    .hub { padding: 24px 14px 40px; }
+    .hub-head { margin-bottom: 20px; gap: 8px; }
+    .hub-head img { height: 40px; margin-bottom: 14px; }
+    .kick { font-size: 13px; margin-bottom: 6px; }
+    .hub h1 { font-size: 30px; }
+    .hub-head p.lead { font-size: 15px; }
+    .group { font-size: 12px; margin: 20px 0 8px; }
+    .tiles { gap: 8px; }
+    .tile, .tile.big { flex-direction: row; align-items: center; border-radius: 12px; }
+    .tile .pv, .tile.big .pv { width: 96px; height: 76px; min-height: 0; aspect-ratio: auto; flex: none; border-bottom: 0; border-right: 1px solid var(--line); align-self: stretch; height: auto; min-height: 76px; }
+    .tile .pv svg { width: 84%; height: 70%; }
+    .tile div.t { padding: 10px 12px; min-width: 0; }
+    .tile h2 { font-size: 15.5px; margin-bottom: 2px; flex-wrap: wrap; row-gap: 2px; }
+    .tile h2 .pill { font-size: 11px; padding: 2px 7px; }
+    .tile p { font-size: 13px; line-height: 1.4; }
+    .note { margin-top: 20px; font-size: 12.5px; }
+  }
 </style>
 </head>
 <body>

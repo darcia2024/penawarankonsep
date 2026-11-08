@@ -54,7 +54,23 @@
   .back { text-align: center; margin-top: 36px; font-size: 14px; }
   .back a { color: var(--navy); font-weight: 700; text-decoration: underline; }
   @media (max-width: 1000px) { .phones { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
-  @media (max-width: 560px) { .wrap { padding: 32px 16px 48px; } }
+  @media (max-width: 560px) {
+    .wrap { padding: 20px 0 36px; }
+    .head { margin-bottom: 20px; padding: 0 16px; }
+    .head img { height: 40px; margin-bottom: 12px; }
+    .head h1 { font-size: 26px; }
+    .head p { font-size: 14.5px; margin-top: 6px; }
+    /* Tiga HP digeser ke samping, HP berikutnya mengintip di tepi */
+    .phones { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding: 4px 16px 24px; scroll-padding-inline: 16px; scrollbar-width: none; }
+    .phones::-webkit-scrollbar { display: none; }
+    .phones > div { scroll-snap-align: center; }
+    .phone { border-radius: 34px; padding: 9px; box-shadow: 0 16px 32px rgba(7, 45, 89, .2); }
+    .phone-in { border-radius: 26px; height: 580px; }
+    .cap { margin-top: 12px; }
+    .cap b { font-size: 15px; }
+    .cap span { font-size: 13px; }
+    .back { margin-top: 8px; }
+  }
 </style>
 </head>
 <body>

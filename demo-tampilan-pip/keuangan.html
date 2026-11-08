@@ -15,6 +15,12 @@
   .aging li { display: grid; grid-template-columns: 110px minmax(0, 1fr) 80px; gap: 10px; align-items: center; padding: 8px 0; font-size: 13.5px; }
   .aging b { text-align: right; }
   @media (max-width: 1100px) { .split, .kpis3 { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 560px) {
+    .kpis3 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .kpis3 > :first-child { grid-column: 1 / -1; }
+    .split { gap: 12px; }
+    .aging li { grid-template-columns: 96px minmax(0, 1fr) 64px; font-size: 13px; line-height: 1.3; }
+  }
 </style>
 </head>
 <body data-page="keuangan">
@@ -51,7 +57,7 @@
         <section class="card">
           <div class="card-head"><h2>Kas masuk per minggu</h2><small>November</small></div>
           <svg class="cash" viewBox="0 0 300 150" role="img" aria-label="Kas masuk minggu 1 Rp 46 juta, minggu 2 Rp 72 juta sejauh ini">
-            <g font-size="10" fill="#7489a1"><line x1="26" x2="296" y1="20" y2="20" stroke="#e7f1f7"/><text x="0" y="23">80</text><line x1="26" x2="296" y1="70" y2="70" stroke="#e7f1f7"/><text x="0" y="73">40</text><line x1="26" x2="296" y1="120" y2="120" stroke="#e7f1f7"/><text x="6" y="123">0</text></g>
+            <g font-size="11" fill="#7489a1"><line x1="26" x2="296" y1="20" y2="20" stroke="#e7f1f7"/><text x="0" y="23">80</text><line x1="26" x2="296" y1="70" y2="70" stroke="#e7f1f7"/><text x="0" y="73">40</text><line x1="26" x2="296" y1="120" y2="120" stroke="#e7f1f7"/><text x="6" y="123">0</text></g>
             <rect x="44" y="62.5" width="38" height="57.5" rx="5" fill="#072d59"/><rect x="108" y="30" width="38" height="90" rx="5" fill="#ea580c"/><rect x="172" y="120" width="38" height="0" fill="#d4e6f1"/><rect x="236" y="120" width="38" height="0" fill="#d4e6f1"/>
             <rect x="172" y="100" width="38" height="20" rx="5" fill="#eef8fd" stroke="#d4e6f1" stroke-dasharray="3 3"/><rect x="236" y="100" width="38" height="20" rx="5" fill="#eef8fd" stroke="#d4e6f1" stroke-dasharray="3 3"/>
             <g font-size="11" fill="#7489a1" text-anchor="middle"><text x="63" y="138">Mg 1</text><text x="127" y="138">Mg 2</text><text x="191" y="138">Mg 3</text><text x="255" y="138">Mg 4</text></g>

@@ -143,9 +143,8 @@
   .rail-menu summary { list-style: none; cursor: pointer; min-height: 40px; display: flex; align-items: center; padding: 0 var(--space-md); border: 1px solid var(--color-field-rule); border-radius: var(--radius-card); color: var(--color-field-ink); font-weight: 700; font-size: var(--text-sm); }
   .rail-menu summary::-webkit-details-marker { display: none; }
   .rail-menu summary:focus-visible { outline: 2px solid var(--color-accent-soft); outline-offset: 2px; }
-  .rail-menu[open] { width: 100%; }
-  .rail-menu[open] summary { margin-left: auto; width: max-content; }
-  .rail-menu nav { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xs); padding-top: var(--space-sm); }
+  .rail { position: relative; z-index: var(--z-sticky-nav); overflow: visible; }
+  .rail-menu nav { position: absolute; left: 0; right: 0; top: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xs); padding: var(--space-xs) var(--space-md) var(--space-md); background: var(--color-field); border-top: 1px solid var(--color-field-rule); box-shadow: var(--shadow-card); }
   .main { padding: var(--space-lg) var(--space-md) var(--space-2xl); }
   .search input { width: 100%; }
   .head-acts { width: 100%; }
@@ -161,13 +160,71 @@
   .tbl td:first-child::before { content: none; }
   .tbl td:first-child { display: block; }
 }
+/* Phones: a tight top bar, the four stages on one line, every lead in two or three short lines */
 @media (max-width: 40rem) {
-  .call, .later .call { grid-template-columns: 3.5rem minmax(0, 1fr); }
-  .call .acts { grid-column: 2; }
+  .demo-note { font-size: var(--text-xs); line-height: 1.4; }
+  .rail { padding: var(--space-xs) var(--space-md); }
+  .rail-brand { flex-direction: row; align-items: center; gap: var(--space-sm); }
+  .rail-brand img { height: 30px; }
+  .rail-brand small { max-width: 9rem; line-height: 1.3; }
+  .rail-menu summary { min-height: 38px; }
+  .main { padding: var(--space-md) var(--space-md) var(--space-xl); }
+
+  .head { gap: var(--space-sm); padding-bottom: var(--space-md); }
   .head h1 { font-size: var(--text-2xl); }
+  .head p { font-size: var(--text-sm); }
+  .search input { font-size: var(--text-sm); }
+
+  .pipe { margin: var(--space-md) 0 var(--space-lg); }
+  .pipe-h { font-size: var(--text-xs); margin-bottom: var(--space-xs); }
+  .pipe ol { flex-wrap: nowrap; gap: var(--space-xs); }
+  .pipe li { flex: 1 1 0; min-width: 0; }
+  .pipe li > span.bar { height: 6px; }
+  .pipe li a { padding-top: var(--space-xs); }
+  .pipe li b { font-size: var(--text-xs); line-height: 1.25; white-space: nowrap; }
+  .pipe li em { font-size: 0.9375rem; white-space: nowrap; letter-spacing: -0.01em; }
+  .pipe li small { font-size: 0.75rem; }
+
+  .work { gap: var(--space-xl); }
+  .sheet-head h2 { font-size: var(--text-lg); }
+  .sheet-head small { font-size: var(--text-xs); }
+  .call, .later .call { grid-template-columns: 3.25rem minmax(0, 1fr); gap: var(--space-2xs) var(--space-sm); padding: var(--space-sm) 0; }
+  .call.is-open { padding-inline: var(--space-sm); }
+  .call time { font-size: var(--text-lg); }
+  .call h3 { font-size: var(--text-md); }
+  .call p, .call blockquote { font-size: var(--text-sm); line-height: 1.4; }
+  .call .acts { grid-column: 2; margin-top: var(--space-2xs); }
+  .call .acts .btn { min-height: 32px; padding: 0 var(--space-sm); }
+  .later { margin-top: var(--space-lg); }
+  .later .call time { font-size: var(--text-md); }
+
   .lead-card { padding: var(--space-md); }
-  .track { font-size: var(--text-xs); }
+  .lead-card h2 { font-size: var(--text-2xl); }
+  .track { margin-top: var(--space-md); font-size: var(--text-xs); }
   .track li span { display: none; }
   .track li.on span { display: inline; }
+  .receipt { margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); }
+  .receipt .total dd { font-size: var(--text-md); }
+  .log { margin-top: var(--space-md); }
+  .lead-card .acts { margin-top: var(--space-md); }
+
+  /* All leads: name and value, then interest and stage, then source and last contact */
+  .all { margin-top: var(--space-xl); }
+  .tbl tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-3xs) var(--space-md); align-items: baseline; padding: var(--space-sm) 0; }
+  .tbl td { display: block; width: auto; padding: 0; font-size: var(--text-sm); }
+  .tbl td::before { content: none; }
+  .tbl td.num { text-align: right; }
+  .tbl td:first-child { grid-column: 1; grid-row: 1; font-size: var(--text-md); }
+  .tbl td[data-l="Nilai"] { grid-column: 2; grid-row: 1; font-size: var(--text-md); }
+  .tbl td[data-l="Minat"] { grid-column: 1; grid-row: 2; color: var(--color-ink-2); }
+  .tbl td[data-l="Tahap"] { grid-column: 2; grid-row: 2; text-align: right; }
+  .tbl td[data-l="Asal"] { grid-column: 1; grid-row: 3; font-size: var(--text-xs); color: var(--color-muted); }
+  .tbl td[data-l="Kontak terakhir"] { grid-column: 2; grid-row: 3; font-size: var(--text-xs); text-align: right; }
+  .tbl td[data-l="Ditangani"] { display: none; }
+}
+/* The narrowest phones: the four stages as two rows of two */
+@media (max-width: 22rem) {
+  .pipe ol { flex-wrap: wrap; row-gap: var(--space-sm); }
+  .pipe li { flex: 1 1 40%; }
 }
 @media (prefers-reduced-motion: reduce) { .btn:active { transform: none; } }
