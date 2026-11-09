@@ -4,737 +4,574 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#faf8f3">
+<meta name="theme-color" content="#1b8354">
 <link rel="icon" type="image/png" href="assets/dar-mascot-128.png">
 <title>Video Motion Graphic untuk Travel Umrah · Dar Dev</title>
-<meta name="description" content="Video edukasi umrah sekitar 1 menit dengan motion graphic dan narasi AI. Dar Dev yang buat, travel cukup cek 10 menit seminggu.">
+<meta name="description" content="Video edukasi umrah motion graphic dengan logo travel Anda. Dibuat Dar Dev, travel cukup cek dan setujui.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,600..900&family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
-  /* Gaya: studio editing video. Latar terang dan bersih tanpa pattern,
-     judul dengan sorotan seperti subtitle di video contoh, label bab berupa
-     timecode, bingkai viewfinder kamera, dan playhead yang berjalan saat digulir. */
+  /* Gaya terinspirasi tampilan portal layanan haji & umrah resmi:
+     putih bersih, hijau sebagai warna utama, abu-abu muda untuk bagian,
+     kartu putih dengan bayangan tipis, tombol bersudut kecil, IBM Plex Sans.
+     Tanpa logo atau identitas lembaga mana pun. */
   :root {
-    --bg: #faf8f3;
-    --paper: #ffffff;
-    --tint: #f2efe6;
-    --ink: #121614;
-    --ink-2: #3d4541;
-    --muted: #6e746f;
-    --line: #e4dfd3;
-    --green: #0e6b52;
-    --green-2: #0a5440;
-    --green-soft: #dcefe6;
-    --amber: #f5b72a;
-    --amber-soft: #fdf0cc;
-    --rec: #e0412f;
-    --head: "Archivo", "Arial Narrow", sans-serif;
-    --font: "Figtree", "Helvetica Neue", Arial, sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --green: #1b8354;
+    --green-600: #166a45;
+    --green-800: #104631;
+    --green-900: #0b2f21;
+    --green-50: #ecf6f1;
+    --gold: #a8814f;
+    --gold-50: #f8f4ef;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --text: #161616;
+    --text-2: #384250;
+    --muted: #6c737f;
+    --font: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    --shadow: 0 1px 3px rgba(16,24,40,.1), 0 1px 2px rgba(16,24,40,.06);
+    --shadow-lg: 0 12px 24px -6px rgba(16,24,40,.12), 0 4px 8px -4px rgba(16,24,40,.06);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--font); font-size: 15.5px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  body { margin: 0; font-family: var(--font); font-size: 15px; line-height: 1.6; color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
   h1, h2, h3, h4, p, ul, ol { margin: 0; padding: 0; }
   ul, ol { list-style: none; }
   a { color: inherit; }
-  b, strong { font-weight: 700; }
-  button { font: inherit; color: inherit; }
+  button, input, select { font: inherit; color: inherit; }
   img, video { display: block; max-width: 100%; }
-  :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 18px; }
-  h1, h2 { font-family: var(--head); font-weight: 800; font-stretch: 82%; letter-spacing: -.01em; }
-  h1 { font-size: 44px; line-height: 1.02; }
-  h2 { font-size: 34px; line-height: 1.05; }
-  h3 { font-size: 17px; font-weight: 800; line-height: 1.3; }
-  /* Sorotan seperti subtitle di video: kotak kuning atau kotak gelap */
-  .cap { background: var(--amber); color: var(--ink); padding: 0 .14em; border-radius: .14em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .cap.dk { background: var(--ink); color: #fff; }
-  .cap.gr { background: var(--green); color: #fff; }
-  section { padding: 64px 0; }
-  .tc { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 14px; letter-spacing: .02em; }
-  .tc b { background: var(--ink); color: #fff; border-radius: 6px; padding: 3px 8px; font-weight: 600; }
-  .tc::after { content: ""; width: 34px; height: 1.5px; background: var(--line); }
-  .sub { color: var(--ink-2); font-size: 16px; margin-top: 14px; }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  h1 { font-size: 34px; line-height: 1.2; font-weight: 600; }
+  h2 { font-size: 26px; line-height: 1.25; font-weight: 600; }
+  h3 { font-size: 16.5px; line-height: 1.35; font-weight: 600; }
+  section { padding: 52px 0; }
+  .gray { background: var(--gray-100); }
+  .beige { background: var(--gold-50); }
+  .sec-head { margin-bottom: 24px; }
+  .sec-head p { color: var(--text-2); margin-top: 8px; }
   .center { text-align: center; }
-  .center .sub { margin-left: auto; margin-right: auto; max-width: 36em; }
-  .center .tc { justify-content: center; }
+  .center p { max-width: 34em; margin-left: auto; margin-right: auto; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 6px; }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 12px; font-size: 15px; font-weight: 800; text-decoration: none; border: 0; cursor: pointer; background: var(--green); color: #fff; transition: transform .15s ease, background .2s; }
-  .btn:hover { background: var(--green-2); }
-  .btn:active { transform: scale(.98); }
-  .btn.amber { background: var(--amber); color: var(--ink); }
-  .btn.amber:hover { background: #e9a817; }
-  .btn.line { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
-  .btn.line:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
-  .btn.dark { background: var(--ink); }
-  .btn.dark:hover { background: #2a312d; }
-  .btn.sm { min-height: 40px; padding: 0 16px; font-size: 13.5px; border-radius: 10px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; background: var(--green); color: #fff; transition: background .2s; }
+  .btn:hover { background: var(--green-600); }
+  .btn.white { background: #fff; color: var(--text); }
+  .btn.white:hover { background: var(--gray-100); }
+  .btn.outline { background: transparent; color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+  .btn.outline:hover { background: var(--green-50); }
+  .btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6); }
+  .btn.ghost:hover { background: rgba(255,255,255,.1); }
+  .btn.sm { min-height: 38px; padding: 0 14px; font-size: 14px; }
 
-  /* Navigasi + playhead */
-  .nav { position: sticky; top: 0; z-index: 30; background: rgba(250,248,243,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 15px; }
-  .brand small { display: block; font-weight: 500; font-size: 11.5px; color: var(--muted); line-height: 1.1; }
-  .mascot { width: 38px; height: 38px; border-radius: 50%; background: #f1eddf; padding: 2px; object-fit: contain; flex: none; box-shadow: 0 0 0 1.5px var(--ink); }
-  .nav .links { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; }
-  .nav .links .txt { display: none; text-decoration: none; color: var(--ink-2); }
-  .nav .links .txt:hover { color: var(--green); }
-  .clock { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
-  .clock i { width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.4s steps(2, start) infinite; }
-  @keyframes blink { to { visibility: hidden; } }
-  .playhead { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: transparent; }
-  .playhead i { display: block; height: 100%; width: 0; background: var(--amber); position: relative; }
-  .playhead i::after { content: ""; position: absolute; right: -5px; top: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 2px var(--bg); }
+  /* Bilah info atas */
+  .topbar { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); font-size: 12.5px; color: var(--text-2); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 34px; }
+  .topbar span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .topbar .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .topbar .r { display: none; }
+
+  /* Navigasi */
+  .nav { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--gray-200); }
+  .nav .wrap { display: flex; align-items: stretch; justify-content: space-between; height: 62px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand b { font-size: 15.5px; font-weight: 700; line-height: 1.15; display: block; }
+  .brand small { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.2; }
+  .mascot { width: 38px; height: 38px; border-radius: 50%; background: #f1eddf; object-fit: contain; flex: none; border: 1.5px solid var(--gold); }
+  .menu { display: none; align-items: stretch; gap: 4px; font-size: 14.5px; font-weight: 500; }
+  .menu a { display: flex; align-items: center; padding: 0 16px; text-decoration: none; color: var(--text-2); position: relative; }
+  .menu a:hover { color: var(--green); }
+  .menu a.on { background: var(--green); color: #fff; }
+  .menu a.on::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 0; height: 4px; border-radius: 2px 2px 0 0; background: #5fc497; }
+  .nav .cta { display: flex; align-items: center; }
 
   /* Pembuka */
-  .hero { padding: 28px 0 0; }
-  .hero-grid { display: grid; gap: 34px; }
-  .for { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green-2); border-radius: 9999px; padding: 6px 14px; font-size: 12.5px; font-weight: 700; margin-bottom: 18px; }
-  .lead { color: var(--ink-2); font-size: 16.5px; margin-top: 16px; }
-  .checks { display: grid; gap: 9px; margin-top: 20px; }
-  .checks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
-  .checks li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 6px; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3L14.5 7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat; }
-  .actions { display: grid; gap: 10px; margin-top: 26px; }
-
-  /* Viewfinder di sekeliling contoh video */
-  .stage { position: relative; display: flex; justify-content: center; padding: 26px 0 30px; }
-  .vf { position: relative; padding: 22px 26px; }
-  .vf .c { position: absolute; width: 26px; height: 26px; border: 3px solid var(--ink); }
-  .vf .c1 { left: 0; top: 0; border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
-  .vf .c2 { right: 0; top: 0; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
-  .vf .c3 { left: 0; bottom: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
-  .vf .c4 { right: 0; bottom: 0; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
-  .vf .rec { position: absolute; top: -4px; left: 38px; font-family: var(--mono); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background: var(--bg); padding: 0 6px; }
-  .vf .rec i { width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.4s steps(2, start) infinite; }
-  .vf .fmt { position: absolute; bottom: -4px; right: 38px; font-family: var(--mono); font-size: 11.5px; font-weight: 600; color: var(--muted); background: var(--bg); padding: 0 6px; }
-  .phone { position: relative; width: 250px; padding: 9px; border-radius: 42px; background: #0b0d0c; box-shadow: 0 26px 60px rgba(18,22,20,.28), inset 0 0 0 1.5px rgba(255,255,255,.14); }
-  .screen { position: relative; border-radius: 34px; overflow: hidden; aspect-ratio: 9 / 16; background: #000; }
+  .hero { position: relative; color: #fff; background: linear-gradient(160deg, var(--green-800) 0%, var(--green-900) 70%); overflow: hidden; padding: 36px 0 44px; }
+  .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(closest-side, rgba(95,196,151,.25), transparent); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; gap: 32px; }
+  .hero .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #cfe9dc; margin-bottom: 14px; }
+  .hero .tag::before { content: ""; width: 18px; height: 2px; background: var(--gold); }
+  .hero h1 { color: #fff; }
+  .hero h1 span { color: #8fdcb7; }
+  .hero p.lead { color: #d7e7df; font-size: 16px; margin-top: 12px; max-width: 30em; }
+  .hero .actions { display: grid; gap: 10px; margin-top: 24px; }
+  .arch { position: relative; justify-self: center; width: 280px; padding: 26px 22px 0; border-radius: 160px 160px 16px 16px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); }
+  .phone { position: relative; padding: 8px; border-radius: 38px; background: #0a0d0b; box-shadow: 0 24px 50px rgba(0,0,0,.45); margin-bottom: -60px; }
+  .screen { position: relative; border-radius: 31px; overflow: hidden; aspect-ratio: 9 / 16; background: #000; }
   .screen video, .screen img.poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .island { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 30%; height: 21px; background: #000; border-radius: 20px; z-index: 4; }
-  .play { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.5)); border: 0; cursor: pointer; padding: 0; }
-  .play span { display: inline-flex; align-items: center; gap: 10px; background: var(--amber); color: var(--ink); font-weight: 800; font-size: 14px; border-radius: 9999px; padding: 11px 18px 11px 12px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-  .play span i { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; }
+  .island { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 30%; height: 20px; background: #000; border-radius: 20px; z-index: 4; }
+  .play { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.5)); border: 0; cursor: pointer; padding: 0; }
+  .play span { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--text); font-weight: 600; font-size: 14px; border-radius: 4px; padding: 10px 16px 10px 10px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .play span i { width: 28px; height: 28px; border-radius: 4px; background: var(--green); display: grid; place-items: center; }
   .play.hide { display: none; }
-  .tagf { position: absolute; z-index: 5; display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border-radius: 12px; padding: 8px 12px; font-size: 12px; font-weight: 700; box-shadow: 0 12px 28px rgba(18,22,20,.16), 0 0 0 1px var(--line); white-space: nowrap; }
-  .tagf i { width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; font-style: normal; background: var(--green); color: #fff; font-size: 12px; }
-  .tagf small { display: block; font-weight: 500; color: var(--muted); font-size: 10.5px; line-height: 1.1; }
-  .tagf.t1 { left: -6px; bottom: 74px; }
-  .tagf.t2 { right: -6px; top: 120px; }
-  .tagf.t2 i { background: var(--amber); color: var(--ink); }
+  .hero-pad { height: 60px; }
 
-  /* Angka sebagai klip di timeline */
-  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
-  .stat { background: var(--paper); border: 1px solid var(--line); border-left: 5px solid var(--green); border-radius: 10px; padding: 12px 14px; }
-  .stat:nth-child(2) { border-left-color: var(--amber); }
-  .stat:nth-child(3) { border-left-color: var(--ink); }
-  .stat:nth-child(4) { border-left-color: var(--rec); }
-  .stat b { display: block; font-family: var(--head); font-stretch: 82%; font-weight: 800; font-size: 26px; line-height: 1.05; }
-  .stat span { display: block; margin-top: 3px; font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+  /* Angka */
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: -30px; position: relative; z-index: 2; }
+  .stat { background: #fff; border-radius: 12px; box-shadow: var(--shadow-lg); padding: 14px 16px; border-top: 3px solid var(--green); }
+  .stat b { display: block; font-size: 22px; font-weight: 700; color: var(--green-600); line-height: 1.2; }
+  .stat span { font-size: 12.5px; color: var(--muted); }
 
-  /* Masalah */
-  .pains { display: grid; gap: 10px; margin-top: 26px; }
-  .pain { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
-  .pain .ic { width: 44px; height: 44px; border-radius: 12px; background: #fbe4df; color: var(--rec); display: grid; place-items: center; }
-  .pain p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; }
-  .turn { margin-top: 16px; border-radius: 16px; padding: 18px 20px; font-size: 16px; font-weight: 600; background: var(--green); color: #fff; }
-  .turn .cap { background: var(--amber); color: var(--ink); }
+  /* Kartu umum */
+  .cards { display: grid; gap: 12px; }
+  .card { background: #fff; border-radius: 16px; box-shadow: var(--shadow); padding: 18px; }
+  .card .ic { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: var(--green-50); color: var(--green); margin-bottom: 12px; }
+  .card.gold .ic { background: var(--gold-50); color: var(--gold); }
+  .card p { color: var(--text-2); font-size: 14px; margin-top: 4px; }
 
-  /* Dari viral ke jamaah */
-  .funnel { margin-top: 26px; display: grid; gap: 10px; counter-reset: f; }
-  .funnel li { position: relative; display: grid; grid-template-columns: 50px 1fr; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-  .funnel .fi { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: 14px; background: var(--ink); color: #fff; }
-  .funnel li:nth-child(2) .fi { background: var(--amber); color: var(--ink); }
-  .funnel li:nth-child(3) .fi { background: #3949a3; }
-  .funnel li:nth-child(4) .fi { background: var(--green); }
-  .funnel li:not(:last-child)::after { content: "↓"; position: absolute; left: 34px; bottom: -15px; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); box-shadow: 0 0 0 1px var(--line); display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--muted); }
-  .funnel h3 { font-size: 17px; }
-  .funnel p { color: var(--ink-2); font-size: 14.5px; margin-top: 3px; }
-  .viral { margin-top: 18px; background: var(--ink); color: #fff; border-radius: 18px; padding: 20px; }
-  .viral h3 { font-family: var(--head); font-stretch: 82%; font-size: 22px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .chips li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 9999px; padding: 7px 13px; font-size: 13px; font-weight: 600; }
-  .chips li::before { content: "#"; color: var(--amber); margin-right: 4px; font-family: var(--mono); }
-  .honest { margin-top: 14px; font-size: 13px; color: #aab3ad; border-top: 1px dashed rgba(255,255,255,.18); padding-top: 12px; }
+  /* Alur viral */
+  .flow { display: grid; gap: 10px; }
+  .flow li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; background: #fff; border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; }
+  .flow .n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: #fff; font-weight: 700; }
+  .flow p { color: var(--muted); font-size: 13.5px; }
+  .note { margin-top: 14px; font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
+  .note::before { content: "ⓘ"; color: var(--gold); }
 
-  /* Satu video banyak kegunaan */
-  .uses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
-  .uses li { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-  .uses .ui { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--amber-soft); color: #8a5b00; font-weight: 800; font-size: 16px; margin-bottom: 10px; }
-  .uses li:nth-child(even) .ui { background: var(--green-soft); color: var(--green-2); }
-  .uses h3 { font-size: 15.5px; }
-  .uses p { color: var(--ink-2); font-size: 13.5px; margin-top: 4px; line-height: 1.5; }
-
-  /* Kenapa motion graphic + AI */
-  .tint { background: var(--tint); }
-  .why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
-  .why li { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-  .why .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--green-soft); color: var(--green-2); margin-bottom: 10px; }
-  .why li:nth-child(2) .ic { background: var(--amber-soft); color: #8a5b00; }
-  .why li:nth-child(4) .ic { background: #e6e9f6; color: #3949a3; }
-  .why h3 { font-size: 16.5px; }
-  .why p { color: var(--ink-2); font-size: 13.5px; margin-top: 4px; line-height: 1.5; }
-
-  /* Pembagian kerja AI dan manusia, seperti layer di aplikasi editing */
-  .layers { margin-top: 18px; background: var(--ink); color: #e8ece9; border-radius: 16px; padding: 14px; display: grid; gap: 8px; }
-  .layers .hd { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: #8d968f; padding: 0 2px 4px; }
-  .layer { display: grid; grid-template-columns: 82px 1fr; gap: 10px; align-items: center; }
-  .layer > span { font-size: 12.5px; font-weight: 700; color: #fff; }
-  .clip { border-radius: 8px; padding: 7px 10px; font-size: 12.5px; line-height: 1.35; color: var(--ink); font-weight: 600; }
-  .clip small { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; opacity: .7; text-transform: uppercase; letter-spacing: .04em; }
-  .clip.ai { background: #a8d8c5; }
-  .clip.hu { background: var(--amber); }
-  .clip.ok { background: #fff; }
+  /* Kegunaan */
+  .uses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .uses li { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 14px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; }
+  .uses li i { flex: none; width: 34px; height: 34px; border-radius: 8px; background: var(--gold-50); color: var(--gold); display: grid; place-items: center; font-style: normal; font-size: 15px; }
 
   /* Anatomi video */
-  .anat { margin-top: 26px; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
-  .ruler { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-bottom: 6px; }
-  .trackwrap { position: relative; }
-  .track { display: flex; height: 48px; gap: 3px; }
-  .track button { border: 0; cursor: pointer; padding: 0; font-size: 11.5px; font-weight: 800; color: #fff; border-radius: 7px; display: grid; place-items: center; transition: opacity .2s, transform .2s; }
-  .track button:not(.on) { opacity: .6; }
-  .track button.on { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(18,22,20,.18); }
-  .seg-1 { background: var(--rec); flex: 4; } .seg-2 { background: var(--green); flex: 17; } .seg-3 { background: var(--ink); flex: 20; } .seg-4 { background: #3949a3; flex: 12; } .seg-5 { background: var(--amber); color: var(--ink) !important; flex: 7; }
-  .ph { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--rec); left: 0; transition: left .35s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
-  .ph::before { content: ""; position: absolute; top: -6px; left: -5px; border: 6px solid transparent; border-top-color: var(--rec); }
-  .anat-out { margin-top: 18px; min-height: 108px; }
-  .anat-out .t { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--muted); }
-  .anat-out h3 { font-family: var(--head); font-stretch: 82%; font-size: 26px; margin-top: 2px; }
-  .anat-out p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; }
-  .anat-hint { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .anat { background: #fff; border-radius: 16px; box-shadow: var(--shadow); padding: 18px; }
+  .track { display: flex; height: 44px; gap: 3px; }
+  .track button { border: 0; cursor: pointer; padding: 0; font-size: 12px; font-weight: 600; color: #fff; border-radius: 4px; display: grid; place-items: center; transition: opacity .2s; }
+  .track button:not(.on) { opacity: .45; }
+  .s1 { background: var(--gold); flex: 4; } .s2 { background: var(--green); flex: 17; } .s3 { background: var(--green-800); flex: 20; } .s4 { background: #3f7f9e; flex: 12; } .s5 { background: var(--text-2); flex: 7; }
+  .ticks { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .anat-out { margin-top: 14px; min-height: 84px; }
+  .anat-out small { color: var(--green); font-weight: 600; font-size: 12.5px; }
+  .anat-out h3 { font-size: 19px; }
+  .anat-out p { color: var(--text-2); font-size: 14px; margin-top: 2px; }
 
-  /* Topik */
-  .tabs { display: flex; gap: 8px; overflow-x: auto; margin: 22px -18px 0; padding: 0 18px 4px; scrollbar-width: none; }
+  /* Tab topik ala portal */
+  .tabs { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid var(--gray-200); margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
-  .tabs button { flex: none; height: 40px; padding: 0 16px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--paper); font-size: 13.5px; font-weight: 700; cursor: pointer; white-space: nowrap; }
-  .tabs button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
-  .topics { margin-top: 14px; display: grid; gap: 10px; }
-  .topic { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 10px; }
-  .topic .th { aspect-ratio: 9 / 16; width: 64px; border-radius: 8px; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 6px; font-family: var(--mono); font-size: 9px; }
-  .topic .th em { font-style: normal; font-family: var(--head); font-stretch: 82%; font-weight: 800; font-size: 11px; line-height: 1.05; background: var(--amber); color: var(--ink); border-radius: 3px; padding: 1px 3px; align-self: flex-start; }
-  .topic:nth-child(2) .th { background: var(--green); } .topic:nth-child(3) .th { background: #3949a3; } .topic:nth-child(4) .th { background: #6b3f1d; }
-  .topic b { display: block; font-size: 15px; line-height: 1.35; }
-  .topic small { display: block; color: var(--muted); font-size: 13px; margin-top: 3px; }
-  .brief { margin-top: 16px; background: var(--amber-soft); border-radius: 16px; padding: 18px; display: grid; gap: 12px; font-size: 14.5px; color: var(--ink-2); }
-  .brief b { color: var(--ink); }
+  .tabs button { flex: none; background: none; border: 0; padding: 12px 14px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+  .tabs button.on { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+  .topics { display: grid; gap: 8px; margin-top: 16px; }
+  .topics li { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 10px; box-shadow: var(--shadow); padding: 13px 14px; font-weight: 500; font-size: 14.5px; }
+  .topics li span { flex: none; width: 30px; height: 30px; border-radius: 6px; background: var(--green-50); color: var(--green); display: grid; place-items: center; font-size: 12.5px; font-weight: 700; }
 
-  /* Logo dan warna travel */
-  .brandlab { margin-top: 26px; display: grid; gap: 20px; }
-  .endcard { position: relative; aspect-ratio: 4 / 5; max-width: 320px; margin: 0 auto; width: 100%; border-radius: 22px; overflow: hidden; background: var(--c1); color: #fff; padding: 26px 22px; display: flex; flex-direction: column; justify-content: flex-end; transition: background .4s; box-shadow: 0 24px 50px rgba(18,22,20,.22); }
-  .endcard::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--c2) 45%, transparent), transparent 60%); }
-  .endcard .arch { position: absolute; left: 50%; top: 13%; width: 46%; aspect-ratio: 1 / 1.25; transform: translateX(-50%); border-radius: 999px 999px 10px 10px; border: 3px solid var(--c2); transition: border-color .4s; }
-  .endcard .arch::after { content: ""; position: absolute; left: 50%; top: 22%; width: 34%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; box-shadow: inset -9px -3px 0 0 var(--c2); transition: box-shadow .4s; }
-  .endcard .logo { position: absolute; top: 18px; left: 18px; display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13px; }
-  .endcard .logo i { width: 30px; height: 30px; border-radius: 9px; background: var(--c2); color: var(--c1); display: grid; place-items: center; font-style: normal; font-family: var(--head); font-weight: 900; font-size: 16px; transition: background .4s, color .4s; }
-  .endcard .tcx { position: absolute; top: 22px; right: 18px; font-family: var(--mono); font-size: 10.5px; opacity: .75; }
-  .endcard p { position: relative; font-family: var(--head); font-stretch: 82%; font-weight: 800; font-size: 28px; line-height: 1.05; }
-  .endcard p em { font-style: normal; background: var(--c2); color: var(--c1); padding: 0 .12em; border-radius: 4px; transition: background .4s, color .4s; }
-  .endcard .cta { position: relative; margin-top: 14px; align-self: flex-start; background: #fff; color: var(--ink); font-weight: 800; font-size: 13px; border-radius: 9999px; padding: 9px 16px; }
-  .swatches { display: grid; gap: 12px; }
-  .swatches p { font-size: 14.5px; color: var(--ink-2); }
-  .sw { display: flex; gap: 10px; flex-wrap: wrap; }
-  .sw button { width: 52px; height: 52px; border-radius: 14px; border: 3px solid var(--paper); cursor: pointer; padding: 0; background: linear-gradient(135deg, var(--a) 50%, var(--b) 50%); box-shadow: 0 0 0 1px var(--line); }
-  .sw button.on { box-shadow: 0 0 0 2.5px var(--ink); }
-  .brand-list { display: grid; gap: 8px; font-size: 14.5px; color: var(--ink-2); }
-  .brand-list li { display: flex; gap: 10px; }
-  .brand-list li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px; background: var(--amber); margin-top: 8px; }
+  /* Warna travel */
+  .brandlab { display: grid; gap: 18px; }
+  .endcard { position: relative; aspect-ratio: 4 / 5; max-width: 300px; width: 100%; margin: 0 auto; border-radius: 16px; overflow: hidden; background: var(--c1); color: #fff; padding: 22px 20px; display: flex; flex-direction: column; justify-content: flex-end; transition: background .4s; box-shadow: var(--shadow-lg); }
+  .endcard::before { content: ""; position: absolute; left: 50%; top: 12%; width: 48%; aspect-ratio: 1 / 1.25; transform: translateX(-50%); border-radius: 999px 999px 8px 8px; border: 2px solid var(--c2); transition: border-color .4s; }
+  .endcard .logo { position: absolute; top: 16px; left: 16px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
+  .endcard .logo i { width: 28px; height: 28px; border-radius: 6px; background: var(--c2); color: var(--c1); display: grid; place-items: center; font-style: normal; font-weight: 700; transition: background .4s, color .4s; }
+  .endcard p { position: relative; font-size: 22px; font-weight: 600; line-height: 1.25; }
+  .endcard p em { font-style: normal; color: var(--c2); transition: color .4s; }
+  .endcard .c { position: relative; margin-top: 12px; align-self: flex-start; background: var(--c2); color: var(--c1); font-weight: 600; font-size: 13px; border-radius: 4px; padding: 8px 14px; transition: background .4s, color .4s; }
+  .sw { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .sw button { width: 46px; height: 46px; border-radius: 8px; border: 2px solid #fff; cursor: pointer; padding: 0; background: linear-gradient(135deg, var(--a) 50%, var(--b) 50%); box-shadow: 0 0 0 1px var(--gray-200); }
+  .sw button.on { box-shadow: 0 0 0 2px var(--green); }
 
-  /* Cara kerja */
-  .steps { margin-top: 26px; display: grid; gap: 10px; }
-  .steps li { display: grid; grid-template-columns: 46px 1fr; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-  .steps .num { width: 46px; height: 46px; border-radius: 12px; background: var(--ink); color: #fff; display: grid; place-items: center; font-family: var(--head); font-weight: 900; font-size: 20px; }
-  .steps li:nth-child(2) .num { background: var(--amber); color: var(--ink); }
-  .steps li:nth-child(3) .num { background: var(--green); }
-  .steps .who { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; }
-  .steps h3 { margin-top: 1px; font-size: 17.5px; }
-  .steps p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; }
+  /* Langkah */
+  .steps { display: grid; gap: 10px; counter-reset: s; }
+  .steps li { display: flex; gap: 12px; align-items: center; background: #fff; border-radius: 12px; box-shadow: var(--shadow); padding: 14px 16px; }
+  .steps li::before { counter-increment: s; content: counter(s); flex: none; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--green); color: var(--green); display: grid; place-items: center; font-weight: 700; }
+  .steps b { display: block; font-weight: 600; }
+  .steps small { color: var(--muted); font-size: 13px; }
 
   /* Paket */
-  .plans { display: grid; gap: 14px; margin-top: 28px; }
-  .plan { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; }
-  .plan.rec { background: var(--green); color: #fff; border-color: var(--green); box-shadow: 0 24px 50px rgba(14,107,82,.28); order: -1; }
-  .plan .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .plan h3 { font-family: var(--head); font-stretch: 82%; font-weight: 800; font-size: 26px; }
-  .plan .badge { background: var(--amber); color: var(--ink); font-size: 12px; font-weight: 800; border-radius: 9999px; padding: 4px 11px; white-space: nowrap; }
-  .plan .badge.soft { background: var(--green-soft); color: var(--green-2); }
-  .plan .price { font-family: var(--head); font-stretch: 82%; font-weight: 900; font-size: 44px; line-height: 1; margin-top: 10px; }
-  .plan .price small { font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--muted); }
-  .plan.rec .price small { color: #cfe7dc; }
-  .plan .per { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--green); }
-  .plan.rec .per { color: var(--amber); }
-  .plan ul { display: grid; gap: 8px; margin: 12px 0 18px; font-size: 14.5px; }
-  .plan li { display: flex; gap: 10px; }
-  .plan li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 2px; border-radius: 6px; background: var(--green-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3L14.5 7' fill='none' stroke='%230e6b52' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 15px no-repeat; }
-  .plan.rec li::before { background-color: rgba(255,255,255,.18); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3L14.5 7' fill='none' stroke='%23f5b72a' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .plans { display: grid; gap: 12px; }
+  .plan { background: #fff; border-radius: 16px; box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; border: 1px solid transparent; }
+  .plan.rec { border-color: var(--green); box-shadow: var(--shadow-lg); order: -1; }
+  .plan .top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .plan h3 { font-size: 19px; }
+  .badge { font-size: 12px; font-weight: 600; border-radius: 4px; padding: 3px 9px; background: var(--green); color: #fff; white-space: nowrap; }
+  .badge.soft { background: var(--green-50); color: var(--green-600); }
+  .badge.gold { background: var(--gold-50); color: var(--gold); }
+  .price { font-size: 30px; font-weight: 700; margin-top: 10px; line-height: 1.1; }
+  .price small { font-size: 13.5px; font-weight: 500; color: var(--muted); }
+  .plan ul { display: grid; gap: 7px; margin: 14px 0 18px; font-size: 14px; color: var(--text-2); }
+  .plan li { display: flex; gap: 8px; }
+  .plan li::before { content: "✓"; color: var(--green); font-weight: 700; }
   .plan .btn { margin-top: auto; width: 100%; }
-  .plan:not(.rec) .btn { background: var(--ink); }
-  .plan.rec .btn { background: var(--amber); color: var(--ink); }
-  .fine { margin-top: 16px; font-size: 13px; color: var(--muted); text-align: center; }
+  .plan:not(.rec) .btn { background: #fff; color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+  .plan:not(.rec) .btn:hover { background: var(--green-50); }
 
-  /* FAQ */
-  .faq { margin-top: 22px; border-top: 1.5px solid var(--ink); }
-  .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 17px 0; font-weight: 700; font-size: 15.5px; }
+  /* Paket custom */
+  .custom { margin-top: 14px; background: var(--green-900); color: #fff; border-radius: 16px; padding: 20px; display: grid; gap: 16px; }
+  .custom h3 { font-size: 20px; }
+  .custom > div > p { color: #c6dbd1; font-size: 14px; margin-top: 4px; }
+  .fgrp label { display: block; font-size: 13px; font-weight: 600; color: #c6dbd1; margin-bottom: 8px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts button { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.22); color: #fff; border-radius: 4px; padding: 8px 12px; font-size: 13.5px; cursor: pointer; }
+  .opts button.on { background: #fff; color: var(--green-800); border-color: #fff; font-weight: 600; }
+  .custom input[type=text] { width: 100%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.22); color: #fff; border-radius: 4px; padding: 11px 12px; font-size: 14px; }
+  .custom input::placeholder { color: #9fb8ad; }
+  .custom .btn { background: #fff; color: var(--green-800); width: 100%; }
+  .custom .btn:hover { background: var(--gray-100); }
+
+  /* FAQ ala akordeon portal */
+  .faq details { background: #fff; border: 1px solid var(--gray-200); border-radius: 8px; margin-bottom: 8px; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; font-weight: 600; font-size: 14.5px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: ""; flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='%23121614' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center / 12px no-repeat; box-shadow: inset 0 0 0 1px var(--line); transition: transform .25s; }
-  .faq details[open] summary::after { transform: rotate(45deg); background-color: var(--amber); box-shadow: none; }
-  .faq details p { color: var(--ink-2); font-size: 14.5px; padding: 0 0 18px; }
+  .faq summary::after { content: "⌄"; color: var(--green); font-size: 18px; line-height: 1; transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(180deg); }
+  .faq details p { padding: 0 16px 14px; color: var(--text-2); font-size: 14px; }
 
-  /* Penutup: layar akhir video */
-  .close-box { background: var(--ink); color: #fff; border-radius: 24px; padding: 34px 22px 30px; text-align: center; position: relative; overflow: hidden; }
-  .close-box .bar { position: absolute; left: 0; right: 0; top: 0; height: 5px; background: rgba(255,255,255,.12); }
-  .close-box .bar i { display: block; height: 100%; width: 100%; background: var(--amber); }
-  .by-dar { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,.08); border-radius: 9999px; padding: 5px 16px 5px 5px; margin-bottom: 18px; text-align: left; }
-  .by-dar .mascot { width: 44px; height: 44px; box-shadow: 0 0 0 2px var(--amber); }
-  .by-dar b { display: block; font-size: 14.5px; line-height: 1.2; }
-  .by-dar small { display: block; font-size: 12px; color: #aab3ad; }
-  .close-box h2 { font-size: 34px; }
-  .close-box p { color: #c7cfca; margin-top: 12px; font-size: 15px; }
-  .close-box .actions { margin-top: 22px; }
-  .close-box .end { margin-top: 18px; font-family: var(--mono); font-size: 11px; color: #8d968f; }
-  footer { padding: 24px 0 110px; font-size: 12.5px; color: var(--muted); }
-  footer .wrap { display: grid; gap: 8px; }
-  footer .who { display: inline-flex; align-items: center; gap: 10px; }
+  /* Penutup */
+  .close { background: linear-gradient(160deg, var(--green-800), var(--green-900)); color: #fff; border-radius: 16px; padding: 30px 20px; text-align: center; }
+  .close .mascot { width: 56px; height: 56px; margin: 0 auto 12px; }
+  .close h2 { color: #fff; }
+  .close p { color: #c6dbd1; margin-top: 8px; }
+  .close .btn { margin-top: 20px; background: #fff; color: var(--green-800); }
+  footer { padding: 22px 0 100px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--gray-200); }
+  footer .wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
   footer .mascot { width: 28px; height: 28px; }
+  footer span { display: inline-flex; align-items: center; gap: 8px; }
 
-  /* Tombol WhatsApp menempel di HP */
-  .dock { position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--ink); color: #fff; border-radius: 16px; padding: 8px 8px 8px 10px; box-shadow: 0 14px 34px rgba(0,0,0,.28); transform: translateY(160%); transition: transform .35s ease; }
+  /* Tombol menempel di HP */
+  .dock { position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border-radius: 12px; padding: 8px 8px 8px 10px; box-shadow: 0 10px 30px rgba(16,24,40,.2), 0 0 0 1px var(--gray-200); transform: translateY(160%); transition: transform .3s; }
   .dock.show { transform: none; }
-  .dock > div { display: flex; align-items: center; gap: 10px; min-width: 0; }
-  .dock .mascot { width: 34px; height: 34px; box-shadow: 0 0 0 2px var(--amber); }
-  .dock small { display: block; font-size: 11px; color: #aab3ad; }
-  .dock b { font-size: 13.5px; white-space: nowrap; }
-  .dock .btn { min-height: 42px; padding: 0 16px; font-size: 13.5px; border-radius: 11px; background: var(--amber); color: var(--ink); }
+  .dock > span { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 13.5px; line-height: 1.2; }
+  .dock small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+  .dock .mascot { width: 34px; height: 34px; }
+  .dock .btn { min-height: 40px; padding: 0 14px; font-size: 13.5px; }
 
-  .rise { opacity: 0; translate: 0 16px; transition: opacity .6s ease, translate .6s cubic-bezier(.2,.8,.2,1); }
+  .rise { opacity: 0; translate: 0 12px; transition: opacity .5s ease, translate .5s ease; }
   .rise.in { opacity: 1; translate: 0 0; }
-  @media (prefers-reduced-motion: reduce) { .rise { opacity: 1; translate: none; transition: none; } html { scroll-behavior: auto; } .clock i, .vf .rec i { animation: none; } .ph { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .rise { opacity: 1; translate: none; transition: none; } html { scroll-behavior: auto; } }
 
-  @media (max-width: 479px) { .brand small, .tagf.t2 { display: none; } }
-  @media (max-width: 359px) { h1 { font-size: 38px; } .tagf.t2 { display: none; } }
-
-  /* Tablet dan desktop */
   @media (min-width: 720px) {
     .wrap { padding: 0 32px; }
     body { font-size: 16px; }
-    h1 { font-size: 64px; }
-    h2 { font-size: 46px; }
-    section { padding: 92px 0; }
-    .actions { display: flex; flex-wrap: wrap; }
-    .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-    .stat b { font-size: 32px; }
-    .pains { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .pain { grid-template-columns: 1fr; }
-    .why { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-    .funnel { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-    .funnel li { grid-template-columns: 1fr; padding: 20px; }
-    .funnel li:not(:last-child)::after { content: "→"; left: auto; right: -19px; top: 34px; bottom: auto; }
-    .viral { padding: 26px 28px; }
+    h1 { font-size: 48px; }
+    h2 { font-size: 34px; }
+    section { padding: 80px 0; }
+    .topbar .r { display: inline-flex; }
+    .hero .actions { display: flex; flex-wrap: wrap; }
+    .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .card { padding: 24px; }
+    .flow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .flow li { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 20px; }
     .uses { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .uses li { padding: 20px; }
-    .uses p { font-size: 14.5px; }
-    .why li { padding: 20px; }
-    .why p { font-size: 14.5px; }
-    .layers { padding: 18px; }
-    .layer { grid-template-columns: 110px 1fr; }
-    .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .tabs { margin: 26px 0 0; padding: 0; flex-wrap: wrap; }
-    .brandlab { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 48px; }
-    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    .steps li { grid-template-columns: 1fr; padding: 22px; }
-    .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
-    .plan.rec { order: 0; transform: translateY(-8px); }
-    .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
-    .faq { margin-top: 0; }
-    .close-box { padding: 64px 40px 40px; }
-    .close-box h2 { font-size: 52px; }
-    .close-box .actions { justify-content: center; }
-    .brief { grid-template-columns: 1fr auto; align-items: center; }
+    .tabs { margin: 0; padding: 0; }
+    .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .brandlab { grid-template-columns: 1fr 1fr; align-items: center; }
+    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .plan.rec { order: 0; }
+    .custom { grid-template-columns: .8fr 1.2fr; padding: 28px; gap: 28px; align-items: start; }
+    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+    .close { padding: 52px 40px; }
   }
   @media (min-width: 980px) {
-    .nav .wrap { height: 68px; }
-    .nav .links .txt { display: inline; }
-    .hero { padding: 52px 0 0; }
-    .hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: 48px; }
-    .phone { width: 282px; }
-    .tagf.t1 { left: -40px; }
-    .tagf.t2 { right: -40px; }
+    .menu { display: flex; }
+    .nav .wrap { height: 70px; }
+    .hero { padding: 64px 0 70px; }
+    .hero .wrap { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 48px; }
+    .arch { width: 300px; }
     .dock { display: none; }
-    footer { padding-bottom: 36px; }
-    footer .wrap { grid-template-columns: 1fr auto; align-items: center; }
+    footer { padding-bottom: 28px; }
   }
 </style>
 </head>
 <body>
 
+<div class="topbar"><div class="wrap"><span><i class="dot"></i>Penawaran untuk travel umrah &amp; haji</span><span class="r">Dikerjakan online · Konsultasi gratis via WhatsApp</span></div></div>
+
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="38" height="38"><span>Dar Dev<small>Video &amp; sistem untuk travel</small></span></a>
-    <nav class="links">
-      <a class="txt" href="#contoh">Contoh</a>
-      <a class="txt" href="#topik">Topik</a>
-      <a class="txt" href="#paket">Paket</a>
-      <span class="clock" aria-hidden="true"><i></i><span id="clock">00:00</span></span>
-      <a class="btn sm" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20tanya%20soal%20video%20motion%20graphic." target="_blank" rel="noopener">Chat</a>
+    <a class="brand" href="#top"><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="38" height="38"><span><b>Dar Dev</b><small>Video untuk travel umrah</small></span></a>
+    <nav class="menu" aria-label="Menu">
+      <a class="on" href="#top">Beranda</a>
+      <a href="#manfaat">Manfaat</a>
+      <a href="#topik">Topik</a>
+      <a href="#paket">Paket</a>
+      <a href="#tanya">Pertanyaan</a>
     </nav>
+    <div class="cta"><a class="btn sm" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20konsultasi%20soal%20video%20motion%20graphic." target="_blank" rel="noopener">Konsultasi</a></div>
   </div>
-  <div class="playhead" aria-hidden="true"><i id="ph"></i></div>
 </header>
 
 <main id="top">
 
 <!-- PEMBUKA -->
-<section class="hero" id="contoh">
-  <div class="wrap hero-grid">
+<section class="hero">
+  <div class="wrap">
     <div>
-      <span class="for">● Penawaran untuk travel umrah &amp; haji</span>
-      <h1>Video umrah yang <span class="cap">dibagikan</span> jamaah, lalu mereka <span class="cap dk">daftar ke travel Anda.</span></h1>
-      <p class="lead">Konten edukasi umrah berbentuk motion graphic sekitar 1 menit, dengan narasi AI dan logo travel Anda. Jamaah dapat ilmu, travel Anda dapat kepercayaan dan calon jamaah baru.</p>
-      <ul class="checks">
-        <li>Hook yang dirancang supaya berhenti scroll dan berpeluang viral</li>
-        <li>Naskah berdalil, diperiksa pembimbing travel sebelum tayang</li>
-        <li>Tanpa syuting, tanpa staf tampil. Video pertama jadi 3 hari</li>
-      </ul>
+      <span class="tag">Video edukasi umrah · motion graphic + AI</span>
+      <h1>Konten yang <span>dibagikan jamaah</span>, nama travel Anda yang diingat.</h1>
+      <p class="lead">Video edukasi ±1 menit dengan logo travel Anda. Dar Dev yang buat, Anda cukup setujui.</p>
       <div class="actions">
-        <a class="btn" href="#paket">Lihat paket, mulai Rp 900rb</a>
-        <a class="btn line" href="#cara">Cara kerjanya</a>
+        <a class="btn white" href="#contoh-video">Tonton contoh</a>
+        <a class="btn ghost" href="#paket">Lihat paket</a>
       </div>
     </div>
-
-    <div class="stage">
-      <div class="vf">
-        <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
-        <span class="rec"><i></i>REC · Contoh asli</span>
-        <span class="fmt">9:16 · 1080p</span>
-        <span class="tagf t1"><i>✓</i><span>Berdalil<small>4 mazhab, ada sumbernya</small></span></span>
-        <span class="tagf t2"><i>♪</i><span>Narasi AI<small>bahasa Indonesia</small></span></span>
-        <div class="phone">
-          <div class="screen">
-            <span class="island" aria-hidden="true"></span>
-            <img class="poster" src="../jasa-video/topik/ep01.jpg" alt="Cuplikan video: Cium Hajar Aswad, kena fidyah?" width="540" height="960">
-            <video id="vid" playsinline preload="none" poster="../jasa-video/topik/ep01.jpg"><source src="../jasa-video/topik/ep01.mp4" type="video/mp4"></video>
-            <button class="play" id="play" type="button" aria-label="Putar contoh video"><span><i><svg width="12" height="14" viewBox="0 0 12 14"><path d="M1 1l10 6-10 6z" fill="#f5b72a"/></svg></i>Putar contoh video</span></button>
-          </div>
+    <div class="arch" id="contoh-video">
+      <div class="phone">
+        <div class="screen">
+          <span class="island" aria-hidden="true"></span>
+          <img class="poster" src="../jasa-video/topik/ep01.jpg" alt="Cuplikan video: Cium Hajar Aswad, kena fidyah?" width="540" height="960">
+          <video id="vid" playsinline preload="none" poster="../jasa-video/topik/ep01.jpg"><source src="../jasa-video/topik/ep01.mp4" type="video/mp4"></video>
+          <button class="play" id="play" type="button" aria-label="Putar contoh video"><span><i><svg width="11" height="13" viewBox="0 0 12 14"><path d="M1 1l10 6-10 6z" fill="#fff"/></svg></i>Putar contoh</span></button>
         </div>
       </div>
     </div>
   </div>
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>± 1 menit</b><span>per video, pas untuk Reels</span></div>
-      <div class="stat"><b>3 hari</b><span>sampai video pertama jadi</span></div>
-      <div class="stat"><b>10 menit</b><span>waktu tim travel per minggu</span></div>
-      <div class="stat"><b>0 wajah</b><span>staf tidak perlu tampil</span></div>
-    </div>
-  </div>
+  <div class="hero-pad"></div>
 </section>
 
-<!-- MASALAH -->
-<section>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>±1 menit</b><span>per video</span></div>
+    <div class="stat"><b>3 hari</b><span>video pertama jadi</span></div>
+    <div class="stat"><b>10 menit</b><span>waktu tim per minggu</span></div>
+    <div class="stat"><b>Tanpa</b><span>syuting &amp; tampil</span></div>
+  </div>
+</div>
+
+<!-- MANFAAT -->
+<section id="manfaat">
   <div class="wrap">
-    <span class="tc rise"><b>00:06</b>Yang sering terjadi</span>
-    <h2 class="rise">Jamaah memilih travel yang <span class="cap">mereka percaya</span>, bukan yang paling sering promo.</h2>
-    <div class="pains">
-      <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3>Tidak ada waktu bikin konten</h3><p>Tim sibuk urus visa, manifest, dan jamaah. Instagram akhirnya hanya berisi brosur harga.</p></div></div>
-      <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/><path d="M3 3l18 18"/></svg></span><div><h3>Tidak ada yang mau tampil</h3><p>Video talking head butuh orang yang percaya diri di kamera, alat rekam, dan waktu syuting.</p></div></div>
-      <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M9 9h6"/></svg></span><div><h3>Promo terus bikin jamaah bosan</h3><p>Konten harga cepat di-skip. Yang disimpan dan dibagikan justru ilmu manasik dan kisah tempat ziarah.</p></div></div>
+    <div class="sec-head center rise"><span class="eyebrow">Kenapa video edukasi</span><h2>Jamaah memilih travel yang mereka percaya</h2></div>
+    <div class="cards">
+      <div class="card rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6M8 11h6"/></svg></span><h3>Edukasi membangun percaya</h3><p>Jamaah belajar dari travel Anda sebelum berangkat.</p></div>
+      <div class="card gold rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg></span><h3>Berpeluang viral</h3><p>Jawaban yang dicari orang dibagikan ke grup keluarga.</p></div>
+      <div class="card rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-4-7.5L21 3l-1 4.5A9 9 0 0 1 21 12z"/></svg></span><h3>Mendatangkan calon jamaah</h3><p>Penonton bertanya lewat DM, lalu mendaftar.</p></div>
     </div>
-    <p class="turn rise">Konten edukasi yang rutin membangun <span class="cap">kepercayaan</span>. Saat calon jamaah siap berangkat, travel yang sudah mengajari mereka yang pertama diingat.</p>
   </div>
 </section>
 
 <!-- DARI VIRAL KE JAMAAH -->
-<section class="tint">
+<section class="gray">
   <div class="wrap">
-    <span class="tc rise"><b>00:12</b>Dari viral ke jamaah</span>
-    <h2 class="rise">Video edukasi <span class="cap">dibagikan</span>. Brosur harga <span class="cap dk">di-skip.</span></h2>
-    <p class="sub rise">Orang jarang membagikan iklan. Tapi jawaban atas pertanyaan yang mereka sendiri bingungkan, itu yang dikirim ke grup keluarga dan pengajian.</p>
-    <ol class="funnel">
-      <li class="rise"><span class="fi">01</span><div><h3>Berhenti scroll</h3><p>Hook menjawab pertanyaan yang sedang dicari calon jamaah, misalnya "Cium Hajar Aswad, kena fidyah?"</p></div></li>
-      <li class="rise"><span class="fi">02</span><div><h3>Disimpan dan dibagikan</h3><p>Dikirim ke grup WhatsApp keluarga, alumni, dan pengajian. Satu kali dibagikan bisa sampai ke puluhan orang yang berencana umrah.</p></div></li>
-      <li class="rise"><span class="fi">03</span><div><h3>Bertanya</h3><p>Muncul komentar dan DM: "Kapan jadwal berangkatnya?", "Paket bulan depan ada?". Ini calon jamaah yang datang sendiri.</p></div></li>
-      <li class="rise"><span class="fi">04</span><div><h3>Daftar</h3><p>Mereka memilih travel yang sudah terasa paham dan amanah, karena sudah belajar dari kontennya.</p></div></li>
+    <div class="sec-head center rise"><span class="eyebrow">Dari viral ke jamaah</span><h2>Begini video bekerja untuk travel Anda</h2></div>
+    <ol class="flow">
+      <li class="rise"><span class="n">1</span><div><h3>Ditonton</h3><p>Hook bikin berhenti scroll</p></div></li>
+      <li class="rise"><span class="n">2</span><div><h3>Dibagikan</h3><p>Ke grup WA dan pengajian</p></div></li>
+      <li class="rise"><span class="n">3</span><div><h3>Ditanya</h3><p>"Kapan jadwal berangkat?"</p></div></li>
+      <li class="rise"><span class="n">4</span><div><h3>Daftar</h3><p>Ke travel yang mengajari</p></div></li>
     </ol>
-    <div class="viral rise">
-      <h3>Kenapa formatnya berpeluang viral</h3>
-      <ul class="chips">
-        <li>Menjawab pertanyaan yang sering dicari</li>
-        <li>Pola "salah kaprah" dan "ternyata"</li>
-        <li>Pendek, ditonton sampai habis</li>
-        <li>Enak dibagikan, tidak terasa jualan</li>
-        <li>Teks besar, tetap jelas tanpa suara</li>
-      </ul>
-      <p class="honest">Tidak ada yang bisa menjamin video pasti viral. Yang Dar Dev jamin: setiap video disusun dengan pola konten yang paling sering disimpan dan dibagikan.</p>
-    </div>
+    <p class="note rise">Viral tidak bisa dijamin siapa pun. Yang dijamin: setiap video memakai pola yang paling sering dibagikan.</p>
   </div>
 </section>
 
-<!-- SATU VIDEO BANYAK KEGUNAAN -->
+<!-- KEGUNAAN -->
 <section>
   <div class="wrap">
-    <span class="tc rise"><b>00:18</b>Satu video, banyak kegunaan</span>
-    <h2 class="rise">Bukan cuma untuk Instagram. <span class="cap">Dipakai di mana-mana.</span></h2>
+    <div class="sec-head center rise"><span class="eyebrow">Satu video, banyak kegunaan</span><h2>Dipakai di mana saja</h2></div>
     <ul class="uses">
-      <li class="rise"><span class="ui">▶</span><h3>Reels, TikTok, Shorts</h3><p>Satu file, tiga platform. Format 9:16 siap upload.</p></li>
-      <li class="rise"><span class="ui">◔</span><h3>Status WhatsApp</h3><p>Tim marketing tinggal pasang. Kontak lama ikut teringat travel Anda.</p></li>
-      <li class="rise"><span class="ui">✎</span><h3>Bahan manasik</h3><p>Dikirim ke grup jamaah sebelum berangkat. Jamaah lebih siap, pembimbing lebih ringan.</p></li>
-      <li class="rise"><span class="ui">?</span><h3>Jawaban CS</h3><p>Pertanyaan yang sama terus? Cukup kirim link videonya. Jawaban rapi dan berdalil.</p></li>
-      <li class="rise"><span class="ui">↗</span><h3>Bahan iklan</h3><p>Video edukasi bisa dipakai untuk iklan yang tidak terasa jualan.</p></li>
-      <li class="rise"><span class="ui">♡</span><h3>Ladang kebaikan</h3><p>Ilmu manasik yang bermanfaat untuk jamaah, sekaligus dakwah atas nama travel Anda.</p></li>
+      <li class="rise"><i>▶</i>Reels, TikTok, Shorts</li>
+      <li class="rise"><i>◔</i>Status WhatsApp</li>
+      <li class="rise"><i>✎</i>Bahan manasik</li>
+      <li class="rise"><i>?</i>Jawaban CS</li>
+      <li class="rise"><i>↗</i>Bahan iklan</li>
+      <li class="rise"><i>♡</i>Ladang dakwah</li>
     </ul>
   </div>
 </section>
 
-<!-- KENAPA MOTION GRAPHIC + AI -->
-<section class="tint">
+<!-- ISI VIDEO -->
+<section class="beige">
   <div class="wrap">
-    <span class="tc rise"><b>00:24</b>Kenapa motion graphic + AI</span>
-    <h2 class="rise">Produksi cepat, biaya ringan, <span class="cap gr">isinya tetap dijaga.</span></h2>
-    <ul class="why">
-      <li class="rise"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Cepat</h3><p>AI membantu riset, draf naskah, dan suara. Video jadi dalam hitungan hari.</p></li>
-      <li class="rise"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.2 0 3 6 1.6 6 4.6 0 1.3-1.3 2.2-3 2.2-1.4 0-2.5-.6-3.1-1.6M12 6v2M12 16v2"/></svg></span><h3>Hemat</h3><p>Tanpa syuting dan talent. Mulai Rp 233rb per video.</p></li>
-      <li class="rise"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6M8 11h6"/></svg></span><h3>Berdalil</h3><p>Dalil dan pendapat mazhab disebut, dicek pembimbing travel.</p></li>
-      <li class="rise"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Sopan</h3><p>Tidak ada wajah atau tempat suci buatan AI. Visualnya ikon, peta, dan teks.</p></li>
-    </ul>
-    <div class="layers rise" aria-label="Pembagian kerja AI dan manusia">
-      <div class="hd"><span>LAYER PRODUKSI</span><span>00:00 → 01:00</span></div>
-      <div class="layer"><span>Naskah</span><div class="clip ai"><small>AI + manusia</small>Draf dibantu AI, ditulis ulang dan dicek Dar Dev</div></div>
-      <div class="layer"><span>Suara</span><div class="clip ai"><small>AI</small>Narasi AI yang natural, bahasa Indonesia</div></div>
-      <div class="layer"><span>Animasi</span><div class="clip hu"><small>Manusia</small>Dirancang Dar Dev, bukan video buatan AI</div></div>
-      <div class="layer"><span>Persetujuan</span><div class="clip ok"><small>Travel Anda</small>Keputusan terakhir ada di travel Anda</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ANATOMI -->
-<section>
-  <div class="wrap">
-    <span class="tc rise"><b>00:30</b>Isi satu video</span>
-    <h2 class="rise">Satu menit yang disusun supaya <span class="cap">ditonton sampai habis.</span></h2>
+    <div class="sec-head center rise"><span class="eyebrow">Isi satu video</span><h2>Disusun supaya ditonton sampai habis</h2></div>
     <div class="anat rise">
-      <div class="ruler" aria-hidden="true"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div>
-      <div class="trackwrap">
-        <div class="track" role="tablist" aria-label="Bagian video">
-          <button class="seg-1 on" data-i="0" aria-label="Hook">Hook</button>
-          <button class="seg-2" data-i="1" aria-label="Jawaban">Jawaban</button>
-          <button class="seg-3" data-i="2" aria-label="Dalil">Dalil</button>
-          <button class="seg-4" data-i="3" aria-label="Tips">Tips</button>
-          <button class="seg-5" data-i="4" aria-label="Penutup">Akhir</button>
-        </div>
-        <span class="ph" id="segPh" aria-hidden="true"></span>
+      <div class="track" role="tablist" aria-label="Bagian video">
+        <button class="s1 on" data-i="0">Hook</button>
+        <button class="s2" data-i="1">Jawaban</button>
+        <button class="s3" data-i="2">Dalil</button>
+        <button class="s4" data-i="3">Tips</button>
+        <button class="s5" data-i="4">Akhir</button>
       </div>
+      <div class="ticks" aria-hidden="true"><span>0 dtk</span><span>30</span><span>60</span></div>
       <div class="anat-out" id="anatOut" aria-live="polite"></div>
-      <p class="anat-hint">Ketuk tiap bagian untuk lihat isinya.</p>
     </div>
   </div>
 </section>
 
 <!-- TOPIK -->
-<section id="topik" class="tint">
+<section id="topik">
   <div class="wrap">
-    <span class="tc rise"><b>00:36</b>Bank topik</span>
-    <h2 class="rise">Topik bulan pertama <span class="cap">sudah disiapkan.</span></h2>
-    <p class="sub rise">Travel Anda tinggal pilih. Atau kirim brief sendiri.</p>
+    <div class="sec-head center rise"><span class="eyebrow">Bank topik</span><h2>Topik sudah disiapkan</h2><p>Pilih dari sini, atau kirim brief sendiri.</p></div>
     <div class="tabs rise" role="tablist" aria-label="Jenis topik">
       <button class="on" data-t="0">Fikih umrah</button>
-      <button data-t="4">Mitos vs fakta</button>
-      <button data-t="1">Kisah ziarah</button>
-      <button data-t="2">Persiapan jamaah</button>
-      <button data-t="3">Haji</button>
+      <button data-t="1">Mitos vs fakta</button>
+      <button data-t="2">Kisah ziarah</button>
+      <button data-t="3">Persiapan</button>
+      <button data-t="4">Haji</button>
     </div>
-    <div class="topics" id="topics"></div>
-    <div class="brief rise"><p><b>Punya materi sendiri?</b> Info program, jadwal manasik, atau pertanyaan yang sering ditanyakan jamaah. Kirim briefnya, Dar Dev yang jadikan video.</p><a class="btn dark" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20punya%20brief%20konten%20yang%20mau%20dibuatkan%20video." target="_blank" rel="noopener">Kirim brief</a></div>
+    <ul class="topics" id="topics"></ul>
   </div>
 </section>
 
-<!-- LOGO & WARNA -->
-<section>
-  <div class="wrap">
-    <span class="tc rise"><b>00:42</b>Membawa nama travel Anda</span>
-    <h2 class="rise">Logo dan warna travel Anda <span class="cap">di setiap video.</span></h2>
-    <div class="brandlab">
-      <div class="endcard rise" id="endcard" style="--c1:#0e6b52;--c2:#f5b72a">
-        <span class="logo"><i>T</i>Travel Anda</span>
-        <span class="tcx">00:58</span>
-        <span class="arch" aria-hidden="true"></span>
-        <p>Berangkat umrah dengan tenang bareng <em>Travel Anda</em>.</p>
-        <span class="cta">Konsultasi gratis via WhatsApp</span>
+<!-- WARNA TRAVEL -->
+<section class="gray">
+  <div class="wrap brandlab">
+    <div class="sec-head rise"><span class="eyebrow">Membawa nama travel Anda</span><h2>Logo dan warna travel di setiap video</h2><p>Ketuk warna untuk mencoba layar penutupnya.</p>
+      <div class="sw" role="group" aria-label="Pilihan warna" style="justify-content:flex-start;margin-top:16px">
+        <button class="on" style="--a:#1b8354;--b:#f3e2b3" data-c="#1b8354,#f3e2b3" aria-label="Hijau dan krem"></button>
+        <button style="--a:#0f1e33;--b:#d9a441" data-c="#0f1e33,#d9a441" aria-label="Biru malam dan emas"></button>
+        <button style="--a:#7f1d1d;--b:#fde68a" data-c="#7f1d1d,#fde68a" aria-label="Marun dan krem"></button>
+        <button style="--a:#1e3a8a;--b:#7dd3fc" data-c="#1e3a8a,#7dd3fc" aria-label="Biru dan biru muda"></button>
+        <button style="--a:#3b2f2a;--b:#e7c9a0" data-c="#3b2f2a,#e7c9a0" aria-label="Cokelat dan pasir"></button>
       </div>
-      <div class="swatches rise">
-        <p><b>Coba ganti warnanya.</b> Layar penutup tiap video mengikuti warna travel Anda.</p>
-        <div class="sw" role="group" aria-label="Pilihan warna">
-          <button class="on" style="--a:#0e6b52;--b:#f5b72a" data-c="#0e6b52,#f5b72a" aria-label="Hijau dan kuning"></button>
-          <button style="--a:#0f1e33;--b:#d9a441" data-c="#0f1e33,#d9a441" aria-label="Biru malam dan emas"></button>
-          <button style="--a:#7f1d1d;--b:#fde68a" data-c="#7f1d1d,#fde68a" aria-label="Merah marun dan krem"></button>
-          <button style="--a:#1e3a8a;--b:#7dd3fc" data-c="#1e3a8a,#7dd3fc" aria-label="Biru dan biru muda"></button>
-          <button style="--a:#3b2f2a;--b:#e7c9a0" data-c="#3b2f2a,#e7c9a0" aria-label="Cokelat dan pasir"></button>
-        </div>
-        <ul class="brand-list">
-          <li>Logo travel di pojok sepanjang video</li>
-          <li>Ajakan menghubungi travel di akhir video</li>
-          <li>Caption dan hashtag ditulis dengan gaya travel Anda</li>
-        </ul>
-      </div>
+    </div>
+    <div class="endcard rise" id="endcard" style="--c1:#1b8354;--c2:#f3e2b3">
+      <span class="logo"><i>T</i>Travel Anda</span>
+      <p>Berangkat umrah dengan tenang bareng <em>Travel Anda</em>.</p>
+      <span class="c">Konsultasi via WhatsApp</span>
     </div>
   </div>
 </section>
 
 <!-- CARA KERJA -->
-<section id="cara" class="tint">
+<section>
   <div class="wrap">
-    <span class="tc rise"><b>00:48</b>Cara kerja</span>
-    <h2 class="rise">Semua lewat WhatsApp. <span class="cap">Tidak perlu rapat.</span></h2>
+    <div class="sec-head center rise"><span class="eyebrow">Cara kerja</span><h2>Semua lewat WhatsApp</h2></div>
     <ol class="steps">
-      <li class="rise"><span class="num">1</span><div><span class="who">Dar Dev</span><h3>Siapkan naskah</h3><p>Topik dari bank topik atau brief travel Anda, lengkap dengan dalil dan sumbernya.</p></div></li>
-      <li class="rise"><span class="num">2</span><div><span class="who">Travel Anda</span><h3>Cek dan setujui</h3><p>Sekitar 10 menit lewat WhatsApp. Tidak ada video yang tayang tanpa persetujuan.</p></div></li>
-      <li class="rise"><span class="num">3</span><div><span class="who">Dar Dev</span><h3>Video siap tayang</h3><p>Video, caption, dan hashtag dikirim. Revisi 1× per video.</p></div></li>
+      <li class="rise"><span><b>Dar Dev siapkan naskah</b><small>Lengkap dengan dalil</small></span></li>
+      <li class="rise"><span><b>Travel cek &amp; setujui</b><small>±10 menit</small></span></li>
+      <li class="rise"><span><b>Video siap tayang</b><small>Plus caption &amp; hashtag</small></span></li>
     </ol>
   </div>
 </section>
 
 <!-- PAKET -->
-<section id="paket">
+<section id="paket" class="gray">
   <div class="wrap">
-    <div class="center">
-      <span class="tc rise"><b>00:54</b>Paket</span>
-      <h2 class="rise">Coba 3 video dulu, <span class="cap">tanpa ikatan.</span></h2>
-      <p class="sub rise">Kalau lanjut ke paket bulanan, biaya perkenalan dipotong dari bulan pertama.</p>
-    </div>
+    <div class="sec-head center rise"><span class="eyebrow">Paket</span><h2>Mulai dari 3 video, tanpa ikatan</h2></div>
     <div class="plans">
       <div class="plan rise">
-        <div class="top"><h3>Perkenalan</h3><span class="badge soft">Gratis kalau lanjut</span></div>
+        <div class="top"><h3>Perkenalan</h3><span class="badge soft">Dipotong jika lanjut</span></div>
         <p class="price">Rp 900rb <small>/ 3 video</small></p>
-        <p class="per">Rp 300rb per video</p>
-        <ul><li>3 video, tanpa ikatan</li><li>Logo dan warna travel Anda</li><li>Rp 900rb dipotong dari bulan pertama</li></ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20ambil%20Paket%20Perkenalan%203%20video." target="_blank" rel="noopener">Mulai dari sini</a>
+        <ul><li>3 video, tanpa ikatan</li><li>Logo &amp; warna travel</li></ul>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20ambil%20Paket%20Perkenalan%203%20video." target="_blank" rel="noopener">Pilih</a>
       </div>
       <div class="plan rec rise">
         <div class="top"><h3>Rutin</h3><span class="badge">Paling pas</span></div>
         <p class="price">Rp 2 jt <small>/ bulan</small></p>
-        <p class="per">8 video · Rp 250rb per video</p>
-        <ul><li>8 video, 2× seminggu</li><li>Logo dan warna travel Anda</li><li>Caption, hashtag, dan jadwal posting</li></ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20Paket%20Rutin." target="_blank" rel="noopener">Ambil paket Rutin</a>
+        <ul><li>8 video, 2× seminggu</li><li>Caption &amp; jadwal posting</li></ul>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20Paket%20Rutin." target="_blank" rel="noopener">Pilih Rutin</a>
       </div>
       <div class="plan rise">
         <div class="top"><h3>Aktif</h3></div>
         <p class="price">Rp 2,8 jt <small>/ bulan</small></p>
-        <p class="per">12 video · Rp 233rb per video</p>
-        <ul><li>12 video, 3× seminggu</li><li>Dar Dev yang posting</li><li>Laporan bulanan</li></ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20Paket%20Aktif." target="_blank" rel="noopener">Ambil paket Aktif</a>
+        <ul><li>12 video, 3× seminggu</li><li>Dar Dev yang posting</li></ul>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20Paket%20Aktif." target="_blank" rel="noopener">Pilih</a>
       </div>
     </div>
-    <p class="fine rise">Bayar di awal periode. Semua video milik travel Anda.</p>
+
+    <div class="custom rise" id="custom">
+      <div><span class="badge gold">Paket Custom</span><h3 style="margin-top:10px">Susun sendiri, harga bisa dinego</h3><p>Pilih yang travel Anda butuhkan. Permintaan langsung terkirim ke WhatsApp Dar Dev.</p></div>
+      <div style="display:grid;gap:16px">
+        <div class="fgrp"><label>Jumlah video per bulan</label><div class="opts" data-g="jumlah"><button>4</button><button class="on">8</button><button>12</button><button>16</button><button>20+</button></div></div>
+        <div class="fgrp"><label>Tambahan (boleh lebih dari satu)</label><div class="opts multi" data-g="tambahan"><button>Dar Dev yang posting</button><button>Tanpa musik</button><button>Subtitle Inggris</button><button>Format 1:1 juga</button><button>Video lebih panjang</button><button>Topik dari travel</button></div></div>
+        <div class="fgrp"><label for="budget">Budget atau catatan (opsional)</label><input type="text" id="budget" placeholder="Misal: budget Rp 1,5 jt / bulan"></div>
+        <a class="btn" id="sendCustom" href="#" target="_blank" rel="noopener">Kirim request &amp; nego via WhatsApp</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="tint">
+<section id="tanya">
   <div class="wrap faq-grid">
-    <div><span class="tc rise"><b>00:57</b>Pertanyaan</span><h2 class="rise">Yang biasanya <span class="cap">ditanyakan.</span></h2></div>
+    <div class="sec-head rise"><span class="eyebrow">Pertanyaan</span><h2>Yang sering ditanyakan</h2></div>
     <div class="faq rise">
-      <details open><summary>Videonya seperti apa?</summary><p>Animasi teks, ikon, peta, dan ilustrasi dengan suara narasi. Tidak ada orang yang tampil. Contohnya bisa diputar di bagian atas halaman ini.</p></details>
-      <details><summary>Bagian mana yang pakai AI?</summary><p>AI membantu draf naskah dan suara narasi. Naskah tetap ditulis ulang dan dicek manusia, lalu disetujui pembimbing travel. Animasinya dirancang Dar Dev, bukan video buatan AI, jadi tidak ada wajah atau tempat suci yang direka-reka.</p></details>
-      <details><summary>Siapa yang memeriksa isi agamanya?</summary><p>Pembimbing atau ustadz dari travel Anda. Dar Dev menyertakan dalil dan sumbernya di setiap naskah supaya mudah dicek.</p></details>
-      <details><summary>Bisa tanpa musik?</summary><p>Bisa. Banyak travel memilih narasi saja atau suara latar yang lembut tanpa alat musik. Tinggal sampaikan di awal.</p></details>
-      <details><summary>Perlu kasih password Instagram?</summary><p>Tidak. Dar Dev kirim videonya, tim travel yang upload. Khusus paket Aktif, akses lewat Meta Business Suite tanpa berbagi password.</p></details>
-      <details><summary>Kalau tidak cocok?</summary><p>Paket Perkenalan tanpa ikatan. Paket bulanan bisa berhenti kapan saja di akhir bulan, dan semua video tetap milik travel Anda.</p></details>
+      <details open><summary>Bagian mana yang pakai AI?</summary><p>Draf naskah dan suara narasi. Isi dicek manusia, animasi dibuat Dar Dev. Tidak ada wajah atau tempat suci buatan AI.</p></details>
+      <details><summary>Siapa yang cek isi agamanya?</summary><p>Pembimbing travel Anda. Setiap naskah disertai dalil dan sumbernya.</p></details>
+      <details><summary>Bisa tanpa musik?</summary><p>Bisa, tinggal sampaikan di awal.</p></details>
+      <details><summary>Perlu password Instagram?</summary><p>Tidak. Video dikirim, travel yang upload.</p></details>
+      <details><summary>Kalau tidak cocok?</summary><p>Paket Perkenalan tanpa ikatan. Paket bulanan bisa berhenti kapan saja.</p></details>
     </div>
   </div>
 </section>
 
 <!-- PENUTUP -->
-<section>
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="close-box rise">
-      <span class="bar" aria-hidden="true"><i></i></span>
-      <span class="by-dar"><img class="mascot" src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="44" height="44"><span><b>Dar Dev</b><small>Video &amp; sistem untuk travel</small></span></span>
-      <h2>Coba 3 video dulu, <span class="cap">lihat bedanya.</span></h2>
-      <p>Kalau cocok dan lanjut, biaya perkenalan dipotong dari bulan pertama. Semua dikerjakan online, cukup lewat WhatsApp.</p>
-      <div class="actions"><a class="btn amber" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20ambil%20Paket%20Perkenalan%203%20video." target="_blank" rel="noopener">Chat Dar Dev · 0813 1150 6025</a></div>
-      <p class="end">01:00 · SELESAI</p>
+    <div class="close rise">
+      <img class="mascot" src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="56" height="56">
+      <h2>Coba 3 video dulu</h2>
+      <p>Konsultasi gratis, semua lewat WhatsApp.</p>
+      <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20konsultasi%20soal%20video%20motion%20graphic." target="_blank" rel="noopener">Chat Dar Dev · 0813 1150 6025</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer><div class="wrap"><span class="who"><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="28" height="28">Dar Dev · Video motion graphic untuk travel umrah &amp; haji</span><span>Contoh video diproduksi Dar Dev untuk kliennya.</span></div></footer>
+<footer><div class="wrap"><span><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="28" height="28">Dar Dev · Video untuk travel umrah &amp; haji</span><span>Contoh video diproduksi Dar Dev untuk kliennya.</span></div></footer>
 
-<div class="dock" id="dock"><div><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="34" height="34"><span><small>Mulai dari</small><b>Rp 900rb / 3 video</b></span></div><a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20ambil%20Paket%20Perkenalan%203%20video." target="_blank" rel="noopener">Chat WhatsApp</a></div>
+<div class="dock" id="dock"><span><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="34" height="34"><span>Dar Dev<small>Konsultasi gratis</small></span></span><a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20mau%20konsultasi%20soal%20video%20motion%20graphic." target="_blank" rel="noopener">Chat WhatsApp</a></div>
 
 <script>
 (() => {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Contoh video: baru diunduh saat diketuk, supaya halaman ringan di HP
+  // Contoh video: baru diunduh saat diketuk
   const vid = document.getElementById('vid'), play = document.getElementById('play');
   play.addEventListener('click', () => { play.classList.add('hide'); vid.controls = true; vid.play(); });
 
-  // Anatomi video dengan playhead
+  // Isi satu video
   const parts = [
-    ['00:00 – 00:04', 'Hook', 'Satu pertanyaan yang bikin berhenti scroll. Contoh: "Cium Hajar Aswad, kena fidyah?"'],
-    ['00:04 – 00:21', 'Jawaban singkat', 'Jawaban langsung di awal, supaya penonton dapat manfaat walau tidak menonton sampai habis.'],
-    ['00:21 – 00:41', 'Dalil dan pendapat mazhab', 'Ayat, hadits, atau pendapat 4 mazhab dalam papan yang mudah dibaca, lengkap dengan sumbernya.'],
-    ['00:41 – 00:53', 'Tips praktis', 'Yang perlu dilakukan jamaah di lapangan, misalnya cara aman mendekati Hajar Aswad saat ramai.'],
-    ['00:53 – 01:00', 'Penutup travel Anda', 'Logo, warna, dan ajakan menghubungi travel Anda. Di sinilah konten berubah jadi calon jamaah.']
+    ['0–4 detik', 'Hook', 'Pertanyaan yang bikin berhenti scroll.'],
+    ['4–21 detik', 'Jawaban', 'Jawaban langsung di awal.'],
+    ['21–41 detik', 'Dalil', 'Ayat, hadits, dan pendapat mazhab.'],
+    ['41–53 detik', 'Tips', 'Yang perlu dilakukan jamaah.'],
+    ['53–60 detik', 'Penutup', 'Logo dan ajakan ke travel Anda.']
   ];
-  const out = document.getElementById('anatOut'), segs = [...document.querySelectorAll('.track button')], segPh = document.getElementById('segPh');
-  const showPart = i => {
-    segs.forEach((s, k) => s.classList.toggle('on', k === i));
-    segPh.style.left = (segs[i].offsetLeft + segs[i].offsetWidth / 2 - 1) + 'px';
-    const [t, h, p] = parts[i]; out.innerHTML = `<span class="t">${t}</span><h3>${h}</h3><p>${p}</p>`;
-  };
+  const out = document.getElementById('anatOut'), segs = [...document.querySelectorAll('.track button')];
+  const showPart = i => { segs.forEach((s, k) => s.classList.toggle('on', k === i)); const [t, h, p] = parts[i]; out.innerHTML = `<small>${t}</small><h3>${h}</h3><p>${p}</p>`; };
   segs.forEach(s => s.addEventListener('click', () => showPart(+s.dataset.i)));
-  showPart(0); addEventListener('resize', () => showPart(segs.findIndex(s => s.classList.contains('on'))));
+  showPart(0);
 
-  // Bank topik (judul saja, isi disusun dan dicek saat produksi)
+  // Bank topik
   const bank = [
-    [['Cium Hajar Aswad, kena fidyah?', 'Saat ihram, batunya diberi wewangian'], ['Pesawat lewat miqat, belum ihram?', 'Yang perlu dilakukan jamaah dari Indonesia'], ['Haid saat umrah', 'Apa yang boleh dan belum boleh dilakukan'], ['Potong rambut: berapa yang cukup?', 'Bedanya tahallul untuk laki-laki dan perempuan']],
-    [['Bukit pemanah di Uhud', 'Satu perintah yang mengubah jalannya perang'], ['Masjid Quba', 'Shalat 2 rakaat, pahalanya seperti umrah'], ['Masjid Qiblatain', 'Kiblat berpindah di tengah shalat'], ['Gua Hira dan Gua Tsur', 'Dua gua yang sering tertukar']],
-    [['5 barang yang sering lupa dibawa', 'Dari kain ihram cadangan sampai obat pribadi'], ['Hari pertama di Makkah', 'Urutan yang perlu diketahui jamaah'], ['Tersesat di Masjidil Haram?', 'Cara mengingat pintu dan titik kumpul'], ['Menjaga kesehatan saat umrah', 'Cuaca, minum, dan jalan kaki yang jauh']],
-    [['Beda umrah dan haji', 'Rukun, wajib, dan waktunya'], ['Mabit di Muzdalifah', 'Apa yang dilakukan dan kenapa penting'], ['Lempar jumrah', 'Urutan dan waktu yang dianjurkan'], ['Haji plus atau furoda?', 'Penjelasan singkat untuk calon jamaah']],
-    [['Umrah berkali-kali dalam satu perjalanan?', 'Pendapat ulama yang sering ditanyakan jamaah'], ['Ke Raudhah tinggal datang?', 'Yang perlu disiapkan sebelum berangkat'], ['Foto-foto di depan Ka\'bah, boleh?', 'Adab yang jarang dibahas'], ['Air zamzam: harus berdiri saat minum?', 'Riwayat dan penjelasannya']]
+    ['Cium Hajar Aswad, kena fidyah?', 'Pesawat lewat miqat, belum ihram?', 'Haid saat umrah', 'Potong rambut: berapa yang cukup?'],
+    ['Umrah berkali-kali dalam satu perjalanan?', 'Ke Raudhah tinggal datang?', 'Foto di depan Ka\'bah, boleh?', 'Air zamzam harus diminum berdiri?'],
+    ['Bukit pemanah di Uhud', 'Masjid Quba, pahala seperti umrah', 'Masjid Qiblatain', 'Gua Hira dan Gua Tsur'],
+    ['5 barang yang sering lupa dibawa', 'Hari pertama di Makkah', 'Tersesat di Masjidil Haram?', 'Menjaga kesehatan saat umrah'],
+    ['Beda umrah dan haji', 'Mabit di Muzdalifah', 'Lempar jumrah', 'Haji plus atau furoda?']
   ];
   const tbox = document.getElementById('topics'), tabs = [...document.querySelectorAll('.tabs button')];
-  const showTab = i => {
-    tabs.forEach(b => b.classList.toggle('on', +b.dataset.t === i));
-    tbox.innerHTML = bank[i].map(([b, s], k) => `<div class="topic"><span class="th" aria-hidden="true">EP.${String(k + 1).padStart(2, '0')}<em>${b.split(' ').slice(0, 3).join(' ').replace(/[,:?]+$/, '')}</em></span><div><b>${b}</b><small>${s}</small></div></div>`).join('');
-  };
+  const showTab = i => { tabs.forEach(b => b.classList.toggle('on', +b.dataset.t === i)); tbox.innerHTML = bank[i].map((t, k) => `<li><span>${k + 1}</span>${t}</li>`).join(''); };
   tabs.forEach(b => b.addEventListener('click', () => showTab(+b.dataset.t)));
   showTab(0);
 
   // Warna layar penutup
   const card = document.getElementById('endcard'), sws = [...document.querySelectorAll('.sw button')];
-  sws.forEach(b => b.addEventListener('click', () => {
-    sws.forEach(x => x.classList.toggle('on', x === b));
-    const [c1, c2] = b.dataset.c.split(',');
-    card.style.setProperty('--c1', c1); card.style.setProperty('--c2', c2);
+  sws.forEach(b => b.addEventListener('click', () => { sws.forEach(x => x.classList.toggle('on', x === b)); const [c1, c2] = b.dataset.c.split(','); card.style.setProperty('--c1', c1); card.style.setProperty('--c2', c2); }));
+
+  // Paket custom: pilihan disusun jadi pesan WhatsApp
+  document.querySelectorAll('.opts').forEach(g => g.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (g.classList.contains('multi')) b.classList.toggle('on');
+    else g.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    build();
   }));
+  const send = document.getElementById('sendCustom'), budget = document.getElementById('budget');
+  function build() {
+    const jumlah = document.querySelector('[data-g="jumlah"] .on')?.textContent || '8';
+    const extra = [...document.querySelectorAll('[data-g="tambahan"] .on')].map(b => '- ' + b.textContent);
+    const lines = ['Assalamu\'alaikum Dar, saya dari travel umrah mau request Paket Custom:', '', 'Jumlah video: ' + jumlah + ' per bulan'];
+    if (extra.length) lines.push('Tambahan:', ...extra);
+    if (budget.value.trim()) lines.push('Budget/catatan: ' + budget.value.trim());
+    lines.push('', 'Boleh dibantu hitung harganya?');
+    send.href = 'https://wa.me/6281311506025?text=' + encodeURIComponent(lines.join('\n'));
+  }
+  budget.addEventListener('input', build); build();
+
+  // Menu aktif mengikuti bagian yang sedang dibaca
+  const links = [...document.querySelectorAll('.menu a')];
+  const targets = links.map(a => document.querySelector(a.getAttribute('href')));
+  const dock = document.getElementById('dock');
+  const onScroll = () => {
+    const y = scrollY + 140; let k = 0;
+    targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top + scrollY <= y) k = i; });
+    links.forEach((a, i) => a.classList.toggle('on', i === k));
+    dock.classList.toggle('show', scrollY > 600);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   // Muncul saat digulir
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1 });
   document.querySelectorAll('.rise').forEach(el => io.observe(el));
-
-  // Halaman diperlakukan seperti video 60 detik: timecode di navigasi mengikuti label bab
-  // yang sedang dibaca, dan playhead bergerak mulus di antara bab.
-  const ph = document.getElementById('ph'), clock = document.getElementById('clock'), dock = document.getElementById('dock');
-  const toSec = t => { const [m, s] = t.split(':').map(Number); return m * 60 + s; };
-  const fmt = s => String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(Math.round(s % 60)).padStart(2, '0');
-  const marks = [{ el: document.getElementById('top'), s: 0 }, ...[...document.querySelectorAll('.tc b')].map(b => ({ el: b, s: toSec(b.textContent) })), { el: document.querySelector('.close-box .end'), s: 60 }];
-  const onScroll = () => {
-    const y = scrollY + innerHeight * .35;
-    const pos = marks.map(m => m.el.getBoundingClientRect().top + scrollY);
-    let i = 0; while (i < marks.length - 1 && pos[i + 1] <= y) i++;
-    const atEnd = scrollY + innerHeight >= document.documentElement.scrollHeight - 4;
-    let s = marks[i].s;
-    if (atEnd) s = 60;
-    else if (i < marks.length - 1) { const f = Math.max(0, Math.min(1, (y - pos[i]) / (pos[i + 1] - pos[i]))); s = marks[i].s + f * (marks[i + 1].s - marks[i].s); }
-    ph.style.width = (s / 60 * 100) + '%';
-    clock.textContent = fmt(Math.floor(s));
-    dock.classList.toggle('show', scrollY > 700);
-  };
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 })();
 </script>
 </body>
