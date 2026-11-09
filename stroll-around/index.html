@@ -412,6 +412,10 @@
   footer .who .mascot { width: 30px; height: 30px; }
 
   .dock { display: none; }
+  .swipe-hint, .more-routes { display: none; }
+  .cmp-wrap > summary { font-family: var(--head); font-weight: 800; text-transform: uppercase; line-height: 1; list-style: none; cursor: default; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .cmp-wrap > summary::-webkit-details-marker { display: none; }
+  .cmp-tog { display: none; }
 
   .rise { opacity: 0; translate: 0 18px; transition: opacity .7s ease, translate .7s cubic-bezier(.2,.8,.2,1); }
   .rise.in { opacity: 1; translate: 0 0; }
@@ -441,7 +445,7 @@
     .hero-grid, .head.split, .faq-grid, .calc, .dash-grid, .feed { grid-template-columns: minmax(0, 1fr); }
     .hero-grid { gap: 44px; }
     .feats, .plans, .good, .addons { grid-template-columns: minmax(0, 1fr); }
-    .ticket.rec { transform: none; }
+    .ticket.rec { transform: none; order: -1; }
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stat:nth-child(3) { border-left: 0; }
     .stat:nth-child(-n+2) { border-bottom: 2px dashed rgba(242,234,216,.25); }
@@ -483,7 +487,20 @@
     .polas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
     .pola span { font-size: 17px; }
     .stage .pola { display: none; }
-    .feats { margin-top: 36px; gap: 14px; }
+    /* Kartu yang bisa digeser ke samping, supaya halaman tidak kepanjangan di HP */
+    .swipe { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 -16px; padding: 6px 16px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .swipe::-webkit-scrollbar { display: none; }
+    .swipe > * { flex: 0 0 84%; scroll-snap-align: center; }
+    .swipe-hint { display: block; margin-top: 28px; font-family: var(--hand); font-size: 21px; color: var(--brick); text-align: right; line-height: 1; }
+    .swipe-hint b { font-family: var(--font); font-size: 13px; color: var(--muted); font-weight: 700; margin: 0 4px; }
+    .feats { margin-top: 8px; }
+    .addons { margin-top: 4px; }
+    .routes:not(.all) .stamp:nth-child(n+7) { display: none; }
+    .more-routes { display: flex; width: 100%; margin-top: 22px; }
+    .cmp-wrap > summary { cursor: pointer; }
+    .cmp-tog { display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border: 2px solid var(--ink); border-radius: 9999px; font-family: var(--font); font-style: normal; font-size: 13px; font-weight: 800; text-transform: none; letter-spacing: 0; background: var(--card); white-space: nowrap; }
+    .cmp-wrap[open] .cmp-tog { background: var(--ink); color: var(--paper); }
+    .cmp-title { font-size: 32px; margin-top: 56px; }
     .feat { padding: 22px 18px 18px; }
     .routes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
     .stamp .cv { height: 70px; }
@@ -678,7 +695,8 @@
 <section id="solusi" class="paper2">
   <div class="wrap">
     <div class="head center"><span class="tag rise"><b>02</b>Yang dibuat</span><h2 class="rise">Satu link di bio, <span class="hl">semua urusan tur</span> beres di situ.</h2><p class="sub rise">Website Stroll Around sendiri yang terhubung ke QRIS, WhatsApp, dan dasbor tim. Peserta tidak perlu instal aplikasi apa pun.</p></div>
-    <div class="feats">
+    <p class="swipe-hint" data-for="feats">geser untuk lihat semua <b>1/9</b> →</p>
+    <div class="feats swipe" id="feats">
       <article class="feat rise"><span class="no">01</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Jadwal dan kuota kursi</h3><p>Admin buat jadwal sekali, misalnya Pecinan Glodok 20 kursi. Sisa kursi tampil langsung dan pendaftaran tutup sendiri saat penuh atau lewat pukul 21.00 H-1.</p><p class="was">dulu: jadwal ditulis ulang di form tiap minggu</p></article>
       <article class="feat rise"><span class="no">02</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2"/></svg></span><h3>Commitment fee via QRIS</h3><p>Rp10.000 per rute dibayar saat daftar. Status lunas masuk otomatis, kursi baru terkunci setelah bayar. Bisa daftar beberapa rute dan teman sekaligus.</p><p class="was">dulu: transfer lalu dicocokkan dengan mutasi</p></article>
       <article class="feat rise"><span class="no">03</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-4-7.5L21 3l-1 4.5A9 9 0 0 1 21 12z"/><path d="M8 11h8M8 15h5"/></svg></span><h3>WhatsApp otomatis</h3><p>Tiket dan link grup terkirim begitu bayar. Pengingat H-1 pukul 18.00 berisi titik kumpul dan peta. Kabar perubahan jadwal sampai ke semua peserta dengan satu tombol.</p><p class="was">dulu: pesan dikirim dan disalin manual</p></article>
@@ -719,6 +737,7 @@
       <button data-f="bgr">Bogor</button>
     </div>
     <div class="routes" id="routes"></div>
+    <button class="btn line more-routes" id="moreRoutes" type="button">Lihat semua 16 rute</button>
     <p class="pnote rise"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Perangko Kota Tua sudah pakai foto dari Instagram Stroll Around. Yang lain masih ilustrasi. Di versi jadi, semua rute pakai foto dokumentasi tur sendiri, dan isi halamannya disusun dari PDF panduan yang sudah ada.</span></p>
   </div>
 </section>
@@ -876,8 +895,9 @@
       </div>
     </div>
 
-    <h3 class="cmp-title rise">Perbandingan lengkap</h3>
-    <div class="tbl-box rise" style="margin-top:20px">
+    <details class="cmp-wrap" id="cmpWrap" open>
+    <summary class="cmp-title rise"><span>Perbandingan lengkap</span><i class="cmp-tog">Buka tabel</i></summary>
+    <div class="tbl-box" style="margin-top:20px">
       <table class="tbl cmp">
         <thead><tr><th>Fitur</th><th class="c">Rapi</th><th class="c">Lancar</th><th class="c rec">Tumbuh</th></tr></thead>
         <tbody>
@@ -907,9 +927,11 @@
         </tbody>
       </table>
     </div>
+    </details>
 
     <h3 class="cmp-title rise">Tambahan opsional</h3>
-    <div class="addons">
+    <p class="swipe-hint" data-for="addons">geser untuk lihat semua <b>1/3</b> →</p>
+    <div class="addons swipe" id="addons">
       <div class="addon rise"><h3>Video peta rute</h3><span class="pr">Rp 1,5 jt / 4 video</span><p>Reels 9:16 animasi peta: garis rute berjalan dari titik ke titik, nama tempat, dan satu cerita singkat. Dibuat dengan kode, cocok untuk promosi jadwal minggu depan.</p></div>
       <div class="addon rise"><h3>Pindah data lama</h3><span class="pr">Rp 500rb</span><p>Respons Google Form sebelumnya dirapikan dan dimasukkan ke daftar peserta, supaya riwayat dan Stroll Pass langsung terisi.</p></div>
       <div class="addon rise"><h3>Rute baru</h3><span class="pr">Rp 150rb / rute</span><p>Halaman rute tambahan setelah tayang, dari PDF atau catatan tim. Gratis kalau sudah ambil paket Tumbuh.</p></div>
@@ -1058,6 +1080,27 @@
     fbtns.forEach(x => x.classList.toggle('on', x === b));
     grid.querySelectorAll('.stamp').forEach(c => c.classList.toggle('hide', b.dataset.f !== 'all' && c.dataset.r !== b.dataset.f));
   }));
+
+  // Khusus HP: rute dipotong 6 dulu, tabel perbandingan dilipat, kartu geser punya penghitung
+  const mobile = matchMedia('(max-width: 640px)');
+  const more = document.getElementById('moreRoutes');
+  const showAll = () => { grid.classList.add('all'); more.style.display = 'none'; };
+  more.addEventListener('click', showAll);
+  fbtns.forEach(b => b.addEventListener('click', () => { if (b.dataset.f !== 'all') showAll(); }));
+
+  const cmp = document.getElementById('cmpWrap'), tog = cmp.querySelector('.cmp-tog');
+  if (mobile.matches) cmp.open = false;
+  const setTog = () => { tog.textContent = cmp.open ? 'Tutup tabel' : 'Buka tabel'; };
+  cmp.addEventListener('toggle', setTog); setTog();
+  cmp.querySelector('summary').addEventListener('click', e => { if (!mobile.matches) e.preventDefault(); });
+
+  document.querySelectorAll('.swipe-hint').forEach(h => {
+    const box = document.getElementById(h.dataset.for), n = box.children.length, out = h.querySelector('b');
+    box.addEventListener('scroll', () => {
+      const first = box.children[0], step = first.getBoundingClientRect().width + 12;
+      out.textContent = Math.min(n, Math.round(box.scrollLeft / step) + 1) + '/' + n;
+    }, { passive: true });
+  });
 
   // Kalkulator
   const ppl = document.getElementById('ppl'), mnt = document.getElementById('mnt');
