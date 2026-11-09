@@ -10,6 +10,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `jasa-video-pgs/` — penawaran jasa video edukasi umrah untuk travel PGS Tour.
 - `jasa-video-igh/` — penawaran jasa video edukasi umrah untuk travel IGH Tour.
 - `stroll-around/` — penawaran sistem pendaftaran tur (website, QRIS, WhatsApp otomatis, check-in, dasbor) untuk Stroll Around, walking tour Jakarta.
+- `video-travel-umrah/` — penawaran umum jasa video motion graphic (narasi AI) untuk travel umrah & haji, tanpa nama klien tertentu.
 
 Foto produk diambil dari purnama-eskrim.com dan font dari Fontshare, jadi halaman perlu koneksi internet.
 Semua nama, angka, dan nomor order di mockup hanya contoh.
