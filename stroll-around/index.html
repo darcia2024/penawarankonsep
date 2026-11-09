@@ -187,6 +187,27 @@
   .good li:nth-child(3) { box-shadow: 5px 5px 0 var(--brick); transform: rotate(-.6deg); }
   .good h3 { color: var(--ink); margin-bottom: 8px; }
 
+  /* Foto dari feed Instagram Stroll Around, dipajang seperti polaroid */
+  .feed { margin-top: 72px; display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 2.3fr); gap: 24px 40px; align-items: center; }
+  .feed .note-hand { display: block; font-size: 30px; color: var(--ink); }
+  .feed .note-hand small { display: block; font-family: var(--font); font-size: 14px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+  .polas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .pola { display: block; text-decoration: none; background: #fffdf7; padding: 9px 9px 0; border: 1.5px solid var(--ink); box-shadow: 4px 5px 0 rgba(36,48,43,.85); transition: transform .25s ease; position: relative; }
+  .pola:nth-child(1) { transform: rotate(-3deg); }
+  .pola:nth-child(2) { transform: rotate(2deg) translateY(10px); }
+  .pola:nth-child(3) { transform: rotate(-1.5deg); }
+  .pola:nth-child(4) { transform: rotate(3deg) translateY(6px); }
+  .pola:hover { transform: rotate(0) translateY(-4px); z-index: 2; }
+  .pola::before { content: ""; position: absolute; top: -10px; left: 50%; width: 64px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgba(238,177,44,.75); }
+  .pola img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.9) contrast(1.03); }
+  .pola span { display: block; font-family: var(--hand); font-size: 19px; line-height: 1.05; padding: 8px 2px 10px; color: var(--ink); }
+  .stage .pola { position: absolute; z-index: 1; width: 150px; top: -30px; right: -8px; transform: rotate(7deg); padding: 7px 7px 0; }
+  .stage .pola img { aspect-ratio: 1; }
+  .stage .pola span { font-size: 16px; padding: 5px 2px 7px; }
+  .stamp .cv img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .stamp .cv.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(36,48,43,0) 40%, rgba(36,48,43,.35)); }
+  .stamp .cv.photo .val, .stamp .cv.photo .reg { z-index: 1; }
+
   /* Fitur: halaman buku panduan */
   .paper2 { background: var(--paper-2) var(--grain); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
   .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 56px; }
@@ -417,7 +438,7 @@
   }
   @media (max-width: 900px) {
     .nav .links .txt { display: none; }
-    .hero-grid, .head.split, .faq-grid, .calc, .dash-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-grid, .head.split, .faq-grid, .calc, .dash-grid, .feed { grid-template-columns: minmax(0, 1fr); }
     .hero-grid { gap: 44px; }
     .feats, .plans, .good, .addons { grid-template-columns: minmax(0, 1fr); }
     .ticket.rec { transform: none; }
@@ -457,6 +478,11 @@
     .metro { margin-top: 40px; }
     .good { margin-top: 40px; gap: 16px; }
     .good li:nth-child(n) { transform: none; }
+    .feed { margin-top: 48px; }
+    .feed .note-hand { font-size: 26px; }
+    .polas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+    .pola span { font-size: 17px; }
+    .stage .pola { display: none; }
     .feats { margin-top: 36px; gap: 14px; }
     .feat { padding: 22px 18px 18px; }
     .routes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
@@ -545,6 +571,7 @@
           <g fill="#bf4a2c" stroke="#24302b" stroke-width="3"><circle cx="60" cy="600" r="9"/><circle cx="160" cy="430" r="9"/><circle cx="270" cy="300" r="9"/><circle cx="350" cy="90" r="9"/></g>
         </svg>
       </div>
+      <a class="pola" href="https://www.instagram.com/stroll_aroundd/reel/DeZINntPimg/" target="_blank" rel="noopener"><img src="assets/foto-kota-tua.webp" alt="Gedung kantor dagang tua di Kota Tua, dari Instagram Stroll Around" width="360" height="640" style="object-position:50% 4%"><span>Kota Tua bareng Stroll Around</span></a>
       <span class="sticker s1">✓ Commitment fee lunas</span>
       <span class="sticker s2"><i></i>Pengingat H-1 terkirim</span>
 
@@ -635,6 +662,15 @@
       <li class="rise"><h3>Rutenya sudah banyak</h3>Dari Pecinan Glodok, Kota Tua malam, sampai Kebun Raya Bogor. Bahan konten dan halaman web yang siap pakai.</li>
       <li class="rise"><h3>Komunitasnya hidup</h3>10,3 ribu pengikut dan grup WhatsApp peserta. Tinggal datanya disimpan supaya peserta lama gampang diajak jalan lagi.</li>
     </ul>
+    <div class="feed">
+      <p class="note-hand rise">Kontennya sudah bikin orang pengin ikut. Tinggal disambung ke pendaftaran.<small>Foto dari Instagram @stroll_aroundd. Klik untuk lihat postingannya.</small></p>
+      <div class="polas">
+        <a class="pola rise" href="https://www.instagram.com/stroll_aroundd/reel/DeZINntPimg/" target="_blank" rel="noopener"><img src="assets/foto-kota-tua.webp" alt="Gedung kantor dagang tua di Kota Tua" width="360" height="640" loading="lazy" style="object-position:50% 3%"><span>Kota Tua · kantor dagang jadi toko teh</span></a>
+        <a class="pola rise" href="https://www.instagram.com/stroll_aroundd/p/DfPVid4j0fp/" target="_blank" rel="noopener"><img src="assets/foto-kopi-luwak.webp" alt="Toko Kopi Luwak dekat Pasar Gondangdia" width="512" height="640" loading="lazy" style="object-position:50% 90%"><span>Toko Kopi Luwak, Gondangdia</span></a>
+        <a class="pola rise" href="https://www.instagram.com/stroll_aroundd/reel/DeekPMZPENm/" target="_blank" rel="noopener"><img src="assets/foto-siomay.webp" alt="Pak Suri penjual siomay di gerobaknya" width="360" height="640" loading="lazy" style="object-position:50% 62%"><span>Siomay Pak Suri</span></a>
+        <a class="pola rise" href="https://www.instagram.com/stroll_aroundd/reel/Dfdd6VzPDij/" target="_blank" rel="noopener"><img src="assets/foto-malam.webp" alt="Peserta open trip malam di Bundaran HI" width="361" height="640" loading="lazy" style="object-position:50% 72%"><span>Open trip Sarinah – Bundaran HI</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -683,7 +719,7 @@
       <button data-f="bgr">Bogor</button>
     </div>
     <div class="routes" id="routes"></div>
-    <p class="pnote rise"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Gambar perangko masih ilustrasi. Di versi jadi, foto diambil dari dokumentasi tur Stroll Around sendiri, dan isi halaman disusun dari PDF panduan yang sudah ada.</span></p>
+    <p class="pnote rise"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>Perangko Kota Tua sudah pakai foto dari Instagram Stroll Around. Yang lain masih ilustrasi. Di versi jadi, semua rute pakai foto dokumentasi tur sendiri, dan isi halamannya disusun dari PDF panduan yang sudah ada.</span></p>
   </div>
 </section>
 
@@ -1003,6 +1039,8 @@
     ['Kebun Raya Bogor II', 'bgr', 'Bogor'],
     ['Suryakencana', 'bgr', 'Bogor']
   ];
+  // Rute yang fotonya sudah pasti dari postingan Stroll Around sendiri
+  const photos = { 'Kota Tua': ['assets/foto-kota-tua.webp', '50% 14%', 'Gedung tua di Kota Tua, dari Instagram Stroll Around'] };
   const pal = [['#bf4a2c', '#eeb12c'], ['#2d6a64', '#8fc0c8'], ['#24302b', '#6d7a5a'], ['#eeb12c', '#f3cdbf']];
   const grid = document.getElementById('routes');
   grid.innerHTML = routes.map(([name, reg, area], i) => {
@@ -1012,7 +1050,11 @@
     const d = 'M' + pts.map(p => p.map(v => v.toFixed(0)).join(' ')).join(' L');
     // Sketsa gedung sederhana di latar perangko
     const sky = Array.from({ length: 7 }, (_, k) => { const w = 26 + r() * 22, h = 18 + r() * 36, x = k * 44 - 6; return `<rect x="${x.toFixed(0)}" y="${(100 - h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="rgba(36,48,43,.18)"/>`; }).join('');
-    return `<article class="stamp rise" data-r="${reg}"><div class="in"><div class="cv" style="background:linear-gradient(160deg,${a},${b})"><svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">${sky}<path d="${d}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="1 8" stroke-linecap="round"/>${pts.map(p => `<circle cx="${p[0].toFixed(0)}" cy="${p[1].toFixed(0)}" r="4" fill="#fff" stroke="#24302b" stroke-width="1.5"/>`).join('')}</svg><span class="val">${String(i + 1).padStart(2, '0')}</span><span class="reg">${reg === 'bgr' ? 'Bogor' : 'Jakarta'}</span></div><div class="bd"><b>${name}</b><small>${area} · ± 2 jam</small></div></div></article>`;
+    const photo = photos[name];
+    const art = photo
+      ? `<img src="${photo[0]}" alt="${photo[2]}" loading="lazy" style="object-position:${photo[1]}">`
+      : `<svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">${sky}<path d="${d}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="1 8" stroke-linecap="round"/>${pts.map(p => `<circle cx="${p[0].toFixed(0)}" cy="${p[1].toFixed(0)}" r="4" fill="#fff" stroke="#24302b" stroke-width="1.5"/>`).join('')}</svg>`;
+    return `<article class="stamp rise" data-r="${reg}"><div class="in"><div class="cv${photo ? ' photo' : ''}" style="background:linear-gradient(160deg,${a},${b})">${art}<span class="val">${String(i + 1).padStart(2, '0')}</span><span class="reg">${reg === 'bgr' ? 'Bogor' : 'Jakarta'}</span></div><div class="bd"><b>${name}</b><small>${area} · ± 2 jam</small></div></div></article>`;
   }).join('');
   const fbtns = [...document.querySelectorAll('.filters button')];
   fbtns.forEach(b => b.addEventListener('click', () => {
