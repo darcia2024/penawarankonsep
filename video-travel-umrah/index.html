@@ -141,6 +141,31 @@
   .turn { margin-top: 16px; border-radius: 16px; padding: 18px 20px; font-size: 16px; font-weight: 600; background: var(--green); color: #fff; }
   .turn .cap { background: var(--amber); color: var(--ink); }
 
+  /* Dari viral ke jamaah */
+  .funnel { margin-top: 26px; display: grid; gap: 10px; counter-reset: f; }
+  .funnel li { position: relative; display: grid; grid-template-columns: 50px 1fr; gap: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .funnel .fi { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: 14px; background: var(--ink); color: #fff; }
+  .funnel li:nth-child(2) .fi { background: var(--amber); color: var(--ink); }
+  .funnel li:nth-child(3) .fi { background: #3949a3; }
+  .funnel li:nth-child(4) .fi { background: var(--green); }
+  .funnel li:not(:last-child)::after { content: "↓"; position: absolute; left: 34px; bottom: -15px; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); box-shadow: 0 0 0 1px var(--line); display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--muted); }
+  .funnel h3 { font-size: 17px; }
+  .funnel p { color: var(--ink-2); font-size: 14.5px; margin-top: 3px; }
+  .viral { margin-top: 18px; background: var(--ink); color: #fff; border-radius: 18px; padding: 20px; }
+  .viral h3 { font-family: var(--head); font-stretch: 82%; font-size: 22px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chips li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 9999px; padding: 7px 13px; font-size: 13px; font-weight: 600; }
+  .chips li::before { content: "#"; color: var(--amber); margin-right: 4px; font-family: var(--mono); }
+  .honest { margin-top: 14px; font-size: 13px; color: #aab3ad; border-top: 1px dashed rgba(255,255,255,.18); padding-top: 12px; }
+
+  /* Satu video banyak kegunaan */
+  .uses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
+  .uses li { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .uses .ui { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--amber-soft); color: #8a5b00; font-weight: 800; font-size: 16px; margin-bottom: 10px; }
+  .uses li:nth-child(even) .ui { background: var(--green-soft); color: var(--green-2); }
+  .uses h3 { font-size: 15.5px; }
+  .uses p { color: var(--ink-2); font-size: 13.5px; margin-top: 4px; line-height: 1.5; }
+
   /* Kenapa motion graphic + AI */
   .tint { background: var(--tint); }
   .why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
@@ -302,6 +327,13 @@
     .pains { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .pain { grid-template-columns: 1fr; }
     .why { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .funnel { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .funnel li { grid-template-columns: 1fr; padding: 20px; }
+    .funnel li:not(:last-child)::after { content: "→"; left: auto; right: -19px; top: 34px; bottom: auto; }
+    .viral { padding: 26px 28px; }
+    .uses { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .uses li { padding: 20px; }
+    .uses p { font-size: 14.5px; }
     .why li { padding: 20px; }
     .why p { font-size: 14.5px; }
     .layers { padding: 18px; }
@@ -357,12 +389,12 @@
   <div class="wrap hero-grid">
     <div>
       <span class="for">● Penawaran untuk travel umrah &amp; haji</span>
-      <h1>Konten edukasi umrah yang bikin jamaah <span class="cap">percaya</span>, tanpa harus <span class="cap dk">tampil di kamera.</span></h1>
-      <p class="lead">Video motion graphic sekitar 1 menit dengan narasi AI dan logo travel Anda. Dar Dev yang bikin dari naskah sampai jadi, tim travel cukup cek 10 menit seminggu.</p>
+      <h1>Video umrah yang <span class="cap">dibagikan</span> jamaah, lalu mereka <span class="cap dk">daftar ke travel Anda.</span></h1>
+      <p class="lead">Konten edukasi umrah berbentuk motion graphic sekitar 1 menit, dengan narasi AI dan logo travel Anda. Jamaah dapat ilmu, travel Anda dapat kepercayaan dan calon jamaah baru.</p>
       <ul class="checks">
+        <li>Hook yang dirancang supaya berhenti scroll dan berpeluang viral</li>
         <li>Naskah berdalil, diperiksa pembimbing travel sebelum tayang</li>
-        <li>Tidak ada staf yang perlu tampil atau rekam suara</li>
-        <li>Video pertama jadi dalam 3 hari, siap untuk Reels dan TikTok</li>
+        <li>Tanpa syuting, tanpa staf tampil. Video pertama jadi 3 hari</li>
       </ul>
       <div class="actions">
         <a class="btn" href="#paket">Lihat paket, mulai Rp 900rb</a>
@@ -401,21 +433,63 @@
 <!-- MASALAH -->
 <section>
   <div class="wrap">
-    <span class="tc rise"><b>00:08</b>Yang sering terjadi</span>
+    <span class="tc rise"><b>00:06</b>Yang sering terjadi</span>
     <h2 class="rise">Jamaah memilih travel yang <span class="cap">mereka percaya</span>, bukan yang paling sering promo.</h2>
     <div class="pains">
       <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h3>Tidak ada waktu bikin konten</h3><p>Tim sibuk urus visa, manifest, dan jamaah. Instagram akhirnya hanya berisi brosur harga.</p></div></div>
       <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/><path d="M3 3l18 18"/></svg></span><div><h3>Tidak ada yang mau tampil</h3><p>Video talking head butuh orang yang percaya diri di kamera, alat rekam, dan waktu syuting.</p></div></div>
       <div class="pain rise"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M9 9h6"/></svg></span><div><h3>Promo terus bikin jamaah bosan</h3><p>Konten harga cepat di-skip. Yang disimpan dan dibagikan justru ilmu manasik dan kisah tempat ziarah.</p></div></div>
     </div>
-    <p class="turn rise">Konten edukasi yang rutin membangun <span class="cap">kepercayaan</span>. Saat calon jamaah siap berangkat, travel Anda yang pertama mereka ingat.</p>
+    <p class="turn rise">Konten edukasi yang rutin membangun <span class="cap">kepercayaan</span>. Saat calon jamaah siap berangkat, travel yang sudah mengajari mereka yang pertama diingat.</p>
+  </div>
+</section>
+
+<!-- DARI VIRAL KE JAMAAH -->
+<section class="tint">
+  <div class="wrap">
+    <span class="tc rise"><b>00:12</b>Dari viral ke jamaah</span>
+    <h2 class="rise">Video edukasi <span class="cap">dibagikan</span>. Brosur harga <span class="cap dk">di-skip.</span></h2>
+    <p class="sub rise">Orang jarang membagikan iklan. Tapi jawaban atas pertanyaan yang mereka sendiri bingungkan, itu yang dikirim ke grup keluarga dan pengajian.</p>
+    <ol class="funnel">
+      <li class="rise"><span class="fi">01</span><div><h3>Berhenti scroll</h3><p>Hook menjawab pertanyaan yang sedang dicari calon jamaah, misalnya "Cium Hajar Aswad, kena fidyah?"</p></div></li>
+      <li class="rise"><span class="fi">02</span><div><h3>Disimpan dan dibagikan</h3><p>Dikirim ke grup WhatsApp keluarga, alumni, dan pengajian. Satu kali dibagikan bisa sampai ke puluhan orang yang berencana umrah.</p></div></li>
+      <li class="rise"><span class="fi">03</span><div><h3>Bertanya</h3><p>Muncul komentar dan DM: "Kapan jadwal berangkatnya?", "Paket bulan depan ada?". Ini calon jamaah yang datang sendiri.</p></div></li>
+      <li class="rise"><span class="fi">04</span><div><h3>Daftar</h3><p>Mereka memilih travel yang sudah terasa paham dan amanah, karena sudah belajar dari kontennya.</p></div></li>
+    </ol>
+    <div class="viral rise">
+      <h3>Kenapa formatnya berpeluang viral</h3>
+      <ul class="chips">
+        <li>Menjawab pertanyaan yang sering dicari</li>
+        <li>Pola "salah kaprah" dan "ternyata"</li>
+        <li>Pendek, ditonton sampai habis</li>
+        <li>Enak dibagikan, tidak terasa jualan</li>
+        <li>Teks besar, tetap jelas tanpa suara</li>
+      </ul>
+      <p class="honest">Tidak ada yang bisa menjamin video pasti viral. Yang Dar Dev jamin: setiap video disusun dengan pola konten yang paling sering disimpan dan dibagikan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SATU VIDEO BANYAK KEGUNAAN -->
+<section>
+  <div class="wrap">
+    <span class="tc rise"><b>00:18</b>Satu video, banyak kegunaan</span>
+    <h2 class="rise">Bukan cuma untuk Instagram. <span class="cap">Dipakai di mana-mana.</span></h2>
+    <ul class="uses">
+      <li class="rise"><span class="ui">▶</span><h3>Reels, TikTok, Shorts</h3><p>Satu file, tiga platform. Format 9:16 siap upload.</p></li>
+      <li class="rise"><span class="ui">◔</span><h3>Status WhatsApp</h3><p>Tim marketing tinggal pasang. Kontak lama ikut teringat travel Anda.</p></li>
+      <li class="rise"><span class="ui">✎</span><h3>Bahan manasik</h3><p>Dikirim ke grup jamaah sebelum berangkat. Jamaah lebih siap, pembimbing lebih ringan.</p></li>
+      <li class="rise"><span class="ui">?</span><h3>Jawaban CS</h3><p>Pertanyaan yang sama terus? Cukup kirim link videonya. Jawaban rapi dan berdalil.</p></li>
+      <li class="rise"><span class="ui">↗</span><h3>Bahan iklan</h3><p>Video edukasi bisa dipakai untuk iklan yang tidak terasa jualan.</p></li>
+      <li class="rise"><span class="ui">♡</span><h3>Ladang kebaikan</h3><p>Ilmu manasik yang bermanfaat untuk jamaah, sekaligus dakwah atas nama travel Anda.</p></li>
+    </ul>
   </div>
 </section>
 
 <!-- KENAPA MOTION GRAPHIC + AI -->
 <section class="tint">
   <div class="wrap">
-    <span class="tc rise"><b>00:16</b>Kenapa motion graphic + AI</span>
+    <span class="tc rise"><b>00:24</b>Kenapa motion graphic + AI</span>
     <h2 class="rise">Produksi cepat, biaya ringan, <span class="cap gr">isinya tetap dijaga.</span></h2>
     <ul class="why">
       <li class="rise"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Cepat</h3><p>AI membantu riset, draf naskah, dan suara. Video jadi dalam hitungan hari.</p></li>
@@ -436,7 +510,7 @@
 <!-- ANATOMI -->
 <section>
   <div class="wrap">
-    <span class="tc rise"><b>00:24</b>Isi satu video</span>
+    <span class="tc rise"><b>00:30</b>Isi satu video</span>
     <h2 class="rise">Satu menit yang disusun supaya <span class="cap">ditonton sampai habis.</span></h2>
     <div class="anat rise">
       <div class="ruler" aria-hidden="true"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div>
@@ -459,11 +533,12 @@
 <!-- TOPIK -->
 <section id="topik" class="tint">
   <div class="wrap">
-    <span class="tc rise"><b>00:32</b>Bank topik</span>
+    <span class="tc rise"><b>00:36</b>Bank topik</span>
     <h2 class="rise">Topik bulan pertama <span class="cap">sudah disiapkan.</span></h2>
     <p class="sub rise">Travel Anda tinggal pilih. Atau kirim brief sendiri.</p>
     <div class="tabs rise" role="tablist" aria-label="Jenis topik">
       <button class="on" data-t="0">Fikih umrah</button>
+      <button data-t="4">Mitos vs fakta</button>
       <button data-t="1">Kisah ziarah</button>
       <button data-t="2">Persiapan jamaah</button>
       <button data-t="3">Haji</button>
@@ -476,7 +551,7 @@
 <!-- LOGO & WARNA -->
 <section>
   <div class="wrap">
-    <span class="tc rise"><b>00:44</b>Membawa nama travel Anda</span>
+    <span class="tc rise"><b>00:42</b>Membawa nama travel Anda</span>
     <h2 class="rise">Logo dan warna travel Anda <span class="cap">di setiap video.</span></h2>
     <div class="brandlab">
       <div class="endcard rise" id="endcard" style="--c1:#0e6b52;--c2:#f5b72a">
@@ -508,7 +583,7 @@
 <!-- CARA KERJA -->
 <section id="cara" class="tint">
   <div class="wrap">
-    <span class="tc rise"><b>00:50</b>Cara kerja</span>
+    <span class="tc rise"><b>00:48</b>Cara kerja</span>
     <h2 class="rise">Semua lewat WhatsApp. <span class="cap">Tidak perlu rapat.</span></h2>
     <ol class="steps">
       <li class="rise"><span class="num">1</span><div><span class="who">Dar Dev</span><h3>Siapkan naskah</h3><p>Topik dari bank topik atau brief travel Anda, lengkap dengan dalil dan sumbernya.</p></div></li>
@@ -618,11 +693,12 @@
     [['Cium Hajar Aswad, kena fidyah?', 'Saat ihram, batunya diberi wewangian'], ['Pesawat lewat miqat, belum ihram?', 'Yang perlu dilakukan jamaah dari Indonesia'], ['Haid saat umrah', 'Apa yang boleh dan belum boleh dilakukan'], ['Potong rambut: berapa yang cukup?', 'Bedanya tahallul untuk laki-laki dan perempuan']],
     [['Bukit pemanah di Uhud', 'Satu perintah yang mengubah jalannya perang'], ['Masjid Quba', 'Shalat 2 rakaat, pahalanya seperti umrah'], ['Masjid Qiblatain', 'Kiblat berpindah di tengah shalat'], ['Gua Hira dan Gua Tsur', 'Dua gua yang sering tertukar']],
     [['5 barang yang sering lupa dibawa', 'Dari kain ihram cadangan sampai obat pribadi'], ['Hari pertama di Makkah', 'Urutan yang perlu diketahui jamaah'], ['Tersesat di Masjidil Haram?', 'Cara mengingat pintu dan titik kumpul'], ['Menjaga kesehatan saat umrah', 'Cuaca, minum, dan jalan kaki yang jauh']],
-    [['Beda umrah dan haji', 'Rukun, wajib, dan waktunya'], ['Mabit di Muzdalifah', 'Apa yang dilakukan dan kenapa penting'], ['Lempar jumrah', 'Urutan dan waktu yang dianjurkan'], ['Haji plus atau furoda?', 'Penjelasan singkat untuk calon jamaah']]
+    [['Beda umrah dan haji', 'Rukun, wajib, dan waktunya'], ['Mabit di Muzdalifah', 'Apa yang dilakukan dan kenapa penting'], ['Lempar jumrah', 'Urutan dan waktu yang dianjurkan'], ['Haji plus atau furoda?', 'Penjelasan singkat untuk calon jamaah']],
+    [['Umrah berkali-kali dalam satu perjalanan?', 'Pendapat ulama yang sering ditanyakan jamaah'], ['Ke Raudhah tinggal datang?', 'Yang perlu disiapkan sebelum berangkat'], ['Foto-foto di depan Ka\'bah, boleh?', 'Adab yang jarang dibahas'], ['Air zamzam: harus berdiri saat minum?', 'Riwayat dan penjelasannya']]
   ];
   const tbox = document.getElementById('topics'), tabs = [...document.querySelectorAll('.tabs button')];
   const showTab = i => {
-    tabs.forEach((b, k) => b.classList.toggle('on', k === i));
+    tabs.forEach(b => b.classList.toggle('on', +b.dataset.t === i));
     tbox.innerHTML = bank[i].map(([b, s], k) => `<div class="topic"><span class="th" aria-hidden="true">EP.${String(k + 1).padStart(2, '0')}<em>${b.split(' ').slice(0, 3).join(' ').replace(/[,:?]+$/, '')}</em></span><div><b>${b}</b><small>${s}</small></div></div>`).join('');
   };
   tabs.forEach(b => b.addEventListener('click', () => showTab(+b.dataset.t)));
