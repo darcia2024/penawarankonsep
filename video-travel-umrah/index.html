@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#f2ead8">
+<meta name="theme-color" content="#f5f0e6">
 <link rel="icon" type="image/png" href="assets/dar-mascot-128.png">
 <title>Video Motion Graphic untuk Travel Umrah · Dar Dev</title>
 <meta name="description" content="Video edukasi umrah motion graphic dengan logo travel Anda. Dibuat Dar Dev, travel cukup cek dan setujui.">
@@ -16,19 +16,19 @@
      ramping, catatan tulisan tangan, garis tebal dengan bayangan tegas,
      jalur peta untuk alur, perangko untuk topik, dan karcis untuk paket. */
   :root {
-    --paper: #f2ead8;
-    --paper-2: #e8dcc2;
-    --card: #fbf6ea;
-    --ink: #24302b;
-    --ink-2: #3e4a44;
-    --muted: #6f6a5a;
-    --line: #d3c6a8;
-    --sun: #eeb12c;
-    --sun-soft: #f7e2a8;
-    --brick: #bf4a2c;
-    --brick-dark: #9c3a20;
-    --teal: #2d6a64;
-    --teal-soft: #cfe1d9;
+    --paper: #f5f0e6;
+    --paper-2: #eae2d1;
+    --card: #fdfaf3;
+    --ink: #16233b;
+    --ink-2: #3a4558;
+    --muted: #6b6f78;
+    --line: #d6cdb9;
+    --sun: #d4a23c;
+    --sun-soft: #f3e3b8;
+    --brick: #0f7a62;
+    --brick-dark: #0b5b49;
+    --teal: #1d3a5f;
+    --teal-soft: #d6e2ef;
     --head: "Big Shoulders Display", "Arial Narrow", sans-serif;
     --hand: "Caveat", "Comic Sans MS", cursive;
     --font: "Manrope", "Helvetica Neue", Arial, sans-serif;
@@ -65,7 +65,7 @@
   .dark { background: var(--ink); color: var(--paper); }
   .dark .tag { color: var(--sun); }
   .dark .tag b { background: var(--sun); color: var(--ink); }
-  .dark .sub { color: #d9d2bf; }
+  .dark .sub { color: #c9d1de; }
 
   /* Tombol */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 9999px; font-size: 15px; font-weight: 800; text-decoration: none; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; box-shadow: 4px 4px 0 var(--brick); }
@@ -77,7 +77,7 @@
   .btn.sm { min-height: 40px; padding: 0 16px; font-size: 13.5px; box-shadow: 3px 3px 0 var(--brick); }
 
   /* Navigasi */
-  .nav { position: sticky; top: 0; z-index: 30; background: rgba(242,234,216,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 2px solid transparent; transition: border-color .2s; }
+  .nav { position: sticky; top: 0; z-index: 30; background: rgba(245,240,230,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 2px solid transparent; transition: border-color .2s; }
   .nav.scrolled { border-bottom-color: var(--ink); }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 12px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; }
@@ -102,7 +102,7 @@
   .stage { position: relative; padding: 48px 12px 24px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
   .stage .map { position: absolute; inset: 0; border-radius: 24px; overflow: hidden; background: var(--teal); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
   .stage .map svg { width: 100%; height: 100%; display: block; }
-  .stage .tip { position: relative; z-index: 2; color: #e3efe9; font-family: var(--hand); font-size: 21px; text-align: center; line-height: 1.1; }
+  .stage .tip { position: relative; z-index: 2; color: #e4ecf5; font-family: var(--hand); font-size: 21px; text-align: center; line-height: 1.1; }
   .stage .sticker { position: absolute; z-index: 4; font-size: 13px; padding: 6px 12px; }
   .stage .s1 { left: 8px; top: 12px; transform: rotate(-5deg); }
   .stage .s2 { right: 8px; bottom: 70px; transform: rotate(4deg); background: var(--card); }
@@ -119,10 +119,10 @@
   .ribbon { background: var(--ink); color: var(--paper); }
   .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat { padding: 20px 14px; }
-  .stat:nth-child(odd) { border-right: 2px dashed rgba(242,234,216,.25); }
-  .stat:nth-child(-n+2) { border-bottom: 2px dashed rgba(242,234,216,.25); }
+  .stat:nth-child(odd) { border-right: 2px dashed rgba(245,240,230,.25); }
+  .stat:nth-child(-n+2) { border-bottom: 2px dashed rgba(245,240,230,.25); }
   .stat b { display: block; font-family: var(--head); font-size: 42px; font-weight: 900; line-height: .9; color: var(--sun); }
-  .stat span { display: block; margin-top: 8px; font-size: 13px; color: #d9d2bf; }
+  .stat span { display: block; margin-top: 8px; font-size: 13px; color: #c9d1de; }
 
   /* Manfaat */
   .good { display: grid; gap: 16px; }
@@ -150,17 +150,17 @@
   .uses .sticker:nth-child(even) { transform: rotate(1.5deg); }
 
   /* Isi video (gelap) */
-  .anat { background: rgba(255,255,255,.04); border: 2px solid rgba(242,234,216,.25); border-radius: 18px; padding: 18px; }
+  .anat { background: rgba(255,255,255,.04); border: 2px solid rgba(245,240,230,.25); border-radius: 18px; padding: 18px; }
   .track { display: flex; height: 46px; gap: 3px; }
   .track button { border: 2px solid var(--ink); cursor: pointer; padding: 0; font-family: var(--head); font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--ink); border-radius: 8px; display: grid; place-items: center; transition: opacity .2s, transform .2s; }
   .track button:not(.on) { opacity: .5; }
   .track button.on { transform: translateY(-3px); }
-  .s1 { background: var(--brick); color: #fff !important; flex: 5; } .s2 { background: var(--sun); flex: 17; } .s3 { background: var(--teal-soft); flex: 20; } .s4 { background: var(--card); flex: 12; } .s5 { background: #f3cdbf; flex: 8; }
-  .ticks { display: flex; justify-content: space-between; font-size: 11.5px; color: #b9b29e; margin-top: 6px; }
+  .s1 { background: var(--brick); color: #fff !important; flex: 5; } .s2 { background: var(--sun); flex: 17; } .s3 { background: var(--teal-soft); flex: 20; } .s4 { background: var(--card); flex: 12; } .s5 { background: #cfe8df; flex: 8; }
+  .ticks { display: flex; justify-content: space-between; font-size: 11.5px; color: #9aa6b8; margin-top: 6px; }
   .anat-out { margin-top: 16px; min-height: 92px; }
   .anat-out small { font-family: var(--hand); font-size: 21px; color: var(--sun); }
   .anat-out h3 { color: var(--paper); font-size: 30px; }
-  .anat-out p { color: #d9d2bf; font-size: 14.5px; margin-top: 4px; }
+  .anat-out p { color: #c9d1de; font-size: 14.5px; margin-top: 4px; }
 
   /* Topik sebagai perangko */
   .filters { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px 22px; padding: 2px 16px 6px; scrollbar-width: none; }
@@ -168,7 +168,7 @@
   .filters button { flex: none; height: 40px; padding: 0 16px; border-radius: 9999px; border: 2px solid var(--ink); background: var(--card); font-family: var(--head); font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; cursor: pointer; white-space: nowrap; }
   .filters button.on { background: var(--ink); color: var(--paper); }
   .stamps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
-  .stamp { padding: 6px; background: var(--card); filter: drop-shadow(0 2px 0 rgba(36,48,43,.35));
+  .stamp { padding: 6px; background: var(--card); filter: drop-shadow(0 2px 0 rgba(22,35,59,.35));
     -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 4px at 6px 6px, #0000 96%, #000) -6px -6px / 12px 12px;
             mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 4px at 6px 6px, #0000 96%, #000) -6px -6px / 12px 12px; }
   .stamp:nth-child(odd) { transform: rotate(-1deg); }
@@ -240,7 +240,7 @@
   .faq details { border-bottom: 1.5px dashed var(--ink); }
   .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 17px 0; font-weight: 800; font-size: 15.5px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: ""; flex: none; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--ink); background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='%2324302b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / 12px no-repeat; transition: transform .25s, background-color .25s; }
+  .faq summary::after { content: ""; flex: none; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--ink); background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='%2316233b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / 12px no-repeat; transition: transform .25s, background-color .25s; }
   .faq details[open] summary::after { transform: rotate(45deg); background-color: var(--sun); }
   .faq summary:hover { color: var(--brick); }
   .faq details p { color: var(--ink-2); font-size: 14.5px; padding: 0 0 18px; }
@@ -251,7 +251,7 @@
   .close-box > *:not(.deco) { position: relative; z-index: 1; }
   .close-box h2 { max-width: 13em; margin: 0 auto; font-size: 44px; }
   .close-box h2 .hand { color: var(--sun); font-size: .62em; display: inline-block; transform: rotate(-3deg); }
-  .close-box p { color: #fbe3d6; margin: 14px auto 0; max-width: 30em; }
+  .close-box p { color: #d7efe7; margin: 14px auto 0; max-width: 30em; }
   .close-box .actions { justify-content: center; }
   .close-box .btn { background: var(--sun); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
   .by-dar { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: 9999px; padding: 5px 18px 5px 5px; font-weight: 800; transform: rotate(-2deg); text-align: left; }
@@ -267,7 +267,7 @@
   .dock.show { transform: none; }
   .dock > div { display: flex; align-items: center; gap: 10px; }
   .dock .mascot { border-color: var(--paper); width: 34px; height: 34px; }
-  .dock small { display: block; font-size: 11px; color: #d9d2bf; }
+  .dock small { display: block; font-size: 11px; color: #c9d1de; }
   .dock b { font-size: 14px; }
   .dock .btn { min-height: 42px; background: var(--sun); color: var(--ink); box-shadow: none; padding: 0 16px; font-size: 13.5px; }
 
@@ -284,7 +284,7 @@
     section { padding: 90px 0; }
     .actions { display: flex; flex-wrap: wrap; }
     .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .stat { padding: 26px 24px; border-bottom: 0 !important; border-right: 2px dashed rgba(242,234,216,.25); }
+    .stat { padding: 26px 24px; border-bottom: 0 !important; border-right: 2px dashed rgba(245,240,230,.25); }
     .stat:last-child { border-right: 0; }
     .stat b { font-size: 54px; }
     .good { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -353,11 +353,11 @@
     <div class="stage" id="contoh">
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 640" preserveAspectRatio="xMidYMid slice">
-          <rect width="400" height="640" fill="#2d6a64"/>
-          <g fill="#357770"><rect x="20" y="30" width="90" height="70" rx="6"/><rect x="140" y="20" width="110" height="90" rx="6"/><rect x="280" y="40" width="100" height="60" rx="6"/><rect x="10" y="330" width="80" height="120" rx="6"/><rect x="300" y="300" width="90" height="140" rx="6"/><rect x="40" y="520" width="140" height="90" rx="6"/><rect x="230" y="500" width="150" height="110" rx="6"/></g>
-          <g fill="none" stroke="#f2ead8" stroke-opacity=".7" stroke-width="7" stroke-linecap="round"><path d="M-20 130 L420 120"/><path d="M125 -20 L120 660"/><path d="M-20 480 L420 470"/><path d="M270 -20 L285 660"/></g>
-          <path d="M60 600 C90 520 140 500 160 430 S240 360 270 300 S330 170 350 90" fill="none" stroke="#eeb12c" stroke-width="5" stroke-dasharray="3 11" stroke-linecap="round"/>
-          <g fill="#bf4a2c" stroke="#24302b" stroke-width="3"><circle cx="60" cy="600" r="9"/><circle cx="160" cy="430" r="9"/><circle cx="270" cy="300" r="9"/><circle cx="350" cy="90" r="9"/></g>
+          <rect width="400" height="640" fill="#1d3a5f"/>
+          <g fill="#26476f"><rect x="20" y="30" width="90" height="70" rx="6"/><rect x="140" y="20" width="110" height="90" rx="6"/><rect x="280" y="40" width="100" height="60" rx="6"/><rect x="10" y="330" width="80" height="120" rx="6"/><rect x="300" y="300" width="90" height="140" rx="6"/><rect x="40" y="520" width="140" height="90" rx="6"/><rect x="230" y="500" width="150" height="110" rx="6"/></g>
+          <g fill="none" stroke="#f5f0e6" stroke-opacity=".7" stroke-width="7" stroke-linecap="round"><path d="M-20 130 L420 120"/><path d="M125 -20 L120 660"/><path d="M-20 480 L420 470"/><path d="M270 -20 L285 660"/></g>
+          <path d="M60 600 C90 520 140 500 160 430 S240 360 270 300 S330 170 350 90" fill="none" stroke="#d4a23c" stroke-width="5" stroke-dasharray="3 11" stroke-linecap="round"/>
+          <g fill="#0f7a62" stroke="#16233b" stroke-width="3"><circle cx="60" cy="600" r="9"/><circle cx="160" cy="430" r="9"/><circle cx="270" cy="300" r="9"/><circle cx="350" cy="90" r="9"/></g>
         </svg>
       </div>
       <span class="sticker s1">✓ Berdalil</span>
@@ -367,7 +367,7 @@
           <span class="island" aria-hidden="true"></span>
           <img class="poster" src="../jasa-video/topik/ep01.jpg" alt="Cuplikan video: Cium Hajar Aswad, kena fidyah?" width="540" height="960">
           <video id="vid" playsinline preload="none" poster="../jasa-video/topik/ep01.jpg"><source src="../jasa-video/topik/ep01.mp4" type="video/mp4"></video>
-          <button class="play" id="play" type="button" aria-label="Putar contoh video"><span><i><svg width="11" height="13" viewBox="0 0 12 14"><path d="M1 1l10 6-10 6z" fill="#eeb12c"/></svg></i>Putar contoh</span></button>
+          <button class="play" id="play" type="button" aria-label="Putar contoh video"><span><i><svg width="11" height="13" viewBox="0 0 12 14"><path d="M1 1l10 6-10 6z" fill="#d4a23c"/></svg></i>Putar contoh</span></button>
         </div>
       </div>
       <p class="tip">contoh video buatan Dar Dev</p>
@@ -467,14 +467,14 @@
       <h2 class="rise">Logo &amp; warna travel <span class="hl">di setiap video.</span></h2>
       <p class="sub rise">Ketuk warna untuk mencoba layar penutupnya.</p>
       <div class="sw rise" role="group" aria-label="Pilihan warna">
-        <button class="on" style="--a:#2d6a64;--b:#eeb12c" data-c="#2d6a64,#eeb12c" aria-label="Hijau toska dan kuning"></button>
+        <button class="on" style="--a:#1d3a5f;--b:#d4a23c" data-c="#1d3a5f,#d4a23c" aria-label="Hijau toska dan kuning"></button>
         <button style="--a:#0f1e33;--b:#d9a441" data-c="#0f1e33,#d9a441" aria-label="Biru malam dan emas"></button>
         <button style="--a:#7f1d1d;--b:#fde68a" data-c="#7f1d1d,#fde68a" aria-label="Marun dan krem"></button>
         <button style="--a:#1e3a8a;--b:#7dd3fc" data-c="#1e3a8a,#7dd3fc" aria-label="Biru dan biru muda"></button>
         <button style="--a:#3b2f2a;--b:#e7c9a0" data-c="#3b2f2a,#e7c9a0" aria-label="Cokelat dan pasir"></button>
       </div>
     </div>
-    <div class="endcard rise" id="endcard" style="--c1:#2d6a64;--c2:#eeb12c">
+    <div class="endcard rise" id="endcard" style="--c1:#1d3a5f;--c2:#d4a23c">
       <span class="logo"><i>T</i>Travel Anda</span>
       <p>Berangkat umrah tenang bareng <em>Travel Anda</em>.</p>
       <span class="c">Konsultasi via WhatsApp</span>
@@ -543,7 +543,7 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="close-box rise">
-      <svg class="deco" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#f2ead8" stroke-width="4" stroke-linecap="round"><path d="M-20 80 C160 40 260 160 420 120 S700 40 820 90" stroke-dasharray="3 14"/><path d="M-20 320 C140 360 300 250 460 300 S700 360 820 300" stroke-dasharray="3 14"/></g><g fill="#f2ead8"><circle cx="120" cy="66" r="8"/><circle cx="420" cy="120" r="8"/><circle cx="690" cy="62" r="8"/><circle cx="300" cy="268" r="8"/><circle cx="610" cy="330" r="8"/></g></svg>
+      <svg class="deco" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#f5f0e6" stroke-width="4" stroke-linecap="round"><path d="M-20 80 C160 40 260 160 420 120 S700 40 820 90" stroke-dasharray="3 14"/><path d="M-20 320 C140 360 300 250 460 300 S700 360 820 300" stroke-dasharray="3 14"/></g><g fill="#f5f0e6"><circle cx="120" cy="66" r="8"/><circle cx="420" cy="120" r="8"/><circle cx="690" cy="62" r="8"/><circle cx="300" cy="268" r="8"/><circle cx="610" cy="330" r="8"/></g></svg>
       <span class="by-dar"><img class="mascot" src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="44" height="44"><span>Dar Dev<small>Video untuk travel umrah</small></span></span>
       <h2>Coba 3 video dulu, <span class="hand">lihat bedanya.</span></h2>
       <p>Konsultasi gratis, semua lewat WhatsApp.</p>
@@ -585,7 +585,7 @@
     ['5 barang yang sering lupa dibawa', 'Hari pertama di Makkah', 'Tersesat di Masjidil Haram?', 'Menjaga kesehatan saat umrah'],
     ['Beda umrah dan haji', 'Mabit di Muzdalifah', 'Lempar jumrah', 'Haji plus atau furoda?']
   ];
-  const pal = [['#bf4a2c', '#eeb12c'], ['#2d6a64', '#8fc0c8'], ['#24302b', '#6d7a5a'], ['#eeb12c', '#f3cdbf']];
+  const pal = [['#0f7a62', '#d4a23c'], ['#1d3a5f', '#8fb3d9'], ['#16233b', '#4c6a8a'], ['#d4a23c', '#cfe8df']];
   const tbox = document.getElementById('topics'), tabs = [...document.querySelectorAll('.filters button')];
   const showTab = i => {
     tabs.forEach(b => b.classList.toggle('on', +b.dataset.t === i));
