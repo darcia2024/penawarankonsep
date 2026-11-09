@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../assets/dar-mascot-128.png">
+<title>Demo Aplikasi · Stroll Around</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<style>
+  /* Demo tampilan sistem tur Stroll Around. Hanya tampilan yang bisa diklik, tanpa logika sungguhan.
+     Kerangka sama dengan demo Jembar Diesel, warna dari logo dan feed Stroll Around. */
+  :root {
+    --navy: #24302b; --navy-2: #34423b; --blue: #2d6a64; --blue-deep: #22534e; --cyan: #eeb12c; --cyan-soft: #f7ecd0;
+    --teal-soft: #dcebe5; --brick: #bf4a2c;
+    --paper-2: #f6f2e8; --bg: #f5f2ea; --white: #fff; --line: #e2dacb; --line-2: #eee8dc;
+    --ink: #1f2a25; --muted: #4f5d56; --faint: #77837b;
+    --ok: #17733f; --ok-bg: #e3f4e8; --warn: #a3470f; --warn-bg: #fcebd8; --bad: #b42318; --bad-bg: #fde7e5; --wa: #1faa55;
+    --shadow: 0 1px 2px rgba(36,48,43,.06), 0 8px 24px rgba(36,48,43,.07);
+    --font: "Satoshi", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; font-synthesis: none; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.5 var(--font); overflow-x: hidden; }
+  h1, h2, h3, h4, p, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+  .ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  .demo-bar { background: var(--navy); color: #e6dcc6; font-size: 12.5px; text-align: center; padding: 6px 16px; }
+  .demo-bar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; padding: 10px 16px; font-weight: 700; font-size: 14.5px; border: 1.5px solid var(--line); background: var(--white); color: var(--navy); line-height: 1.2; white-space: nowrap; transition: background-color .15s, border-color .15s, transform .1s; }
+  .btn:hover { border-color: var(--navy); }
+  .btn:active { transform: translateY(1px); }
+  .btn.pri { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .btn.pri:hover { background: var(--blue-deep); }
+  .btn.sun { background: var(--cyan); border-color: var(--cyan); color: var(--navy); }
+  .btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+  .btn.sm { padding: 7px 11px; font-size: 13px; border-radius: 7px; }
+  .btn.block { width: 100%; }
+  .btn:disabled { opacity: .6; cursor: default; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--teal-soft); color: var(--blue-deep); white-space: nowrap; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .pill.mute { background: #eeebe3; color: var(--faint); }
+  .pill.sun { background: var(--cyan-soft); color: #7a5508; }
+  .pill.navy { background: var(--navy); color: #fff; }
+  .pill.dot::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .muted { color: var(--muted); } .faint { color: var(--faint); }
+  .av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 12px; color: #fff; background: var(--blue); flex: none; }
+  .av.c { background: #c9921c; } .av.n { background: var(--navy); } .av.b { background: var(--brick); } .av.g { background: #2c8a57; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 18px; min-width: 0; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .card-head h3 { font-size: 16px; color: var(--navy); }
+  .card-head small { color: var(--faint); font-size: 13px; }
+  .seg { display: inline-flex; background: var(--paper-2); border: 1px solid var(--line); border-radius: 8px; padding: 3px; font-size: 13px; font-weight: 700; }
+  .seg button { border: 0; background: none; padding: 5px 11px; border-radius: 6px; color: var(--muted); }
+  .seg button.on { background: var(--white); color: var(--navy); box-shadow: 0 1px 2px rgba(36,48,43,.14); }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { border: 0; background: none; padding: 9px 12px; font-weight: 700; font-size: 14px; color: var(--faint); border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+  .tabs button.on { color: var(--navy); border-color: var(--cyan); }
+  .tabs button em { font-style: normal; font-size: 12px; background: var(--paper-2); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+  .field { display: grid; gap: 5px; font-size: 13px; font-weight: 700; color: var(--muted); }
+  .field input, .field select, .field textarea { font-weight: 500; font-size: 14.5px; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; background: #fff; width: 100%; }
+  .field textarea { min-height: 90px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .search { display: flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; color: var(--faint); font-size: 14px; }
+  .grid { display: grid; gap: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+  .kpi small { display: block; color: var(--muted); font-weight: 600; font-size: 13px; }
+  .kpi b { display: block; font-size: 26px; line-height: 1.15; letter-spacing: -.02em; margin: 6px 0 4px; color: var(--navy); }
+  .kpi span { font-size: 12.5px; color: var(--faint); }
+  .kpi .up { color: var(--ok); font-weight: 700; } .kpi.alert b { color: var(--brick); }
+  .tbl-wrap { overflow-x: auto; margin: 0 -18px; padding: 0 18px; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+  .tbl th { text-align: left; font-size: 12px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .04em; padding: 0 10px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .tbl td { padding: 11px 10px; border-bottom: 1px solid var(--line-2); vertical-align: middle; }
+  .tbl tr:last-child td { border-bottom: 0; }
+  .tbl td small { display: block; color: var(--faint); font-size: 12.5px; }
+  .tbl .r { text-align: right; font-variant-numeric: tabular-nums; }
+  .who { display: flex; align-items: center; gap: 10px; }
+  .meter { height: 7px; border-radius: 4px; background: var(--line-2); overflow: hidden; min-width: 60px; }
+  .meter i { display: block; height: 100%; background: var(--blue); border-radius: 4px; }
+  .meter i.s { background: var(--cyan); } .meter i.b { background: var(--brick); }
+  .list li { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+  .list li:last-child { border-bottom: 0; }
+  .list b { display: block; font-size: 14px; }
+  .list small { color: var(--faint); font-size: 12.5px; }
+  .list .end { margin-left: auto; text-align: right; flex: none; }
+  .stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+  .stepper button { border: 0; background: var(--paper-2); width: 30px; height: 30px; font-weight: 700; color: var(--navy); }
+  .stepper span { min-width: 30px; text-align: center; font-weight: 700; font-size: 14px; }
+  .bub { max-width: 88%; padding: 9px 12px; border-radius: 12px; font-size: 13.5px; line-height: 1.45; background: #fff; border: 1px solid var(--line); white-space: pre-line; }
+  .bub.out { background: #dcf8c6; border-color: #cfe7c9; margin-left: auto; border-bottom-right-radius: 4px; }
+  .bub.in { border-bottom-left-radius: 4px; }
+  .bub time { display: block; text-align: right; font-size: 10.5px; color: var(--faint); margin-top: 2px; }
+  .bub .lnk { color: #027eb5; font-weight: 600; }
+  .hint { display: flex; gap: 10px; align-items: flex-start; background: var(--cyan-soft); color: #6b4a06; border-radius: 10px; padding: 11px 13px; font-size: 13.5px; font-weight: 500; }
+  .sw { position: relative; width: 40px; height: 22px; border-radius: 999px; background: var(--line); border: 0; flex: none; transition: background-color .2s; }
+  .sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .sw[aria-pressed="true"] { background: var(--blue); }
+  .sw[aria-pressed="true"]::after { transform: translateX(18px); }
+
+  /* Kerangka */
+  .app { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: calc(100vh - 31px); }
+  .side { background: var(--navy); color: #e3dccb; padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .side-brand { display: flex; align-items: center; gap: 10px; padding: 4px 6px 16px; color: #fff; }
+  .side-brand img { height: 30px; width: auto; }
+  .side-brand small { display: block; font-size: 12px; color: #c9bfa6; }
+  .side-nav { display: flex; flex-direction: column; gap: 3px; }
+  .side-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #a89f88; padding: 14px 10px 6px; font-weight: 700; }
+  .side-nav a { display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+  .side-nav a:hover { background: rgba(255,255,255,.07); color: #fff; }
+  .side-nav a[aria-current="page"] { background: #fff; color: var(--navy); }
+  .side-nav a em { margin-left: auto; font-style: normal; font-size: 11px; font-weight: 700; background: var(--cyan); color: var(--navy); border-radius: 999px; padding: 1px 7px; }
+  .side-foot { margin-top: auto; display: flex; gap: 10px; align-items: center; padding: 14px 6px 4px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; }
+  .side-foot img { width: 34px; height: 34px; border-radius: 50%; background: #fff; }
+  .side-foot b { display: block; color: #fff; }
+  .side-foot small { color: #c9bfa6; }
+  .main { min-width: 0; padding: 0 28px 48px; }
+  .topbar { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+  .topbar .search { flex: 1; max-width: 420px; }
+  .topbar-r { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .page-head h1 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; letter-spacing: -.01em; color: var(--navy); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .page-head p { color: var(--muted); margin-top: 4px; }
+  .page-head .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .screen { display: none; }
+  .screen.on { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Ponsel */
+  .stage { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 28px; align-items: start; }
+  .phone { width: 100%; max-width: 340px; margin: 0 auto; background: #141a17; border-radius: 42px; padding: 11px; box-shadow: 0 30px 60px rgba(36,48,43,.22); }
+  .phone-in { background: var(--bg); border-radius: 32px; overflow: hidden; height: 660px; display: flex; flex-direction: column; position: relative; }
+  .ph-status { display: flex; justify-content: space-between; padding: 10px 22px 4px; font-size: 12px; font-weight: 700; }
+  .ph-view { display: none; flex: 1; flex-direction: column; min-height: 0; }
+  .ph-view.on { display: flex; animation: fade .25s ease; }
+  .ph-head { background: var(--navy); color: #fff; padding: 12px 16px 14px; }
+  .ph-head .row { display: flex; align-items: center; gap: 10px; }
+  .ph-head .logo { height: 24px; width: auto; }
+  .ph-head b { font-size: 15px; display: block; line-height: 1.15; }
+  .ph-head small { font-size: 11.5px; color: #c9bfa6; }
+  .ph-back { border: 0; background: rgba(255,255,255,.12); color: #fff; width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; flex: none; }
+  .ph-body { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; scrollbar-width: thin; }
+  .ph-foot { padding: 12px 14px 16px; background: #fff; border-top: 1px solid var(--line); }
+  .ph-label { font-size: 12px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; flex: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chips button { flex: none; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 700; color: var(--muted); }
+  .chips button.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .tour { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center; width: 100%; border: 1.5px solid var(--line); background: #fff; border-radius: 12px; padding: 10px; text-align: left; }
+  .tour:hover { border-color: var(--blue); }
+  .tour.on { border-color: var(--blue); background: #f4faf7; }
+  .tour .ph { width: 52px; height: 52px; border-radius: 9px; object-fit: cover; background: var(--teal-soft); }
+  .tour b { display: block; font-size: 13.5px; line-height: 1.25; }
+  .tour small { display: block; color: var(--faint); font-size: 11.5px; }
+  .tour .seat { display: flex; align-items: center; gap: 6px; margin-top: 5px; font-size: 11px; font-weight: 700; color: var(--blue); }
+  .tour .seat .meter { flex: 1; height: 5px; }
+  .tour .seat.low { color: var(--brick); }
+  .tour .chk { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--line); display: grid; place-items: center; }
+  .tour.on .chk { background: var(--blue); border-color: var(--blue); }
+  .tour.on .chk::after { content: ""; width: 5px; height: 9px; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(45deg) translate(-1px, -1px); }
+  .tour.full { opacity: .55; }
+  .spec { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 4px 12px; }
+  .spec div { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+  .spec div:last-child { border-bottom: 0; }
+  .spec span { color: var(--faint); }
+  .hero-img { height: 170px; object-fit: cover; width: 100%; flex: none; }
+  .stops li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding-bottom: 12px; position: relative; font-size: 13px; }
+  .stops li span.n { width: 24px; height: 24px; border-radius: 50%; background: var(--cyan); color: var(--navy); display: grid; place-items: center; font-weight: 700; font-size: 12px; z-index: 1; }
+  .stops li:not(:last-child)::after { content: ""; position: absolute; left: 11px; top: 24px; bottom: 0; width: 2px; background: repeating-linear-gradient(180deg, var(--cyan) 0 4px, transparent 4px 8px); }
+  .stops b { display: block; }
+  .stops small { color: var(--faint); }
+  .qris { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; justify-items: center; gap: 8px; }
+  .qris svg.qr { width: 160px; height: 160px; }
+  .qris .amt { font-size: 28px; font-weight: 900; letter-spacing: -.02em; color: var(--navy); }
+  .ticket { background: var(--navy); color: #fff; border-radius: 14px; padding: 16px; display: grid; grid-template-columns: minmax(0, 1fr) 76px; gap: 12px; align-items: center; }
+  .ticket small { color: #c9bfa6; font-size: 11.5px; display: block; }
+  .ticket b { font-size: 16px; display: block; }
+  .ticket svg.qr { width: 76px; height: 76px; border-radius: 6px; }
+  .wa-top { background: #075e54; color: #fff; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .wa-top .lg { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: grid; place-items: center; overflow: hidden; flex: none; }
+  .wa-top .lg img { width: 28px; height: auto; }
+  .wa-top b { display: block; font-size: 14px; line-height: 1.2; }
+  .wa-top small { font-size: 11px; opacity: .8; }
+  .wa-body { flex: 1; background: #ece5dc; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; }
+  .amts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .amts button { border: 1.5px solid var(--line); background: #fff; border-radius: 10px; padding: 10px 4px; font-weight: 700; font-size: 13.5px; }
+  .amts button.on { border-color: var(--blue); background: #f4faf7; color: var(--blue-deep); }
+  .stars { display: flex; gap: 6px; }
+  .stars button { border: 0; background: none; padding: 0; color: var(--line); }
+  .stars button.on { color: var(--cyan); }
+  .stars svg { width: 30px; height: 30px; fill: currentColor; stroke: none; }
+  .steps-card { display: grid; gap: 10px; }
+  .stepbtn { display: flex; gap: 12px; align-items: flex-start; width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 12px 14px; text-align: left; }
+  .stepbtn .n { width: 28px; height: 28px; border-radius: 50%; background: var(--paper-2); color: var(--navy); display: grid; place-items: center; font-weight: 700; font-size: 13px; flex: none; }
+  .stepbtn b { display: block; font-size: 14.5px; color: var(--navy); }
+  .stepbtn small { color: var(--muted); font-size: 13px; }
+  .stepbtn.on { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(45,106,100,.12); }
+  .stepbtn.on .n { background: var(--blue); color: #fff; }
+
+  /* Check-in */
+  .ci-count { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .ci-count b { font-size: 26px; color: var(--navy); letter-spacing: -.02em; }
+  .ci-count small { color: var(--faint); font-size: 12px; display: block; }
+  .ci { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 9px 10px; }
+  .ci b { display: block; font-size: 13.5px; line-height: 1.2; }
+  .ci small { color: var(--faint); font-size: 11.5px; }
+  .ci .tick { margin-left: auto; border: 1.5px solid var(--line); background: #fff; border-radius: 8px; padding: 6px 10px; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .ci.in .tick { background: var(--ok-bg); border-color: var(--ok-bg); color: var(--ok); }
+  .ci.late .tick { background: var(--warn-bg); border-color: var(--warn-bg); color: var(--warn); }
+
+  /* Laporan */
+  .rep-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; }
+  .bars li { display: grid; grid-template-columns: minmax(0, 1fr) 140px 52px; gap: 12px; align-items: center; padding: 9px 0; font-size: 13.5px; border-bottom: 1px solid var(--line-2); }
+  .bars li:last-child { border-bottom: 0; }
+  .bars b { display: block; }
+  .bars small { color: var(--faint); font-size: 12px; }
+  .bars .n { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* Private trip */
+  .pv { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+  .quote { position: sticky; top: 16px; }
+  .quote .big { font-size: 30px; font-weight: 900; letter-spacing: -.02em; color: var(--navy); }
+  .qline { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line-2); font-size: 14px; }
+  .qline span { color: var(--muted); }
+
+  /* Stroll Pass */
+  .pass { background: var(--navy); color: #fff; border-radius: 16px; padding: 16px; }
+  .pass-top { display: flex; justify-content: space-between; align-items: center; }
+  .pass-top img { height: 22px; width: auto; }
+  .pass h4 { font-size: 19px; margin-top: 12px; }
+  .pass small { color: #c9bfa6; font-size: 12px; }
+  .stamps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+  .stamp { aspect-ratio: 1; border-radius: 50%; border: 2px dashed rgba(255,255,255,.3); display: grid; place-items: center; font-size: 10.5px; font-weight: 700; text-align: center; line-height: 1.1; color: rgba(255,255,255,.55); padding: 4px; background: none; }
+  .stamp.got { border: 0; background: var(--cyan); color: var(--navy); transform: rotate(-6deg); }
+  .stamp.got:nth-child(even) { transform: rotate(5deg); background: #f3c95d; }
+  .reward { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+  .reward .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--cyan-soft); display: grid; place-items: center; color: #7a5508; flex: none; }
+  .reward b { display: block; font-size: 13.5px; }
+  .reward small { color: var(--faint); font-size: 12px; }
+  .reward .pill { margin-left: auto; }
+
+  /* Modal & toast */
+  .modal { position: fixed; inset: 0; background: rgba(31,42,37,.45); display: none; place-items: center; z-index: 60; padding: 16px; }
+  .modal.on { display: grid; animation: fade .2s ease; }
+  .modal .box { background: #fff; border-radius: 14px; width: min(420px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; padding: 20px; box-shadow: 0 30px 60px rgba(31,42,37,.3); }
+  .modal .box-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .modal .box-head h3 { font-size: 17px; color: var(--navy); }
+  .x { border: 0; background: var(--paper-2); width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; color: var(--navy); }
+  .scan { aspect-ratio: 1; border-radius: 14px; background: #141a17; position: relative; overflow: hidden; display: grid; place-items: center; }
+  .scan::before { content: ""; width: 60%; aspect-ratio: 1; border: 3px solid var(--cyan); border-radius: 14px; }
+  .scan::after { content: ""; position: absolute; left: 20%; right: 20%; height: 2px; background: var(--cyan); top: 20%; animation: scanline 1.6s ease-in-out infinite alternate; }
+  @keyframes scanline { to { top: 80%; } }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); background: var(--navy); color: #fff; padding: 11px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 70; box-shadow: 0 10px 30px rgba(31,42,37,.3); max-width: calc(100vw - 32px); text-align: center; }
+  .toast.on { opacity: 1; transform: translateX(-50%); }
+
+  @media (prefers-reduced-motion: reduce) { .scan::after { animation: none; } .screen.on, .ph-view.on, .modal.on { animation: none; } }
+  @media (max-width: 1100px) {
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rep-grid, .pv { grid-template-columns: minmax(0, 1fr); }
+    .quote { position: static; }
+    .stage { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: minmax(0, 1fr); align-content: start; }
+    .side { position: sticky; top: 0; z-index: 20; height: auto; gap: 8px; padding: 10px 0; overflow: visible; }
+    .side-brand { padding: 0 16px; }
+    .side-brand img { height: 24px; }
+    .side-label, .side-foot { display: none; }
+    .side-nav { flex-direction: row; gap: 6px; overflow-x: auto; padding: 0 16px 2px; scrollbar-width: none; }
+    .side-nav::-webkit-scrollbar { display: none; }
+    .side-nav a { flex: none; padding: 6px 11px; font-size: 13px; background: rgba(255,255,255,.07); white-space: nowrap; gap: 6px; }
+    .side-nav a .ico { display: none; }
+    .main { padding: 0 16px 40px; }
+    .topbar { display: none; }
+    .page-head { margin-top: 18px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 14px; }
+    .demo-bar { font-size: 12px; padding: 5px 14px; line-height: 1.4; }
+    .main { padding: 0 14px 32px; }
+    .page-head { gap: 10px; margin-bottom: 14px; }
+    .page-head h1 { font-size: 21px; }
+    .page-head p { font-size: 13.5px; }
+    .page-head .acts { width: 100%; }
+    .page-head .acts .btn, .page-head .acts .seg { flex: 1; }
+    .page-head .acts .seg button { flex: 1; }
+    .kpis { gap: 8px; margin-bottom: 12px; }
+    .kpi { padding: 12px; }
+    .kpi b { font-size: 20px; }
+    .kpi small { font-size: 12px; }
+    .kpi span { font-size: 11.5px; }
+    .card { padding: 14px; border-radius: 11px; }
+    .tbl-wrap { margin: 0 -14px; padding: 0 14px; }
+    .tbl { font-size: 13px; }
+    .phone { max-width: 320px; border-radius: 38px; padding: 9px; }
+    .phone-in { height: 600px; border-radius: 30px; }
+    .bars li { grid-template-columns: minmax(0, 1fr) 70px 44px; gap: 8px; }
+    .row2 { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="demo-bar">Demo tampilan sistem tur untuk Stroll Around. Bisa diklik, tapi belum tersambung ke data asli. Semua nama, jadwal, dan angka hanya contoh. <a href="../index.html">Kembali ke penawaran</a></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2"/><path d="M3 8h14M7 2.5v3M13 2.5v3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 20 20"><path d="M10 18s-6-5.2-6-9.6A6 6 0 0 1 16 8.4C16 12.8 10 18 10 18z"/><circle cx="10" cy="8.4" r="2.1"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5"/><rect x="3" y="12" width="5" height="5"/><path d="M12 12h2v2h-2zM15 15h2v2h-2zM12 16h1"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 20 20"><path d="M3 4h14v9H8l-4 3v-3H3z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 20 20"><path d="m6 10 3 3 6-6"/><rect x="3" y="3" width="14" height="14" rx="3"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 20 20"><path d="M10 17s-6-3.8-6-8.4A3.4 3.4 0 0 1 10 6.4a3.4 3.4 0 0 1 6 2.2C16 13.2 10 17 10 17z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 20 20"><path d="M3 17h14M5 14V9M9 14V5M13 14v-4M17 14V7"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 2.2 12.7 0 15M10 2.5c-2.2 2.3-2.2 12.7 0 15"/></symbol>
+    <symbol id="i-pass" viewBox="0 0 20 20"><rect x="2.5" y="5" width="15" height="11" rx="2"/><circle cx="7" cy="10.5" r="1.4"/><circle cx="10.5" cy="10.5" r="1.4"/><circle cx="14" cy="10.5" r="1.4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 20 20"><circle cx="9" cy="9" r="5.5"/><path d="m13 13 4 4"/></symbol>
+    <symbol id="i-back" viewBox="0 0 20 20"><path d="M12 4 6 10l6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5 5 15"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4v12M4 10h12"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 20 20"><path d="M5 14V9a5 5 0 0 1 10 0v5l1.5 2h-13zM8.5 18a1.7 1.7 0 0 0 3 0"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 20 20"><rect x="3" y="8" width="14" height="9" rx="1"/><path d="M2.5 5.5h15V8h-15zM10 5.5V17M10 5.5S8.5 2 6.5 3s.5 2.5 3.5 2.5zM10 5.5s1.5-3.5 3.5-2.5-.5 2.5-3.5 2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 20 20"><path d="M5 3h3l1.5 4-2 1.2a9 9 0 0 0 4.3 4.3L13 10.5l4 1.5v3a2 2 0 0 1-2 2A13 13 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 20 20"><path d="m10 2 2.4 5 5.4.7-4 3.8 1 5.4L10 14.3 5.2 17l1-5.4-4-3.8 5.4-.7z"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <aside class="side">
+    <a class="side-brand" href="#jadwal"><img src="../assets/logo-stroll-around-white.png" alt="Stroll Around"><small>Sistem tur · demo</small></a>
+    <nav class="side-nav" aria-label="Layar demo">
+      <p class="side-label">Paket Rapi</p>
+      <a href="#jadwal" data-s="jadwal"><svg class="ico"><use href="#i-cal"/></svg><span>Jadwal &amp; kuota</span></a>
+      <a href="#rute" data-s="rute"><svg class="ico"><use href="#i-pin"/></svg><span>Halaman rute</span></a>
+      <p class="side-label">Paket Lancar</p>
+      <a href="#bayar" data-s="bayar"><svg class="ico"><use href="#i-qr"/></svg><span>Commitment fee QRIS</span></a>
+      <a href="#wa" data-s="wa"><svg class="ico"><use href="#i-wa"/></svg><span>WhatsApp otomatis</span></a>
+      <a href="#checkin" data-s="checkin"><svg class="ico"><use href="#i-check"/></svg><span>Check-in</span><em>6</em></a>
+      <a href="#tip" data-s="tip"><svg class="ico"><use href="#i-heart"/></svg><span>Pay-as-you-love</span></a>
+      <a href="#dasbor" data-s="dasbor"><svg class="ico"><use href="#i-chart"/></svg><span>Dasbor tim</span></a>
+      <p class="side-label">Paket Tumbuh</p>
+      <a href="#private" data-s="private"><svg class="ico"><use href="#i-globe"/></svg><span>Private trip &amp; EN</span><em>2</em></a>
+      <a href="#pass" data-s="pass"><svg class="ico"><use href="#i-pass"/></svg><span>Stroll Pass</span></a>
+    </nav>
+    <div class="side-foot"><img src="../assets/dar-mascot-128.png" alt=""><span><b>Dibuat oleh Dar Dev</b><small>Demo tampilan, data contoh</small></span></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search"><svg class="ico"><use href="#i-search"/></svg><span>Cari peserta, rute, atau tiket</span></div>
+      <div class="topbar-r"><span class="pill mute">Kamis, 12 Nov 2026</span><span class="av c" title="Admin">SA</span></div>
+    </div>
+
+    <!-- ============ JADWAL & KUOTA ============ -->
+    <section class="screen" id="s-jadwal">
+      <div class="page-head">
+        <div><h1>Jadwal &amp; kuota kursi <span class="pill">Rapi</span></h1><p>Kiri: yang dilihat peserta waktu daftar. Kanan: admin bikin jadwal sekali.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in" id="ph-jadwal">
+            <div class="ph-status"><span>08.41</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on" data-v="pilih">
+              <div class="ph-head"><div class="row"><img class="logo" src="../assets/logo-stroll-around-white.png" alt="Stroll Around"></div><b style="margin-top:10px;font-size:17px">Weekend ini</b><small>Pilih satu atau lebih rute · ± 2 jam per tur</small></div>
+              <div class="ph-body">
+                <div class="chips" data-group="hari"><button class="on">Sab 14 Nov</button><button>Min 15 Nov</button><button>Sab 21 Nov</button></div>
+                <button class="tour on" data-tour><img class="ph" src="../assets/foto-kota-tua.webp" alt="" style="object-position:50% 10%"><span><b>Pecinan Glodok</b><small>Min 09.00 · Jakarta Barat</small><span class="seat low">Sisa 3 kursi <span class="meter"><i class="b" style="width:85%"></i></span></span></span><span class="chk"></span></button>
+                <button class="tour" data-tour><img class="ph" src="../assets/foto-kopi-luwak.webp" alt="" style="object-position:50% 90%"><span><b>Titik 0 Menteng</b><small>Min 15.00 · Jakarta Pusat</small><span class="seat">Sisa 11 kursi <span class="meter"><i style="width:45%"></i></span></span></span><span class="chk"></span></button>
+                <button class="tour" data-tour><img class="ph" src="../assets/foto-siomay.webp" alt="" style="object-position:50% 60%"><span><b>Menculik Raden Saleh</b><small>Min 15.30 · Cikini</small><span class="seat">Sisa 8 kursi <span class="meter"><i style="width:60%"></i></span></span></span><span class="chk"></span></button>
+                <button class="tour full" disabled><img class="ph" src="../assets/foto-malam.webp" alt="" style="object-position:50% 70%"><span><b>Malam di Kota Tua</b><small>Sab 19.00 · Jakarta Barat</small><span class="seat low">Penuh · masuk daftar tunggu</span></span><span class="chk"></span></button>
+                <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px"><span><b style="font-size:13.5px">Ajak teman</b><br><small class="faint">Tiap orang dapat tiket sendiri</small></span><span class="stepper"><button data-step="-1">−</button><span>1</span><button data-step="1">+</button></span></div>
+              </div>
+              <div class="ph-foot"><button class="btn pri block" data-ph="data" data-target="ph-jadwal">Lanjut · <span id="tourCount">1</span> rute dipilih</button></div>
+            </div>
+            <div class="ph-view" data-v="data">
+              <div class="ph-head"><div class="row"><button class="ph-back" data-ph="pilih" data-target="ph-jadwal" aria-label="Kembali"><svg class="ico"><use href="#i-back"/></svg></button><div><b>Data peserta</b><small>Pecinan Glodok · Min 09.00</small></div></div></div>
+              <div class="ph-body">
+                <label class="field">Nama<input value="Nadia Putri"></label>
+                <label class="field">No. WhatsApp<input value="0812 3456 4471"></label>
+                <label class="field">Instagram (opsional)<input value="@nadiajalanjalan"></label>
+                <label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" checked style="accent-color:var(--blue);width:18px;height:18px">Tidak merokok selama tur</label>
+                <label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" checked style="accent-color:var(--blue);width:18px;height:18px">Masuk grup WhatsApp peserta</label>
+              </div>
+              <div class="ph-foot"><a class="btn pri block" href="#bayar">Bayar commitment fee Rp10.000</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Buat jadwal</h3><small>Sekali isi, langsung tampil di web</small></div>
+            <div class="grid" style="gap:12px">
+              <label class="field">Rute<select><option>Pecinan Glodok</option><option>Titik 0 Menteng</option><option>Menculik Raden Saleh</option><option>Malam di Kota Tua</option></select></label>
+              <div class="row2"><label class="field">Tanggal<input value="Minggu, 22 Nov 2026"></label><label class="field">Jam kumpul<input value="09.00"></label></div>
+              <div class="row2"><label class="field">Kuota kursi<input value="20"></label><label class="field">Pemandu<select><option>Kak Ayu</option><option>Kak Bima</option></select></label></div>
+              <label class="field">Titik kumpul<input value="Gerbang Vihara Dharma Bhakti, Glodok"></label>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px"><span><b>Tutup otomatis</b><br><small class="faint">Saat kursi penuh atau pukul 21.00 H-1</small></span><button class="sw" aria-pressed="true" aria-label="Tutup otomatis"></button></div>
+              <button class="btn pri block" data-toast="Contoh: jadwal Pecinan Glodok 22 Nov tampil di web">Simpan &amp; tampilkan</button>
+            </div>
+          </div>
+          <div class="hint"><svg class="ico"><use href="#i-bell"/></svg><span>Sisa kursi berkurang sendiri tiap ada yang bayar. Kalau penuh, peserta bisa masuk daftar tunggu.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HALAMAN RUTE ============ -->
+    <section class="screen" id="s-rute">
+      <div class="page-head">
+        <div><h1>Halaman per rute <span class="pill">Rapi</span></h1><p>16 rute dari PDF Drive jadi halaman sendiri yang ringan di HP dan bisa muncul di Google.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in">
+            <div class="ph-status"><span>20.15</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on">
+              <div class="ph-body" style="padding:0;gap:0">
+                <img class="hero-img" src="../assets/foto-kota-tua.webp" alt="Gedung tua di Kota Tua" style="object-position:50% 12%">
+                <div style="padding:14px;display:grid;gap:10px">
+                  <div><span class="pill sun">Jakarta Barat · ± 2 jam · 2,3 km</span><h4 style="font-size:20px;margin-top:8px;color:var(--navy)">Kota Tua</h4></div>
+                  <div class="tabs" data-pane="rutePanes" style="margin-bottom:0"><button class="on" data-p="0">Cerita</button><button data-p="1">Titik</button><button data-p="2">Jadwal</button></div>
+                  <div id="rutePanes">
+                    <div class="tabpane on"><p style="font-size:13.5px;color:var(--muted)">Dari kantor dagang VOC yang sekarang jadi toko teh, sampai gang kecil tempat kopi diseduh sejak 1927. Jalan pelan, dengar ceritanya, dan bayar sesuai rasa senang setelah tur.</p></div>
+                    <div class="tabpane"><ol class="stops">
+                      <li><span class="n">1</span><span><b>Stasiun Jakarta Kota</b><small>Titik kumpul · 09.00</small></span></li>
+                      <li><span class="n">2</span><span><b>Museum Fatahillah</b><small>Cerita balai kota lama</small></span></li>
+                      <li><span class="n">3</span><span><b>Kantor dagang tua</b><small>Sekarang jadi toko teh</small></span></li>
+                      <li><span class="n">4</span><span><b>Jembatan Kota Intan</b><small>Jembatan angkat terakhir</small></span></li>
+                    </ol></div>
+                    <div class="tabpane"><div style="display:grid;gap:8px">
+                      <div class="spec"><div><span>Sab 21 Nov · 08.00</span><b style="color:var(--blue)">Sisa 9</b></div><div><span>Min 29 Nov · 08.00</span><b style="color:var(--blue)">Sisa 20</b></div></div>
+                    </div></div>
+                  </div>
+                  <svg viewBox="0 0 300 120" style="border-radius:12px;background:#dcebe5" aria-label="Peta rute"><g stroke="#fff" stroke-width="6" fill="none" opacity=".9"><path d="M0 40h300M0 90h300M70 0v120M200 0v120"/></g><path d="M30 100 C80 80 90 50 130 45 S220 30 260 18" fill="none" stroke="#bf4a2c" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><g fill="#eeb12c" stroke="#24302b" stroke-width="2"><circle cx="30" cy="100" r="7"/><circle cx="130" cy="45" r="7"/><circle cx="200" cy="34" r="7"/><circle cx="260" cy="18" r="7"/></g></svg>
+                </div>
+              </div>
+              <div class="ph-foot"><a class="btn pri block" href="#jadwal">Daftar · Sab 21 Nov 08.00</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Semua rute</h3><small>16 rute · klik buat edit</small></div>
+            <div class="tbl-wrap"><table class="tbl" style="min-width:460px">
+              <thead><tr><th>Rute</th><th>Wilayah</th><th class="r">Peserta</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><b>Kota Tua</b><small>4 titik · 2,3 km</small></td><td>Jakarta Barat</td><td class="r">412</td><td><span class="pill ok">Tayang</span></td></tr>
+                <tr><td><b>Pecinan Glodok</b><small>6 titik · 2,8 km</small></td><td>Jakarta Barat</td><td class="r">538</td><td><span class="pill ok">Tayang</span></td></tr>
+                <tr><td><b>Titik 0 Menteng</b><small>5 titik · 2,1 km</small></td><td>Jakarta Pusat</td><td class="r">297</td><td><span class="pill ok">Tayang</span></td></tr>
+                <tr><td><b>Kebun Raya Bogor II</b><small>Dari PDF Drive</small></td><td>Bogor</td><td class="r">–</td><td><span class="pill sun">Draf</span></td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="hint"><svg class="ico"><use href="#i-bell"/></svg><span>Ketik "walking tour Kota Tua" di Google, halaman ini yang dibidik muncul. Gak perlu buka PDF yang berat di HP.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMMITMENT FEE QRIS ============ -->
+    <section class="screen" id="s-bayar">
+      <div class="page-head">
+        <div><h1>Commitment fee via QRIS <span class="pill">Lancar</span></h1><p>Rp10.000 per rute, lunas otomatis. Kursi baru terkunci setelah bayar.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in" id="ph-bayar">
+            <div class="ph-status"><span>08.43</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on" data-v="qris">
+              <div class="ph-head"><div class="row"><a class="ph-back" href="#jadwal" aria-label="Kembali"><svg class="ico"><use href="#i-back"/></svg></a><div><b>Scan QRIS</b><small>Bisa GoPay, OVO, DANA, ShopeePay, m-banking</small></div></div></div>
+              <div class="ph-body">
+                <div class="qris"><svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" data-qr="7"></svg><span class="amt">Rp10.000</span><small class="faint" style="text-align:center">Pecinan Glodok · Min 15 Nov 09.00<br>Dikembalikan jadi freebies atau donasi</small></div>
+                <div class="spec"><div><span>Bayar sebelum</span><b>08.58 · 15 menit</b></div><div><span>Kursi</span><b>Ditahan sementara</b></div></div>
+              </div>
+              <div class="ph-foot"><button class="btn pri block" data-ph="lunas" data-target="ph-bayar">Saya sudah bayar</button></div>
+            </div>
+            <div class="ph-view" data-v="lunas">
+              <div class="ph-head"><div class="row"><img class="logo" src="../assets/logo-stroll-around-white.png" alt=""></div></div>
+              <div class="ph-body">
+                <div style="text-align:center;padding:8px 0"><span class="pill ok dot" style="font-size:13px">Lunas · kursi terkunci</span><h4 style="font-size:20px;margin-top:10px;color:var(--navy)">Sampai jumpa hari Minggu, Nadia!</h4><small class="faint">Tiket juga sudah dikirim ke WhatsApp</small></div>
+                <div class="ticket"><div><small>Tiket SA-0412</small><b>Pecinan Glodok</b><small style="margin-top:6px">Min 15 Nov · 09.00<br>Gerbang Vihara Dharma Bhakti</small></div><svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" data-qr="31"></svg></div>
+                <button class="btn block" data-ph="qris" data-target="ph-bayar">Lihat QRIS lagi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Pembayaran masuk</h3><span class="pill ok dot">Cek otomatis</span></div>
+            <ul class="list">
+              <li><span class="av">NP</span><span><b>Nadia Putri</b><small>Pecinan Glodok · 08.44</small></span><span class="end"><b>Rp10.000</b><br><span class="pill ok">Lunas</span></span></li>
+              <li><span class="av c">RA</span><span><b>Raka A. + 1 teman</b><small>Titik 0 Menteng · 08.31</small></span><span class="end"><b>Rp20.000</b><br><span class="pill ok">Lunas</span></span></li>
+              <li><span class="av n">SW</span><span><b>Sinta W.</b><small>Menculik Raden Saleh · 08.20</small></span><span class="end"><b>Rp10.000</b><br><span class="pill sun">Menunggu</span></span></li>
+              <li><span class="av b">DH</span><span><b>Dimas H.</b><small>Pecinan Glodok · kemarin</small></span><span class="end"><b>Rp10.000</b><br><span class="pill mute">Kedaluwarsa</span></span></li>
+            </ul>
+          </div>
+          <div class="hint"><svg class="ico"><use href="#i-bell"/></svg><span>Uang langsung masuk ke akun QRIS milik Stroll Around. Gak ada lagi cocokin mutasi satu-satu.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WA OTOMATIS ============ -->
+    <section class="screen" id="s-wa">
+      <div class="page-head">
+        <div><h1>WhatsApp otomatis <span class="pill">Lancar</span></h1><p>Tiket, link grup, dan pengingat terkirim sendiri. Kabar perubahan jadwal cukup satu tombol.</p></div>
+        <div class="acts"><button class="btn pri" data-open="kabarModal"><svg class="ico"><use href="#i-bell"/></svg>Kirim kabar perubahan</button></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in">
+            <div class="ph-status"><span>18.00</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on">
+              <div class="wa-top"><span class="lg"><img src="../assets/logo-stroll-around.png" alt=""></span><div><b>Stroll Around</b><small>Akun bisnis</small></div></div>
+              <div class="wa-body">
+                <div class="bub in">Hai Nadia! Kamu terdaftar di <b>Pecinan Glodok</b>, Minggu 15 Nov, 09.00 🙌
+Tiket: SA-0412 (tunjukkan saat check-in)<time>Rab 08.44</time></div>
+                <div class="bub in">Gabung grup peserta: <span class="lnk">chat.whatsapp.com/…</span><time>Rab 08.44</time></div>
+                <div class="bub in">⏰ <b>Besok kita jalan!</b>
+Kumpul 09.00 di Gerbang Vihara Dharma Bhakti.
+Peta: <span class="lnk">strollaround.id/t/0412</span>
+Prakiraan: cerah berawan, bawa topi ya.
+Pemandu: Kak Ayu<time>Sab 18.00</time></div>
+                <div class="bub out">Siap kak, sampai ketemu! 🙏<time>Sab 18.04</time></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Pesan otomatis</h3><small>Nyalakan atau matikan</small></div>
+            <ul class="list">
+              <li><span><b>Tiket setelah bayar</b><small>Langsung, berisi kode tiket</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Tiket setelah bayar"></button></span></li>
+              <li><span><b>Link grup peserta</b><small>Langsung setelah tiket</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Link grup"></button></span></li>
+              <li><span><b>Pengingat H-1</b><small>Pukul 18.00 · titik kumpul, peta, cuaca</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Pengingat H-1"></button></span></li>
+              <li><span><b>Pesan untuk yang telat</b><small>15 menit setelah jam kumpul</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Pesan telat"></button></span></li>
+              <li><span><b>Terima kasih + tip</b><small>1 jam setelah tur selesai</small></span><span class="end"><button class="sw" aria-pressed="false" aria-label="Terima kasih"></button></span></li>
+            </ul>
+          </div>
+          <div class="hint"><svg class="ico"><use href="#i-bell"/></svg><span>Pakai nomor 0859-5637-3064 yang sekarang. Peserta tetap bisa membalas, dan admin balas seperti biasa.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHECK-IN ============ -->
+    <section class="screen" id="s-checkin">
+      <div class="page-head">
+        <div><h1>Check-in di titik kumpul <span class="pill">Lancar</span></h1><p>Yang dibuka pemandu di HP. Ketuk nama atau scan tiket.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in">
+            <div class="ph-status"><span>09.04</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on">
+              <div class="ph-head"><div class="row"><div><b>Pecinan Glodok</b><small>Min 15 Nov · 09.00 · Kak Ayu</small></div><button class="btn sun sm" style="margin-left:auto" data-open="scanModal"><svg class="ico"><use href="#i-qr"/></svg>Scan</button></div></div>
+              <div class="ph-body">
+                <div class="ci-count"><span><small>Sudah hadir</small><b id="ciNum">14</b><span class="faint"> / 20</span></span><span class="meter" style="width:120px"><i id="ciBar" style="width:70%"></i></span></div>
+                <div class="chips" data-group="ciF"><button class="on">Semua</button><button>Belum datang · 6</button></div>
+                <div id="ciList" style="display:grid;gap:8px">
+                  <div class="ci in"><span class="av">NP</span><span><b>Nadia Putri</b><small>SA-0412</small></span><button class="tick">Hadir</button></div>
+                  <div class="ci in"><span class="av c">RA</span><span><b>Raka A.</b><small>SA-0398 · bawa 1 teman</small></span><button class="tick">Hadir</button></div>
+                  <div class="ci late"><span class="av n">SW</span><span><b>Sinta W.</b><small>Telat 5 menit</small></span><button class="tick">Telat</button></div>
+                  <div class="ci"><span class="av b">DH</span><span><b>Dimas H.</b><small>SA-0420</small></span><button class="tick">Belum</button></div>
+                  <div class="ci"><span class="av g">LK</span><span><b>Laura K.</b><small>SA-0421 · ikut ke-4</small></span><button class="tick">Belum</button></div>
+                  <div class="ci"><span class="av">BY</span><span><b>Bayu Y.</b><small>SA-0425</small></span><button class="tick">Belum</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Coba di layar HP</h3></div>
+            <ul class="list">
+              <li><span class="av n" style="background:var(--cyan-soft);color:#7a5508"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Ketuk tombol di samping nama</b><small>Belum → Hadir. Angka di atas ikut naik.</small></span></li>
+              <li><span class="av n" style="background:var(--cyan-soft);color:#7a5508"><svg class="ico"><use href="#i-qr"/></svg></span><span><b>Atau scan tiket peserta</b><small>Kode QR dari pesan WhatsApp mereka</small></span></li>
+              <li><span class="av n" style="background:var(--cyan-soft);color:#7a5508"><svg class="ico"><use href="#i-phone"/></svg></span><span><b>Yang belum datang bisa ditelepon</b><small>Nomornya langsung dari daftar</small></span></li>
+            </ul>
+          </div>
+          <div class="hint"><svg class="ico"><use href="#i-bell"/></svg><span>Data kehadiran masuk ke dasbor, jadi kelihatan siapa yang sering daftar tapi gak datang.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAY AS YOU LOVE ============ -->
+    <section class="screen" id="s-tip">
+      <div class="page-head">
+        <div><h1>Pay-as-you-love lewat QRIS <span class="pill">Lancar</span></h1><p>Setelah tur, peserta bayar sesuai rasa senang. Tunai di lokasi tetap bisa.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in" id="ph-tip">
+            <div class="ph-status"><span>12.10</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on" data-v="tip">
+              <div class="ph-head"><div class="row"><img class="logo" src="../assets/logo-stroll-around-white.png" alt=""></div><b style="margin-top:10px;font-size:17px">Makasih udah jalan bareng, Nadia!</b><small>Pecinan Glodok · bersama Kak Ayu</small></div>
+              <div class="ph-body">
+                <p class="ph-label">Seberapa suka turnya?</p>
+                <div class="stars" id="stars"><button aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div>
+                <p class="ph-label">Bayar sesuai rasa senang</p>
+                <div class="amts" data-group="amt"><button>Rp20rb</button><button class="on">Rp50rb</button><button>Rp100rb</button><button>Bebas</button></div>
+                <label class="field">Satu kalimat buat pemandu (opsional)<input value="Ceritanya seru, jadi pengin ke Glodok lagi!"></label>
+              </div>
+              <div class="ph-foot"><button class="btn pri block" data-ph="qr" data-target="ph-tip">Lanjut bayar lewat QRIS</button></div>
+            </div>
+            <div class="ph-view" data-v="qr">
+              <div class="ph-head"><div class="row"><button class="ph-back" data-ph="tip" data-target="ph-tip" aria-label="Kembali"><svg class="ico"><use href="#i-back"/></svg></button><div><b>Terima kasih 💛</b><small>Pay-as-you-love</small></div></div></div>
+              <div class="ph-body">
+                <div class="qris"><svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" data-qr="53"></svg><span class="amt">Rp50.000</span><small class="faint">Untuk Stroll Around &amp; Kak Ayu</small></div>
+                <p class="ph-label">Rute berikutnya buat kamu</p>
+                <button class="tour"><img class="ph" src="../assets/foto-malam.webp" alt="" style="object-position:50% 70%"><span><b>Malam di Kota Tua</b><small>Sab 21 Nov · 19.00</small><span class="seat">Sisa 6 kursi</span></span><span></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Tip terkumpul minggu ini</h3><small>QRIS + tunai yang dicatat pemandu</small></div>
+            <div class="kpis" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:12px">
+              <div class="card kpi" style="box-shadow:none"><small>Total tip</small><b>Rp 1,9 jt</b><span>dari 38 peserta</span></div>
+              <div class="card kpi" style="box-shadow:none"><small>Rata-rata rating</small><b>4,8</b><span>dari 41 ulasan</span></div>
+            </div>
+            <ul class="list">
+              <li><span class="av">NP</span><span><b>"Ceritanya seru, jadi pengin ke Glodok lagi!"</b><small>Nadia · Pecinan Glodok · ★★★★★</small></span></li>
+              <li><span class="av c">RA</span><span><b>"Kak Bima jago banget ceritanya"</b><small>Raka · Titik 0 Menteng · ★★★★★</small></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DASBOR ============ -->
+    <section class="screen" id="s-dasbor">
+      <div class="page-head">
+        <div><h1>Dasbor tim <span class="pill">Lancar</span></h1><p>Dibuka dari HP atau laptop. Bisa diunduh ke Excel kapan saja.</p></div>
+        <div class="acts"><span class="seg" id="repSeg"><button class="on" data-r="0">Minggu ini</button><button data-r="1">Bulan ini</button><button data-r="2">Tahun ini</button></span><button class="btn" data-toast="Contoh: data peserta diunduh ke Excel">Unduh Excel</button></div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi"><small>Pendaftar</small><b data-rep="54|231|2.480">54</b><span><span class="up">+12</span> dari sebelumnya</span></div>
+        <div class="card kpi"><small>Commitment fee</small><b data-rep="Rp540rb|Rp2,3 jt|Rp24,8 jt">Rp540rb</b><span>lunas otomatis</span></div>
+        <div class="card kpi"><small>Tip pay-as-you-love</small><b data-rep="Rp1,9 jt|Rp8,1 jt|Rp86 jt">Rp1,9 jt</b><span>QRIS + tunai</span></div>
+        <div class="card kpi alert"><small>Tidak datang</small><b data-rep="6%|8%|9%">6%</b><span>sudah dihubungi</span></div>
+      </div>
+      <div class="rep-grid">
+        <div class="card">
+          <div class="card-head"><h3>Kursi terisi</h3><small>Akhir pekan 14–15 Nov</small></div>
+          <ul class="bars">
+            <li><span><b>Pecinan Glodok</b><small>Min 09.00 · 20 kursi</small></span><span class="meter"><i class="b" style="width:100%"></i></span><span class="n">20/20</span></li>
+            <li><span><b>Malam di Kota Tua</b><small>Sab 19.00 · 15 kursi</small></span><span class="meter"><i class="b" style="width:87%"></i></span><span class="n">13/15</span></li>
+            <li><span><b>Menculik Raden Saleh</b><small>Min 15.30 · 20 kursi</small></span><span class="meter"><i style="width:60%"></i></span><span class="n">12/20</span></li>
+            <li><span><b>Titik 0 Menteng</b><small>Min 15.00 · 20 kursi</small></span><span class="meter"><i style="width:45%"></i></span><span class="n">9/20</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Peserta setia</h3><small>Paling sering ikut</small></div>
+          <ul class="list">
+            <li><span class="av g">LK</span><span><b>Laura K.</b><small>9 rute · Stroll Pass 9 cap</small></span><span class="end"><span class="pill sun">Hadiah siap</span></span></li>
+            <li><span class="av">NP</span><span><b>Nadia Putri</b><small>5 rute</small></span><span class="end"><span class="pill">5 cap</span></span></li>
+            <li><span class="av c">RA</span><span><b>Raka A.</b><small>4 rute · sering ajak teman</small></span><span class="end"><span class="pill">4 cap</span></span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Rute paling diminati</h3><small>Bulan ini</small></div>
+          <svg viewBox="0 0 600 200" style="width:100%;height:200px" preserveAspectRatio="none" aria-label="Grafik rute paling diminati">
+            <g fill="#2d6a64"><rect x="20" y="30" width="80" height="150" rx="6"/><rect x="130" y="60" width="80" height="120" rx="6"/><rect x="240" y="80" width="80" height="100" rx="6"/><rect x="350" y="110" width="80" height="70" rx="6"/></g><rect x="460" y="130" width="80" height="50" rx="6" fill="#eeb12c"/>
+            <g fill="#77837b" font-size="13" font-family="Satoshi, sans-serif" text-anchor="middle"><text x="60" y="196">Glodok</text><text x="170" y="196">Kota Tua</text><text x="280" y="196">Menteng</text><text x="390" y="196">Cikini</text><text x="500" y="196">Bogor</text></g>
+          </svg>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Perlu ditindaklanjuti</h3></div>
+          <ul class="list">
+            <li><span><b>3 peserta gak datang tanpa kabar</b><small>Pecinan Glodok · Minggu</small></span><span class="end"><button class="btn sm" data-toast="Contoh: pesan dikirim ke 3 peserta">Kirim pesan</button></span></li>
+            <li><span><b>Malam di Kota Tua hampir penuh</b><small>Sisa 2 kursi</small></span><span class="end"><button class="btn sm" data-toast="Contoh: jadwal tambahan dibuat">Buka jadwal baru</button></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRIVATE TRIP & EN ============ -->
+    <section class="screen" id="s-private">
+      <div class="page-head">
+        <div><h1>Private trip &amp; turis asing <span class="pill">Tumbuh</span></h1><p>Form tur privat dengan penawaran harga otomatis, dan web versi bahasa Inggris.</p></div>
+        <div class="acts"><span class="seg" id="langSeg"><button class="on" data-l="id">Bahasa Indonesia</button><button data-l="en">English</button></span></div>
+      </div>
+      <div class="pv">
+        <div class="card">
+          <div class="card-head"><h3 data-i18n="Minta tur privat|Request a private tour">Minta tur privat</h3><small data-i18n="Untuk kantor, sekolah, komunitas|For offices, schools, groups">Untuk kantor, sekolah, komunitas</small></div>
+          <div class="grid" style="gap:12px">
+            <label class="field"><span data-i18n="Rute|Route">Rute</span><select><option>Pecinan Glodok</option><option selected>Kota Tua</option><option>Titik 0 Menteng</option></select></label>
+            <div class="row2"><label class="field"><span data-i18n="Tanggal|Date">Tanggal</span><input value="Sabtu, 5 Des 2026"></label><label class="field"><span data-i18n="Jumlah orang|Group size">Jumlah orang</span><span class="stepper" style="width:max-content"><button data-step="-5" data-q>−</button><span id="qN">25</span><button data-step="5" data-q>+</button></span></label></div>
+            <label class="field"><span data-i18n="Jenis grup|Group type">Jenis grup</span><span class="seg" data-group="gtype" style="width:max-content"><button class="on" data-i18n="Kantor|Office">Kantor</button><button data-i18n="Sekolah|School">Sekolah</button><button data-i18n="Komunitas|Community">Komunitas</button></span></label>
+            <label class="field"><span data-i18n="Bahasa pemandu|Guide language">Bahasa pemandu</span><select><option>Indonesia</option><option>English</option></select></label>
+            <label class="field"><span data-i18n="Catatan|Notes">Catatan</span><textarea>Team building, ada 3 peserta pakai kursi roda.</textarea></label>
+          </div>
+        </div>
+        <div class="card quote">
+          <div class="card-head"><h3 data-i18n="Penawaran harga|Price quote">Penawaran harga</h3><span class="pill ok dot" data-i18n="Otomatis|Instant">Otomatis</span></div>
+          <div class="qline"><span data-i18n="Tur privat Kota Tua|Kota Tua private tour">Tur privat Kota Tua</span><b>Rp 1.500.000</b></div>
+          <div class="qline"><span><span id="qN2">25</span> <span data-i18n="orang × Rp 40.000|people × Rp 40,000">orang × Rp 40.000</span></span><b id="qPp">Rp 1.000.000</b></div>
+          <div class="qline"><span data-i18n="Pemandu tambahan|Extra guide">Pemandu tambahan</span><b>Rp 300.000</b></div>
+          <p class="faint" style="font-size:13px;margin-top:12px" data-i18n="Total|Total">Total</p>
+          <p class="big" id="qTot">Rp 2.800.000</p>
+          <div style="display:grid;gap:8px;margin-top:14px">
+            <button class="btn pri block" data-toast="Contoh: penawaran PDF dikirim ke email & WA pemesan" data-i18n="Kirim penawaran|Send quote">Kirim penawaran</button>
+            <button class="btn block" data-toast="Contoh: chat admin dibuka" data-i18n="Tanya admin dulu|Ask admin first">Tanya admin dulu</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h3>Permintaan masuk</h3><small>2 baru</small></div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Pemesan</th><th>Rute</th><th>Tanggal</th><th class="r">Orang</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="who"><span class="av">PT</span><div>PT Arunika<small>HR · team building</small></div></div></td><td>Kota Tua</td><td>5 Des</td><td class="r">25</td><td><span class="pill sun">Baru</span></td></tr>
+            <tr><td><div class="who"><span class="av b">EM</span><div>Emma &amp; family<small>Netherlands · EN</small></div></div></td><td>Pecinan Glodok</td><td>28 Nov</td><td class="r">4</td><td><span class="pill sun">Baru</span></td></tr>
+            <tr><td><div class="who"><span class="av n">SM</span><div>SMA 8 Jakarta<small>Kelas sejarah</small></div></div></td><td>Titik 0 Menteng</td><td>20 Nov</td><td class="r">40</td><td><span class="pill ok">DP masuk</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- ============ STROLL PASS ============ -->
+    <section class="screen" id="s-pass">
+      <div class="page-head">
+        <div><h1>Stroll Pass <span class="pill">Tumbuh</span></h1><p>Kartu cap digital. Tiap rute yang diikuti dapat satu cap, 5 cap ditukar merchandise.</p></div>
+      </div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-in">
+            <div class="ph-status"><span>19.30</span><span>5G ▮▮▮</span></div>
+            <div class="ph-view on">
+              <div class="ph-body">
+                <div class="pass">
+                  <div class="pass-top"><img src="../assets/logo-stroll-around-white.png" alt="Stroll Around"><span class="pill sun">Stroll Pass</span></div>
+                  <h4>Nadia Putri</h4><small>Anggota sejak Jun 2026 · <span id="passCount">5</span> dari 8 cap</small>
+                  <div class="stamps" id="stamps">
+                    <button class="stamp got">Kota Tua</button><button class="stamp got">Glodok</button><button class="stamp got">Menteng</button><button class="stamp got">Cikini</button>
+                    <button class="stamp got">Blok M</button><button class="stamp">Pasar Baroe</button><button class="stamp">Bogor</button><button class="stamp">Ragunan</button>
+                  </div>
+                </div>
+                <p class="ph-label">Hadiah</p>
+                <div class="reward"><span class="ic"><svg class="ico"><use href="#i-gift"/></svg></span><span><b>Tote bag Stroll Around</b><small>5 cap</small></span><button class="pill ok" style="border:0" data-toast="Contoh: kode tukar hadiah dikirim ke WA">Tukar</button></div>
+                <div class="reward"><span class="ic"><svg class="ico"><use href="#i-gift"/></svg></span><span><b>Ikut 1 tur privat gratis</b><small>8 cap</small></span><span class="pill mute">3 lagi</span></div>
+                <p class="ph-label">Rute yang belum dicap</p>
+                <div class="chips"><button>Jalan Jajan Pasar Baroe</button><button>Kebun Raya Bogor</button><button>Ragunan</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain grid">
+          <div class="card">
+            <div class="card-head"><h3>Coba</h3></div>
+            <p class="muted" style="font-size:14px">Ketuk lingkaran kosong di kartu buat "dapat cap". Di aslinya, cap masuk sendiri waktu peserta check-in di titik kumpul.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Pengaturan hadiah</h3><small>Diatur admin</small></div>
+            <ul class="list">
+              <li><span><b>5 cap → Tote bag</b><small>Stok 24</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Aktifkan hadiah tote bag"></button></span></li>
+              <li><span><b>8 cap → Tur privat gratis</b><small>Maks. 4 orang</small></span><span class="end"><button class="sw" aria-pressed="true" aria-label="Aktifkan hadiah tur privat"></button></span></li>
+              <li><span><b>Pesan "rute baru" ke anggota</b><small>Saat ada rute baru tayang</small></span><span class="end"><button class="sw" aria-pressed="false" aria-label="Pesan rute baru"></button></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Modal kabar perubahan -->
+<div class="modal" id="kabarModal" role="dialog" aria-label="Kabar perubahan jadwal">
+  <div class="box">
+    <div class="box-head"><h3>Kabar perubahan jadwal</h3><button class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <div class="grid" style="gap:12px">
+      <label class="field">Tur<select><option>Pecinan Glodok · Min 15 Nov 09.00 (20 peserta)</option></select></label>
+      <label class="field">Jenis kabar<select><option>Ditunda karena hujan</option><option>Titik kumpul pindah</option><option>Dibatalkan</option></select></label>
+      <label class="field">Pesan<textarea>Hai! Karena hujan deras, tur Pecinan Glodok pindah ke Minggu 22 Nov jam 09.00. Commitment fee kamu otomatis pindah. Kalau gak bisa, balas "batal" ya.</textarea></label>
+      <button class="btn pri block" data-close data-toast="Contoh: kabar terkirim ke 20 peserta">Kirim ke 20 peserta</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal scan -->
+<div class="modal" id="scanModal" role="dialog" aria-label="Scan tiket">
+  <div class="box">
+    <div class="box-head"><h3>Scan tiket peserta</h3><button class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <div class="scan"></div>
+    <button class="btn pri block" style="margin-top:14px" data-close data-scan>Contoh: tiket SA-0420 terbaca</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* Demo tampilan saja: script hanya mengganti layar dan tampilan, tanpa data sungguhan. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const rp = n => 'Rp ' + n.toLocaleString('id-ID');
+  const toastEl = $('#toast'); let tt;
+  const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2200); };
+
+  // Kode QR hiasan (bukan QR asli)
+  $$('svg[data-qr]').forEach(svg => {
+    let s = +svg.dataset.qr; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const cells = [], fin = (x, y) => { for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) if (i === 0 || i === 6 || j === 0 || j === 6 || (i > 1 && i < 5 && j > 1 && j < 5)) cells.push([x + i, y + j]); };
+    const inF = (x, y) => (x < 8 && y < 8) || (x > 16 && y < 8) || (x < 8 && y > 16);
+    fin(0, 0); fin(18, 0); fin(0, 18);
+    for (let x = 0; x < 25; x++) for (let y = 0; y < 25; y++) if (!inF(x, y) && rnd() > .52) cells.push([x, y]);
+    svg.innerHTML = '<rect width="25" height="25" fill="#fff"/>' + cells.map(([x, y]) => `<rect x="${x}" y="${y}" width="1" height="1" fill="#24302b"/>`).join('');
+  });
+
+  // Ganti layar
+  const screens = ['jadwal', 'rute', 'bayar', 'wa', 'checkin', 'tip', 'dasbor', 'private', 'pass'];
+  function go() {
+    const id = screens.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'jadwal';
+    $$('.screen').forEach(s => s.classList.toggle('on', s.id === 's-' + id));
+    $$('.side-nav a').forEach(a => { if (a.dataset.s === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    const cur = $('.side-nav a[aria-current]'); if (cur && cur.parentNode.scrollWidth > cur.parentNode.clientWidth) cur.parentNode.scrollLeft = cur.offsetLeft - 16;
+    scrollTo(0, 0);
+  }
+  addEventListener('hashchange', go); go();
+
+  // Layar di dalam HP
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-ph]'); if (!b) return;
+    const ph = document.getElementById(b.dataset.target) || b.closest('.phone-in');
+    $$('.ph-view', ph).forEach(x => x.classList.toggle('on', x.dataset.v === b.dataset.ph));
+  });
+
+  // Grup pilihan, sakelar, penambah
+  document.addEventListener('click', e => {
+    const g = e.target.closest('[data-group] > button');
+    if (g) $$('button', g.parentNode).forEach(x => x.classList.toggle('on', x === g));
+    const sw = e.target.closest('.sw'); if (sw) sw.setAttribute('aria-pressed', sw.getAttribute('aria-pressed') !== 'true');
+    const st = e.target.closest('[data-step]');
+    if (st) { e.preventDefault(); const s = st.parentNode.querySelector('span'); s.textContent = Math.max(st.hasAttribute('data-q') ? 5 : 0, +s.textContent + +st.dataset.step); if (st.hasAttribute('data-q')) quote(); }
+    const t = e.target.closest('[data-toast]'); if (t) toast(t.dataset.toast);
+  });
+
+  // Pilih tur
+  $$('[data-tour]').forEach(b => b.addEventListener('click', () => { b.classList.toggle('on'); $('#tourCount').textContent = $$('[data-tour].on').length; }));
+
+  // Tab panel
+  $$('[data-pane]').forEach(t => t.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    $$('button', t).forEach(x => x.classList.toggle('on', x === b));
+    $$('#' + t.dataset.pane + ' > .tabpane').forEach((p, i) => p.classList.toggle('on', i === +b.dataset.p));
+  }));
+
+  // Check-in
+  const states = [['', 'Belum'], ['in', 'Hadir'], ['late', 'Telat']];
+  function ciCount() { const n = 11 + $$('#ciList .ci.in, #ciList .ci.late').length; $('#ciNum').textContent = n; $('#ciBar').style.width = (n / 20 * 100) + '%'; }
+  $$('#ciList .tick').forEach(t => t.addEventListener('click', () => {
+    const ci = t.closest('.ci'); const i = ci.classList.contains('in') ? 1 : ci.classList.contains('late') ? 2 : 0; const n = (i + 1) % 3;
+    ci.classList.remove('in', 'late'); if (states[n][0]) ci.classList.add(states[n][0]); t.textContent = states[n][1]; ciCount();
+  }));
+  ciCount();
+  $('[data-scan]').addEventListener('click', () => {
+    const ci = $$('#ciList .ci').find(c => !c.classList.contains('in') && !c.classList.contains('late'));
+    if (ci) { ci.classList.add('in'); $('.tick', ci).textContent = 'Hadir'; ciCount(); toast(ci.querySelector('b').textContent + ' check-in lewat scan'); }
+  });
+
+  // Bintang
+  $$('#stars button').forEach((b, i, all) => b.addEventListener('click', () => all.forEach((x, j) => x.classList.toggle('on', j <= i))));
+  $$('#stars button').forEach((x, j) => x.classList.toggle('on', j < 5));
+  $('[data-group="amt"]').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const v = { 'Rp20rb': 'Rp20.000', 'Rp50rb': 'Rp50.000', 'Rp100rb': 'Rp100.000', 'Bebas': 'Isi sendiri' }[b.textContent]; $('#ph-tip .qris .amt').textContent = v; });
+
+  // Dasbor periode
+  $$('#repSeg button').forEach(b => b.addEventListener('click', () => {
+    $$('#repSeg button').forEach(x => x.classList.toggle('on', x === b));
+    $$('[data-rep]').forEach(k => k.textContent = k.dataset.rep.split('|')[+b.dataset.r]);
+  }));
+
+  // Private trip: hitung tampilan & bahasa
+  function quote() { const n = +$('#qN').textContent; $('#qN2').textContent = n; $('#qPp').textContent = rp(n * 40000); $('#qTot').textContent = rp(1500000 + n * 40000 + 300000); }
+  quote();
+  $$('#langSeg button').forEach(b => b.addEventListener('click', () => {
+    $$('#langSeg button').forEach(x => x.classList.toggle('on', x === b));
+    $$('[data-i18n]').forEach(el => el.textContent = el.dataset.i18n.split('|')[b.dataset.l === 'en' ? 1 : 0]);
+  }));
+
+  // Stroll Pass
+  $$('#stamps .stamp').forEach(s => s.addEventListener('click', () => {
+    if (s.classList.contains('got')) return;
+    s.classList.add('got'); $('#passCount').textContent = $$('#stamps .got').length; toast('Cap ' + s.textContent + ' masuk Stroll Pass');
+  }));
+
+  // Modal
+  document.addEventListener('click', e => {
+    const o = e.target.closest('[data-open]'); if (o) document.getElementById(o.dataset.open).classList.add('on');
+    if (e.target.closest('[data-close]') || e.target.classList.contains('modal')) $$('.modal.on').forEach(m => m.classList.remove('on'));
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') $$('.modal.on').forEach(m => m.classList.remove('on')); });
+})();
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `jasa-video/` — penawaran jasa video dakwah umrah untuk Sidi Alief.
 - `jasa-video-pgs/` — penawaran jasa video edukasi umrah untuk travel PGS Tour.
 - `jasa-video-igh/` — penawaran jasa video edukasi umrah untuk travel IGH Tour.
-- `stroll-around/` — penawaran sistem pendaftaran tur (website, QRIS, WhatsApp otomatis, check-in, dasbor) untuk Stroll Around, walking tour Jakarta.
+- `stroll-around/` — penawaran sistem pendaftaran tur (website, QRIS, WhatsApp otomatis, check-in, dasbor) untuk Stroll Around, walking tour Jakarta. Demo tampilan tiap fiturnya (9 layar yang bisa diklik, data contoh) ada di `stroll-around/demo/`.
 - `jembar-diesel/` — penawaran toko digital (katalog cari part per mesin, pesan via WhatsApp, kasir & stok, buku bon nelayan) untuk Toko Jembar Diesel, Binuangeun. Demo tampilan aplikasinya (8 layar yang bisa diklik, data contoh) ada di `jembar-diesel/demo/`.
 - `video-travel-umrah/` — penawaran umum jasa video motion graphic (narasi AI) untuk travel umrah & haji, tanpa nama klien tertentu.
 
