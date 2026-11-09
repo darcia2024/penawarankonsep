@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/dar-mascot-128.png">
 <title>Penawaran Sistem Tur · Stroll Around</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +72,22 @@
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: -.02em; }
   .brand .x { color: var(--muted); font-weight: 500; }
-  .brand .sa { font-family: var(--head); font-weight: 600; font-size: 19px; color: var(--green); }
+  .brand .sa-logo { height: 34px; width: auto; display: block; }
+  /* Maskot Dar Dev (dari Invoice Design/brand). Rambut hitam butuh latar terang. */
+  .mascot { width: 36px; height: 36px; border-radius: 50%; background: #f1eddf; object-fit: contain; flex: none; display: block; }
+  .mascot.on-dark { padding: 3px; }
+  .to img { height: 26px; width: auto; display: block; margin: 0 4px 0 8px; }
+  .app-top img { height: 22px; width: auto; display: block; }
+  .wa-head .lg { width: 28px; height: 28px; border-radius: 50%; background: var(--card); display: grid; place-items: center; overflow: hidden; flex: none; }
+  .wa-head .lg img { width: 24px; height: auto; }
+  .by-dar { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px; background: rgba(255,255,255,.14); border-radius: 9999px; padding: 6px 18px 6px 6px; font-size: 14px; font-weight: 700; }
+  .by-dar .mascot { width: 44px; height: 44px; }
+  .by-dar small { display: block; font-weight: 500; font-size: 12px; color: #fbe5da; text-align: left; line-height: 1.2; }
+  .by-dar span { text-align: left; line-height: 1.25; }
+  footer .who { display: inline-flex; align-items: center; gap: 10px; }
+  footer .who .mascot { width: 28px; height: 28px; }
+  .dock .mascot { width: 34px; height: 34px; margin-left: -12px; }
+  .dock > div { display: flex; align-items: center; gap: 10px; }
   .nav .links { display: flex; align-items: center; gap: 26px; font-size: 14.5px; font-weight: 600; }
   .nav .links a.txt { text-decoration: none; color: var(--ink-2); }
   .nav .links a.txt:hover { color: var(--terra); }
@@ -391,9 +407,10 @@
     .wrap { padding: 0 16px; }
     section { padding: 52px 0; }
     .nav .wrap { height: 58px; }
-    .brand .sa { font-size: 17px; }
     .brand .dd { display: none; }
-    .brand .x { display: none; }
+    .brand { gap: 8px; }
+    .brand .sa-logo { height: 30px; }
+    .mascot { width: 32px; height: 32px; }
     .btn { height: 48px; padding: 0 20px; font-size: 14px; }
     .btn.sm { height: 36px; padding: 0 14px; font-size: 13px; }
     .hero { padding: 22px 0 48px; }
@@ -455,7 +472,7 @@
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="dd">Dar Dev</span><span class="x">×</span><span class="sa">Stroll Around</span></a>
+    <a class="brand" href="#top" aria-label="Dar Dev untuk Stroll Around"><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="36" height="36"><span class="dd">Dar Dev</span><span class="x">×</span><img class="sa-logo" src="assets/logo-stroll-around.png" alt="Stroll Around" width="77" height="34"></a>
     <nav class="links">
       <a class="txt" href="#temuan">Temuan</a>
       <a class="txt" href="#solusi">Solusi</a>
@@ -472,7 +489,7 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="to"><i>S</i>Penawaran khusus untuk tim Stroll Around</span>
+      <span class="to"><img src="assets/logo-stroll-around.png" alt="Stroll Around" width="59" height="26">Penawaran khusus dari Dar Dev</span>
       <h1>Dari Google Form ke <em>sistem tur</em> yang jalan sendiri.</h1>
       <p class="lead">Peserta pilih rute, bayar commitment fee lewat QRIS, dapat tiket dan pengingat di WhatsApp. Tim cukup fokus memandu dan bercerita.</p>
       <ul class="checks">
@@ -503,7 +520,7 @@
           <div class="island"></div>
           <div class="sbar"><span>08.41</span><span>●●● 5G</span></div>
           <div class="app-top">
-            <span class="nm">Stroll Around</span>
+            <img src="assets/logo-stroll-around.png" alt="Stroll Around" width="50" height="22">
             <span class="steps" role="tablist" aria-label="Langkah demo">
               <button class="on" aria-label="Pilih tur" data-go="0"></button>
               <button aria-label="Isi data" data-go="1"></button>
@@ -540,7 +557,7 @@
           </div>
 
           <div class="view" data-v="3">
-            <div class="wa-head"><i>S</i><div><b>Stroll Around</b><small>Akun bisnis</small></div></div>
+            <div class="wa-head"><span class="lg"><img src="assets/logo-stroll-around.png" alt="" width="24" height="11"></span><div><b>Stroll Around</b><small>Akun bisnis</small></div></div>
             <div class="wa-body">
               <div class="bub">Hai Nadia! Kamu terdaftar di <b>Pecinan Glodok</b>, Minggu 15 Nov, 09.00 🙌
                 <div class="tkt"><svg class="mini-qr" viewBox="0 0 25 25" shape-rendering="crispEdges"></svg><span><b>Tiket SA-0412</b><br>Tunjukkan saat check-in</span></div><small>08.42</small></div>
@@ -870,6 +887,7 @@
   <div class="wrap">
     <div class="close-box rise">
       <svg class="deco" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M-20 80 C160 40 260 160 420 120 S700 40 820 90" stroke-dasharray="2 14"/><path d="M-20 320 C140 360 300 250 460 300 S700 360 820 300" stroke-dasharray="2 14"/></g><g fill="#fff"><circle cx="120" cy="66" r="7"/><circle cx="420" cy="120" r="7"/><circle cx="690" cy="62" r="7"/><circle cx="300" cy="268" r="7"/><circle cx="610" cy="330" r="7"/></g></svg>
+      <span class="by-dar"><img class="mascot on-dark" src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="44" height="44"><span>Dar Dev<small>Website dan sistem untuk usaha</small></span></span>
       <h2>Akhir pekan untuk <em>memandu</em>, bukan mencocokkan transfer.</h2>
       <p>Ngobrol 30 menit dulu, gratis. Kami tunjukkan demo yang berjalan dan sesuaikan paket dengan jadwal tur Stroll Around.</p>
       <div class="actions"><a class="btn" href="https://wa.me/6281311506025?text=Halo%20Dar%2C%20saya%20dari%20Stroll%20Around.%20Mau%20jadwalkan%20ngobrol%2030%20menit%20soal%20sistem%20tur." target="_blank" rel="noopener">Chat Dar Dev · 0813 1150 6025</a><a class="btn line" href="#paket">Lihat paket lagi</a></div>
@@ -879,9 +897,9 @@
 
 </main>
 
-<footer><div class="wrap"><span>Penawaran dari Dar Dev untuk Stroll Around · November 2026</span><span>Nama peserta, angka, dan jadwal di demo hanya contoh.</span></div></footer>
+<footer><div class="wrap"><span class="who"><img class="mascot" src="assets/dar-mascot-128.png" alt="" width="28" height="28">Penawaran dari Dar Dev untuk Stroll Around · November 2026</span><span>Nama peserta, angka, dan jadwal di demo hanya contoh.</span></div></footer>
 
-<div class="dock" id="dock"><div><small>Paket paling pas</small><b>Lancar · Rp 6,5 jt</b></div><a class="btn" href="https://wa.me/6281311506025?text=Halo%20Dar%2C%20saya%20dari%20Stroll%20Around.%20Tertarik%20Paket%20Lancar." target="_blank" rel="noopener">Chat WhatsApp</a></div>
+<div class="dock" id="dock"><div><img class="mascot on-dark" src="assets/dar-mascot-128.png" alt="" width="34" height="34"><span><small>Paket paling pas</small><b>Lancar · Rp 6,5 jt</b></span></div><a class="btn" href="https://wa.me/6281311506025?text=Halo%20Dar%2C%20saya%20dari%20Stroll%20Around.%20Tertarik%20Paket%20Lancar." target="_blank" rel="noopener">Chat WhatsApp</a></div>
 
 <script>
 (() => {
