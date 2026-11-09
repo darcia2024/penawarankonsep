@@ -447,13 +447,13 @@
 <!-- TOPIK -->
 <section id="topik">
   <div class="wrap">
-    <div class="head"><span class="tag rise"><b>05</b>Bank topik</span><h2 class="rise">Topik sudah <span class="hl">disiapkan.</span></h2><p class="sub rise">Pilih dari sini, atau kirim brief sendiri.</p></div>
+    <div class="head"><span class="tag rise"><b>05</b>Bank topik</span><h2 class="rise">Topik yang <span class="hl">jarang dibahas.</span></h2><p class="sub rise">Bukan materi manasik yang sudah ada di mana-mana. Pilih dari sini, atau kirim brief sendiri.</p></div>
     <div class="filters rise" role="tablist" aria-label="Jenis topik">
-      <button class="on" data-t="0">Fikih umrah</button>
-      <button data-t="1">Mitos vs fakta</button>
-      <button data-t="2">Kisah ziarah</button>
-      <button data-t="3">Persiapan</button>
-      <button data-t="4">Haji</button>
+      <button class="on" data-t="0">Fikih yang terlewat</button>
+      <button data-t="1">Sejarah tersembunyi</button>
+      <button data-t="2">Mitos vs fakta</button>
+      <button data-t="3">Teknis lapangan</button>
+      <button data-t="4">Lansia &amp; perempuan</button>
     </div>
     <div class="stamps" id="topics"></div>
   </div>
@@ -579,11 +579,11 @@
 
   // Bank topik sebagai perangko
   const bank = [
-    ['Cium Hajar Aswad, kena fidyah?', 'Pesawat lewat miqat, belum ihram?', 'Haid saat umrah', 'Potong rambut: berapa yang cukup?'],
-    ['Umrah berkali-kali dalam satu perjalanan?', 'Ke Raudhah tinggal datang?', 'Foto di depan Ka\'bah, boleh?', 'Air zamzam harus diminum berdiri?'],
-    ['Bukit pemanah di Uhud', 'Masjid Quba, pahala seperti umrah', 'Masjid Qiblatain', 'Gua Hira dan Gua Tsur'],
-    ['5 barang yang sering lupa dibawa', 'Hari pertama di Makkah', 'Tersesat di Masjidil Haram?', 'Menjaga kesehatan saat umrah'],
-    ['Beda umrah dan haji', 'Mabit di Muzdalifah', 'Lempar jumrah', 'Haji plus atau furoda?']
+    ['Shalat di hotel, pahalanya sama dengan di Masjidil Haram?', 'Pakai masker saat ihram, boleh?', 'Sabuk dan tas pinggang saat ihram', 'Thawaf di kursi roda, sah?'],
+    ['Kenapa pintu Ka\'bah dibuat tinggi?', 'Hijir Ismail: bagian Ka\'bah yang tidak dibangun', 'Zamzam pernah tertimbun berabad-abad', 'Masjid Jin di Makkah'],
+    ['Doa di Jabal Rahmah bikin cepat dapat jodoh?', 'Bawa pulang batu atau tanah Haram, boleh?', 'Menempelkan badan ke kiswah, sunnah?', 'Shalat Arbain di Nabawi: bagaimana haditsnya?'],
+    ['Thawaf di lantai atas, berapa jauh jalannya?', 'Membaca nomor pintu Masjidil Haram', 'Izin masuk Raudhah: daftar kapan?', 'Bawa zamzam pulang: aturan bagasinya'],
+    ['Perempuan umrah tanpa mahram, bagaimana?', 'Lansia lelah saat sa\'i, boleh istirahat?', 'Sewa skuter atau kursi roda di Masjidil Haram', 'Istihadhah saat umrah: beda dengan haid']
   ];
   const pal = [['#0f7a62', '#d4a23c'], ['#1d3a5f', '#8fb3d9'], ['#16233b', '#4c6a8a'], ['#d4a23c', '#cfe8df']];
   const tbox = document.getElementById('topics'), tabs = [...document.querySelectorAll('.filters button')];
