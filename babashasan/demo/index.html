@@ -383,7 +383,7 @@
         </div></div>
         <div class="side-notes">
           <div class="card">
-            <div class="note"><span class="n">1</span><div><b>Jamaah gak perlu akun</b><span>Cukup buka link, isi, kirim. Tulisan dan kolomnya besar biar jamaah sepuh gampang.</span></div></div>
+            <div class="note"><span class="n">1</span><div><b>Jamaah gak perlu akun</b><span>Cukup buka link, isi, kirim. Tulisan dan kolomnya besar biar jamaah sepuh gampang. <a href="../isi/" style="font-weight:700;text-decoration:underline">Buka versi penuh yang diterima jamaah ↗</a></span></div></div>
           </div>
           <div class="card">
             <div class="note"><span class="n">2</span><div><b>Masuk antrean dulu</b><span>Setelah dikirim, testimoni muncul di tab "Setujui". Antum yang pilih mana yang tampil.</span></div></div>
@@ -408,6 +408,7 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="../data.js"></script>
 <script>
 (() => {
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -416,25 +417,8 @@
   const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2400); };
 
   // Data contoh + yang diisi saat mencoba (disimpan di browser ini saja)
-  // Rombongan keberangkatan (di versi asli diatur dari halaman admin)
-  const groups = [
-    { id: 'nov26', nama: 'Rombongan November 2026', bulan: 'Nov 2026', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
-    { id: 'agu26', nama: 'Rombongan Agustus 2026', bulan: 'Agu 2026', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
-    { id: 'feb26', nama: 'Rombongan Ramadhan 2026', bulan: 'Feb 2026', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
-    { id: 'des25', nama: 'Rombongan Akhir Tahun 2025', bulan: 'Des 2025', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
-  ];
+  const { groups, seed } = window.BHB;
   const grp = id => groups.find(x => x.id === id) || groups[0];
-  const seed = [
-    { id: 1, nama: 'Bu Hj. Siti', jk: 'w', kota: 'Bekasi', grup: 'feb26', bintang: 5, pesan: 'Bimbingannya sabar, manasik jadi tenang. Ibu-ibu rombongan dijaga betul waktu tawaf. Insya Allah mau berangkat lagi bareng.', st: 'shown', dur: '0:42', contoh: true },
-    { id: 2, nama: 'Pak Rahmat & keluarga', jk: 'p', kota: 'Bandung', grup: 'des25', bintang: 5, pesan: 'Ziarahnya penuh cerita sejarah, anak-anak sampai hafal kisah Uhud. Terima kasih banyak.', st: 'shown' },
-    { id: 3, nama: 'Mbak Nisa', jk: 'w', kota: 'Jakarta', grup: 'feb26', bintang: 5, pesan: 'Pertama kali umrah, gak bingung sama sekali. Semua dijelasin pelan-pelan.', st: 'shown' },
-    { id: 4, nama: 'Keluarga Fadli', jk: 'p', kota: 'Depok', grup: 'des25', bintang: 5, pesan: 'Orang tua kami yang sudah sepuh merasa aman. Kursi roda disiapkan, jadwal disesuaikan.', st: 'shown' },
-    { id: 5, nama: 'Pak Ujang', jk: 'p', kota: 'Garut', grup: 'agu26', bintang: 4, pesan: 'Doa-doanya dibimbing satu per satu, jadi khusyuk.', st: 'shown' },
-    { id: 6, nama: 'Ibu Ratna', jk: 'w', kota: 'Bogor', grup: 'agu26', bintang: 5, pesan: 'Masya Allah, pengalaman yang tak terlupakan. Semoga Allah balas semua kebaikannya.', st: 'shown' },
-    { id: 9, nama: 'Pak Darmawan', jk: 'p', kota: 'Cirebon', grup: 'feb26', bintang: 5, pesan: 'Itikaf di sepuluh malam terakhir jadi tenang karena jadwalnya diatur rapi.', st: 'shown' },
-    { id: 7, nama: 'Hendra', jk: 'p', kota: 'Tangerang', grup: 'nov26', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending' },
-    { id: 8, nama: 'aaaa', jk: 'p', kota: '-', grup: 'nov26', bintang: 1, pesan: 'tes tes', st: 'pending' }
-  ];
   let data;
   try { data = JSON.parse(localStorage.getItem('bhb-demo-4')) || seed; } catch (e) { data = seed; }
   const save = () => { try { localStorage.setItem('bhb-demo-4', JSON.stringify(data)); } catch (e) {} };
@@ -462,7 +446,7 @@
       const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
       if (!items.length) return '';
       const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
-      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><button class="grp-share" data-glink="${g.id}">Bagikan link rombongan</button></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?rombongan=${g.id}" target="_blank" rel="noopener">Buka link rombongan ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
     }).join('');
     $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk rombongan ini.</p>';
   }
@@ -498,8 +482,7 @@
     if (del) { data = data.filter(t => t.id !== +del.dataset.del); save(); render(); toast('Testimoni dihapus'); }
     if (hide) { find(hide.dataset.hide).st = 'pending'; save(); render(); toast('Disembunyikan, pindah ke Menunggu'); }
     if (sh) toast('Contoh: membuka WhatsApp untuk membagikan testimoni ' + find(sh.dataset.share).nama);
-    const gl = e.target.closest('[data-glink]');
-    if (gl) toast('Contoh: link form khusus ' + grp(gl.dataset.glink).nama + ' disalin, tinggal kirim ke grup WA-nya');
+
     const pl = e.target.closest('[data-play]');
     if (pl) {
       const t = find(pl.dataset.play);
@@ -576,7 +559,7 @@
     if (!pesan && !audio) { toast('Isi kesan pesan, atau rekam pesan suara'); return; }
     if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
-    const t = { id: Date.now(), nama, kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: 'pending', foto, audio, dur: audio ? dur : null };
+    const t = { id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: 'pending', foto, audio, dur: audio ? dur : null };
     data.push(t); save(); render(); tab = 'pending'; $$('#modTabs button').forEach(x => x.classList.toggle('on', x.dataset.t === 'pending')); renderMod();
     e.target.style.display = 'none'; $('#done').classList.add('on');
   });
