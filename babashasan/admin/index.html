@@ -135,6 +135,14 @@
   .travel .link svg.qr { width: 64px; height: 64px; border-radius: 6px; flex: none; }
   .travel .link code { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--ink-2); word-break: break-all; }
   .travel .acts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .deps { display: grid; gap: 8px; }
+  .deps-t { font-size: 13px; color: var(--ink-2); }
+  .deps-empty { font-size: 13px; color: var(--faint); }
+  .dep-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; border: 1px solid var(--line-2); border-radius: 12px; padding: 10px 12px; }
+  .dep-row b { display: block; font-size: 14px; }
+  .dep-row small { color: var(--faint); font-size: 12.5px; }
+  .dep-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+  .deps > .btn { justify-self: start; }
   .travel.add { display: grid; place-items: center; min-height: 260px; border: 2px dashed var(--line); background: transparent; color: var(--ink-2); font-weight: 700; padding: 20px; text-align: center; }
   .travel.add:hover { border-color: var(--olive); color: var(--ink); }
 
@@ -252,7 +260,7 @@
       <div class="card">
         <div class="filters">
           <span class="seg" id="stSeg"><button class="on" data-st="pending">Menunggu <em id="cP">0</em></button><button data-st="shown">Tampil <em id="cS">0</em></button><button data-st="all">Semua <em id="cA">0</em></button></span>
-          <select id="trFilter" aria-label="Saring travel"></select>
+          <select id="trFilter" aria-label="Saring travel"></select><select id="brFilter" aria-label="Saring grup keberangkatan" hidden></select>
           <input class="search" id="q" type="search" placeholder="Cari nama, kota, atau isi testimoni…" aria-label="Cari testimoni">
         </div>
         <div id="tList"></div>
@@ -293,7 +301,7 @@
   <form class="box" id="tForm">
     <div class="box-head"><h3 id="tTitle">Ubah testimoni</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
     <div class="row2"><label class="field">Nama<input name="nama" required></label><label class="field">Kota<input name="kota"></label></div>
-    <label class="field">Travel<select name="grup" id="tGrup"></select></label>
+    <div class="row2"><label class="field">Travel<select name="grup" id="tGrup"></select></label><label class="field">Grup keberangkatan<select name="brk" id="tBrk"></select></label></div>
     <div class="field">Bintang<div class="rate" id="tRate"></div></div>
     <label class="field">Kesan &amp; pesan<textarea name="pesan"></textarea></label>
     <label class="field">Status<select name="st"><option value="pending">Menunggu</option><option value="shown">Tampil</option></select></label>
@@ -306,9 +314,21 @@
   <form class="box" id="gForm">
     <div class="box-head"><h3 id="gTitle">Tambah travel</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
     <label class="field">Nama travel<input name="nama" required placeholder="Contoh: Travel Al-Ikhlas"></label>
-    <div class="row2"><label class="field">Keberangkatan<input name="bulan" placeholder="Contoh: Umrah Jan 2027"></label><label class="field">Jumlah jamaah<input name="jamaah" inputmode="numeric" placeholder="40"></label></div>
+    <p style="font-size:13px;color:var(--faint)">Grup keberangkatan (nama grup, tanggal, jumlah jamaah) ditambah dari kartu travel setelah disimpan.</p>
     <div class="field">Foto sampul<div class="covers" id="covers"></div></div>
     <button class="btn pri" type="submit">Simpan travel</button>
+  </form>
+</div>
+
+<!-- Modal grup keberangkatan -->
+<div class="modal" id="dModal" role="dialog" aria-label="Grup keberangkatan">
+  <form class="box" id="dForm">
+    <div class="box-head"><h3 id="dTitle">Tambah grup</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <p id="dTravel" style="font-size:13.5px;color:var(--faint);margin-top:-6px"></p>
+    <label class="field">Nama grup<input name="nama" required placeholder="Contoh: Grup Ramadhan 1"></label>
+    <div class="row2"><label class="field">Tanggal berangkat<input name="tgl" type="date"></label><label class="field">Jumlah jamaah<input name="jamaah" inputmode="numeric" placeholder="40"></label></div>
+    <button class="btn pri" type="submit">Simpan grup</button>
+    <button class="btn no" type="button" id="dDel" hidden>Hapus grup ini</button>
   </form>
 </div>
 
@@ -325,6 +345,7 @@
   let data = B.loadData(), groups = B.loadGroups(), set = B.loadSettings();
   const saveAll = () => { B.saveData(data); B.saveGroups(groups); B.saveSettings(set); };
   const grp = id => groups.find(g => g.id === id) || { nama: 'Travel dihapus', bulan: '', id };
+  const dep = t => (B.findDep(groups, t.brk) || {}).b;
   const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
   const sil = t => { const bg = ['#5c6a4c', '#a88a4e', '#7d8a6b', '#b7a68a'][Number(String(t.id).slice(-1)) % 4]; return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="${bg}"/>` + (t.jk === 'w' ? '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><path d="M30 12c-10 0-16 8-16 17v8c0 6 5 10 9 11h14c4-1 9-5 9-11v-8c0-9-6-17-16-17z" fill="#efe6d6"/><circle cx="30" cy="31" r="8.5" fill="#d8bf9c"/>' : '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><circle cx="30" cy="29" r="10" fill="#d8bf9c"/><rect x="19.5" y="14" width="21" height="9" rx="2.5" fill="#1f201c"/>') + '</svg>'; };
   const avatar = t => t.foto ? `<img src="${t.foto}" alt="Foto ${esc(t.nama)}">` : sil(t);
@@ -341,25 +362,28 @@
     $('#navPend').textContent = pend.length; $('#navPend').hidden = !pend.length;
     $('#pendList').innerHTML = pend.length ? pend.slice().sort((a, b) => b.id - a.id).slice(0, 4).map(row).join('') : '<p class="empty">Semua sudah dicek. Alhamdulillah.</p>';
     const max = Math.max(1, ...groups.map(g => shown.filter(t => t.grup === g.id).length));
-    $('#bars').innerHTML = groups.map(g => { const n = shown.filter(t => t.grup === g.id).length; return `<li><span><b>${esc(g.nama)}</b><small>${esc(g.bulan)}</small></span><span class="meter"><i style="width:${n / max * 100}%"></i></span><span class="n">${n}</span></li>`; }).join('');
+    $('#bars').innerHTML = groups.map(g => { const n = shown.filter(t => t.grup === g.id).length; return `<li><span><b>${esc(g.nama)}</b><small>${B.travelInfo(g)}</small></span><span class="meter"><i style="width:${n / max * 100}%"></i></span><span class="n">${n}</span></li>`; }).join('');
   }
 
   // ---------- Testimoni ----------
-  let stF = 'pending', trF = 'all', q = '';
+  let stF = 'pending', trF = 'all', brF = 'all', q = '';
   function row(t) {
     const g = grp(t.grup);
     const acts = (t.st === 'pending' ? `<button class="btn ok sm" data-ok="${t.id}">Tampilkan</button>` : `<button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`) +
       `<button class="btn sm" data-edit="${t.id}">Ubah</button><label class="btn sm">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm no" data-del="${t.id}">Hapus</button>`;
-    return `<div class="t-row"><span class="ph">${avatar(t)}</span><div><div class="top"><b>${esc(t.nama)}</b><span class="stars">${stars(t.bintang)}</span>${t.st === 'pending' ? '<span class="pill warn dot">Menunggu</span>' : '<span class="pill ok dot">Tampil</span>'}</div><small>${esc(t.kota)} · ${esc(g.nama)}</small>${t.pesan ? `<q>${esc(t.pesan)}</q>` : ''}${voice(t)}</div><div class="t-acts">${acts}</div></div>`;
+    return `<div class="t-row"><span class="ph">${avatar(t)}</span><div><div class="top"><b>${esc(t.nama)}</b><span class="stars">${stars(t.bintang)}</span>${t.st === 'pending' ? '<span class="pill warn dot">Menunggu</span>' : '<span class="pill ok dot">Tampil</span>'}</div><small>${esc(t.kota)} · ${esc(g.nama)}${dep(t) ? ' · ' + esc(B.depLabel(dep(t))) : ''}</small>${t.pesan ? `<q>${esc(t.pesan)}</q>` : ''}${voice(t)}</div><div class="t-acts">${acts}</div></div>`;
   }
   function renderTestimoni() {
     $('#cP').textContent = data.filter(t => t.st === 'pending').length; $('#cS').textContent = data.filter(t => t.st === 'shown').length; $('#cA').textContent = data.length;
     $('#trFilter').innerHTML = '<option value="all">Semua travel</option>' + groups.map(g => `<option value="${g.id}"${trF === g.id ? ' selected' : ''}>${esc(g.nama)}</option>`).join('');
-    const list = data.filter(t => (stF === 'all' || t.st === stF) && (trF === 'all' || t.grup === trF) && (!q || (t.nama + ' ' + t.kota + ' ' + (t.pesan || '')).toLowerCase().includes(q))).sort((a, b) => b.id - a.id);
+    const trG = groups.find(g => g.id === trF); $('#brFilter').hidden = !trG;
+    if (trG) $('#brFilter').innerHTML = '<option value="all">Semua grup</option>' + B.deps(trG).map(b => `<option value="${b.id}"${brF === b.id ? ' selected' : ''}>${esc(B.depLabel(b))}</option>`).join('');
+    const list = data.filter(t => (stF === 'all' || t.st === stF) && (trF === 'all' || t.grup === trF) && (brF === 'all' || t.brk === brF) && (!q || (t.nama + ' ' + t.kota + ' ' + (t.pesan || '')).toLowerCase().includes(q))).sort((a, b) => b.id - a.id);
     $('#tList').innerHTML = list.length ? list.map(row).join('') : '<p class="empty">Gak ada testimoni yang cocok.</p>';
   }
   $('#stSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('#stSeg button').forEach(x => x.classList.toggle('on', x === b)); stF = b.dataset.st; renderTestimoni(); });
-  $('#trFilter').addEventListener('change', e => { trF = e.target.value; renderTestimoni(); });
+  $('#trFilter').addEventListener('change', e => { trF = e.target.value; brF = 'all'; renderTestimoni(); });
+  $('#brFilter').addEventListener('change', e => { brF = e.target.value; renderTestimoni(); });
   $('#q').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); renderTestimoni(); });
 
   // ---------- Travel ----------
@@ -373,7 +397,7 @@
   function renderTravel() {
     $('#travels').innerHTML = groups.map(g => {
       const items = data.filter(t => t.grup === g.id), sh = items.filter(t => t.st === 'shown').length, pd = items.length - sh;
-      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body"><div class="meta"><span class="pill">${esc(g.bulan || '–')}</span><span class="pill">${g.jamaah || 0} jamaah</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
+      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body"><div class="meta"><span class="pill">${B.travelInfo(g)}</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form semua grup travel ini</small><code>${esc(linkFor(g))}</code></div></div><div class="deps"><b class="deps-t">Grup keberangkatan</b>${B.deps(g).map(b => { const n = data.filter(x => x.brk === b.id).length; return `<div class="dep-row"><span><b>${esc(b.nama)}</b><small>${b.tgl ? 'Berangkat ' + B.fmtTgl(b.tgl) : 'Tanggal belum diisi'}${b.jamaah ? ' · ' + b.jamaah + ' jamaah' : ''} · ${n} testimoni</small></span><span class="dep-acts"><button class="btn sm" data-dcopy="${b.id}">Salin link grup</button><button class="btn sm" data-dedit="${g.id}|${b.id}">Ubah</button></span></div>`; }).join('') || '<p class="deps-empty">Belum ada grup. Tambahkan grup pertama.</p>'}<button class="btn sm" data-dnew="${g.id}">+ Tambah grup keberangkatan</button></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
     }).join('') + '<button class="card travel add" data-travel-new><span><svg class="ico" style="width:28px;height:28px;margin:0 auto 8px"><use href="#i-plus"/></svg>Tambah travel</span></button>';
   }
 
@@ -395,16 +419,18 @@
   let editId = null, rateVal = 5;
   function rateUI() { $('#tRate').innerHTML = [1, 2, 3, 4, 5].map(i => `<button type="button" class="${i <= rateVal ? 'on' : ''}" data-r="${i}" aria-label="${i} bintang">★</button>`).join(''); }
   $('#tRate').addEventListener('click', e => { const b = e.target.closest('[data-r]'); if (!b) return; rateVal = +b.dataset.r; rateUI(); });
+  function fillTBrk(gid, sel) { $('#tBrk').innerHTML = B.deps(groups.find(g => g.id === gid)).map(b => `<option value="${b.id}">${esc(B.depLabel(b))}</option>`).join('') + '<option value="">Grup lainnya</option>'; if (sel === undefined) $('#tBrk').selectedIndex = 0; else $('#tBrk').value = sel || ''; }
+  $('#tGrup').addEventListener('change', e => fillTBrk(e.target.value, undefined));
   function openEdit(t) {
     editId = t ? t.id : null; const f = $('#tForm');
     $('#tTitle').textContent = t ? 'Ubah testimoni' : 'Tambah testimoni';
     $('#tGrup').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
-    f.nama.value = t ? t.nama : ''; f.kota.value = t ? t.kota : ''; f.grup.value = t ? t.grup : groups[0]?.id; f.pesan.value = t ? (t.pesan || '') : ''; f.st.value = t ? t.st : 'shown';
+    f.nama.value = t ? t.nama : ''; f.kota.value = t ? t.kota : ''; f.grup.value = t ? t.grup : groups[0]?.id; fillTBrk(f.grup.value, t ? t.brk : undefined); f.pesan.value = t ? (t.pesan || '') : ''; f.st.value = t ? t.st : 'shown';
     rateVal = t ? t.bintang : 5; rateUI(); open('tModal');
   }
   $('#tForm').addEventListener('submit', e => {
     e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
-    const vals = { nama, kota: f.kota.value.trim() || '-', grup: f.grup.value, pesan: f.pesan.value.trim(), st: f.st.value, bintang: rateVal };
+    const vals = { nama, kota: f.kota.value.trim() || '-', grup: f.grup.value, brk: f.brk.value || null, pesan: f.pesan.value.trim(), st: f.st.value, bintang: rateVal };
     if (editId) Object.assign(data.find(t => t.id === editId), vals);
     else data.push(Object.assign({ id: Date.now(), jk: /^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p' }, vals));
     saveAll(); closeAll(); renderAll(); toast(editId ? 'Testimoni diperbarui' : 'Testimoni ditambahkan');
@@ -417,15 +443,38 @@
   function openTravel(g) {
     gEdit = g ? g.id : null; const f = $('#gForm');
     $('#gTitle').textContent = g ? 'Ubah travel' : 'Tambah travel';
-    f.nama.value = g ? g.nama : ''; f.bulan.value = g ? g.bulan : ''; f.jamaah.value = g ? g.jamaah : '';
+    f.nama.value = g ? g.nama : '';
     gCover = g ? g.foto : coverChoices[0]; if (g && !coverChoices.includes(g.foto)) coverChoices.unshift(g.foto); coversUI(); open('gModal');
   }
   $('#gForm').addEventListener('submit', e => {
     e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
-    const vals = { nama, short: nama.replace(/^travel\s+/i, ''), bulan: f.bulan.value.trim(), jamaah: parseInt(f.jamaah.value, 10) || 0, foto: gCover, pos: '50% 50%' };
+    const vals = { nama, short: nama.replace(/^travel\s+/i, ''), foto: gCover, pos: '50% 50%' };
     if (gEdit) Object.assign(groups.find(g => g.id === gEdit), vals);
-    else groups.unshift(Object.assign({ id: 't' + Date.now().toString(36) }, vals));
+    else groups.unshift(Object.assign({ id: 't' + Date.now().toString(36), berangkat: [] }, vals));
     saveAll(); closeAll(); renderAll(); toast(gEdit ? 'Travel diperbarui' : 'Travel ditambahkan, link form-nya siap dibagikan');
+  });
+
+  // ---------- Grup keberangkatan ----------
+  let dTravel = null, dEdit = null;
+  const linkDep = id => new URL('../isi/?grup=' + id, location.href).href;
+  function openDep(gid, bid) {
+    const g = groups.find(x => x.id === gid), b = bid ? (g.berangkat || []).find(x => x.id === bid) : null, f = $('#dForm');
+    dTravel = gid; dEdit = b ? b.id : null;
+    $('#dTitle').textContent = b ? 'Ubah grup' : 'Tambah grup'; $('#dTravel').textContent = g.nama;
+    f.nama.value = b ? b.nama : ''; f.tgl.value = b ? (b.tgl || '') : ''; f.jamaah.value = b ? (b.jamaah || '') : '';
+    $('#dDel').hidden = !b || data.some(t => t.brk === b.id); open('dModal');
+  }
+  $('#dForm').addEventListener('submit', e => {
+    e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
+    const g = groups.find(x => x.id === dTravel); g.berangkat = g.berangkat || [];
+    const vals = { nama, tgl: f.tgl.value, jamaah: parseInt(f.jamaah.value, 10) || 0 };
+    if (dEdit) Object.assign(g.berangkat.find(b => b.id === dEdit), vals);
+    else g.berangkat.push(Object.assign({ id: 'b' + Date.now().toString(36) }, vals));
+    saveAll(); closeAll(); renderAll(); toast(dEdit ? 'Grup diperbarui' : 'Grup ditambahkan, link-nya siap dibagikan');
+  });
+  $('#dDel').addEventListener('click', () => {
+    if (!confirm('Hapus grup ini?')) return; const g = groups.find(x => x.id === dTravel);
+    g.berangkat = g.berangkat.filter(b => b.id !== dEdit); saveAll(); closeAll(); renderAll(); toast('Grup dihapus');
   });
 
   // ---------- Aksi umum ----------
@@ -441,6 +490,10 @@
     if (e.target.closest('[data-travel-new]')) openTravel(null);
     const ge = e.target.closest('[data-gedit]'); if (ge) openTravel(groups.find(g => g.id === ge.dataset.gedit));
     const gd = e.target.closest('[data-gdel]'); if (gd && confirm('Hapus travel ini?')) { groups = groups.filter(g => g.id !== gd.dataset.gdel); saveAll(); renderAll(); toast('Travel dihapus'); }
+    const dn = e.target.closest('[data-dnew]'); if (dn) openDep(dn.dataset.dnew);
+    const de = e.target.closest('[data-dedit]'); if (de) { const [gid, bid] = de.dataset.dedit.split('|'); openDep(gid, bid); }
+    const dc = e.target.closest('[data-dcopy]');
+    if (dc) { const url = linkDep(dc.dataset.dcopy); (navigator.clipboard?.writeText(url) || Promise.reject()).then(() => toast('Link grup disalin, tinggal tempel di grup WA-nya'), () => toast(url)); }
     const cp = e.target.closest('[data-copy]');
     if (cp) { const url = linkFor(groups.find(g => g.id === cp.dataset.copy)); (navigator.clipboard?.writeText(url) || Promise.reject()).then(() => toast('Link disalin, tinggal tempel di grup WA'), () => toast(url)); }
     const pl = e.target.closest('[data-play]');

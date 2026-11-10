@@ -108,6 +108,7 @@
     <label class="field">Nama<input name="nama" autocomplete="name" placeholder="Contoh: Bu Hj. Aminah"></label>
     <label class="field">Kota<input name="kota" autocomplete="address-level2" placeholder="Contoh: Bekasi"></label>
     <label class="field" id="grpField">Berangkat dengan travel<select name="grup" id="grupSel"></select></label>
+    <label class="field" id="brkField">Grup &amp; tanggal berangkat<select name="brk" id="brkSel"></select></label>
     <div class="field">Seberapa puas?<div class="rate" id="rate"><button type="button" class="on" aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div></div>
     <label class="field">Kesan &amp; pesan<textarea name="pesan" placeholder="Ceritakan pengalaman umrahnya…"></textarea><small>Lebih gampang ngomong? Boleh pakai pesan suara di bawah.</small></label>
     <div class="field" id="voiceField"><span class="lab">Pesan suara <span class="pill">Add-on</span></span>
@@ -146,10 +147,22 @@
   const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch (e) { return false; } };
 
   // Travel: link khusus (?travel=feb26) langsung memilih travelnya
+  const B = window.BHB;
   $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
-  const qs = new URLSearchParams(location.search), pre = qs.get('travel') || qs.get('rombongan');
-  const g0 = groups.find(g => g.id === pre);
-  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = g0.nama + ' · ' + g0.bulan; }
+  function fillDeps(gid, sel) {
+    const ds = B.deps(groups.find(g => g.id === gid));
+    $('#brkSel').innerHTML = ds.map(b => `<option value="${b.id}">${esc(B.depLabel(b))}</option>`).join('') + '<option value="">Lainnya / lupa tanggalnya</option>';
+    if (sel != null) $('#brkSel').value = sel;
+  }
+  $('#grupSel').addEventListener('change', e => fillDeps(e.target.value));
+  // Link khusus: ?grup=ri-ram1 (travel + grup sekaligus) atau ?travel=feb26
+  const qs = new URLSearchParams(location.search), preG = qs.get('grup'), pre = qs.get('travel') || qs.get('rombongan');
+  const hit = preG ? B.findDep(groups, preG) : null;
+  const g0 = hit ? hit.g : groups.find(g => g.id === pre);
+  const b0 = hit ? hit.b : null;
+  fillDeps(g0 ? g0.id : groups[0].id, b0 ? b0.id : undefined);
+  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = g0.nama + (b0 ? ' · ' + B.depLabel(b0) : ''); }
+  if (b0) $('#brkField').hidden = true;
 
   // Pengaturan dari admin: pesan suara bisa dimatikan
   if (!setelan.suara) $('#voiceField').hidden = true;
@@ -207,13 +220,13 @@
     if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
     const data = load();
-    data.push({ id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null });
+    data.push({ id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), brk: fd.get('brk') || null, bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null });
     if (!save(data)) toast('Foto atau rekaman terlalu besar untuk demo ini, coba yang lebih kecil');
     if (!setelan.wajibSetuju) $('#doneMsg').textContent = 'Testimoni sudah tampil di halaman. Semoga bisa berangkat lagi bersama.';
     e.target.hidden = true; $('#done').hidden = false; scrollTo(0, 0);
   });
   $('#again').addEventListener('click', () => {
-    const f = $('#tform'); f.reset(); if (g0) $('#grupSel').value = g0.id; f.hidden = false; $('#done').hidden = true; foto = null; bintang = 5; resetRec();
+    const f = $('#tform'); f.reset(); if (g0) $('#grupSel').value = g0.id; fillDeps($('#grupSel').value, b0 ? b0.id : undefined); f.hidden = false; $('#done').hidden = true; foto = null; bintang = 5; resetRec();
     $$('#rate button').forEach(x => x.classList.add('on'));
     const up = $('#upload'); up.querySelectorAll('img, span').forEach(n => n.remove()); up.insertAdjacentHTML('beforeend', '<svg class="ico"><use href="#i-cam"/></svg><span>Ketuk untuk pilih foto</span>');
   });

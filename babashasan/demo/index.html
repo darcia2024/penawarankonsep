@@ -210,6 +210,12 @@
   .grp-share { margin-left: auto; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; }
   .grp-share:hover { border-color: var(--ink); }
   .grp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+  .dep + .dep { margin-top: 18px; }
+  .dep-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; margin: 0 0 10px; font-size: 13.5px; color: var(--faint); }
+  .dep-head b { color: var(--ink); font-size: 14.5px; }
+  .dep-head b::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: middle; }
+  .dep-head span + span::before, .dep-head b + span::before { content: "· "; }
+  .dep-head a { margin-left: auto; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font-size: 13px; }
   .grp-cards .tcard { margin-bottom: 0; }
   .tcard { border-radius: 20px; }
   .tcard img.photo { aspect-ratio: 16 / 10; }
@@ -241,6 +247,8 @@
     .grp-head h3 { font-size: 22px; }
     .grp-head small { font-size: 12.5px; }
     .grp-head { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 10px; row-gap: 8px; }
+    .dep-head span + span { display: none; }
+    .dep-head { font-size: 12.5px; }
     .grp-share { grid-column: 2; justify-self: start; margin-left: 0; padding: 6px 12px; font-size: 12.5px; }
     /* Kartu satu travel digeser ke samping */
     .grp-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 -14px; padding: 2px 14px 8px; scrollbar-width: none; }
@@ -369,7 +377,7 @@
             <label class="field">Nama<input name="nama" required placeholder="Contoh: Bu Hj. Aminah"></label>
             <div class="row2">
               <label class="field">Kota<input name="kota" placeholder="Contoh: Bekasi"></label>
-              <label class="field">Travel<select name="grup" id="grupSel"></select></label>
+              <label class="field">Travel<select name="grup" id="grupSel"></select></label></div><div class="row2" style="grid-template-columns:1fr"><label class="field">Grup &amp; tanggal berangkat<select name="brk" id="brkSel"></select></label>
             </div>
             <div class="field">Seberapa puas?<div class="rate" id="rate"><button type="button" class="on" aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div></div>
             <label class="field">Kesan &amp; pesan<textarea name="pesan" placeholder="Ceritakan pengalaman umrahnya…"></textarea><small>Lebih gampang ngomong? Boleh ganti pakai pesan suara di bawah.</small></label>
@@ -421,8 +429,8 @@
   const groups = window.BHB.loadGroups(), { seed } = window.BHB, setelan = window.BHB.loadSettings();
   const grp = id => groups.find(x => x.id === id) || groups[0];
   let data;
-  try { data = JSON.parse(localStorage.getItem('bhb-demo-4')) || seed; } catch (e) { data = seed; }
-  const save = () => { try { localStorage.setItem('bhb-demo-4', JSON.stringify(data)); } catch (e) {} };
+  try { data = JSON.parse(localStorage.getItem(window.BHB.KEY)) || seed; } catch (e) { data = seed; }
+  const save = () => { try { localStorage.setItem(window.BHB.KEY, JSON.stringify(data)); } catch (e) {} };
   let year = 'all', tab = 'pending', lastNew = null;
 
   // Foto jamaah: hasil unggahan, atau siluet ilustrasi kalau belum ada foto
@@ -447,7 +455,12 @@
       const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
       if (!items.length) return '';
       const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
-      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+      // Di dalam travel: dikelompokkan per grup keberangkatan (terbaru dulu)
+      const deps = window.BHB.deps(g), sub = deps.map(b => [b, items.filter(t => t.brk === b.id)]).filter(([, l]) => l.length);
+      const lain = items.filter(t => !deps.some(b => b.id === t.brk));
+      if (lain.length) sub.push([null, lain]);
+      const subs = sub.map(([b, l]) => `<div class="dep"><div class="dep-head"><b>${b ? esc(b.nama) : 'Grup lainnya'}</b>${b && b.tgl ? `<span>Berangkat ${window.BHB.fmtTgl(b.tgl)}</span>` : ''}${b && b.jamaah ? `<span>${b.jamaah} jamaah</span>` : ''}${b ? `<a href="../isi/?grup=${b.id}" target="_blank" rel="noopener">Link grup ↗</a>` : ''}</div><div class="grp-cards">${l.map(card).join('')}</div></div>`).join('');
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${window.BHB.travelInfo(g)} · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header>${subs}</section>`;
     }).join('');
     $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk travel ini.</p>';
   }
@@ -461,6 +474,8 @@
 
   // Pilihan travel di form (link khusus travel bisa langsung memilihnya)
   $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
+  const fillDeps = gid => { $('#brkSel').innerHTML = window.BHB.deps(groups.find(g => g.id === gid)).map(b => `<option value="${b.id}">${esc(window.BHB.depLabel(b))}</option>`).join('') + '<option value="">Lainnya / lupa tanggalnya</option>'; };
+  $('#grupSel').addEventListener('change', e => fillDeps(e.target.value)); fillDeps(groups[0].id);
 
   // Pindah layar
   function go() {
@@ -560,7 +575,7 @@
     if (!pesan && !audio) { toast('Isi kesan pesan, atau rekam pesan suara'); return; }
     if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
-    const t = { id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null };
+    const t = { id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), brk: fd.get('brk') || null, bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null };
     data.push(t); save(); render(); tab = 'pending'; $$('#modTabs button').forEach(x => x.classList.toggle('on', x.dataset.t === 'pending')); renderMod();
     e.target.style.display = 'none'; $('#done').classList.add('on');
   });
