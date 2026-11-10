@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/dar-mascot-128.png">
+<title>Penawaran Web Testimoni Jamaah · Nasrudin Babas Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+<style>
+  /* Gaya: halaman krem di atas bingkai pasir, judul campuran serif ramping + sans tebal,
+     deretan foto melengkung, kartu foto dan warna kalem (pasir, cokelat muda, hijau zaitun). */
+  :root {
+    --frame: #ece4d4; --page: #fcf8ef; --sand: #efe6d6; --tan: #c3b49b; --olive: #5c6a4c; --olive-2: #4e5b40;
+    --ink: #151513; --ink-2: #4c4b45; --faint: #86847b; --line: #e3dccd; --wa: #1faa55;
+    --serif: "Instrument Serif", Georgia, serif; --sans: "Satoshi", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; font-synthesis: none; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; background: var(--frame); color: var(--ink); font: 400 16px/1.6 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  :focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; }
+  .page { max-width: 1280px; margin: 0 auto; background: var(--page); overflow: hidden; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .center { text-align: center; }
+  .serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; }
+  h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -.02em; font-weight: 700; }
+  h2 .serif { font-size: 1.12em; }
+  .sub { color: var(--ink-2); font-size: 16px; max-width: 34em; margin: 14px auto 0; }
+
+  /* Tombol hitam bulat dengan panah */
+  .btn { display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 6px 6px 6px 22px; background: var(--ink); color: #fff; font-weight: 700; font-size: 14.5px; line-height: 1; border: 0; transition: background-color .2s, transform .15s; }
+  .btn i { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.14); display: grid; place-items: center; font-style: normal; transition: transform .2s; }
+  .btn:hover { background: #2a2a26; }
+  .btn:hover i { transform: translateX(3px); }
+  .btn.light { background: #fff; color: var(--ink); }
+  .btn.light i { background: var(--sand); }
+  .btn.wa { background: var(--wa); }
+  .btn.wa i { background: rgba(255,255,255,.2); }
+  .btn.plain { padding: 13px 22px; background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .btn.plain:hover { background: var(--ink); color: #fff; }
+
+  /* Navigasi */
+  .nav { position: sticky; top: 0; z-index: 30; background: rgba(252,248,239,.94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; height: 76px; }
+  .dar { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
+  .dar img { width: 32px; height: 32px; border-radius: 50%; background: #fff; border: 1px solid var(--line); }
+  .dar span { color: var(--faint); font-weight: 500; }
+  .mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; justify-self: center; }
+  .bhb { width: 34px; height: 34px; border-radius: 50%; background: var(--olive); color: #f3ead6; display: grid; place-items: center; font-family: var(--serif); font-size: 15px; letter-spacing: .02em; flex: none; }
+  .mk { object-fit: cover; background: #f6f1e6; border: 1px solid var(--line); padding: 0; }
+  .nav-r { display: flex; align-items: center; justify-content: flex-end; gap: 22px; font-size: 14px; }
+  .nav-r a.t:hover { color: var(--olive); }
+  .nav .btn { font-size: 13.5px; padding: 4px 4px 4px 16px; }
+  .nav .btn i { width: 30px; height: 30px; }
+
+  /* Pembuka */
+  .hero { padding: 64px 0 0; text-align: center; }
+  .hero h1 { font-weight: 700; font-size: clamp(36px, 4.6vw, 58px); line-height: 1.08; letter-spacing: -.025em; }
+  .hero h1 .serif { display: block; font-size: 1.1em; font-weight: 400; }
+  .hero .sub { font-size: 17px; }
+  .hero .btn { margin-top: 26px; }
+
+  /* Deretan foto melengkung */
+  .arc { margin-top: 56px; display: flex; justify-content: center; align-items: center; gap: 14px; perspective: 1100px; padding: 0 0 8px; }
+  .arc figure { flex: none; border-radius: 18px; overflow: hidden; background: var(--sand); box-shadow: 0 24px 40px -24px rgba(21,21,19,.45); }
+  .arc img { width: 100%; height: 100%; object-fit: cover; }
+  .arc { margin-left: -60px; margin-right: -60px; }
+  .arc .a1 { width: 200px; height: 340px; transform: rotateY(38deg); }
+  .arc .a2 { width: 150px; height: 250px; transform: rotateY(28deg); }
+  .arc .a3 { width: 128px; height: 196px; transform: rotateY(16deg); }
+  .arc .a4 { width: 118px; height: 160px; }
+  .arc .a5 { width: 128px; height: 196px; transform: rotateY(-16deg); }
+  .arc .a6 { width: 150px; height: 250px; transform: rotateY(-28deg); }
+  .arc .a7 { width: 200px; height: 340px; transform: rotateY(-38deg); }
+
+  /* Tiga fitur */
+  .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 36px; }
+  .three li { padding: 4px 28px; text-align: center; }
+  .three li + li { border-left: 1px solid var(--line); }
+  .three b { display: block; font-size: 15.5px; }
+  .three p { color: var(--ink-2); font-size: 13.5px; margin-top: 6px; }
+
+  section { padding: 120px 0 0; }
+
+  /* Kartu bento */
+  .bento { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-auto-rows: 250px; gap: 14px; }
+  .tile { position: relative; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 24px; transition: transform .25s; }
+  .tile:hover { transform: translateY(-3px); }
+  .tile h3 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .tile p { font-size: 13.5px; margin-top: 4px; max-width: 26em; }
+  .tile .go { position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.85); color: var(--ink); display: grid; place-items: center; font-size: 15px; }
+  .tile.photo { color: #fff; }
+  .tile.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.62)); }
+  .tile.photo > *:not(img) { position: relative; z-index: 1; }
+  .tile.photo .go { position: absolute; }
+  .tile.photo p { color: rgba(255,255,255,.82); }
+  .t-big { grid-column: span 3; }
+  .t-sand { background: var(--sand); }
+  .t-sand p, .t-tan p { color: var(--ink-2); }
+  .t-tan { background: var(--tan); }
+  .t-olive { grid-column: span 3; background: var(--olive); color: #fff; padding-right: 46%; }
+  .t-olive p { color: rgba(255,255,255,.8); }
+  .t-olive img { position: absolute; right: 0; top: 0; width: 44%; height: 100%; object-fit: cover; }
+
+  /* Harga */
+  .price { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .pcard { border-radius: 20px; padding: 28px; min-height: 360px; display: flex; flex-direction: column; }
+  .pcard.amount { background: var(--sand); }
+  .pcard.amount small { font-size: 13px; color: var(--ink-2); font-weight: 700; }
+  .pcard.amount b { font-size: 50px; font-weight: 700; letter-spacing: -.03em; line-height: 1.05; margin-top: 10px; }
+  .pcard.amount b .serif { font-size: 1.1em; }
+  .pcard.amount p { color: var(--ink-2); font-size: 14.5px; margin-top: 10px; }
+  .pcard.amount .btn { margin-top: auto; align-self: flex-start; }
+  .pcard.incl { position: relative; overflow: hidden; color: #fff; }
+  .pcard.incl img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pcard.incl::after { content: ""; position: absolute; inset: 0; background: rgba(20,22,16,.62); }
+  .pcard.incl > *:not(img) { position: relative; z-index: 1; }
+  .pcard h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+  .pcard ul { display: grid; gap: 9px; font-size: 14.5px; }
+  .pcard ul li { display: flex; gap: 10px; }
+  .pcard ul li::before { content: "✓"; flex: none; font-weight: 700; }
+  .pcard.incl ul li::before { color: #e6d9b3; }
+  .pcard.terms { background: var(--olive); color: #fff; }
+  .pcard.terms li { justify-content: space-between; gap: 12px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 14px; color: rgba(255,255,255,.82); }
+  .pcard.terms li::before { content: none; }
+  .pcard.terms li b { color: #fff; text-align: right; }
+
+  /* Add-on rekam suara */
+  .addon { margin-top: 14px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 22px 26px; }
+  .addon .mic { width: 56px; height: 56px; border-radius: 50%; background: var(--olive); color: #f3ead6; display: grid; place-items: center; }
+  .addon .mic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .addon small { font-size: 12.5px; font-weight: 700; color: var(--olive); letter-spacing: .02em; }
+  .addon h3 { font-size: 19px; font-weight: 700; margin-top: 2px; }
+  .addon p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; max-width: 46em; }
+  .addon .side { text-align: right; }
+  .addon .side b { display: block; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+  .addon .side span { display: block; font-size: 12.5px; color: var(--faint); margin-bottom: 10px; }
+  @media (max-width: 760px) {
+    .addon { grid-template-columns: auto minmax(0, 1fr); padding: 20px; gap: 14px 16px; align-items: start; }
+    .addon .side { grid-column: 1 / -1; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .addon .side span { margin: 0; }
+    .addon .mic { width: 46px; height: 46px; }
+  }
+
+  /* Tanya jawab */
+  .faq { max-width: 720px; margin: 40px auto 0; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font-weight: 700; font-size: 16.5px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; width: 30px; height: 30px; border-radius: 50%; background: var(--sand); display: grid; place-items: center; font-weight: 500; font-size: 18px; flex: none; transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--ink-2); padding: 0 46px 20px 0; font-size: 15px; }
+
+  /* Penutup */
+  .close { padding: 120px 0 0; }
+  .close-card { position: relative; border-radius: 26px; overflow: hidden; padding: 72px 32px; text-align: center; color: #fff; }
+  .close-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .close-card::after { content: ""; position: absolute; inset: 0; background: rgba(46,54,36,.72); }
+  .close-card > *:not(img) { position: relative; z-index: 1; }
+  .close-card h2 { max-width: 15em; margin: 0 auto; color: #fff; }
+  .close-card .sub { color: rgba(255,255,255,.82); }
+  .close-card .acts { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .close-card .by { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.85); margin-bottom: 18px; }
+  .close-card .by img { position: static; width: 34px; height: 34px; border-radius: 50%; background: #fff; }
+
+  footer { padding: 56px 0 40px; font-size: 12.5px; color: var(--faint); }
+  footer .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13.5px; }
+  footer .credits { margin-top: 16px; line-height: 1.6; }
+  footer .credits a { text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .arc figure { animation: rise .8s cubic-bezier(.2,.8,.2,1) both; }
+    .arc .a4 { animation-delay: .05s; } .arc .a3, .arc .a5 { animation-delay: .12s; } .arc .a2, .arc .a6 { animation-delay: .2s; } .arc .a1, .arc .a7 { animation-delay: .28s; }
+    @keyframes rise { from { opacity: 0; translate: 0 30px; } }
+  }
+  @media (max-width: 960px) {
+    .nav-r a.t, .dar span { display: none; }
+    .arc .a1, .arc .a7 { display: none; }
+    .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 230px; }
+    .t-big, .t-olive { grid-column: span 2; }
+    .price { grid-template-columns: 1fr; }
+    .pcard { min-height: 0; }
+    .pcard.amount .btn { margin-top: 22px; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .nav .wrap { height: 64px; grid-template-columns: auto 1fr auto; }
+    .mark { font-size: 14px; gap: 8px; }
+    .mark .full { display: none; }
+    .nav .btn { padding: 4px 4px 4px 12px; font-size: 12.5px; }
+    .hero { padding-top: 40px; }
+    .hero h1 { font-size: 34px; }
+    .hero .sub { font-size: 15.5px; }
+    .arc { margin-top: 40px; gap: 8px; perspective: 700px; margin-left: 0; margin-right: 0; }
+    .arc .a2, .arc .a6 { width: 92px; height: 170px; }
+    .arc .a3, .arc .a5 { width: 80px; height: 132px; }
+    .arc .a4 { width: 74px; height: 108px; }
+    .arc figure { border-radius: 12px; }
+    .three { grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
+    .three li + li { border-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
+    section, .close { padding-top: 88px; }
+    .bento { grid-template-columns: 1fr; grid-auto-rows: 210px; gap: 10px; margin-top: 36px; }
+    .t-big, .t-olive { grid-column: auto; }
+    .t-olive { padding-right: 24px; }
+    .t-olive img { width: 100%; opacity: .28; }
+    .price { margin-top: 36px; gap: 10px; }
+    .pcard { padding: 22px; border-radius: 18px; }
+    .pcard.amount b { font-size: 42px; }
+    .faq details p { padding-right: 0; }
+    .close-card { padding: 52px 20px; border-radius: 20px; }
+    .close-card .acts .btn { width: 100%; justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="nav">
+  <div class="wrap">
+    <a class="dar" href="#top" aria-label="Dar Dev"><img src="assets/dar-mascot-128.png" alt="" width="32" height="32">Dar Dev <span>untuk</span></a>
+    <a class="mark" href="#top"><img class="bhb mk" src="assets/maskot-babas.svg" alt="Maskot Bang Babas" width="34" height="34"><span class="full">Nasrudin Babas Hasan</span></a>
+    <div class="nav-r">
+      <a class="t" href="#fitur">Fitur</a>
+      <a class="t" href="#harga">Harga</a>
+      <a class="btn" href="https://wa.me/6281311506025?text=Assalamualaikum%20Dar%2C%20soal%20web%20testimoni%20jamaah%20Nasrudin%20Babas%20Hasan." target="_blank" rel="noopener">Chat Dar Dev <i>→</i></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" style="padding-top:64px">
+  <div class="wrap">
+    <h1><span class="serif">Kenang-kenangan Jamaah,</span>Tersimpan Rapi di Satu Halaman</h1>
+    <p class="sub">Bang, ini web testimoni buat jamaah Bang Babas. Jamaah tinggal isi kesan pesan sama foto, langsung tampil rapi. Sekali bayar aja, Rp 650 ribu.</p>
+    <a class="btn" href="demo/">Coba demonya <i>→</i></a>
+  </div>
+  <div class="arc" aria-hidden="true">
+    <figure class="a1"><img src="assets/foto-nabawi-malam.jpg" alt=""></figure>
+    <figure class="a2"><img src="assets/foto-kabah-siang.jpg" alt="" style="object-position:52% 60%"></figure>
+    <figure class="a3"><img src="assets/foto-kubah-hijau.jpg" alt="" style="object-position:40% 50%"></figure>
+    <figure class="a4"><img src="assets/foto-menara-quba.jpg" alt="" style="object-position:48% 30%"></figure>
+    <figure class="a5"><img src="assets/foto-payung-nabawi.jpg" alt="" style="object-position:45% 70%"></figure>
+    <figure class="a6"><img src="assets/foto-tawaf-malam.jpg" alt="" style="object-position:52% 40%"></figure>
+    <figure class="a7"><img src="assets/foto-haram-ramadhan.jpg" alt="" style="object-position:58% 40%"></figure>
+  </div>
+  <div class="wrap">
+    <ul class="three">
+      <li><b>Isi dari HP</b><p>Jamaah tinggal buka link dari grup WA, isi nama, kesan, bintang, terus unggah foto.</p></li>
+      <li><b>Disetujui sekali tekan</b><p>Testimoni masuk antrean dulu, Bang. Abang yang pilih mana yang tampil.</p></li>
+      <li><b>Tampil rapi</b><p>Kesan jamaah tersusun rapi, ringan dibuka, dan gampang dibagikan ke WhatsApp.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="fitur">
+  <div class="wrap center">
+    <h2>Semua yang Abang Butuhkan, <span class="serif">Tanpa Ribet</span></h2>
+    <p class="sub">Buat jamaah semudah ngisi Google Form, buat yang lihat juga rapi. Coba klik kartunya, Bang, langsung masuk ke demonya.</p>
+  </div>
+  <div class="wrap">
+    <div class="bento">
+      <a class="tile photo t-big" href="demo/#isi"><img src="assets/foto-kabah-siang.jpg" alt="Jamaah di pelataran Ka'bah, Masjidil Haram" loading="lazy"><span class="go">↗</span><h3>Form Isi Testimoni</h3><p>Gak perlu akun atau aplikasi. Kolomnya sedikit, tulisannya besar, jamaah sepuh juga bisa.</p></a>
+      <a class="tile t-sand" href="demo/#setujui"><span class="go">↗</span><h3>Persetujuan</h3><p>Tinggal tampilkan atau sembunyikan dari HP Abang, sekali tekan.</p></a>
+      <a class="tile t-tan" href="demo/#isi"><span class="go">↗</span><h3>Foto Diringankan</h3><p>Foto dari HP jamaah dikecilin otomatis, jadi halamannya tetap enteng.</p></a>
+      <a class="tile t-olive" href="demo/#halaman"><img src="assets/foto-kubah-hijau.jpg" alt="Kubah Hijau Masjid Nabawi" loading="lazy" style="object-position:30% 40%"><span class="go">↗</span><h3>Testimoni per Rombongan</h3><p>Kesan jamaah dikelompokkan per rombongan, lengkap dengan foto sampul tiap rombongan. Tiap rombongan juga punya link sendiri buat dikirim ke grup WA-nya.</p></a>
+    </div>
+  </div>
+</section>
+
+<section id="harga">
+  <div class="wrap center">
+    <h2>Satu Paket Aja, <span class="serif">Udah Cukup</span></h2>
+    <p class="sub">Sekali bayar, gak ada biaya bulanan dari aku. Semua aku kerjain online, kelar dalam 7 hari.</p>
+  </div>
+  <div class="wrap">
+    <div class="price">
+      <div class="pcard amount">
+        <small>Web testimoni jamaah</small>
+        <b>Rp 650<span class="serif">rb</span></b>
+        <p>Sekali bayar. DP 50% dulu, sisanya pas webnya udah jadi.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamualaikum%20Dar%2C%20ana%20mau%20ambil%20web%20testimoni%20jamaah%20Rp%20650rb." target="_blank" rel="noopener">Ambil paket ini <i>→</i></a>
+      </div>
+      <div class="pcard incl">
+        <img src="assets/foto-tawaf-malam.jpg" alt="Tawaf di Masjidil Haram pada malam hari" loading="lazy">
+        <h3>Yang didapat</h3>
+        <ul>
+          <li>Form testimoni + foto tiap jamaah</li>
+          <li>Foto bisa diunggah jamaah atau Abang</li>
+          <li>Halaman testimoni yang rapi di HP</li>
+          <li>Persetujuan sebelum tampil</li>
+          <li>Foto dikecilkan otomatis</li>
+          <li>Testimoni per rombongan + link tiap rombongan</li>
+          <li>Bagikan testimoni ke WA</li>
+          <li>Link pendek + kode QR</li>
+          <li>20 testimoni lama dipindahkan</li>
+        </ul>
+      </div>
+      <div class="pcard terms">
+        <h3>Ketentuan</h3>
+        <ul>
+          <li><span>Pemasangan &amp; panduan</span><b>video call</b></li>
+          <li><span>Revisi tampilan</span><b>2 kali</b></li>
+          <li><span>Siaga di WhatsApp</span><b>30 hari</b></li>
+          <li><span>Biaya bulanan</span><b>Rp 0</b></li>
+          <li><span>Domain sendiri</span><b>opsional, ± Rp 200 rb/thn</b></li>
+          <li><span>Data &amp; foto jamaah</span><b>milik Bang Babas</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="addon">
+      <span class="mic" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="7" y="2.5" width="6" height="10" rx="3"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v3"/></svg></span>
+      <div>
+        <small>TAMBAHAN · OPSIONAL</small>
+        <h3>Rekam Pesan Suara</h3>
+        <p>Jamaah sepuh biasanya lebih gampang ngomong daripada ngetik, Bang. Mereka tinggal tekan tombol, rekam maksimal 1 menit, dan suaranya bisa diputar di kartu testimoni. Abang tetap dengar dulu sebelum ditampilkan.</p>
+      </div>
+      <div class="side"><span>tambah</span><b>+Rp 200rb</b><a class="btn plain" href="demo/#isi" style="padding:10px 18px;font-size:13.5px">Coba rekam</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="tanya">
+  <div class="wrap center"><h2>Yang Mungkin <span class="serif">Abang Tanyain</span></h2></div>
+  <div class="wrap">
+    <div class="faq">
+      <details><summary>Jamaah yang udah sepuh bisa ngisi gak, Bang?</summary><p>Bisa, Bang. Kolomnya sedikit dan tulisannya besar. Kalau masih repot, anaknya bisa bantu isi dari HP mana aja.</p></details>
+      <details><summary>Kalau ada yang ngisi asal-asalan gimana?</summary><p>Tenang, Bang. Testimoni baru gak langsung tampil, masuk antrean dulu. Abang yang pilih mana yang ditampilkan.</p></details>
+      <details><summary>Rekam suaranya bisa di semua HP?</summary><p>Bisa di HP Android (Chrome) dan iPhone yang iOS-nya masih update, Bang. Pertama kali jamaah bakal diminta izin pakai mikrofon. Kalau gak mau rekam, tetap bisa nulis biasa.</p></details>
+      <details><summary>Foto jamaah aman?</summary><p>Aman, Bang. Jamaah centang izin tampil dulu sebelum kirim. Foto yang gak Abang setujui gak bakal tampil, dan bisa dihapus kapan aja.</p></details>
+      <details><summary>Ada biaya bulanan?</summary><p>Dari aku gak ada, Bang. Kalau nanti Abang mau pakai domain sendiri, biayanya sekitar Rp 200 ribu per tahun, itu juga opsional.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="close-card">
+      <img src="assets/foto-payung-nabawi.jpg" alt="Payung Masjid Nabawi saat matahari terbenam" loading="lazy" style="object-position:50% 72%">
+      <span class="by"><img src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="34" height="34">Dar Dev · website dan sistem untuk usaha</span>
+      <h2>Biar Kenangan Jamaah <span class="serif">Gak Cuma Lewat di Grup WA</span></h2>
+      <p class="sub">Coba demonya dulu aja, Bang. Kalau cocok, tinggal kabarin aku. Semua aku kerjain online lewat video call sama WhatsApp.</p>
+      <div class="acts">
+        <a class="btn wa" href="https://wa.me/6281311506025?text=Assalamualaikum%20Dar%2C%20soal%20web%20testimoni%20jamaah%20Nasrudin%20Babas%20Hasan." target="_blank" rel="noopener">Chat Dar Dev · 0813 1150 6025 <i>→</i></a>
+        <a class="btn light" href="demo/">Coba demonya <i>→</i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>Penawaran dari Dar Dev untuk Nasrudin Babas Hasan · November 2026</span><span>Maskot Bang Babas sementara, nanti bisa diganti logo atau foto asli.</span></div>
+    <p class="credits">Foto suasana Makkah &amp; Madinah dari Wikimedia Commons: "Masjid al-Haram 2022" oleh مريم محمد الغلبان (CC0); "Masjid al-Haram, Tawaf 20092012" oleh Basheer Olakara (<a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>); "Masjidil Haram (Umroh Ramadhan 2023)-9" oleh Indonesiagood (<a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>); "القبة الخضراء" oleh بلال الدويك (<a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>); "ClosedUmbrellaOfAl-Masjid-an-Nabawi" oleh Cognitive137 (<a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>); "A Minaret of Quba Mosque in Madinah (2025)" oleh Saudi Press Agency (<a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>); "Madinah, Al haram at night" oleh marviikad (<a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>). Foto dipotong untuk tata letak.</p>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
