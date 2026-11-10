@@ -1,11 +1,11 @@
 /* Data bersama untuk demo dan form testimoni Nasrudin Babas Hasan. Semua contoh. Data yang diisi saat mencoba hanya tersimpan di browser itu. */
 (function () {
-  // Rombongan keberangkatan (di versi asli diatur dari halaman admin)
+  // Travel tempat Bang Babas jadi muthowif. Nama travel di sini CONTOH, nanti diganti nama asli dari halaman admin.
   const groups = [
-    { id: 'nov26', nama: 'Rombongan November 2026', bulan: 'Nov 2026', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
-    { id: 'agu26', nama: 'Rombongan Agustus 2026', bulan: 'Agu 2026', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
-    { id: 'feb26', nama: 'Rombongan Ramadhan 2026', bulan: 'Feb 2026', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
-    { id: 'des25', nama: 'Rombongan Akhir Tahun 2025', bulan: 'Des 2025', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
+    { id: 'nov26', nama: 'Travel Safar Barokah', bulan: 'Umrah Nov 2026', short: 'Safar Barokah', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
+    { id: 'agu26', nama: 'Travel Nur Hijrah', bulan: 'Umrah Agu 2026', short: 'Nur Hijrah', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
+    { id: 'feb26', nama: 'Travel Rihlah Iman', bulan: 'Umrah Ramadhan 2026', short: 'Rihlah Iman', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
+    { id: 'des25', nama: 'Travel Baitul Mulia', bulan: 'Umrah Des 2025', short: 'Baitul Mulia', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
   ];
   const grp = id => groups.find(x => x.id === id) || groups[0];
   const seed = [
@@ -19,5 +19,19 @@
     { id: 7, nama: 'Hendra', jk: 'p', kota: 'Tangerang', grup: 'nov26', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending' },
     { id: 8, nama: 'aaaa', jk: 'p', kota: '-', grup: 'nov26', bintang: 1, pesan: 'tes tes', st: 'pending' }
   ];
-  window.BHB = { groups: groups, seed: seed, KEY: 'bhb-demo-4' };
+  // Penyimpanan demo: semua di browser yang dipakai mencoba (versi asli pakai server)
+  const KEY = 'bhb-demo-4', GKEY = 'bhb-travel-1', SKEY = 'bhb-setelan-1';
+  const read = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
+  const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
+  const defaults = { wajibSetuju: true, suara: true, notifWa: '0812 0000 0000', ket: 'Muthowif umrah & haji' };
+  window.BHB = {
+    groups: groups, seed: seed, KEY: KEY,
+    loadGroups: () => read(GKEY, groups.map(g => Object.assign({}, g))),
+    saveGroups: g => write(GKEY, g),
+    loadData: () => read(KEY, seed.map(t => Object.assign({}, t))),
+    saveData: d => write(KEY, d),
+    loadSettings: () => Object.assign({}, defaults, read(SKEY, {})),
+    saveSettings: s => write(SKEY, s),
+    reset: () => { try { [KEY, GKEY, SKEY].forEach(k => localStorage.removeItem(k)); } catch (e) {} }
+  };
 })();

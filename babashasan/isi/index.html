@@ -107,10 +107,10 @@
   <form id="tform" novalidate>
     <label class="field">Nama<input name="nama" autocomplete="name" placeholder="Contoh: Bu Hj. Aminah"></label>
     <label class="field">Kota<input name="kota" autocomplete="address-level2" placeholder="Contoh: Bekasi"></label>
-    <label class="field" id="grpField">Rombongan<select name="grup" id="grupSel"></select></label>
+    <label class="field" id="grpField">Berangkat dengan travel<select name="grup" id="grupSel"></select></label>
     <div class="field">Seberapa puas?<div class="rate" id="rate"><button type="button" class="on" aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div></div>
     <label class="field">Kesan &amp; pesan<textarea name="pesan" placeholder="Ceritakan pengalaman umrahnya…"></textarea><small>Lebih gampang ngomong? Boleh pakai pesan suara di bawah.</small></label>
-    <div class="field"><span class="lab">Pesan suara <span class="pill">Add-on</span></span>
+    <div class="field" id="voiceField"><span class="lab">Pesan suara <span class="pill">Add-on</span></span>
       <div class="rec" id="rec"><button type="button" class="mic" id="micBtn" aria-label="Mulai rekam pesan suara"><svg class="ico"><use href="#i-mic"/></svg></button><div class="info"><span class="lbl" id="recLbl">Tekan untuk rekam, maks. 1 menit</span><audio id="recAudio" controls hidden></audio></div><button type="button" class="small-btn" id="recDel" hidden>Hapus</button></div>
     </div>
     <div class="field">Foto kamu<label class="upload" id="upload"><input type="file" accept="image/*" id="foto"><svg class="ico"><use href="#i-cam"/></svg><span>Ketuk untuk pilih foto</span><small>Foto sendiri atau bareng keluarga</small></label></div>
@@ -121,9 +121,9 @@
   <section class="done" id="done" hidden>
     <img src="../assets/maskot-babas.svg" alt="Maskot Bang Babas" width="88" height="88">
     <h2>Jazakallah khairan!</h2>
-    <p>Testimoni sudah terkirim dan akan tampil setelah dicek. Semoga bisa berangkat lagi bersama.</p>
+    <p id="doneMsg">Testimoni sudah terkirim dan akan tampil setelah dicek. Semoga bisa berangkat lagi bersama.</p>
     <div class="acts">
-      <a class="pri" href="../demo/#setujui">Lanjut: lihat dari sisi Bang Babas</a>
+      <a class="pri" href="../admin/#testimoni">Lanjut: lihat di admin panel Bang Babas</a>
       <a class="sec" href="../demo/#halaman">Lihat halaman testimoni</a>
       <button class="sec" type="button" id="again">Isi lagi</button>
     </div>
@@ -141,15 +141,18 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const toastEl = $('#toast'); let tt;
   const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2600); };
-  const { groups, seed, KEY } = window.BHB;
+  const groups = window.BHB.loadGroups(), { seed, KEY } = window.BHB, setelan = window.BHB.loadSettings();
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || seed.slice(); } catch (e) { return seed.slice(); } };
   const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch (e) { return false; } };
 
-  // Rombongan: link khusus (?rombongan=feb26) langsung memilih rombongannya
+  // Travel: link khusus (?travel=feb26) langsung memilih travelnya
   $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
-  const pre = new URLSearchParams(location.search).get('rombongan');
+  const qs = new URLSearchParams(location.search), pre = qs.get('travel') || qs.get('rombongan');
   const g0 = groups.find(g => g.id === pre);
-  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = g0.nama; }
+  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = g0.nama + ' · ' + g0.bulan; }
+
+  // Pengaturan dari admin: pesan suara bisa dimatikan
+  if (!setelan.suara) $('#voiceField').hidden = true;
 
   // Bintang
   let bintang = 5;
@@ -204,8 +207,9 @@
     if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
     const data = load();
-    data.push({ id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: 'pending', foto, audio, dur: audio ? dur : null });
+    data.push({ id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null });
     if (!save(data)) toast('Foto atau rekaman terlalu besar untuk demo ini, coba yang lebih kecil');
+    if (!setelan.wajibSetuju) $('#doneMsg').textContent = 'Testimoni sudah tampil di halaman. Semoga bisa berangkat lagi bersama.';
     e.target.hidden = true; $('#done').hidden = false; scrollTo(0, 0);
   });
   $('#again').addEventListener('click', () => {

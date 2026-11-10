@@ -200,7 +200,7 @@
   .tcard .who small { display: block; }
   .mod-photo { position: relative; overflow: hidden; }
   .mod-photo input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-  /* Testimoni per rombongan */
+  /* Testimoni per travel */
   .wall { columns: auto; }
   .grp + .grp { margin-top: 44px; }
   .grp-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
@@ -240,8 +240,9 @@
     .grp-head img { width: 46px; height: 46px; border-radius: 12px; }
     .grp-head h3 { font-size: 22px; }
     .grp-head small { font-size: 12.5px; }
-    .grp-share { margin-left: 0; padding: 6px 12px; font-size: 12.5px; }
-    /* Kartu satu rombongan digeser ke samping */
+    .grp-head { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 10px; row-gap: 8px; }
+    .grp-share { grid-column: 2; justify-self: start; margin-left: 0; padding: 6px 12px; font-size: 12.5px; }
+    /* Kartu satu travel digeser ke samping */
     .grp-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 -14px; padding: 2px 14px 8px; scrollbar-width: none; }
     .grp-cards::-webkit-scrollbar { display: none; }
     .grp-cards .tcard { flex: 0 0 84%; scroll-snap-align: start; }
@@ -305,7 +306,7 @@
 </style>
 </head>
 <body>
-<div class="demo-bar">Demo web testimoni untuk Nasrudin Babas Hasan. Bisa dicoba beneran, data cuma tersimpan di browser ini. Testimoni contoh hanya ilustrasi. <a href="../index.html">Kembali ke penawaran</a></div>
+<div class="demo-bar">Demo web testimoni untuk Nasrudin Babas Hasan. Bisa dicoba beneran, data cuma tersimpan di browser ini. Nama travel dan testimoni hanya contoh. <a href="../index.html">Kembali ke penawaran</a></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -324,7 +325,7 @@
     <nav class="seg" aria-label="Layar demo">
       <a href="#halaman" data-s="halaman">Testimoni</a>
       <a href="#isi" data-s="isi">Isi testimoni</a>
-      <a href="#setujui" data-s="setujui">Setujui <em id="pendBadge">2</em></a>
+      <a href="../admin/#testimoni">Admin <em id="pendBadge">2</em></a>
     </nav>
   </div>
 </header>
@@ -368,7 +369,7 @@
             <label class="field">Nama<input name="nama" required placeholder="Contoh: Bu Hj. Aminah"></label>
             <div class="row2">
               <label class="field">Kota<input name="kota" placeholder="Contoh: Bekasi"></label>
-              <label class="field">Rombongan<select name="grup" id="grupSel"></select></label>
+              <label class="field">Travel<select name="grup" id="grupSel"></select></label>
             </div>
             <div class="field">Seberapa puas?<div class="rate" id="rate"><button type="button" class="on" aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div></div>
             <label class="field">Kesan &amp; pesan<textarea name="pesan" placeholder="Ceritakan pengalaman umrahnya…"></textarea><small>Lebih gampang ngomong? Boleh ganti pakai pesan suara di bawah.</small></label>
@@ -386,7 +387,7 @@
             <div class="note"><span class="n">1</span><div><b>Jamaah gak perlu akun</b><span>Cukup buka link, isi, kirim. Tulisan dan kolomnya besar biar jamaah sepuh gampang. <a href="../isi/" style="font-weight:700;text-decoration:underline">Buka versi penuh yang diterima jamaah ↗</a></span></div></div>
           </div>
           <div class="card">
-            <div class="note"><span class="n">2</span><div><b>Masuk antrean dulu</b><span>Setelah dikirim, testimoni muncul di tab "Setujui". Antum yang pilih mana yang tampil.</span></div></div>
+            <div class="note"><span class="n">2</span><div><b>Masuk antrean dulu</b><span>Setelah dikirim, testimoni masuk ke admin panel Bang Babas. Di situ dipilih mana yang tampil.</span></div></div>
           </div>
           <div class="card qr-card"><svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" id="qr"></svg><div><b>Link + kode QR</b><small>Dibagikan ke grup jamaah atau dicetak di kartu ucapan setelah pulang umrah.</small></div></div>
         </div>
@@ -417,7 +418,7 @@
   const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2400); };
 
   // Data contoh + yang diisi saat mencoba (disimpan di browser ini saja)
-  const { groups, seed } = window.BHB;
+  const groups = window.BHB.loadGroups(), { seed } = window.BHB, setelan = window.BHB.loadSettings();
   const grp = id => groups.find(x => x.id === id) || groups[0];
   let data;
   try { data = JSON.parse(localStorage.getItem('bhb-demo-4')) || seed; } catch (e) { data = seed; }
@@ -436,7 +437,7 @@
   const card = t => `<article class="card tcard${t.id === lastNew ? ' new' : ''}"><div class="tx"><div class="who"><span class="ph">${avatar(t)}</span><span><b>${esc(t.nama)}</b><small>${esc(t.kota)}</small><span class="stars" aria-label="${t.bintang} bintang">${stars(t.bintang)}</span></span><button class="share" data-share="${t.id}" aria-label="Bagikan ke WhatsApp"><svg class="ico"><use href="#i-share"/></svg></button></div>${quote(t)}${voice(t)}</div></article>`;
   function renderChips() {
     const used = groups.filter(g => data.some(t => t.st === 'shown' && t.grup === g.id));
-    $('#yearChips').innerHTML = `<button class="${year === 'all' ? 'on' : ''}" data-y="all">Semua rombongan</button>` + used.map(g => `<button class="${year === g.id ? 'on' : ''}" data-y="${g.id}">${esc(g.bulan)}</button>`).join('');
+    $('#yearChips').innerHTML = `<button class="${year === 'all' ? 'on' : ''}" data-y="all">Semua travel</button>` + used.map(g => `<button class="${year === g.id ? 'on' : ''}" data-y="${g.id}">${esc(g.short || g.nama)}</button>`).join('');
   }
   function renderWall() {
     const shown = data.filter(t => t.st === 'shown');
@@ -446,9 +447,9 @@
       const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
       if (!items.length) return '';
       const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
-      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?rombongan=${g.id}" target="_blank" rel="noopener">Buka link rombongan ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
     }).join('');
-    $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk rombongan ini.</p>';
+    $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk travel ini.</p>';
   }
   function renderMod() {
     const pend = data.filter(t => t.st === 'pending'), shown = data.filter(t => t.st === 'shown');
@@ -458,7 +459,7 @@
   }
   const render = () => { renderWall(); renderMod(); };
 
-  // Pilihan rombongan di form (link khusus rombongan bisa langsung memilihnya)
+  // Pilihan travel di form (link khusus travel bisa langsung memilihnya)
   $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
 
   // Pindah layar
@@ -559,7 +560,7 @@
     if (!pesan && !audio) { toast('Isi kesan pesan, atau rekam pesan suara'); return; }
     if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
-    const t = { id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: 'pending', foto, audio, dur: audio ? dur : null };
+    const t = { id: Date.now(), nama, jk: (/^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p'), kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: setelan.wajibSetuju ? 'pending' : 'shown', foto, audio, dur: audio ? dur : null };
     data.push(t); save(); render(); tab = 'pending'; $$('#modTabs button').forEach(x => x.classList.toggle('on', x.dataset.t === 'pending')); renderMod();
     e.target.style.display = 'none'; $('#done').classList.add('on');
   });

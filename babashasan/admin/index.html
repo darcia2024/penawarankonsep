@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../assets/maskot-babas.svg">
+<title>Admin Testimoni · Nasrudin Babas Hasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+<style>
+  /* Admin panel web testimoni Bang Babas. Demo: data tersimpan di browser ini saja. */
+  :root {
+    --bg: #f7f3ea; --white: #fff; --sand: #efe6d6; --sand-2: #f6f1e6; --olive: #5c6a4c; --olive-2: #4e5b40; --side: #2f3627; --gold: #a88a4e;
+    --ink: #151513; --ink-2: #4c4b45; --faint: #86847b; --line: #e3dccd; --line-2: #ece6da;
+    --ok: #2f7a3e; --ok-bg: #e4f1e1; --warn: #94600f; --warn-bg: #f7ebd0; --bad: #b42318; --bad-bg: #fde7e5;
+    --serif: "Instrument Serif", Georgia, serif; --sans: "Satoshi", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; font-synthesis: none; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.5 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 2px solid var(--olive); outline-offset: 2px; }
+  .ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .demo-bar { background: var(--ink); color: #e9e2d2; font-size: 12.5px; text-align: center; padding: 6px 16px; line-height: 1.45; }
+  .demo-bar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 14px; border: 1px solid var(--line); background: #fff; color: var(--ink); white-space: nowrap; transition: border-color .15s, background-color .15s; position: relative; }
+  .btn:hover { border-color: var(--ink); }
+  .btn.pri { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .btn.pri:hover { background: #2a2a26; }
+  .btn.ok { background: var(--olive); border-color: var(--olive); color: #fff; }
+  .btn.ok:hover { background: var(--olive-2); }
+  .btn.no { color: var(--bad); }
+  .btn.no:hover { border-color: var(--bad); }
+  .btn.sm { padding: 6px 12px; font-size: 13px; }
+  .btn input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--sand); color: var(--ink-2); white-space: nowrap; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.dot::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px; min-width: 0; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .card-head h3 { font-size: 16px; }
+  .card-head small { color: var(--faint); font-size: 13px; }
+  .field { display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+  .field input, .field select, .field textarea { font-weight: 500; font-size: 15px; color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: #fff; width: 100%; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--olive); outline: none; }
+  .field textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+  .field small { font-weight: 500; color: var(--faint); font-size: 12px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .seg { display: inline-flex; background: var(--sand-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px; font-size: 13px; font-weight: 700; }
+  .seg button { border: 0; background: none; padding: 6px 13px; border-radius: 999px; color: var(--ink-2); }
+  .seg button.on { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .seg button em { font-style: normal; font-size: 11.5px; color: var(--faint); margin-left: 3px; }
+  .stars { color: var(--gold); letter-spacing: 1px; font-size: 13px; }
+  .sw { position: relative; width: 44px; height: 24px; border-radius: 999px; background: var(--line); border: 0; flex: none; transition: background-color .2s; }
+  .sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .sw[aria-pressed="true"] { background: var(--olive); }
+  .sw[aria-pressed="true"]::after { transform: translateX(20px); }
+
+  /* Kerangka */
+  .app { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: calc(100vh - 30px); }
+  .side { background: var(--side); color: #d9d3c2; padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .side-brand { display: flex; align-items: center; gap: 10px; padding: 4px 6px 18px; color: #fff; }
+  .side-brand img { width: 40px; height: 40px; border-radius: 50%; }
+  .side-brand b { display: block; font-size: 14.5px; line-height: 1.2; }
+  .side-brand small { font-size: 12px; color: #b8b19c; }
+  .side-nav { display: flex; flex-direction: column; gap: 3px; }
+  .side-nav a { display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 10px; font-weight: 600; font-size: 14px; }
+  .side-nav a:hover { background: rgba(255,255,255,.07); color: #fff; }
+  .side-nav a[aria-current="page"] { background: #fff; color: var(--ink); }
+  .side-nav a em { margin-left: auto; font-style: normal; font-size: 11px; font-weight: 700; background: var(--gold); color: #fff; border-radius: 999px; padding: 1px 7px; }
+  .side-foot { margin-top: auto; display: grid; gap: 6px; padding: 14px 6px 4px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; }
+  .side-foot a { display: flex; align-items: center; gap: 8px; color: #d9d3c2; padding: 6px 4px; border-radius: 8px; }
+  .side-foot a:hover { color: #fff; }
+  .main { min-width: 0; padding: 26px 30px 56px; }
+  .page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .page-head h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.05; }
+  .page-head p { color: var(--ink-2); margin-top: 4px; }
+  .screen { display: none; }
+  .screen.on { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Ringkasan */
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .kpi small { display: block; color: var(--ink-2); font-weight: 600; font-size: 13px; }
+  .kpi b { display: block; font-size: 28px; letter-spacing: -.02em; line-height: 1.15; margin: 6px 0 2px; }
+  .kpi span { font-size: 12.5px; color: var(--faint); }
+  .kpi.alert b { color: var(--warn); }
+  .grid2 { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .bars li { display: grid; grid-template-columns: minmax(0, 1fr) 120px 36px; gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line-2); font-size: 14px; }
+  .bars li:last-child { border-bottom: 0; }
+  .bars small { display: block; color: var(--faint); font-size: 12px; }
+  .meter { height: 7px; border-radius: 4px; background: var(--line-2); overflow: hidden; }
+  .meter i { display: block; height: 100%; background: var(--olive); border-radius: 4px; }
+  .bars .n { text-align: right; font-weight: 700; }
+
+  /* Daftar testimoni */
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .filters .search { flex: 1; min-width: 200px; border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; background: #fff; font-size: 14px; }
+  .filters select { border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; background: #fff; font-size: 14px; font-weight: 600; }
+  .t-row { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--line-2); }
+  .t-row:last-child { border-bottom: 0; }
+  .ph { width: 56px; height: 56px; border-radius: 14px; overflow: hidden; background: var(--sand); flex: none; }
+  .ph img, .ph svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .t-row .top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .t-row b { font-size: 15px; }
+  .t-row small { display: block; color: var(--faint); font-size: 12.5px; margin-top: 1px; }
+  .t-row q { display: block; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.55; margin-top: 8px; color: var(--ink); quotes: "“" "”"; }
+  .voice { display: inline-flex; align-items: center; gap: 8px; border: 0; background: var(--sand); color: var(--ink); border-radius: 999px; padding: 5px 13px 5px 5px; font-weight: 700; font-size: 12.5px; margin-top: 8px; }
+  .voice i { width: 24px; height: 24px; border-radius: 50%; background: var(--olive); color: #fff; display: grid; place-items: center; font-style: normal; font-size: 9px; }
+  .t-acts { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 300px; }
+  .empty { color: var(--faint); text-align: center; padding: 30px 0; }
+
+  /* Travel */
+  .travels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .travel { padding: 0; overflow: hidden; }
+  .travel .cover { height: 110px; position: relative; }
+  .travel .cover img { width: 100%; height: 100%; object-fit: cover; }
+  .travel .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.55)); }
+  .travel .cover h3 { position: absolute; left: 18px; bottom: 12px; z-index: 1; color: #fff; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; }
+  .travel .body { padding: 16px 18px 18px; display: grid; gap: 12px; }
+  .travel .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .travel .link { display: flex; align-items: center; gap: 12px; background: var(--sand-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+  .travel .link svg.qr { width: 64px; height: 64px; border-radius: 6px; flex: none; }
+  .travel .link code { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--ink-2); word-break: break-all; }
+  .travel .acts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .travel.add { display: grid; place-items: center; min-height: 260px; border: 2px dashed var(--line); background: transparent; color: var(--ink-2); font-weight: 700; padding: 20px; text-align: center; }
+  .travel.add:hover { border-color: var(--olive); color: var(--ink); }
+
+  /* Pengaturan */
+  .set-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line-2); }
+  .set-list li:last-child { border-bottom: 0; }
+  .set-list b { display: block; }
+  .set-list small { color: var(--faint); font-size: 13px; }
+  .profile { display: flex; align-items: center; gap: 16px; }
+  .profile img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+
+  /* Modal & toast */
+  .modal { position: fixed; inset: 0; background: rgba(21,21,19,.45); display: none; place-items: center; z-index: 60; padding: 16px; }
+  .modal.on { display: grid; animation: fade .2s ease; }
+  .modal .box { background: #fff; border-radius: 18px; width: min(480px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; padding: 22px; display: grid; gap: 14px; }
+  .modal .box-head { display: flex; justify-content: space-between; align-items: center; }
+  .modal .box-head h3 { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1.1; }
+  .x { border: 0; background: var(--sand); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; }
+  .rate { display: flex; gap: 6px; }
+  .rate button { border: 0; background: none; padding: 0; color: var(--line); font-size: 26px; line-height: 1; }
+  .rate button.on { color: var(--gold); }
+  .covers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .covers button { border: 2px solid transparent; border-radius: 10px; overflow: hidden; padding: 0; aspect-ratio: 1; background: none; }
+  .covers button.on { border-color: var(--olive); }
+  .covers img { width: 100%; height: 100%; object-fit: cover; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); background: var(--ink); color: #fff; padding: 11px 16px; border-radius: 12px; font-weight: 600; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 70; max-width: calc(100vw - 32px); text-align: center; }
+  .toast.on { opacity: 1; transform: translateX(-50%); }
+
+  @media (prefers-reduced-motion: reduce) { .screen.on, .modal.on { animation: none; } }
+  @media (max-width: 1100px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid2 { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 860px) {
+    .app { grid-template-columns: minmax(0, 1fr); align-content: start; }
+    .side { position: sticky; top: 0; z-index: 20; height: auto; padding: 10px 0; gap: 8px; overflow: visible; }
+    .side-brand { padding: 0 16px; }
+    .side-brand img { width: 32px; height: 32px; }
+    .side-foot { display: none; }
+    .side-nav { flex-direction: row; gap: 6px; overflow-x: auto; padding: 0 16px 2px; scrollbar-width: none; }
+    .side-nav::-webkit-scrollbar { display: none; }
+    .side-nav a { flex: none; padding: 7px 12px; font-size: 13px; background: rgba(255,255,255,.07); white-space: nowrap; gap: 6px; }
+    .side-nav a .ico { display: none; }
+    .main { padding: 20px 16px 44px; }
+    .travels { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .page-head h1 { font-size: 30px; }
+    .page-head .btn { width: 100%; }
+    .kpis { gap: 8px; }
+    .kpi { padding: 14px; }
+    .kpi b { font-size: 22px; }
+    .card { padding: 16px; border-radius: 16px; }
+    .t-row { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; }
+    .ph { width: 48px; height: 48px; border-radius: 12px; }
+    .t-acts { grid-column: 1 / -1; justify-content: flex-start; max-width: none; }
+    .bars li { grid-template-columns: minmax(0, 1fr) 70px 30px; }
+    .row2 { grid-template-columns: minmax(0, 1fr); }
+    .filters .search { min-width: 0; flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+<p class="demo-bar">Demo admin panel untuk Bang Babas. Di versi asli ada login dan data tersimpan di server; di demo ini semua tersimpan di browser ini saja. <a href="../">Lihat penawaran</a></p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 20 20"><path d="M3 9.5 10 3l7 6.5V17h-5v-4H8v4H3z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 20 20"><path d="M3 4h14v9H8l-4 3v-3H3z"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 20 20"><rect x="3" y="3.5" width="14" height="11" rx="2"/><path d="M3 9h14M6 17v-2.5M14 17v-2.5"/><circle cx="6.5" cy="12" r=".8"/><circle cx="13.5" cy="12" r=".8"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2.6"/><path d="M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2M4.7 4.7l1.6 1.6M13.7 13.7l1.6 1.6M4.7 15.3l1.6-1.6M13.7 6.3l1.6-1.6"/></symbol>
+    <symbol id="i-out" viewBox="0 0 20 20"><path d="M11 4h5v12h-5M4 10h9M9 6l-4 4 4 4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5 5 15"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4v12M4 10h12"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <aside class="side">
+    <div class="side-brand"><img id="sideFoto" src="../assets/maskot-babas.svg" alt=""><span><b>Nasrudin Babas Hasan</b><small>Admin testimoni</small></span></div>
+    <nav class="side-nav" aria-label="Menu admin">
+      <a href="#ringkasan" data-s="ringkasan"><svg class="ico"><use href="#i-home"/></svg><span>Ringkasan</span></a>
+      <a href="#testimoni" data-s="testimoni"><svg class="ico"><use href="#i-chat"/></svg><span>Testimoni</span><em id="navPend">2</em></a>
+      <a href="#travel" data-s="travel"><svg class="ico"><use href="#i-bus"/></svg><span>Travel</span></a>
+      <a href="#pengaturan" data-s="pengaturan"><svg class="ico"><use href="#i-gear"/></svg><span>Pengaturan</span></a>
+    </nav>
+    <div class="side-foot">
+      <a href="../demo/#halaman" target="_blank" rel="noopener">↗ Lihat halaman testimoni</a>
+      <a href="../isi/" target="_blank" rel="noopener">↗ Lihat form jamaah</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- RINGKASAN -->
+    <section class="screen" id="s-ringkasan">
+      <div class="page-head"><div><h1>Assalamualaikum, Bang Babas</h1><p>Ringkasan testimoni jamaah dari semua travel.</p></div><a class="btn pri" href="#testimoni">Cek yang menunggu</a></div>
+      <div class="kpis">
+        <div class="card kpi"><small>Testimoni tampil</small><b id="kShown">0</b><span>di halaman publik</span></div>
+        <div class="card kpi alert"><small>Menunggu persetujuan</small><b id="kPend">0</b><span>perlu dicek</span></div>
+        <div class="card kpi"><small>Rata-rata bintang</small><b id="kAvg">0</b><span>dari testimoni tampil</span></div>
+        <div class="card kpi"><small>Pesan suara</small><b id="kVoice">0</b><span>rekaman jamaah</span></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-head"><h3>Menunggu persetujuan</h3><a class="btn sm" href="#testimoni">Lihat semua</a></div>
+          <div id="pendList"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Testimoni per travel</h3><small>yang sudah tampil</small></div>
+          <ul class="bars" id="bars"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="screen" id="s-testimoni">
+      <div class="page-head"><div><h1>Testimoni</h1><p>Tampilkan, sembunyikan, ubah, atau hapus testimoni jamaah.</p></div><button class="btn pri" data-new>+ Tambah manual</button></div>
+      <div class="card">
+        <div class="filters">
+          <span class="seg" id="stSeg"><button class="on" data-st="pending">Menunggu <em id="cP">0</em></button><button data-st="shown">Tampil <em id="cS">0</em></button><button data-st="all">Semua <em id="cA">0</em></button></span>
+          <select id="trFilter" aria-label="Saring travel"></select>
+          <input class="search" id="q" type="search" placeholder="Cari nama, kota, atau isi testimoni…" aria-label="Cari testimoni">
+        </div>
+        <div id="tList"></div>
+      </div>
+    </section>
+
+    <!-- TRAVEL -->
+    <section class="screen" id="s-travel">
+      <div class="page-head"><div><h1>Travel</h1><p>Travel tempat Abang jadi muthowif. Tiap travel punya link dan kode QR sendiri untuk grup WA jamaahnya.</p></div><button class="btn pri" data-travel-new>+ Tambah travel</button></div>
+      <div class="travels" id="travels"></div>
+    </section>
+
+    <!-- PENGATURAN -->
+    <section class="screen" id="s-pengaturan">
+      <div class="page-head"><div><h1>Pengaturan</h1><p>Atur cara testimoni diterima dan ditampilkan.</p></div></div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-head"><h3>Cara kerja testimoni</h3></div>
+          <ul class="set-list">
+            <li><span><b>Wajib disetujui dulu</b><small>Kalau dimatikan, testimoni baru langsung tampil tanpa dicek.</small></span><button class="sw" id="swSetuju" aria-label="Wajib disetujui dulu"></button></li>
+            <li><span><b>Terima pesan suara</b><small>Tombol rekam suara di form jamaah (add-on).</small></span><button class="sw" id="swSuara" aria-label="Terima pesan suara"></button></li>
+          </ul>
+          <label class="field" style="margin-top:14px">Nomor WA untuk notifikasi testimoni baru<input id="wa" inputmode="tel" placeholder="0812…"><small>Di versi asli, tiap ada testimoni baru Abang dapat pesan WA.</small></label>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Profil</h3></div>
+          <div class="profile"><img id="profFoto" src="../assets/maskot-babas.svg" alt="Foto profil"><div style="display:grid;gap:8px"><b>Nasrudin Babas Hasan</b><label class="btn sm">Ganti foto profil<input type="file" accept="image/*" id="profUp"></label></div></div>
+          <label class="field" style="margin-top:16px">Keterangan di bawah nama<input id="ket"></label>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><small style="color:var(--faint)">Kembalikan semua data demo ke awal.</small><button class="btn sm no" id="resetBtn">Reset demo</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal ubah testimoni -->
+<div class="modal" id="tModal" role="dialog" aria-label="Ubah testimoni">
+  <form class="box" id="tForm">
+    <div class="box-head"><h3 id="tTitle">Ubah testimoni</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <div class="row2"><label class="field">Nama<input name="nama" required></label><label class="field">Kota<input name="kota"></label></div>
+    <label class="field">Travel<select name="grup" id="tGrup"></select></label>
+    <div class="field">Bintang<div class="rate" id="tRate"></div></div>
+    <label class="field">Kesan &amp; pesan<textarea name="pesan"></textarea></label>
+    <label class="field">Status<select name="st"><option value="pending">Menunggu</option><option value="shown">Tampil</option></select></label>
+    <button class="btn pri" type="submit">Simpan</button>
+  </form>
+</div>
+
+<!-- Modal travel -->
+<div class="modal" id="gModal" role="dialog" aria-label="Ubah travel">
+  <form class="box" id="gForm">
+    <div class="box-head"><h3 id="gTitle">Tambah travel</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <label class="field">Nama travel<input name="nama" required placeholder="Contoh: Travel Al-Ikhlas"></label>
+    <div class="row2"><label class="field">Keberangkatan<input name="bulan" placeholder="Contoh: Umrah Jan 2027"></label><label class="field">Jumlah jamaah<input name="jamaah" inputmode="numeric" placeholder="40"></label></div>
+    <div class="field">Foto sampul<div class="covers" id="covers"></div></div>
+    <button class="btn pri" type="submit">Simpan travel</button>
+  </form>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="../data.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const toastEl = $('#toast'); let tt;
+  const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2400); };
+  const B = window.BHB;
+  let data = B.loadData(), groups = B.loadGroups(), set = B.loadSettings();
+  const saveAll = () => { B.saveData(data); B.saveGroups(groups); B.saveSettings(set); };
+  const grp = id => groups.find(g => g.id === id) || { nama: 'Travel dihapus', bulan: '', id };
+  const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+  const sil = t => { const bg = ['#5c6a4c', '#a88a4e', '#7d8a6b', '#b7a68a'][Number(String(t.id).slice(-1)) % 4]; return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="${bg}"/>` + (t.jk === 'w' ? '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><path d="M30 12c-10 0-16 8-16 17v8c0 6 5 10 9 11h14c4-1 9-5 9-11v-8c0-9-6-17-16-17z" fill="#efe6d6"/><circle cx="30" cy="31" r="8.5" fill="#d8bf9c"/>' : '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><circle cx="30" cy="29" r="10" fill="#d8bf9c"/><rect x="19.5" y="14" width="21" height="9" rx="2.5" fill="#1f201c"/>') + '</svg>'; };
+  const avatar = t => t.foto ? `<img src="${t.foto}" alt="Foto ${esc(t.nama)}">` : sil(t);
+  const voice = t => (t.audio || t.dur) ? `<button class="voice" data-play="${t.id}"><i>▶</i>Pesan suara · ${t.dur || '0:00'}</button>` : '';
+  const resize = (file, w0, cb) => { const img = new Image(), url = URL.createObjectURL(file); img.onload = () => { const w = Math.min(w0, img.width), h = Math.round(img.height * w / img.width); const c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url); cb(c.toDataURL('image/jpeg', .78)); }; img.src = url; };
+  const linkFor = g => new URL('../isi/?travel=' + g.id, location.href).href;
+
+  // ---------- Ringkasan ----------
+  function renderRingkasan() {
+    const shown = data.filter(t => t.st === 'shown'), pend = data.filter(t => t.st === 'pending');
+    $('#kShown').textContent = shown.length; $('#kPend').textContent = pend.length;
+    $('#kAvg').textContent = shown.length ? (shown.reduce((a, t) => a + t.bintang, 0) / shown.length).toFixed(1).replace('.', ',') : '–';
+    $('#kVoice').textContent = data.filter(t => t.audio || t.dur).length;
+    $('#navPend').textContent = pend.length; $('#navPend').hidden = !pend.length;
+    $('#pendList').innerHTML = pend.length ? pend.slice().sort((a, b) => b.id - a.id).slice(0, 4).map(row).join('') : '<p class="empty">Semua sudah dicek. Alhamdulillah.</p>';
+    const max = Math.max(1, ...groups.map(g => shown.filter(t => t.grup === g.id).length));
+    $('#bars').innerHTML = groups.map(g => { const n = shown.filter(t => t.grup === g.id).length; return `<li><span><b>${esc(g.nama)}</b><small>${esc(g.bulan)}</small></span><span class="meter"><i style="width:${n / max * 100}%"></i></span><span class="n">${n}</span></li>`; }).join('');
+  }
+
+  // ---------- Testimoni ----------
+  let stF = 'pending', trF = 'all', q = '';
+  function row(t) {
+    const g = grp(t.grup);
+    const acts = (t.st === 'pending' ? `<button class="btn ok sm" data-ok="${t.id}">Tampilkan</button>` : `<button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`) +
+      `<button class="btn sm" data-edit="${t.id}">Ubah</button><label class="btn sm">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm no" data-del="${t.id}">Hapus</button>`;
+    return `<div class="t-row"><span class="ph">${avatar(t)}</span><div><div class="top"><b>${esc(t.nama)}</b><span class="stars">${stars(t.bintang)}</span>${t.st === 'pending' ? '<span class="pill warn dot">Menunggu</span>' : '<span class="pill ok dot">Tampil</span>'}</div><small>${esc(t.kota)} · ${esc(g.nama)}</small>${t.pesan ? `<q>${esc(t.pesan)}</q>` : ''}${voice(t)}</div><div class="t-acts">${acts}</div></div>`;
+  }
+  function renderTestimoni() {
+    $('#cP').textContent = data.filter(t => t.st === 'pending').length; $('#cS').textContent = data.filter(t => t.st === 'shown').length; $('#cA').textContent = data.length;
+    $('#trFilter').innerHTML = '<option value="all">Semua travel</option>' + groups.map(g => `<option value="${g.id}"${trF === g.id ? ' selected' : ''}>${esc(g.nama)}</option>`).join('');
+    const list = data.filter(t => (stF === 'all' || t.st === stF) && (trF === 'all' || t.grup === trF) && (!q || (t.nama + ' ' + t.kota + ' ' + (t.pesan || '')).toLowerCase().includes(q))).sort((a, b) => b.id - a.id);
+    $('#tList').innerHTML = list.length ? list.map(row).join('') : '<p class="empty">Gak ada testimoni yang cocok.</p>';
+  }
+  $('#stSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('#stSeg button').forEach(x => x.classList.toggle('on', x === b)); stF = b.dataset.st; renderTestimoni(); });
+  $('#trFilter').addEventListener('change', e => { trF = e.target.value; renderTestimoni(); });
+  $('#q').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); renderTestimoni(); });
+
+  // ---------- Travel ----------
+  function qr(seedStr) {
+    let s = [...seedStr].reduce((a, c) => a + c.charCodeAt(0), 7); const r = () => (s = (s * 9301 + 49297) % 233280) / 233280, cells = [];
+    const fin = (x, y) => { for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) if (i === 0 || i === 6 || j === 0 || j === 6 || (i > 1 && i < 5 && j > 1 && j < 5)) cells.push([x + i, y + j]); };
+    const inF = (x, y) => (x < 8 && y < 8) || (x > 16 && y < 8) || (x < 8 && y > 16);
+    fin(0, 0); fin(18, 0); fin(0, 18); for (let x = 0; x < 25; x++) for (let y = 0; y < 25; y++) if (!inF(x, y) && r() > .52) cells.push([x, y]);
+    return `<svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges" aria-label="Kode QR contoh"><rect width="25" height="25" fill="#fff"/>${cells.map(([x, y]) => `<rect x="${x}" y="${y}" width="1" height="1" fill="#151513"/>`).join('')}</svg>`;
+  }
+  function renderTravel() {
+    $('#travels').innerHTML = groups.map(g => {
+      const items = data.filter(t => t.grup === g.id), sh = items.filter(t => t.st === 'shown').length, pd = items.length - sh;
+      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body"><div class="meta"><span class="pill">${esc(g.bulan || '–')}</span><span class="pill">${g.jamaah || 0} jamaah</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
+    }).join('') + '<button class="card travel add" data-travel-new><span><svg class="ico" style="width:28px;height:28px;margin:0 auto 8px"><use href="#i-plus"/></svg>Tambah travel</span></button>';
+  }
+
+  // ---------- Pengaturan ----------
+  function renderSetelan() {
+    $('#swSetuju').setAttribute('aria-pressed', set.wajibSetuju); $('#swSuara').setAttribute('aria-pressed', set.suara);
+    $('#wa').value = set.notifWa || ''; $('#ket').value = set.ket || '';
+    const foto = set.foto || '../assets/maskot-babas.svg'; $('#profFoto').src = foto; $('#sideFoto').src = foto;
+  }
+  $('#swSetuju').addEventListener('click', () => { set.wajibSetuju = !set.wajibSetuju; saveAll(); renderSetelan(); toast(set.wajibSetuju ? 'Testimoni baru masuk antrean dulu' : 'Testimoni baru langsung tampil tanpa dicek'); });
+  $('#swSuara').addEventListener('click', () => { set.suara = !set.suara; saveAll(); renderSetelan(); toast(set.suara ? 'Rekam suara aktif di form jamaah' : 'Rekam suara disembunyikan dari form jamaah'); });
+  $('#wa').addEventListener('change', e => { set.notifWa = e.target.value.trim(); saveAll(); toast('Nomor notifikasi disimpan'); });
+  $('#ket').addEventListener('change', e => { set.ket = e.target.value.trim(); saveAll(); toast('Keterangan disimpan'); });
+  $('#profUp').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; resize(f, 320, url => { set.foto = url; saveAll(); renderSetelan(); toast('Foto profil diperbarui'); }); });
+  $('#resetBtn').addEventListener('click', () => { if (!confirm('Kembalikan semua data demo ke awal? Testimoni yang diisi saat mencoba akan hilang.')) return; B.reset(); data = B.loadData(); groups = B.loadGroups(); set = B.loadSettings(); renderAll(); toast('Demo dikembalikan ke awal'); });
+
+  // ---------- Modal ----------
+  const open = id => $('#' + id).classList.add('on'), closeAll = () => $$('.modal.on').forEach(m => m.classList.remove('on'));
+  let editId = null, rateVal = 5;
+  function rateUI() { $('#tRate').innerHTML = [1, 2, 3, 4, 5].map(i => `<button type="button" class="${i <= rateVal ? 'on' : ''}" data-r="${i}" aria-label="${i} bintang">★</button>`).join(''); }
+  $('#tRate').addEventListener('click', e => { const b = e.target.closest('[data-r]'); if (!b) return; rateVal = +b.dataset.r; rateUI(); });
+  function openEdit(t) {
+    editId = t ? t.id : null; const f = $('#tForm');
+    $('#tTitle').textContent = t ? 'Ubah testimoni' : 'Tambah testimoni';
+    $('#tGrup').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
+    f.nama.value = t ? t.nama : ''; f.kota.value = t ? t.kota : ''; f.grup.value = t ? t.grup : groups[0]?.id; f.pesan.value = t ? (t.pesan || '') : ''; f.st.value = t ? t.st : 'shown';
+    rateVal = t ? t.bintang : 5; rateUI(); open('tModal');
+  }
+  $('#tForm').addEventListener('submit', e => {
+    e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
+    const vals = { nama, kota: f.kota.value.trim() || '-', grup: f.grup.value, pesan: f.pesan.value.trim(), st: f.st.value, bintang: rateVal };
+    if (editId) Object.assign(data.find(t => t.id === editId), vals);
+    else data.push(Object.assign({ id: Date.now(), jk: /^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p' }, vals));
+    saveAll(); closeAll(); renderAll(); toast(editId ? 'Testimoni diperbarui' : 'Testimoni ditambahkan');
+  });
+  const coverChoices = ['foto-tawaf-malam.jpg', 'foto-kubah-hijau.jpg', 'foto-haram-ramadhan.jpg', 'foto-kabah-siang.jpg', 'foto-payung-nabawi.jpg', 'foto-menara-quba.jpg', 'foto-nabawi-malam.jpg'].map(n => '../assets/' + n);
+  let gEdit = null, gCover = coverChoices[0];
+  function coversUI() { $('#covers').innerHTML = coverChoices.map(c => `<button type="button" class="${c === gCover ? 'on' : ''}" data-cover="${c}" aria-label="Pilih sampul"><img src="${c}" alt=""></button>`).join('') + `<label class="btn sm" style="grid-column:1/-1">Unggah sampul sendiri<input type="file" accept="image/*" id="coverUp"></label>`; }
+  $('#covers').addEventListener('click', e => { const b = e.target.closest('[data-cover]'); if (!b) return; gCover = b.dataset.cover; coversUI(); });
+  $('#covers').addEventListener('change', e => { if (e.target.id !== 'coverUp' || !e.target.files[0]) return; resize(e.target.files[0], 900, url => { coverChoices.unshift(url); gCover = url; coversUI(); }); });
+  function openTravel(g) {
+    gEdit = g ? g.id : null; const f = $('#gForm');
+    $('#gTitle').textContent = g ? 'Ubah travel' : 'Tambah travel';
+    f.nama.value = g ? g.nama : ''; f.bulan.value = g ? g.bulan : ''; f.jamaah.value = g ? g.jamaah : '';
+    gCover = g ? g.foto : coverChoices[0]; if (g && !coverChoices.includes(g.foto)) coverChoices.unshift(g.foto); coversUI(); open('gModal');
+  }
+  $('#gForm').addEventListener('submit', e => {
+    e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
+    const vals = { nama, short: nama.replace(/^travel\s+/i, ''), bulan: f.bulan.value.trim(), jamaah: parseInt(f.jamaah.value, 10) || 0, foto: gCover, pos: '50% 50%' };
+    if (gEdit) Object.assign(groups.find(g => g.id === gEdit), vals);
+    else groups.unshift(Object.assign({ id: 't' + Date.now().toString(36) }, vals));
+    saveAll(); closeAll(); renderAll(); toast(gEdit ? 'Travel diperbarui' : 'Travel ditambahkan, link form-nya siap dibagikan');
+  });
+
+  // ---------- Aksi umum ----------
+  let player = null;
+  document.addEventListener('click', e => {
+    const find = id => data.find(t => t.id === +id);
+    const ok = e.target.closest('[data-ok]'), hide = e.target.closest('[data-hide]'), del = e.target.closest('[data-del]'), ed = e.target.closest('[data-edit]');
+    if (ok) { find(ok.dataset.ok).st = 'shown'; saveAll(); renderAll(); toast('Testimoni tampil di halaman publik'); }
+    if (hide) { find(hide.dataset.hide).st = 'pending'; saveAll(); renderAll(); toast('Disembunyikan, pindah ke Menunggu'); }
+    if (del && confirm('Hapus testimoni ini?')) { data = data.filter(t => t.id !== +del.dataset.del); saveAll(); renderAll(); toast('Testimoni dihapus'); }
+    if (ed) openEdit(find(ed.dataset.edit));
+    if (e.target.closest('[data-new]')) openEdit(null);
+    if (e.target.closest('[data-travel-new]')) openTravel(null);
+    const ge = e.target.closest('[data-gedit]'); if (ge) openTravel(groups.find(g => g.id === ge.dataset.gedit));
+    const gd = e.target.closest('[data-gdel]'); if (gd && confirm('Hapus travel ini?')) { groups = groups.filter(g => g.id !== gd.dataset.gdel); saveAll(); renderAll(); toast('Travel dihapus'); }
+    const cp = e.target.closest('[data-copy]');
+    if (cp) { const url = linkFor(groups.find(g => g.id === cp.dataset.copy)); (navigator.clipboard?.writeText(url) || Promise.reject()).then(() => toast('Link disalin, tinggal tempel di grup WA'), () => toast(url)); }
+    const pl = e.target.closest('[data-play]');
+    if (pl) { const t = find(pl.dataset.play); if (!t.audio) { toast('Contoh: di versi asli, rekaman jamaah diputar di sini'); } else { if (player) player.pause(); player = new Audio(t.audio); player.play().catch(() => toast('Suara gak bisa diputar di browser ini')); } }
+    if (e.target.closest('[data-close]') || e.target.classList.contains('modal')) closeAll();
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+  document.addEventListener('change', e => {
+    const inp = e.target.closest('input[data-up]'); if (!inp || !inp.files[0]) return;
+    const t = data.find(x => x.id === +inp.dataset.up); resize(inp.files[0], 640, url => { t.foto = url; if (!B.saveData(data)) { toast('Foto terlalu besar untuk demo ini'); return; } renderAll(); toast('Foto ' + t.nama + ' diperbarui'); });
+  });
+
+  // ---------- Navigasi ----------
+  const screens = ['ringkasan', 'testimoni', 'travel', 'pengaturan'];
+  function go() {
+    const id = screens.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'ringkasan';
+    $$('.screen').forEach(s => s.classList.toggle('on', s.id === 's-' + id));
+    $$('.side-nav a').forEach(a => { if (a.dataset.s === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    scrollTo(0, 0);
+  }
+  function renderAll() { renderRingkasan(); renderTestimoni(); renderTravel(); renderSetelan(); }
+  addEventListener('hashchange', go);
+  // Data bisa berubah dari tab lain (misalnya form jamaah)
+  addEventListener('storage', () => { data = B.loadData(); groups = B.loadGroups(); set = B.loadSettings(); renderAll(); });
+  renderAll(); go();
+})();
+</script>
+</body>
+</html>
