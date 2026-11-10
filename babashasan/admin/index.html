@@ -131,6 +131,7 @@
   .travel .cover h3 { position: absolute; left: 18px; bottom: 12px; z-index: 1; color: #fff; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; }
   .travel .body { padding: 16px 18px 18px; display: grid; gap: 12px; }
   .travel .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .travel .rombongan { font-size: 15px; margin-bottom: -4px; }
   .travel .link { display: flex; align-items: center; gap: 12px; background: var(--sand-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
   .travel .link svg.qr { width: 64px; height: 64px; border-radius: 6px; flex: none; }
   .travel .link code { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--ink-2); word-break: break-all; }
@@ -306,7 +307,9 @@
   <form class="box" id="gForm">
     <div class="box-head"><h3 id="gTitle">Tambah travel</h3><button type="button" class="x" data-close aria-label="Tutup"><svg class="ico"><use href="#i-x"/></svg></button></div>
     <label class="field">Nama travel<input name="nama" required placeholder="Contoh: Travel Al-Ikhlas"></label>
-    <div class="row2"><label class="field">Keberangkatan<input name="bulan" placeholder="Contoh: Umrah Jan 2027"></label><label class="field">Jumlah jamaah<input name="jamaah" inputmode="numeric" placeholder="40"></label></div>
+    <label class="field">Nama grup / rombongan<input name="rombongan" placeholder="Contoh: Rombongan Al-Fatih"></label>
+    <div class="row2"><label class="field">Tanggal berangkat<input type="date" name="berangkat"></label><label class="field">Tanggal pulang<input type="date" name="pulang"></label></div>
+    <div class="row2"><label class="field">Program<input name="bulan" placeholder="Contoh: Umrah Jan 2027"></label><label class="field">Jumlah jamaah<input name="jamaah" inputmode="numeric" placeholder="40"></label></div>
     <div class="field">Foto sampul<div class="covers" id="covers"></div></div>
     <button class="btn pri" type="submit">Simpan travel</button>
   </form>
@@ -341,7 +344,7 @@
     $('#navPend').textContent = pend.length; $('#navPend').hidden = !pend.length;
     $('#pendList').innerHTML = pend.length ? pend.slice().sort((a, b) => b.id - a.id).slice(0, 4).map(row).join('') : '<p class="empty">Semua sudah dicek. Alhamdulillah.</p>';
     const max = Math.max(1, ...groups.map(g => shown.filter(t => t.grup === g.id).length));
-    $('#bars').innerHTML = groups.map(g => { const n = shown.filter(t => t.grup === g.id).length; return `<li><span><b>${esc(g.nama)}</b><small>${esc(g.bulan)}</small></span><span class="meter"><i style="width:${n / max * 100}%"></i></span><span class="n">${n}</span></li>`; }).join('');
+    $('#bars').innerHTML = groups.map(g => { const n = shown.filter(t => t.grup === g.id).length; return `<li><span><b>${esc(g.nama)}</b><small>${esc(B.info(g))}</small></span><span class="meter"><i style="width:${n / max * 100}%"></i></span><span class="n">${n}</span></li>`; }).join('');
   }
 
   // ---------- Testimoni ----------
@@ -350,7 +353,7 @@
     const g = grp(t.grup);
     const acts = (t.st === 'pending' ? `<button class="btn ok sm" data-ok="${t.id}">Tampilkan</button>` : `<button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`) +
       `<button class="btn sm" data-edit="${t.id}">Ubah</button><label class="btn sm">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm no" data-del="${t.id}">Hapus</button>`;
-    return `<div class="t-row"><span class="ph">${avatar(t)}</span><div><div class="top"><b>${esc(t.nama)}</b><span class="stars">${stars(t.bintang)}</span>${t.st === 'pending' ? '<span class="pill warn dot">Menunggu</span>' : '<span class="pill ok dot">Tampil</span>'}</div><small>${esc(t.kota)} · ${esc(g.nama)}</small>${t.pesan ? `<q>${esc(t.pesan)}</q>` : ''}${voice(t)}</div><div class="t-acts">${acts}</div></div>`;
+    return `<div class="t-row"><span class="ph">${avatar(t)}</span><div><div class="top"><b>${esc(t.nama)}</b><span class="stars">${stars(t.bintang)}</span>${t.st === 'pending' ? '<span class="pill warn dot">Menunggu</span>' : '<span class="pill ok dot">Tampil</span>'}</div><small>${esc(t.kota)} · ${esc(g.nama)}${g.rombongan ? ' · ' + esc(g.rombongan) : ''}</small>${t.pesan ? `<q>${esc(t.pesan)}</q>` : ''}${voice(t)}</div><div class="t-acts">${acts}</div></div>`;
   }
   function renderTestimoni() {
     $('#cP').textContent = data.filter(t => t.st === 'pending').length; $('#cS').textContent = data.filter(t => t.st === 'shown').length; $('#cA').textContent = data.length;
@@ -373,7 +376,7 @@
   function renderTravel() {
     $('#travels').innerHTML = groups.map(g => {
       const items = data.filter(t => t.grup === g.id), sh = items.filter(t => t.st === 'shown').length, pd = items.length - sh;
-      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body"><div class="meta"><span class="pill">${esc(g.bulan || '–')}</span><span class="pill">${g.jamaah || 0} jamaah</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
+      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body">${g.rombongan ? `<b class="rombongan">${esc(g.rombongan)}</b>` : ''}<div class="meta">${B.jadwal(g) ? `<span class="pill">🗓 ${esc(B.jadwal(g))}</span>` : ''}<span class="pill">${esc(g.bulan || '–')}</span><span class="pill">${g.jamaah || 0} jamaah</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
     }).join('') + '<button class="card travel add" data-travel-new><span><svg class="ico" style="width:28px;height:28px;margin:0 auto 8px"><use href="#i-plus"/></svg>Tambah travel</span></button>';
   }
 
@@ -417,12 +420,12 @@
   function openTravel(g) {
     gEdit = g ? g.id : null; const f = $('#gForm');
     $('#gTitle').textContent = g ? 'Ubah travel' : 'Tambah travel';
-    f.nama.value = g ? g.nama : ''; f.bulan.value = g ? g.bulan : ''; f.jamaah.value = g ? g.jamaah : '';
+    f.nama.value = g ? g.nama : ''; f.rombongan.value = g ? (g.rombongan || '') : ''; f.berangkat.value = g ? (g.berangkat || '') : ''; f.pulang.value = g ? (g.pulang || '') : ''; f.bulan.value = g ? g.bulan : ''; f.jamaah.value = g ? g.jamaah : '';
     gCover = g ? g.foto : coverChoices[0]; if (g && !coverChoices.includes(g.foto)) coverChoices.unshift(g.foto); coversUI(); open('gModal');
   }
   $('#gForm').addEventListener('submit', e => {
     e.preventDefault(); const f = e.target, nama = f.nama.value.trim(); if (!nama) return;
-    const vals = { nama, short: nama.replace(/^travel\s+/i, ''), bulan: f.bulan.value.trim(), jamaah: parseInt(f.jamaah.value, 10) || 0, foto: gCover, pos: '50% 50%' };
+    const vals = { nama, short: nama.replace(/^travel\s+/i, ''), rombongan: f.rombongan.value.trim(), berangkat: f.berangkat.value, pulang: f.pulang.value, bulan: f.bulan.value.trim(), jamaah: parseInt(f.jamaah.value, 10) || 0, foto: gCover, pos: '50% 50%' };
     if (gEdit) Object.assign(groups.find(g => g.id === gEdit), vals);
     else groups.unshift(Object.assign({ id: 't' + Date.now().toString(36) }, vals));
     saveAll(); closeAll(); renderAll(); toast(gEdit ? 'Travel diperbarui' : 'Travel ditambahkan, link form-nya siap dibagikan');

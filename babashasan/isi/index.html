@@ -146,10 +146,10 @@
   const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch (e) { return false; } };
 
   // Travel: link khusus (?travel=feb26) langsung memilih travelnya
-  $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
+  $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}${window.BHB.info(g) ? ' · ' + esc(window.BHB.info(g)) : ''}</option>`).join('');
   const qs = new URLSearchParams(location.search), pre = qs.get('travel') || qs.get('rombongan');
   const g0 = groups.find(g => g.id === pre);
-  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = g0.nama + ' · ' + g0.bulan; }
+  if (g0) { $('#grupSel').value = g0.id; $('#grpField').hidden = true; $('#grpTag').hidden = false; $('#grpTag').textContent = [g0.nama, window.BHB.info(g0) || g0.bulan].filter(Boolean).join(' · '); }
 
   // Pengaturan dari admin: pesan suara bisa dimatikan
   if (!setelan.suara) $('#voiceField').hidden = true;

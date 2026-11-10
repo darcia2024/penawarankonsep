@@ -447,7 +447,7 @@
       const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
       if (!items.length) return '';
       const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
-      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${g.rombongan ? esc(g.rombongan) + ' · ' : ''}${esc(window.BHB.jadwal(g) || g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
     }).join('');
     $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk travel ini.</p>';
   }
@@ -455,12 +455,12 @@
     const pend = data.filter(t => t.st === 'pending'), shown = data.filter(t => t.st === 'shown');
     $('#cPend').textContent = pend.length; $('#cShown').textContent = shown.length; $('#pendBadge').textContent = pend.length; $('#pendBadge').style.display = pend.length ? '' : 'none';
     const list = (tab === 'pending' ? pend : shown).sort((a, b) => b.id - a.id);
-    $('#modList').innerHTML = list.length ? list.map(t => `<div class="mod"><div class="th${t.foto ? '' : ' ini'}">${pic(t, '')}</div><div><b>${esc(t.nama)} <span class="stars" style="font-size:12px">${stars(t.bintang)}</span></b><small>${esc(t.kota)} · ${esc(grp(t.grup).nama)}</small>${t.pesan ? `<p>${esc(t.pesan)}</p>` : ''}${voice(t) ? `<div style="margin-top:6px">${voice(t)}</div>` : ''}</div><div class="acts">${tab === 'pending' ? `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn pri sm" data-ok="${t.id}">Tampilkan</button><button class="btn sm no" data-del="${t.id}">Hapus</button>` : `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`}</div></div>`).join('') : `<p class="empty">${tab === 'pending' ? 'Gak ada yang menunggu. Coba isi form dulu.' : 'Belum ada yang tampil.'}</p>`;
+    $('#modList').innerHTML = list.length ? list.map(t => `<div class="mod"><div class="th${t.foto ? '' : ' ini'}">${pic(t, '')}</div><div><b>${esc(t.nama)} <span class="stars" style="font-size:12px">${stars(t.bintang)}</span></b><small>${esc(t.kota)} · ${esc(grp(t.grup).nama)}${grp(t.grup).rombongan ? ' · ' + esc(grp(t.grup).rombongan) : ''}</small>${t.pesan ? `<p>${esc(t.pesan)}</p>` : ''}${voice(t) ? `<div style="margin-top:6px">${voice(t)}</div>` : ''}</div><div class="acts">${tab === 'pending' ? `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn pri sm" data-ok="${t.id}">Tampilkan</button><button class="btn sm no" data-del="${t.id}">Hapus</button>` : `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`}</div></div>`).join('') : `<p class="empty">${tab === 'pending' ? 'Gak ada yang menunggu. Coba isi form dulu.' : 'Belum ada yang tampil.'}</p>`;
   }
   const render = () => { renderWall(); renderMod(); };
 
   // Pilihan travel di form (link khusus travel bisa langsung memilihnya)
-  $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
+  $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}${window.BHB.info(g) ? ' · ' + esc(window.BHB.info(g)) : ''}</option>`).join('');
 
   // Pindah layar
   function go() {

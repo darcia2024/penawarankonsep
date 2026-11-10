@@ -1,11 +1,12 @@
 /* Data bersama untuk demo dan form testimoni Nasrudin Babas Hasan. Semua contoh. Data yang diisi saat mencoba hanya tersimpan di browser itu. */
 (function () {
   // Travel tempat Bang Babas jadi muthowif. Nama travel di sini CONTOH, nanti diganti nama asli dari halaman admin.
+  // rombongan = nama grup, berangkat/pulang = tanggal (format TAHUN-BULAN-TANGGAL), pulang boleh dikosongkan.
   const groups = [
-    { id: 'nov26', nama: 'Travel Safar Barokah', bulan: 'Umrah Nov 2026', short: 'Safar Barokah', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
-    { id: 'agu26', nama: 'Travel Nur Hijrah', bulan: 'Umrah Agu 2026', short: 'Nur Hijrah', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
-    { id: 'feb26', nama: 'Travel Rihlah Iman', bulan: 'Umrah Ramadhan 2026', short: 'Rihlah Iman', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
-    { id: 'des25', nama: 'Travel Baitul Mulia', bulan: 'Umrah Des 2025', short: 'Baitul Mulia', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
+    { id: 'nov26', nama: 'Travel Safar Barokah', bulan: 'Umrah Nov 2026', rombongan: 'Rombongan Al-Fatih', berangkat: '2026-11-02', pulang: '2026-11-11', short: 'Safar Barokah', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
+    { id: 'agu26', nama: 'Travel Nur Hijrah', bulan: 'Umrah Agu 2026', rombongan: 'Rombongan Ar-Rahman', berangkat: '2026-08-12', pulang: '2026-08-21', short: 'Nur Hijrah', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
+    { id: 'feb26', nama: 'Travel Rihlah Iman', bulan: 'Umrah Ramadhan 2026', rombongan: 'Rombongan Itikaf', berangkat: '2026-03-05', pulang: '2026-03-20', short: 'Rihlah Iman', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
+    { id: 'des25', nama: 'Travel Baitul Mulia', bulan: 'Umrah Des 2025', rombongan: 'Rombongan Keluarga Sakinah', berangkat: '2025-12-20', pulang: '2025-12-29', short: 'Baitul Mulia', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
   ];
   const grp = id => groups.find(x => x.id === id) || groups[0];
   const seed = [
@@ -23,10 +24,26 @@
   const KEY = 'bhb-demo-4', GKEY = 'bhb-travel-1', SKEY = 'bhb-setelan-1';
   const read = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
+  // Tanggal: '2026-11-02' + '2026-11-11' jadi '2–11 Nov 2026'
+  const BLN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+  const parse = v => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ''); return m ? { y: +m[1], m: +m[2] - 1, d: +m[3] } : null; };
+  const jadwal = g => {
+    const a = parse(g && g.berangkat), b = parse(g && g.pulang);
+    if (!a) return '';
+    if (!b) return `${a.d} ${BLN[a.m]} ${a.y}`;
+    if (a.y !== b.y) return `${a.d} ${BLN[a.m]} ${a.y} – ${b.d} ${BLN[b.m]} ${b.y}`;
+    if (a.m !== b.m) return `${a.d} ${BLN[a.m]} – ${b.d} ${BLN[b.m]} ${b.y}`;
+    return `${a.d}–${b.d} ${BLN[a.m]} ${a.y}`;
+  };
+  // Keterangan singkat: "Rombongan Al-Fatih · 2–11 Nov 2026" (kalau kosong pakai nama program)
+  const info = g => [g && g.rombongan, jadwal(g) || (g && g.bulan)].filter(Boolean).join(' · ');
+  // Data travel lama yang tersimpan di browser dilengkapi field baru dari contoh di atas
+  const lengkapi = list => list.map(g => Object.assign({}, groups.find(x => x.id === g.id) || {}, g));
   const defaults = { wajibSetuju: true, suara: true, notifWa: '0812 0000 0000', ket: 'Muthowif umrah & haji' };
   window.BHB = {
     groups: groups, seed: seed, KEY: KEY,
-    loadGroups: () => read(GKEY, groups.map(g => Object.assign({}, g))),
+    loadGroups: () => lengkapi(read(GKEY, groups)),
+    jadwal: jadwal, info: info,
     saveGroups: g => write(GKEY, g),
     loadData: () => read(KEY, seed.map(t => Object.assign({}, t))),
     saveData: d => write(KEY, d),
