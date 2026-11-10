@@ -152,11 +152,11 @@
   .tabs button { border: 0; background: none; padding: 10px 14px; font-weight: 700; font-size: 14.5px; color: var(--faint); border-bottom: 2px solid transparent; margin-bottom: -1px; }
   .tabs button.on { color: var(--navy); border-color: var(--gold); }
   .tabs button em { font-style: normal; font-size: 12px; background: var(--paper-2); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
-  .mod { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line-2); }
+  .mod { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line-2); }
   .mod:last-child { border-bottom: 0; }
-  .mod .th { width: 88px; aspect-ratio: 4 / 3; border-radius: 9px; overflow: hidden; display: grid; place-items: center; color: rgba(255,255,255,.85); }
+  .mod .th { width: 64px; aspect-ratio: 1; border-radius: 14px; overflow: hidden; display: grid; place-items: center; color: rgba(255,255,255,.85); }
   .mod .th img { width: 100%; height: 100%; object-fit: cover; }
-  .mod .th svg { width: 50%; }
+  .mod .th svg { width: 100%; height: 100%; display: block; }
   .mod b { display: block; color: var(--navy); }
   .mod small { color: var(--faint); font-size: 12.5px; }
   .mod p { font-size: 14px; color: var(--muted); margin-top: 3px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -164,6 +164,110 @@
   .btn.no { color: var(--bad); }
   .btn.no:hover { border-color: var(--bad); }
 
+  /* Halaman testimoni: senada dengan penawaran */
+  #s-halaman { padding-top: 0; }
+  .serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; }
+  .lp-hero { text-align: center; padding-top: 52px; }
+  .lp-who { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--faint); font-weight: 600; }
+  .lp-who .badge-bhb { width: 32px; height: 32px; font-size: 12px; }
+  .lp-hero h1 { margin-top: 18px; font-weight: 700; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.08; letter-spacing: -.025em; color: var(--ink); }
+  .lp-hero h1 .serif { display: block; font-size: 1.1em; }
+  .lp-sub { color: var(--muted); max-width: 32em; margin: 14px auto 0; }
+  .lp-meta { margin-top: 22px; display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 14.5px; color: var(--muted); }
+  .lp-meta b { color: var(--ink); }
+  .lp-meta .stars { color: var(--gold); letter-spacing: 1px; }
+  .pill-btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; padding: 5px 5px 5px 18px; background: var(--ink); color: #fff; font-weight: 700; font-size: 14px; transition: background-color .2s; }
+  .pill-btn i { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.15); display: grid; place-items: center; font-style: normal; transition: transform .2s; }
+  .pill-btn:hover i { transform: translateX(3px); }
+  .pill-btn.light { background: #fff; color: var(--ink); }
+  .pill-btn.light i { background: var(--mint); }
+  .lp-arc { display: flex; justify-content: center; align-items: center; gap: 12px; perspective: 1000px; margin: 40px 0 44px; overflow: hidden; padding: 6px 0 14px; }
+  .lp-arc figure { margin: 0; flex: none; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 34px -22px rgba(21,21,19,.5); }
+  .lp-arc img { width: 100%; height: 100%; object-fit: cover; }
+  .lp-arc .r2, .lp-arc .l2 { width: 170px; height: 250px; }
+  .lp-arc .r2 { transform: rotateY(30deg); } .lp-arc .l2 { transform: rotateY(-30deg); }
+  .lp-arc .r1, .lp-arc .l1 { width: 140px; height: 200px; }
+  .lp-arc .r1 { transform: rotateY(16deg); } .lp-arc .l1 { transform: rotateY(-16deg); }
+  .lp-arc .r0 { width: 124px; height: 168px; }
+  .lp-chips { justify-content: center; }
+  /* Foto jamaah di kartu */
+  .tcard .who { padding: 0 0 14px; border-top: 0; border-bottom: 1px solid var(--line-2); align-items: center; }
+  .tcard .ph { width: 58px; height: 58px; border-radius: 16px; overflow: hidden; flex: none; background: var(--mint); }
+  .tcard .ph img, .tcard .ph svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tcard .who .stars { display: block; font-size: 12px; margin-top: 2px; }
+  .tcard .who small { display: block; }
+  .mod-photo { position: relative; overflow: hidden; }
+  .mod-photo input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  /* Testimoni per rombongan */
+  .wall { columns: auto; }
+  .grp + .grp { margin-top: 44px; }
+  .grp-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .grp-head img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; flex: none; }
+  .grp-head h3 { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1.1; letter-spacing: -.01em; }
+  .grp-head small { color: var(--faint); font-size: 13.5px; }
+  .grp-share { margin-left: auto; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .grp-share:hover { border-color: var(--ink); }
+  .grp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+  .grp-cards .tcard { margin-bottom: 0; }
+  .tcard { border-radius: 20px; }
+  .tcard img.photo { aspect-ratio: 16 / 10; }
+  .lp-cta { position: relative; overflow: hidden; border-radius: 24px; margin-top: 40px; padding: 56px 24px; text-align: center; color: #fff; }
+  .lp-cta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .lp-cta::after { content: ""; position: absolute; inset: 0; background: rgba(46,54,36,.74); }
+  .lp-cta > *:not(img) { position: relative; z-index: 1; }
+  .lp-cta h2 { font-weight: 700; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -.02em; }
+  .lp-cta h2 .serif { font-size: 1.1em; }
+  .lp-cta p { color: rgba(255,255,255,.85); margin: 10px 0 22px; }
+  @media (max-width: 640px) {
+    .top { position: static; }
+    .lp-hero { padding-top: 28px; }
+    .lp-who { font-size: 13px; }
+    .lp-hero h1 { font-size: 30px; margin-top: 14px; }
+    .lp-sub { font-size: 14.5px; margin-top: 10px; }
+    .lp-meta { margin-top: 16px; gap: 10px; font-size: 13.5px; }
+    .lp-arc { gap: 8px; margin: 26px 0 26px; perspective: 600px; }
+    .lp-arc .r2, .lp-arc .l2 { width: 96px; height: 150px; }
+    .lp-arc .r1, .lp-arc .l1 { width: 80px; height: 118px; }
+    .lp-arc .r0 { width: 70px; height: 96px; }
+    .lp-arc figure { border-radius: 12px; }
+    .lp-chips { margin-bottom: 16px; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; margin-left: -14px; margin-right: -14px; padding: 0 14px 4px; scrollbar-width: none; }
+    .lp-chips::-webkit-scrollbar { display: none; }
+    .lp-chips button { flex: none; }
+    .grp + .grp { margin-top: 30px; }
+    .grp-head { gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .grp-head img { width: 46px; height: 46px; border-radius: 12px; }
+    .grp-head h3 { font-size: 22px; }
+    .grp-head small { font-size: 12.5px; }
+    .grp-share { margin-left: 0; padding: 6px 12px; font-size: 12.5px; }
+    /* Kartu satu rombongan digeser ke samping */
+    .grp-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin: 0 -14px; padding: 2px 14px 8px; scrollbar-width: none; }
+    .grp-cards::-webkit-scrollbar { display: none; }
+    .grp-cards .tcard { flex: 0 0 84%; scroll-snap-align: start; }
+    .grp-cards .tcard:only-child { flex-basis: 100%; }
+    /* Kartu ringkas di HP */
+    .tcard { margin-bottom: 10px; border-radius: 16px; }
+    .tcard .tx { padding: 14px 16px; gap: 8px; }
+    .tcard q { font-size: 17px; line-height: 1.4; }
+    .tcard .who { padding-top: 10px; gap: 8px; }
+    .tcard .av { width: 30px; height: 30px; font-size: 12px; }
+    .tcard .who b { font-size: 13.5px; }
+    .tcard .share { width: 30px; height: 30px; }
+    .lp-cta { padding: 40px 18px; border-radius: 18px; margin-top: 24px; }
+  }
+  /* Rekam suara (add-on) */
+  .field .lab { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .rec { display: flex; align-items: center; gap: 12px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; padding: 10px 12px; }
+  .rec .mic { width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; display: grid; place-items: center; flex: none; transition: background-color .2s; }
+  .rec .mic .ico { width: 20px; height: 20px; }
+  .rec.on .mic { background: var(--bad); animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(180,35,24,.15); } }
+  .rec .info { flex: 1; min-width: 0; display: grid; gap: 4px; }
+  .rec .lbl { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .rec audio { width: 100%; height: 36px; }
+  .voice { display: inline-flex; align-items: center; gap: 8px; border: 0; background: var(--mint); color: var(--ink); border-radius: 999px; padding: 6px 14px 6px 6px; font-weight: 700; font-size: 13px; width: max-content; }
+  .voice i { width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-style: normal; font-size: 10px; }
+  .voice.playing i { background: var(--bad); }
+  @media (prefers-reduced-motion: reduce) { .rec.on .mic { animation: none; } }
   .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); background: var(--navy); color: #fff; padding: 11px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 70; max-width: calc(100vw - 32px); text-align: center; box-shadow: 0 10px 30px rgba(15,74,60,.3); }
   .toast.on { opacity: 1; transform: translateX(-50%); }
 
@@ -189,8 +293,8 @@
     /* Di HP form tampil penuh, tanpa bingkai ponsel */
     .phone { background: none; padding: 0; border-radius: 0; box-shadow: none; max-width: none; }
     .phone-in { border-radius: 14px; max-height: none; border: 1px solid var(--line); }
-    .mod { grid-template-columns: 72px minmax(0, 1fr); }
-    .mod .th { width: 72px; }
+    .mod { grid-template-columns: 56px minmax(0, 1fr); }
+    .mod .th { width: 56px; }
     .mod .acts { grid-column: 1 / -1; }
     .mod .acts .btn { flex: 1; }
     .card { padding: 16px; }
@@ -206,6 +310,7 @@
     <symbol id="i-star" viewBox="0 0 20 20"><path d="m10 2 2.4 5 5.4.7-4 3.8 1 5.4L10 14.3 5.2 17l1-5.4-4-3.8 5.4-.7z"/></symbol>
     <symbol id="i-cam" viewBox="0 0 20 20"><path d="M3 6h3l1.5-2h5L14 6h3v10H3z"/><circle cx="10" cy="11" r="3"/></symbol>
     <symbol id="i-ok" viewBox="0 0 20 20"><path d="m5 10.5 3.2 3.2L15 7"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 20 20"><rect x="7" y="2.5" width="6" height="10" rx="3"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v3"/></symbol>
     <symbol id="i-share" viewBox="0 0 20 20"><path d="M3 4h14v9H8l-4 3v-3H3z"/></symbol>
   </defs>
 </svg>
@@ -224,13 +329,28 @@
 <main>
   <!-- HALAMAN TESTIMONI -->
   <section class="screen" id="s-halaman">
+    <div class="wrap lp-hero">
+      <span class="lp-who"><span class="badge-bhb">BHB</span>Muthowif umrah &amp; haji</span>
+      <h1><span class="serif">Kesan Jamaah,</span>Bersama Babas Hasan Basri</h1>
+      <p class="lp-sub">Cerita dari jamaah dan mantan jamaah umrah, ditulis dan direkam sendiri setelah pulang.</p>
+      <div class="lp-meta"><span><b class="stars">★★★★★</b> 4,9 · <b id="statN">6</b> testimoni</span><a class="pill-btn" href="#isi">Tulis testimoni <i>→</i></a></div>
+    </div>
+    <div class="lp-arc" aria-hidden="true">
+      <figure class="r2"><img src="../assets/foto-kabah-siang.jpg" alt="" style="object-position:52% 60%"></figure>
+      <figure class="r1"><img src="../assets/foto-kubah-hijau.jpg" alt="" style="object-position:40% 50%"></figure>
+      <figure class="r0"><img src="../assets/foto-menara-quba.jpg" alt="" style="object-position:48% 30%"></figure>
+      <figure class="l1"><img src="../assets/foto-payung-nabawi.jpg" alt="" style="object-position:45% 70%"></figure>
+      <figure class="l2"><img src="../assets/foto-tawaf-malam.jpg" alt="" style="object-position:52% 40%"></figure>
+    </div>
     <div class="wrap">
-      <div class="page-head">
-        <div><h1>Kesan jamaah bersama Babas Hasan Basri</h1><p>Cerita dari jamaah dan mantan jamaah umrah, ditulis sendiri setelah pulang.</p></div>
-        <div class="stats"><div class="stat"><b id="statN">6</b><small>testimoni</small></div><div class="stat"><b>4,9</b><small>rata-rata bintang</small></div><a class="btn pri" href="#isi">Tulis testimoni</a></div>
-      </div>
-      <div class="chips" id="yearChips"><button class="on" data-y="all">Semua</button><button data-y="2026">2026</button><button data-y="2025">2025</button></div>
+      <div class="chips lp-chips" id="yearChips"></div>
       <div class="wall" id="wall"></div>
+      <div class="lp-cta">
+        <img src="../assets/foto-payung-nabawi.jpg" alt="" style="object-position:50% 72%">
+        <h2>Pernah umrah bersama <span class="serif">Babas Hasan Basri?</span></h2>
+        <p>Bagikan kenanganmu, cukup dua menit. Bisa ditulis atau direkam.</p>
+        <a class="pill-btn light" href="#isi">Tulis testimoni <i>→</i></a>
+      </div>
     </div>
   </section>
 
@@ -245,11 +365,14 @@
             <label class="field">Nama<input name="nama" required placeholder="Contoh: Bu Hj. Aminah"></label>
             <div class="row2">
               <label class="field">Kota<input name="kota" placeholder="Contoh: Bekasi"></label>
-              <label class="field">Bulan berangkat<select name="bulan"><option>Nov 2026</option><option>Okt 2026</option><option>Sep 2026</option><option>Agu 2026</option><option>Feb 2026</option><option>Des 2025</option></select></label>
+              <label class="field">Rombongan<select name="grup" id="grupSel"></select></label>
             </div>
             <div class="field">Seberapa puas?<div class="rate" id="rate"><button type="button" class="on" aria-label="1 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="2 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="3 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="4 bintang"><svg><use href="#i-star"/></svg></button><button type="button" class="on" aria-label="5 bintang"><svg><use href="#i-star"/></svg></button></div></div>
-            <label class="field">Kesan &amp; pesan<textarea name="pesan" required placeholder="Ceritakan pengalaman umrahnya…"></textarea></label>
-            <div class="field">Foto kenangan<label class="upload" id="upload"><input type="file" accept="image/*" id="foto"><svg class="ico"><use href="#i-cam"/></svg><span>Ketuk untuk pilih foto</span><small class="faint" style="font-weight:500">Foto dikecilkan otomatis</small></label></div>
+            <label class="field">Kesan &amp; pesan<textarea name="pesan" placeholder="Ceritakan pengalaman umrahnya…"></textarea><small>Lebih gampang ngomong? Boleh ganti pakai pesan suara di bawah.</small></label>
+            <div class="field"><span class="lab">Pesan suara <span class="pill gold">Add-on</span></span>
+              <div class="rec" id="rec"><button type="button" class="mic" id="micBtn" aria-label="Mulai rekam pesan suara"><svg class="ico"><use href="#i-mic"/></svg></button><div class="info"><span class="lbl" id="recLbl">Tekan untuk rekam, maks. 1 menit</span><audio id="recAudio" controls hidden></audio></div><button type="button" class="btn sm" id="recDel" hidden>Hapus</button></div>
+            </div>
+            <div class="field"><span class="lab">Foto kamu</span><label class="upload" id="upload"><input type="file" accept="image/*" id="foto"><svg class="ico"><use href="#i-cam"/></svg><span>Ketuk untuk pilih foto</span><small class="faint" style="font-weight:500">Foto sendiri atau bareng keluarga, tampil di kartu testimoni</small></label></div>
             <label class="consent"><input type="checkbox" id="izin" checked>Saya izinkan nama, foto, dan testimoni ini ditampilkan di web Babas Hasan Basri.</label>
             <button class="btn pri block" type="submit">Kirim testimoni</button>
           </form>
@@ -290,37 +413,66 @@
   const toast = m => { toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 2400); };
 
   // Data contoh + yang diisi saat mencoba (disimpan di browser ini saja)
+  // Rombongan keberangkatan (di versi asli diatur dari halaman admin)
+  const groups = [
+    { id: 'nov26', nama: 'Rombongan November 2026', bulan: 'Nov 2026', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
+    { id: 'agu26', nama: 'Rombongan Agustus 2026', bulan: 'Agu 2026', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
+    { id: 'feb26', nama: 'Rombongan Ramadhan 2026', bulan: 'Feb 2026', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
+    { id: 'des25', nama: 'Rombongan Akhir Tahun 2025', bulan: 'Des 2025', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
+  ];
+  const grp = id => groups.find(x => x.id === id) || groups[0];
   const seed = [
-    { id: 1, nama: 'Bu Hj. Siti', kota: 'Bekasi', bulan: 'Feb 2026', bintang: 5, pesan: 'Bimbingannya sabar, manasik jadi tenang. Ibu-ibu rombongan dijaga betul waktu tawaf. Insya Allah mau berangkat lagi bareng.', st: 'shown', g: 1 },
-    { id: 2, nama: 'Pak Rahmat & keluarga', kota: 'Bandung', bulan: 'Des 2025', bintang: 5, pesan: 'Ziarahnya penuh cerita sejarah, anak-anak sampai hafal kisah Uhud. Terima kasih banyak.', st: 'shown', g: 2 },
-    { id: 3, nama: 'Mbak Nisa', kota: 'Jakarta', bulan: 'Jan 2026', bintang: 5, pesan: 'Pertama kali umrah, gak bingung sama sekali. Semua dijelasin pelan-pelan.', st: 'shown', g: 3 },
-    { id: 4, nama: 'Keluarga Fadli', kota: 'Depok', bulan: 'Okt 2025', bintang: 5, pesan: 'Orang tua kami yang sudah sepuh merasa aman. Kursi roda disiapkan, jadwal disesuaikan.', st: 'shown', g: 4 },
-    { id: 5, nama: 'Pak Ujang', kota: 'Garut', bulan: 'Sep 2026', bintang: 4, pesan: 'Doa-doanya dibimbing satu per satu, jadi khusyuk.', st: 'shown', g: 1 },
-    { id: 6, nama: 'Ibu Ratna', kota: 'Bogor', bulan: 'Agu 2026', bintang: 5, pesan: 'Masya Allah, pengalaman yang tak terlupakan. Semoga Allah balas semua kebaikannya.', st: 'shown', g: 2 },
-    { id: 7, nama: 'Hendra', kota: 'Tangerang', bulan: 'Nov 2026', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending', g: 3 },
-    { id: 8, nama: 'aaaa', kota: '-', bulan: 'Nov 2026', bintang: 1, pesan: 'tes tes', st: 'pending', g: 4 }
+    { id: 1, nama: 'Bu Hj. Siti', jk: 'w', kota: 'Bekasi', grup: 'feb26', bintang: 5, pesan: 'Bimbingannya sabar, manasik jadi tenang. Ibu-ibu rombongan dijaga betul waktu tawaf. Insya Allah mau berangkat lagi bareng.', st: 'shown', dur: '0:42', contoh: true },
+    { id: 2, nama: 'Pak Rahmat & keluarga', jk: 'p', kota: 'Bandung', grup: 'des25', bintang: 5, pesan: 'Ziarahnya penuh cerita sejarah, anak-anak sampai hafal kisah Uhud. Terima kasih banyak.', st: 'shown' },
+    { id: 3, nama: 'Mbak Nisa', jk: 'w', kota: 'Jakarta', grup: 'feb26', bintang: 5, pesan: 'Pertama kali umrah, gak bingung sama sekali. Semua dijelasin pelan-pelan.', st: 'shown' },
+    { id: 4, nama: 'Keluarga Fadli', jk: 'p', kota: 'Depok', grup: 'des25', bintang: 5, pesan: 'Orang tua kami yang sudah sepuh merasa aman. Kursi roda disiapkan, jadwal disesuaikan.', st: 'shown' },
+    { id: 5, nama: 'Pak Ujang', jk: 'p', kota: 'Garut', grup: 'agu26', bintang: 4, pesan: 'Doa-doanya dibimbing satu per satu, jadi khusyuk.', st: 'shown' },
+    { id: 6, nama: 'Ibu Ratna', jk: 'w', kota: 'Bogor', grup: 'agu26', bintang: 5, pesan: 'Masya Allah, pengalaman yang tak terlupakan. Semoga Allah balas semua kebaikannya.', st: 'shown' },
+    { id: 9, nama: 'Pak Darmawan', jk: 'p', kota: 'Cirebon', grup: 'feb26', bintang: 5, pesan: 'Itikaf di sepuluh malam terakhir jadi tenang karena jadwalnya diatur rapi.', st: 'shown' },
+    { id: 7, nama: 'Hendra', jk: 'p', kota: 'Tangerang', grup: 'nov26', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending' },
+    { id: 8, nama: 'aaaa', jk: 'p', kota: '-', grup: 'nov26', bintang: 1, pesan: 'tes tes', st: 'pending' }
   ];
   let data;
-  try { data = JSON.parse(localStorage.getItem('bhb-demo')) || seed; } catch (e) { data = seed; }
-  const save = () => { try { localStorage.setItem('bhb-demo', JSON.stringify(data)); } catch (e) {} };
+  try { data = JSON.parse(localStorage.getItem('bhb-demo-4')) || seed; } catch (e) { data = seed; }
+  const save = () => { try { localStorage.setItem('bhb-demo-4', JSON.stringify(data)); } catch (e) {} };
   let year = 'all', tab = 'pending', lastNew = null;
 
-  const pic = (t, cls) => t.foto ? `<img class="${cls}" src="${t.foto}" alt="Foto kenangan ${esc(t.nama)}">` : (cls === 'photo' ? '' : `<span>${ini(t.nama)}</span>`);
+  // Foto jamaah: hasil unggahan, atau siluet ilustrasi kalau belum ada foto
+  const sil = t => { const bg = ['#5c6a4c', '#a88a4e', '#7d8a6b', '#b7a68a'][t.id % 4]; return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="${bg}"/>` + (t.jk === 'w' ? '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><path d="M30 12c-10 0-16 8-16 17v8c0 6 5 10 9 11h14c4-1 9-5 9-11v-8c0-9-6-17-16-17z" fill="#efe6d6"/><circle cx="30" cy="31" r="8.5" fill="#d8bf9c"/>' : '<path d="M6 60c2-11 11-17 24-17s22 6 24 17z" fill="#efe6d6"/><circle cx="30" cy="29" r="10" fill="#d8bf9c"/><rect x="19.5" y="14" width="21" height="9" rx="2.5" fill="#1f201c"/>') + '</svg>'; };
+  const avatar = t => t.foto ? `<img src="${t.foto}" alt="Foto ${esc(t.nama)}">` : sil(t);
+  const pic = t => avatar(t);
   const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+  const voice = t => (t.audio || t.dur) ? `<button class="voice" data-play="${t.id}" aria-label="Putar pesan suara ${esc(t.nama)}"><i>▶</i>Pesan suara · ${t.dur || '0:00'}</button>` : '';
+  const quote = t => t.pesan ? `<q>${esc(t.pesan)}</q>` : '';
   const ini = n => n.split(/\s+/).filter(w => !/^(bu|pak|ibu|hj\.?|h\.?|mbak|mas)$/i.test(w))[0]?.[0]?.toUpperCase() || n[0].toUpperCase();
 
+  const card = t => `<article class="card tcard${t.id === lastNew ? ' new' : ''}"><div class="tx"><div class="who"><span class="ph">${avatar(t)}</span><span><b>${esc(t.nama)}</b><small>${esc(t.kota)}</small><span class="stars" aria-label="${t.bintang} bintang">${stars(t.bintang)}</span></span><button class="share" data-share="${t.id}" aria-label="Bagikan ke WhatsApp"><svg class="ico"><use href="#i-share"/></svg></button></div>${quote(t)}${voice(t)}</div></article>`;
+  function renderChips() {
+    const used = groups.filter(g => data.some(t => t.st === 'shown' && t.grup === g.id));
+    $('#yearChips').innerHTML = `<button class="${year === 'all' ? 'on' : ''}" data-y="all">Semua rombongan</button>` + used.map(g => `<button class="${year === g.id ? 'on' : ''}" data-y="${g.id}">${esc(g.bulan)}</button>`).join('');
+  }
   function renderWall() {
-    const list = data.filter(t => t.st === 'shown' && (year === 'all' || t.bulan.endsWith(year))).sort((a, b) => b.id - a.id);
-    $('#statN').textContent = data.filter(t => t.st === 'shown').length;
-    $('#wall').innerHTML = list.length ? list.map(t => `<article class="card tcard${t.id === lastNew ? ' new' : ''}">${pic(t, 'photo')}<div class="tx"><span class="stars" aria-label="${t.bintang} bintang">${stars(t.bintang)}</span><q>${esc(t.pesan)}</q><div class="who"><span class="av">${ini(t.nama)}</span><span><b>${esc(t.nama)}</b><small>${esc(t.kota)} · ${esc(t.bulan)}</small></span><button class="share" data-share="${t.id}" aria-label="Bagikan ke WhatsApp"><svg class="ico"><use href="#i-share"/></svg></button></div></div></article>`).join('') : '<p class="empty">Belum ada testimoni untuk tahun ini.</p>';
+    const shown = data.filter(t => t.st === 'shown');
+    $('#statN').textContent = shown.length;
+    renderChips();
+    const blocks = groups.filter(g => year === 'all' || g.id === year).map(g => {
+      const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
+      if (!items.length) return '';
+      const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${esc(g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><button class="grp-share" data-glink="${g.id}">Bagikan link rombongan</button></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+    }).join('');
+    $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk rombongan ini.</p>';
   }
   function renderMod() {
     const pend = data.filter(t => t.st === 'pending'), shown = data.filter(t => t.st === 'shown');
     $('#cPend').textContent = pend.length; $('#cShown').textContent = shown.length; $('#pendBadge').textContent = pend.length; $('#pendBadge').style.display = pend.length ? '' : 'none';
     const list = (tab === 'pending' ? pend : shown).sort((a, b) => b.id - a.id);
-    $('#modList').innerHTML = list.length ? list.map(t => `<div class="mod"><div class="th${t.foto ? '' : ' ini'}">${pic(t, '')}</div><div><b>${esc(t.nama)} <span class="stars" style="font-size:12px">${stars(t.bintang)}</span></b><small>${esc(t.kota)} · ${esc(t.bulan)}</small><p>${esc(t.pesan)}</p></div><div class="acts">${tab === 'pending' ? `<button class="btn pri sm" data-ok="${t.id}">Tampilkan</button><button class="btn sm no" data-del="${t.id}">Hapus</button>` : `<button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`}</div></div>`).join('') : `<p class="empty">${tab === 'pending' ? 'Gak ada yang menunggu. Coba isi form dulu.' : 'Belum ada yang tampil.'}</p>`;
+    $('#modList').innerHTML = list.length ? list.map(t => `<div class="mod"><div class="th${t.foto ? '' : ' ini'}">${pic(t, '')}</div><div><b>${esc(t.nama)} <span class="stars" style="font-size:12px">${stars(t.bintang)}</span></b><small>${esc(t.kota)} · ${esc(grp(t.grup).nama)}</small>${t.pesan ? `<p>${esc(t.pesan)}</p>` : ''}${voice(t) ? `<div style="margin-top:6px">${voice(t)}</div>` : ''}</div><div class="acts">${tab === 'pending' ? `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn pri sm" data-ok="${t.id}">Tampilkan</button><button class="btn sm no" data-del="${t.id}">Hapus</button>` : `<label class="btn sm mod-photo">${t.foto ? 'Ganti foto' : 'Unggah foto'}<input type="file" accept="image/*" data-up="${t.id}" aria-label="Unggah foto ${esc(t.nama)}"></label><button class="btn sm" data-hide="${t.id}">Sembunyikan</button>`}</div></div>`).join('') : `<p class="empty">${tab === 'pending' ? 'Gak ada yang menunggu. Coba isi form dulu.' : 'Belum ada yang tampil.'}</p>`;
   }
   const render = () => { renderWall(); renderMod(); };
+
+  // Pilihan rombongan di form (link khusus rombongan bisa langsung memilihnya)
+  $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}</option>`).join('');
 
   // Pindah layar
   function go() {
@@ -339,11 +491,48 @@
   document.addEventListener('click', e => {
     const ok = e.target.closest('[data-ok]'), del = e.target.closest('[data-del]'), hide = e.target.closest('[data-hide]'), sh = e.target.closest('[data-share]');
     const find = id => data.find(t => t.id === +id);
-    if (ok) { const t = find(ok.dataset.ok); t.st = 'shown'; lastNew = t.id; save(); render(); toast(t.nama + ' sekarang tampil di halaman testimoni'); }
+    if (ok) { const t = find(ok.dataset.ok); t.st = 'shown'; lastNew = t.id; year = 'all'; save(); render(); toast(t.nama + ' sekarang tampil di halaman testimoni'); }
     if (del) { data = data.filter(t => t.id !== +del.dataset.del); save(); render(); toast('Testimoni dihapus'); }
     if (hide) { find(hide.dataset.hide).st = 'pending'; save(); render(); toast('Disembunyikan, pindah ke Menunggu'); }
     if (sh) toast('Contoh: membuka WhatsApp untuk membagikan testimoni ' + find(sh.dataset.share).nama);
+    const gl = e.target.closest('[data-glink]');
+    if (gl) toast('Contoh: link form khusus ' + grp(gl.dataset.glink).nama + ' disalin, tinggal kirim ke grup WA-nya');
+    const pl = e.target.closest('[data-play]');
+    if (pl) {
+      const t = find(pl.dataset.play);
+      if (!t.audio) { toast('Contoh: di web aslinya, rekaman suara jamaah diputar di sini'); return; }
+      if (player && !player.paused) { player.pause(); $$('.voice.playing').forEach(v => { v.classList.remove('playing'); v.querySelector('i').textContent = '▶'; }); if (playingId === t.id) return; }
+      player = new Audio(t.audio); playingId = t.id; pl.classList.add('playing'); pl.querySelector('i').textContent = '❚❚';
+      player.onended = () => { pl.classList.remove('playing'); pl.querySelector('i').textContent = '▶'; };
+      player.play().catch(() => toast('Suara gak bisa diputar di browser ini'));
+    }
   });
+  let player = null, playingId = null;
+
+  // Rekam suara (add-on): maks. 60 detik, disimpan di browser ini saja
+  let audio = null, dur = null, rec = null, chunks = [], tick = null, sec = 0;
+  const fmt = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  const recBox = $('#rec'), recLbl = $('#recLbl'), recAudio = $('#recAudio'), recDel = $('#recDel');
+  function resetRec() { audio = null; dur = null; recAudio.hidden = true; recAudio.removeAttribute('src'); recDel.hidden = true; recLbl.hidden = false; recLbl.textContent = 'Tekan untuk rekam, maks. 1 menit'; }
+  function stopRec() { if (rec && rec.state === 'recording') rec.stop(); }
+  $('#micBtn').addEventListener('click', async () => {
+    if (rec && rec.state === 'recording') { stopRec(); return; }
+    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) { toast('Browser ini belum bisa rekam suara'); return; }
+    let stream;
+    try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch (err) { toast('Izin mikrofon ditolak. Aktifkan dulu di pengaturan browser.'); return; }
+    const type = ['audio/webm;codecs=opus', 'audio/mp4', 'audio/webm'].find(t => MediaRecorder.isTypeSupported?.(t));
+    rec = new MediaRecorder(stream, type ? { mimeType: type, audioBitsPerSecond: 24000 } : undefined);
+    chunks = []; sec = 0;
+    rec.ondataavailable = ev => ev.data.size && chunks.push(ev.data);
+    rec.onstop = () => {
+      clearInterval(tick); stream.getTracks().forEach(tr => tr.stop()); recBox.classList.remove('on');
+      const blob = new Blob(chunks, { type: rec.mimeType || 'audio/webm' }); dur = fmt(Math.max(1, sec));
+      const fr = new FileReader(); fr.onload = () => { audio = fr.result; recAudio.src = audio; recAudio.hidden = false; recLbl.hidden = true; recDel.hidden = false; }; fr.readAsDataURL(blob);
+    };
+    rec.start(); recBox.classList.add('on'); recLbl.textContent = 'Merekam… 0:00 · tekan lagi untuk berhenti';
+    tick = setInterval(() => { sec++; recLbl.textContent = 'Merekam… ' + fmt(sec) + ' · tekan lagi untuk berhenti'; if (sec >= 60) stopRec(); }, 1000);
+  });
+  recDel.addEventListener('click', resetRec);
 
   // Bintang
   let bintang = 5;
@@ -364,18 +553,32 @@
     img.src = url;
   });
 
+  // Admin bisa unggah atau ganti foto jamaah dari halaman persetujuan
+  document.addEventListener('change', e => {
+    const inp = e.target.closest('input[data-up]'); if (!inp || !inp.files[0]) return;
+    const t = data.find(x => x.id === +inp.dataset.up), img = new Image(), url = URL.createObjectURL(inp.files[0]);
+    img.onload = () => {
+      const w = Math.min(640, img.width), h = Math.round(img.height * w / img.width);
+      const c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(img, 0, 0, w, h);
+      t.foto = c.toDataURL('image/jpeg', .78); URL.revokeObjectURL(url); save(); render(); toast('Foto ' + t.nama + ' diperbarui');
+    };
+    img.src = url;
+  });
+
   // Kirim
   $('#tform').addEventListener('submit', e => {
     e.preventDefault();
     const fd = new FormData(e.target), nama = fd.get('nama').trim(), pesan = fd.get('pesan').trim();
-    if (!nama || !pesan) { toast('Nama dan kesan pesan wajib diisi'); return; }
+    if (!nama) { toast('Nama wajib diisi'); return; }
+    if (!pesan && !audio) { toast('Isi kesan pesan, atau rekam pesan suara'); return; }
+    if (rec && rec.state === 'recording') { toast('Hentikan rekaman dulu ya'); return; }
     if (!$('#izin').checked) { toast('Centang izin tampil dulu ya'); return; }
-    const t = { id: Date.now(), nama, kota: fd.get('kota').trim() || '-', bulan: fd.get('bulan'), bintang, pesan, st: 'pending', g: 1 + Math.floor(Math.random() * 4), foto };
+    const t = { id: Date.now(), nama, kota: fd.get('kota').trim() || '-', grup: fd.get('grup'), bintang, pesan, st: 'pending', foto, audio, dur: audio ? dur : null };
     data.push(t); save(); render(); tab = 'pending'; $$('#modTabs button').forEach(x => x.classList.toggle('on', x.dataset.t === 'pending')); renderMod();
     e.target.style.display = 'none'; $('#done').classList.add('on');
   });
   $('#again').addEventListener('click', () => {
-    const f = $('#tform'); f.reset(); f.style.display = ''; $('#done').classList.remove('on'); foto = null; bintang = 5; $$('#rate button').forEach(x => x.classList.add('on'));
+    const f = $('#tform'); f.reset(); f.style.display = ''; $('#done').classList.remove('on'); foto = null; bintang = 5; resetRec(); $$('#rate button').forEach(x => x.classList.add('on'));
     const up = $('#upload'); up.querySelectorAll('img, span').forEach(n => n.remove()); up.insertAdjacentHTML('beforeend', '<svg class="ico"><use href="#i-cam"/></svg><span>Ketuk untuk pilih foto</span>');
   });
 

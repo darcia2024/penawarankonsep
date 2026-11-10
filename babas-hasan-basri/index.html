@@ -133,6 +133,23 @@
   .pcard.terms li::before { content: none; }
   .pcard.terms li b { color: #fff; text-align: right; }
 
+  /* Add-on rekam suara */
+  .addon { margin-top: 14px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 22px 26px; }
+  .addon .mic { width: 56px; height: 56px; border-radius: 50%; background: var(--olive); color: #f3ead6; display: grid; place-items: center; }
+  .addon .mic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .addon small { font-size: 12.5px; font-weight: 700; color: var(--olive); letter-spacing: .02em; }
+  .addon h3 { font-size: 19px; font-weight: 700; margin-top: 2px; }
+  .addon p { color: var(--ink-2); font-size: 14.5px; margin-top: 4px; max-width: 46em; }
+  .addon .side { text-align: right; }
+  .addon .side b { display: block; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+  .addon .side span { display: block; font-size: 12.5px; color: var(--faint); margin-bottom: 10px; }
+  @media (max-width: 760px) {
+    .addon { grid-template-columns: auto minmax(0, 1fr); padding: 20px; gap: 14px 16px; align-items: start; }
+    .addon .side { grid-column: 1 / -1; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .addon .side span { margin: 0; }
+    .addon .mic { width: 46px; height: 46px; }
+  }
+
   /* Tanya jawab */
   .faq { max-width: 720px; margin: 40px auto 0; }
   .faq details { border-bottom: 1px solid var(--line); }
@@ -254,7 +271,7 @@
       <a class="tile photo t-big" href="demo/#isi"><img src="assets/foto-kabah-siang.jpg" alt="Jamaah di pelataran Ka'bah, Masjidil Haram" loading="lazy"><span class="go">↗</span><h3>Form Isi Testimoni</h3><p>Gak perlu akun atau aplikasi. Kolomnya sedikit, tulisannya besar, jamaah sepuh juga bisa.</p></a>
       <a class="tile t-sand" href="demo/#setujui"><span class="go">↗</span><h3>Persetujuan</h3><p>Tinggal tampilkan atau sembunyikan dari HP Abang, sekali tekan.</p></a>
       <a class="tile t-tan" href="demo/#isi"><span class="go">↗</span><h3>Foto Diringankan</h3><p>Foto dari HP jamaah dikecilin otomatis, jadi halamannya tetap enteng.</p></a>
-      <a class="tile t-olive" href="demo/#halaman"><img src="assets/foto-kubah-hijau.jpg" alt="Kubah Hijau Masjid Nabawi" loading="lazy" style="object-position:30% 40%"><span class="go">↗</span><h3>Halaman Testimoni</h3><p>Kesan jamaah tersusun rapi, bisa disaring per tahun berangkat dan dibagikan ke WhatsApp.</p></a>
+      <a class="tile t-olive" href="demo/#halaman"><img src="assets/foto-kubah-hijau.jpg" alt="Kubah Hijau Masjid Nabawi" loading="lazy" style="object-position:30% 40%"><span class="go">↗</span><h3>Testimoni per Rombongan</h3><p>Kesan jamaah dikelompokkan per rombongan, lengkap dengan foto sampul tiap rombongan. Tiap rombongan juga punya link sendiri buat dikirim ke grup WA-nya.</p></a>
     </div>
   </div>
 </section>
@@ -276,11 +293,13 @@
         <img src="assets/foto-tawaf-malam.jpg" alt="Tawaf di Masjidil Haram pada malam hari" loading="lazy">
         <h3>Yang didapat</h3>
         <ul>
-          <li>Form testimoni + unggah foto</li>
+          <li>Form testimoni + foto tiap jamaah</li>
+          <li>Foto bisa diunggah jamaah atau Abang</li>
           <li>Halaman testimoni yang rapi di HP</li>
           <li>Persetujuan sebelum tampil</li>
           <li>Foto dikecilkan otomatis</li>
-          <li>Saring per tahun &amp; bagikan ke WA</li>
+          <li>Testimoni per rombongan + link tiap rombongan</li>
+          <li>Bagikan testimoni ke WA</li>
           <li>Link pendek + kode QR</li>
           <li>20 testimoni lama dipindahkan</li>
         </ul>
@@ -297,6 +316,15 @@
         </ul>
       </div>
     </div>
+    <div class="addon">
+      <span class="mic" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="7" y="2.5" width="6" height="10" rx="3"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v3"/></svg></span>
+      <div>
+        <small>TAMBAHAN · OPSIONAL</small>
+        <h3>Rekam Pesan Suara</h3>
+        <p>Jamaah sepuh biasanya lebih gampang ngomong daripada ngetik, Bang. Mereka tinggal tekan tombol, rekam maksimal 1 menit, dan suaranya bisa diputar di kartu testimoni. Abang tetap dengar dulu sebelum ditampilkan.</p>
+      </div>
+      <div class="side"><span>tambah</span><b>+Rp 200rb</b><a class="btn plain" href="demo/#isi" style="padding:10px 18px;font-size:13.5px">Coba rekam</a></div>
+    </div>
   </div>
 </section>
 
@@ -306,6 +334,7 @@
     <div class="faq">
       <details><summary>Jamaah yang udah sepuh bisa ngisi gak, Bang?</summary><p>Bisa, Bang. Kolomnya sedikit dan tulisannya besar. Kalau masih repot, anaknya bisa bantu isi dari HP mana aja.</p></details>
       <details><summary>Kalau ada yang ngisi asal-asalan gimana?</summary><p>Tenang, Bang. Testimoni baru gak langsung tampil, masuk antrean dulu. Abang yang pilih mana yang ditampilkan.</p></details>
+      <details><summary>Rekam suaranya bisa di semua HP?</summary><p>Bisa di HP Android (Chrome) dan iPhone yang iOS-nya masih update, Bang. Pertama kali jamaah bakal diminta izin pakai mikrofon. Kalau gak mau rekam, tetap bisa nulis biasa.</p></details>
       <details><summary>Foto jamaah aman?</summary><p>Aman, Bang. Jamaah centang izin tampil dulu sebelum kirim. Foto yang gak Abang setujui gak bakal tampil, dan bisa dihapus kapan aja.</p></details>
       <details><summary>Ada biaya bulanan?</summary><p>Dari aku gak ada, Bang. Kalau nanti Abang mau pakai domain sendiri, biayanya sekitar Rp 200 ribu per tahun, itu juga opsional.</p></details>
     </div>

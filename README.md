@@ -11,7 +11,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `jasa-video-igh/` — penawaran jasa video edukasi umrah untuk travel IGH Tour.
 - `stroll-around/` — penawaran sistem pendaftaran tur (website, QRIS, WhatsApp otomatis, check-in, dasbor) untuk Stroll Around, walking tour Jakarta. Demo tampilan tiap fiturnya (9 layar yang bisa diklik, data contoh) ada di `stroll-around/demo/`.
 - `jembar-diesel/` — penawaran toko digital (katalog cari part per mesin, pesan via WhatsApp, kasir & stok, buku bon nelayan) untuk Toko Jembar Diesel, Binuangeun. Demo tampilan aplikasinya (8 layar yang bisa diklik, data contoh) ada di `jembar-diesel/demo/`.
-- `babas-hasan-basri/` — penawaran web testimoni jamaah (Rp 650rb) untuk muthowif Babas Hasan Basri, dengan demo yang bisa dicoba (isi form + upload foto, setujui, tampil) di `babas-hasan-basri/demo/`.
+- `babas-hasan-basri/` — penawaran web testimoni jamaah (Rp 650rb, add-on rekam suara +Rp 200rb) untuk muthowif Babas Hasan Basri, dengan demo yang bisa dicoba (isi form + upload foto + rekam suara, setujui, tampil) di `babas-hasan-basri/demo/`.
 - `video-travel-umrah/` — penawaran umum jasa video motion graphic (narasi AI) untuk travel umrah & haji, tanpa nama klien tertentu.
 
 Foto produk diambil dari purnama-eskrim.com dan font dari Fontshare, jadi halaman perlu koneksi internet.
