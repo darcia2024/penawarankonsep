@@ -209,6 +209,9 @@
   .grp-head small { color: var(--faint); font-size: 13.5px; }
   .grp-share { margin-left: auto; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; }
   .grp-share:hover { border-color: var(--ink); }
+  .grp-gal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: -4px 0 16px; }
+  .grp-gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; background: var(--line); }
+  @media (max-width: 640px) { .grp-gal { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-right: -16px; padding-right: 16px; } .grp-gal img { flex: 0 0 62%; scroll-snap-align: start; } }
   .grp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
   .grp-cards .tcard { margin-bottom: 0; }
   .tcard { border-radius: 20px; }
@@ -447,7 +450,7 @@
       const items = shown.filter(t => t.grup === g.id).sort((a, b) => b.id - a.id);
       if (!items.length) return '';
       const avg = (items.reduce((a, t) => a + t.bintang, 0) / items.length).toFixed(1).replace('.', ',');
-      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${g.rombongan ? esc(g.rombongan) + ' · ' : ''}${esc(window.BHB.jadwal(g) || g.bulan)} · ${g.jamaah} jamaah · ${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header><div class="grp-cards">${items.map(card).join('')}</div></section>`;
+      return `<section class="grp" aria-label="${esc(g.nama)}"><header class="grp-head"><img src="${g.foto}" alt="" style="object-position:${g.pos}"><div><h3>${esc(g.nama)}</h3><small>${g.rombongan ? esc(g.rombongan) + ' · ' : ''}${esc(window.BHB.jadwal(g) || g.bulan)} · ${g.jamaah ? g.jamaah + ' jamaah · ' : ''}${items.length} testimoni · ★ ${avg}</small></div><a class="grp-share" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka link travel ↗</a></header>${(g.galeri || []).length ? `<div class="grp-gal">${[g.foto].concat(g.galeri).slice(0, 4).map(u => `<img src="${u}" alt="Dokumentasi ${esc(g.nama)}" loading="lazy">`).join('')}</div>` : ''}<div class="grp-cards">${items.map(card).join('')}</div></section>`;
     }).join('');
     $('#wall').innerHTML = blocks || '<p class="empty">Belum ada testimoni untuk travel ini.</p>';
   }

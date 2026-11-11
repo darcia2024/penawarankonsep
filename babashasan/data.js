@@ -2,26 +2,29 @@
 (function () {
   // Travel tempat Bang Babas jadi muthowif. Nama travel di sini CONTOH, nanti diganti nama asli dari halaman admin.
   // rombongan = nama grup, berangkat/pulang = tanggal (format TAHUN-BULAN-TANGGAL), pulang boleh dikosongkan.
+  // Keberangkatan asli dari folder dokumentasi Google Drive. Nama rombongan, tanggal pulang & jumlah jamaah bisa dilengkapi dari admin.
   const groups = [
-    { id: 'nov26', nama: 'Travel Safar Barokah', bulan: 'Umrah Nov 2026', rombongan: 'Rombongan Al-Fatih', berangkat: '2026-11-02', pulang: '2026-11-11', short: 'Safar Barokah', jamaah: 36, foto: '../assets/foto-tawaf-malam.jpg', pos: '52% 40%' },
-    { id: 'agu26', nama: 'Travel Nur Hijrah', bulan: 'Umrah Agu 2026', rombongan: 'Rombongan Ar-Rahman', berangkat: '2026-08-12', pulang: '2026-08-21', short: 'Nur Hijrah', jamaah: 42, foto: '../assets/foto-kubah-hijau.jpg', pos: '40% 45%' },
-    { id: 'feb26', nama: 'Travel Rihlah Iman', bulan: 'Umrah Ramadhan 2026', rombongan: 'Rombongan Itikaf', berangkat: '2026-03-05', pulang: '2026-03-20', short: 'Rihlah Iman', jamaah: 45, foto: '../assets/foto-haram-ramadhan.jpg', pos: '58% 40%' },
-    { id: 'des25', nama: 'Travel Baitul Mulia', bulan: 'Umrah Des 2025', rombongan: 'Rombongan Keluarga Sakinah', berangkat: '2025-12-20', pulang: '2025-12-29', short: 'Baitul Mulia', jamaah: 28, foto: '../assets/foto-kabah-siang.jpg', pos: '52% 60%' }
+    { id: 'naura-nov26', nama: 'Naura Abada', short: 'Naura Abada', bulan: 'Umrah Nov 2026', rombongan: '', berangkat: '2026-11-02', pulang: '', jamaah: 0, foto: '../assets/trip/naura-nov26-0.jpg', pos: '50% 22%', galeri: ['../assets/trip/naura-nov26-1.jpg', '../assets/trip/naura-nov26-2.jpg', '../assets/trip/naura-nov26-3.jpg'] },
+    { id: 'tanur-okt26', nama: 'Tanur', short: 'Tanur Okt', bulan: 'Umrah Arbain', rombongan: '', berangkat: '2026-10-13', pulang: '', jamaah: 0, foto: '../assets/trip/tanur-okt26-0.jpg', pos: '50% 58%', galeri: ['../assets/trip/tanur-okt26-1.jpg', '../assets/trip/tanur-okt26-2.jpg', '../assets/trip/tanur-okt26-3.jpg'] },
+    { id: 'aljasiah-sep26', nama: 'Aljasiah', short: 'Aljasiah', bulan: 'Umrah Sep 2026', rombongan: '', berangkat: '2026-09-26', pulang: '', jamaah: 0, foto: '../assets/trip/aljasiah-sep26-0.jpg', pos: '50% 55%', galeri: ['../assets/trip/aljasiah-sep26-1.jpg', '../assets/trip/aljasiah-sep26-2.jpg', '../assets/trip/aljasiah-sep26-3.jpg'] },
+    { id: 'ismi-sep26', nama: 'Ismi Tour', short: 'Ismi Tour', bulan: 'Umrah Sep 2026', rombongan: '', berangkat: '2026-09-17', pulang: '2026-09-25', jamaah: 0, foto: '../assets/trip/ismi-sep26-0.jpg', pos: '50% 50%', galeri: ['../assets/trip/ismi-sep26-1.jpg', '../assets/trip/ismi-sep26-2.jpg', '../assets/trip/ismi-sep26-3.jpg'] },
+    { id: 'tanur-agu26', nama: 'Tanur', short: 'Tanur Agu', bulan: 'Umrah Agu 2026', rombongan: '', berangkat: '2026-08-20', pulang: '', jamaah: 0, foto: '../assets/trip/tanur-agu26-0.jpg', pos: '50% 50%', galeri: ['../assets/trip/tanur-agu26-1.jpg', '../assets/trip/tanur-agu26-2.jpg', '../assets/trip/tanur-agu26-3.jpg'] },
+    { id: 'tanur-jun26', nama: 'Tanur', short: 'Tanur Jun', bulan: 'Umrah Jun 2026', rombongan: '', berangkat: '2026-06-27', pulang: '', jamaah: 0, foto: '../assets/trip/tanur-jun26-0.jpg', pos: '50% 50%', galeri: ['../assets/trip/tanur-jun26-1.jpg', '../assets/trip/tanur-jun26-2.jpg', '../assets/trip/tanur-jun26-3.jpg'] }
   ];
   const grp = id => groups.find(x => x.id === id) || groups[0];
   const seed = [
-    { id: 1, nama: 'Bu Hj. Siti', jk: 'w', kota: 'Bekasi', grup: 'feb26', bintang: 5, pesan: 'Bimbingannya sabar, manasik jadi tenang. Ibu-ibu rombongan dijaga betul waktu tawaf. Insya Allah mau berangkat lagi bareng.', st: 'shown', dur: '0:42', contoh: true },
-    { id: 2, nama: 'Pak Rahmat & keluarga', jk: 'p', kota: 'Bandung', grup: 'des25', bintang: 5, pesan: 'Ziarahnya penuh cerita sejarah, anak-anak sampai hafal kisah Uhud. Terima kasih banyak.', st: 'shown' },
-    { id: 3, nama: 'Mbak Nisa', jk: 'w', kota: 'Jakarta', grup: 'feb26', bintang: 5, pesan: 'Pertama kali umrah, gak bingung sama sekali. Semua dijelasin pelan-pelan.', st: 'shown' },
-    { id: 4, nama: 'Keluarga Fadli', jk: 'p', kota: 'Depok', grup: 'des25', bintang: 5, pesan: 'Orang tua kami yang sudah sepuh merasa aman. Kursi roda disiapkan, jadwal disesuaikan.', st: 'shown' },
-    { id: 5, nama: 'Pak Ujang', jk: 'p', kota: 'Garut', grup: 'agu26', bintang: 4, pesan: 'Doa-doanya dibimbing satu per satu, jadi khusyuk.', st: 'shown' },
-    { id: 6, nama: 'Ibu Ratna', jk: 'w', kota: 'Bogor', grup: 'agu26', bintang: 5, pesan: 'Masya Allah, pengalaman yang tak terlupakan. Semoga Allah balas semua kebaikannya.', st: 'shown' },
-    { id: 9, nama: 'Pak Darmawan', jk: 'p', kota: 'Cirebon', grup: 'feb26', bintang: 5, pesan: 'Itikaf di sepuluh malam terakhir jadi tenang karena jadwalnya diatur rapi.', st: 'shown' },
-    { id: 7, nama: 'Hendra', jk: 'p', kota: 'Tangerang', grup: 'nov26', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending' },
-    { id: 8, nama: 'aaaa', jk: 'p', kota: '-', grup: 'nov26', bintang: 1, pesan: 'tes tes', st: 'pending' }
+    { id: 1, nama: 'Bu Hj. Siti', jk: 'w', kota: 'Bekasi', grup: 'tanur-okt26', bintang: 5, pesan: 'Bimbingannya sabar, manasik jadi tenang. Ibu-ibu rombongan dijaga betul waktu tawaf. Insya Allah mau berangkat lagi bareng.', st: 'shown', dur: '0:42', contoh: true },
+    { id: 2, nama: 'Pak Rahmat & keluarga', jk: 'p', kota: 'Bandung', grup: 'tanur-jun26', bintang: 5, pesan: 'Ziarahnya penuh cerita sejarah, anak-anak sampai hafal kisah Uhud. Terima kasih banyak.', st: 'shown' },
+    { id: 3, nama: 'Mbak Nisa', jk: 'w', kota: 'Jakarta', grup: 'ismi-sep26', bintang: 5, pesan: 'Pertama kali umrah, gak bingung sama sekali. Semua dijelasin pelan-pelan.', st: 'shown' },
+    { id: 4, nama: 'Keluarga Fadli', jk: 'p', kota: 'Depok', grup: 'aljasiah-sep26', bintang: 5, pesan: 'Orang tua kami yang sudah sepuh merasa aman. Kursi roda disiapkan, jadwal disesuaikan.', st: 'shown' },
+    { id: 5, nama: 'Pak Ujang', jk: 'p', kota: 'Garut', grup: 'tanur-agu26', bintang: 4, pesan: 'Doa-doanya dibimbing satu per satu, jadi khusyuk.', st: 'shown' },
+    { id: 6, nama: 'Ibu Ratna', jk: 'w', kota: 'Bogor', grup: 'tanur-agu26', bintang: 5, pesan: 'Masya Allah, pengalaman yang tak terlupakan. Semoga Allah balas semua kebaikannya.', st: 'shown' },
+    { id: 9, nama: 'Pak Darmawan', jk: 'p', kota: 'Cirebon', grup: 'tanur-okt26', bintang: 5, pesan: 'Arbain di Madinah jadi tenang karena jadwal sholatnya diatur rapi.', st: 'shown' },
+    { id: 7, nama: 'Hendra', jk: 'p', kota: 'Tangerang', grup: 'naura-nov26', bintang: 5, pesan: 'Baru pulang minggu lalu, masih kebawa suasana Madinah. Makasih bimbingannya!', st: 'pending' },
+    { id: 8, nama: 'aaaa', jk: 'p', kota: '-', grup: 'naura-nov26', bintang: 1, pesan: 'tes tes', st: 'pending' }
   ];
   // Penyimpanan demo: semua di browser yang dipakai mencoba (versi asli pakai server)
-  const KEY = 'bhb-demo-4', GKEY = 'bhb-travel-1', SKEY = 'bhb-setelan-1';
+  const KEY = 'bhb-demo-5', GKEY = 'bhb-travel-2', SKEY = 'bhb-setelan-1';
   const read = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
   // Tanggal: '2026-11-02' + '2026-11-11' jadi '2–11 Nov 2026'

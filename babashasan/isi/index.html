@@ -145,7 +145,7 @@
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || seed.slice(); } catch (e) { return seed.slice(); } };
   const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)); return true; } catch (e) { return false; } };
 
-  // Travel: link khusus (?travel=feb26) langsung memilih travelnya
+  // Travel: link khusus (?travel=ismi-sep26) langsung memilih travelnya
   $('#grupSel').innerHTML = groups.map(g => `<option value="${g.id}">${esc(g.nama)}${window.BHB.info(g) ? ' · ' + esc(window.BHB.info(g)) : ''}</option>`).join('');
   const qs = new URLSearchParams(location.search), pre = qs.get('travel') || qs.get('rombongan');
   const g0 = groups.find(g => g.id === pre);

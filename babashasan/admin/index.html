@@ -125,7 +125,7 @@
   /* Travel */
   .travels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .travel { padding: 0; overflow: hidden; }
-  .travel .cover { height: 110px; position: relative; }
+  .travel .cover { height: 140px; position: relative; }
   .travel .cover img { width: 100%; height: 100%; object-fit: cover; }
   .travel .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.55)); }
   .travel .cover h3 { position: absolute; left: 18px; bottom: 12px; z-index: 1; color: #fff; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; }
@@ -376,7 +376,7 @@
   function renderTravel() {
     $('#travels').innerHTML = groups.map(g => {
       const items = data.filter(t => t.grup === g.id), sh = items.filter(t => t.st === 'shown').length, pd = items.length - sh;
-      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body">${g.rombongan ? `<b class="rombongan">${esc(g.rombongan)}</b>` : ''}<div class="meta">${B.jadwal(g) ? `<span class="pill">🗓 ${esc(B.jadwal(g))}</span>` : ''}<span class="pill">${esc(g.bulan || '–')}</span><span class="pill">${g.jamaah || 0} jamaah</span><span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
+      return `<article class="card travel"><div class="cover"><img src="${g.foto}" alt="" style="object-position:${g.pos || '50% 50%'}"><h3>${esc(g.nama)}</h3></div><div class="body">${g.rombongan ? `<b class="rombongan">${esc(g.rombongan)}</b>` : ''}<div class="meta">${B.jadwal(g) ? `<span class="pill">🗓 ${esc(B.jadwal(g))}</span>` : ''}<span class="pill">${esc(g.bulan || '–')}</span>${g.jamaah ? `<span class="pill">${g.jamaah} jamaah</span>` : ''}<span class="pill ok">${sh} tampil</span>${pd ? `<span class="pill warn">${pd} menunggu</span>` : ''}</div><div class="link">${qr(g.id)}<div><small style="color:var(--faint);font-weight:700;font-size:12px">Link form untuk jamaah</small><code>${esc(linkFor(g))}</code></div></div><div class="acts"><button class="btn sm pri" data-copy="${g.id}">Salin link</button><a class="btn sm" href="../isi/?travel=${g.id}" target="_blank" rel="noopener">Buka form ↗</a><button class="btn sm" data-gedit="${g.id}">Ubah</button>${items.length ? '' : `<button class="btn sm no" data-gdel="${g.id}">Hapus</button>`}</div></div></article>`;
     }).join('') + '<button class="card travel add" data-travel-new><span><svg class="ico" style="width:28px;height:28px;margin:0 auto 8px"><use href="#i-plus"/></svg>Tambah travel</span></button>';
   }
 
@@ -412,7 +412,7 @@
     else data.push(Object.assign({ id: Date.now(), jk: /^(bu|ibu|mbak|hj\.?|hajah|teh|neng|umi)\b/i.test(nama) ? 'w' : 'p' }, vals));
     saveAll(); closeAll(); renderAll(); toast(editId ? 'Testimoni diperbarui' : 'Testimoni ditambahkan');
   });
-  const coverChoices = ['foto-tawaf-malam.jpg', 'foto-kubah-hijau.jpg', 'foto-haram-ramadhan.jpg', 'foto-kabah-siang.jpg', 'foto-payung-nabawi.jpg', 'foto-menara-quba.jpg', 'foto-nabawi-malam.jpg'].map(n => '../assets/' + n);
+  const coverChoices = ['naura-nov26', 'tanur-okt26', 'aljasiah-sep26', 'ismi-sep26', 'tanur-agu26', 'tanur-jun26'].map(n => '../assets/trip/' + n + '-0.jpg').concat(['foto-tawaf-malam.jpg', 'foto-kubah-hijau.jpg', 'foto-haram-ramadhan.jpg', 'foto-kabah-siang.jpg', 'foto-payung-nabawi.jpg', 'foto-menara-quba.jpg', 'foto-nabawi-malam.jpg'].map(n => '../assets/' + n));
   let gEdit = null, gCover = coverChoices[0];
   function coversUI() { $('#covers').innerHTML = coverChoices.map(c => `<button type="button" class="${c === gCover ? 'on' : ''}" data-cover="${c}" aria-label="Pilih sampul"><img src="${c}" alt=""></button>`).join('') + `<label class="btn sm" style="grid-column:1/-1">Unggah sampul sendiri<input type="file" accept="image/*" id="coverUp"></label>`; }
   $('#covers').addEventListener('click', e => { const b = e.target.closest('[data-cover]'); if (!b) return; gCover = b.dataset.cover; coversUI(); });
