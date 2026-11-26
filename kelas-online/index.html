@@ -6,172 +6,204 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="assets/dar-mascot-128.png">
 <title>Penawaran Kelas Online · Ustadz Syahrul</title>
-<meta name="description" content="Penawaran dari Dar Dev untuk Ustadz Syahrul: website kelas online untuk bimbel, lengkap dengan pendaftaran, pembayaran, materi, kuis, dan sertifikat.">
+<meta name="description" content="Penawaran dari Dar Dev untuk Ustadz Syahrul: website kelas online untuk bimbel, termasuk domain .com dan perawatan 1 tahun.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Amiri&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
 <style>
-  /* Gaya: buku catatan santri. Kertas terang, hijau tua seperti sampul kitab, satu aksen kuning stabilo. */
+  /* Gaya: sampul kitab. Gading, hijau tua, dan garis emas tipis. Judul serif tegak, isi sans yang tenang. */
   :root {
-    --paper: #f5f5f1; --white: #ffffff; --ink: #121513; --ink-2: #464a47; --faint: #686c69; --line: #e1e2dc;
-    --green: #134a3a; --green-2: #1d6450; --green-soft: #e3efe9; --mark: #f6dc6b; --wa: #14823f;
+    --paper: #f5f2ea; --ivory: #fbf9f4; --ink: #18201c; --ink-2: #4a514d; --faint: #6b716d; --line: #ddd6c6;
+    --green: #0f3a2e; --green-2: #1b5a47; --green-soft: #e4ece6; --gold: #b38a45; --gold-2: #d8b877; --wa: #14823f;
     --serif: "Instrument Serif", Georgia, serif; --sans: "Satoshi", "Segoe UI", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4, p, ul, ol, figure { margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.65 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, h5, p, ul, ol, figure { margin: 0; padding: 0; }
   ul, ol { list-style: none; }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  .hl { background: linear-gradient(transparent 58%, var(--mark) 58%); }
-  h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.025em; font-weight: 700; max-width: 18em; }
-  .lead { color: var(--ink-2); font-size: 17px; max-width: 36em; margin-top: 14px; }
-  section { padding: 110px 0 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.012em; }
+  h2 { font-size: clamp(36px, 4.6vw, 58px); line-height: 1.04; max-width: 15em; }
+  .lead { color: var(--ink-2); font-size: 17px; max-width: 36em; margin-top: 18px; }
+  section { padding: 130px 0 0; }
+  .rule { display: flex; align-items: center; gap: 14px; color: var(--gold); font-size: 13px; letter-spacing: .02em; margin-bottom: 22px; }
+  .rule::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
 
-  .btn { display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 6px 6px 6px 22px; background: var(--ink); color: #fff; font-weight: 700; font-size: 15px; line-height: 1; border: 0; cursor: pointer; }
-  .btn i { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.16); display: grid; place-items: center; font-style: normal; transition: transform .2s; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 6px 6px 6px 24px; background: var(--green); color: #fff; font-weight: 500; font-size: 15px; line-height: 1; border: 0; cursor: pointer; white-space: nowrap; }
+  .btn i { width: 38px; height: 38px; border-radius: 50%; background: var(--gold-2); color: var(--green); display: grid; place-items: center; font-style: normal; transition: transform .25s; }
   .btn:hover i { transform: translateX(3px); }
-  .btn.wa { background: var(--wa); }
+  .btn.line { background: transparent; color: var(--green); box-shadow: inset 0 0 0 1px var(--green); padding: 6px 6px 6px 24px; }
+  .btn.line i { background: var(--green-soft); }
 
   /* Navigasi */
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(245,245,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(245,242,234,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(179,138,69,.18); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
   .dar { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
   .dar img { width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 1px solid var(--line); }
   .dar small { display: block; color: var(--faint); font-weight: 500; font-size: 12px; line-height: 1.2; }
-  .for { font-size: 14px; color: var(--ink-2); }
-  .for b { color: var(--ink); }
-  .nav .btn { white-space: nowrap; flex: none; font-size: 13.5px; padding: 4px 4px 4px 16px; }
-  .nav .btn i { width: 30px; height: 30px; }
+  .for { font-family: var(--serif); font-size: 19px; color: var(--ink-2); }
+  .nav .btn { font-size: 14px; padding: 4px 4px 4px 18px; flex: none; }
+  .nav .btn i { width: 32px; height: 32px; }
 
   /* Pembuka */
-  .hero { padding: 56px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-  .hero h1 { font-size: clamp(40px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.035em; font-weight: 700; }
+  .hero { padding: 70px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(48px, 6.4vw, 84px); line-height: .98; }
+  .hero h1 em { font-style: normal; color: var(--green-2); }
   .hero .lead { font-size: 18px; }
-  .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .note { margin-top: 18px; font-size: 14px; color: var(--faint); }
-  .note b { color: var(--ink); }
+  .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+  .incl { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--ink-2); }
+  .incl span { display: inline-flex; align-items: center; gap: 8px; }
+  .incl span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
-  /* Mockup: laptop dasbor murid + HP */
-  .stage { position: relative; height: 470px; }
-  .lap { position: absolute; left: 0; top: 20px; width: 92%; }
-  .lap .scr { background: var(--white); border: 8px solid #1b1e1c; border-bottom-width: 10px; border-radius: 14px 14px 0 0; aspect-ratio: 16 / 10.4; overflow: hidden; display: grid; grid-template-columns: 30% 1fr; }
-  .lap .base { height: 12px; background: #2a2e2b; border-radius: 0 0 14px 14px; margin: 0 -5%; }
+  /* Mockup */
+  .stage { position: relative; height: 480px; }
+  .lap { position: absolute; left: 0; top: 24px; width: 92%; }
+  .lap .scr { background: var(--ivory); border: 8px solid #1c211e; border-bottom-width: 10px; border-radius: 14px 14px 0 0; aspect-ratio: 16 / 10.4; overflow: hidden; display: grid; grid-template-columns: 30% 1fr; }
+  .lap .base { height: 12px; background: #2b302d; border-radius: 0 0 14px 14px; margin: 0 -5%; }
   .side { background: var(--green); color: #fff; padding: 14px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 10.5px; }
-  .side .brand { display: flex; align-items: center; gap: 7px; font-weight: 700; font-size: 11.5px; margin-bottom: 10px; }
-  .side .brand i { width: 22px; height: 22px; border-radius: 6px; background: var(--mark); }
-  .side span { padding: 6px 8px; border-radius: 6px; opacity: .78; }
-  .side span.on { background: rgba(255,255,255,.14); opacity: 1; font-weight: 700; }
+  .side .brand { display: flex; align-items: center; gap: 7px; font-family: var(--serif); font-size: 14px; margin-bottom: 10px; }
+  .side .brand i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--gold-2); }
+  .side span { padding: 6px 8px; border-radius: 6px; opacity: .75; }
+  .side span.on { background: rgba(255,255,255,.12); opacity: 1; font-weight: 700; }
   .main { padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
   .main .t { font-size: 10px; color: var(--faint); }
-  .main h4 { font-size: 15px; letter-spacing: -.01em; line-height: 1.15; }
-  .bar { height: 6px; border-radius: 99px; background: var(--green-soft); overflow: hidden; }
-  .bar i { display: block; height: 100%; width: 34%; background: var(--green-2); border-radius: 99px; }
-  .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 8px; align-items: center; font-size: 10.5px; padding: 6px 8px; border-radius: 7px; background: #f6f6f2; }
+  .main h4 { font-family: var(--serif); font-weight: 400; font-size: 19px; line-height: 1.1; }
+  .bar { height: 5px; border-radius: 99px; background: var(--green-soft); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 34%; background: var(--gold); border-radius: 99px; }
+  .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 8px; align-items: center; font-size: 10.5px; padding: 6px 8px; border-radius: 7px; background: #fff; }
   .row b { font-weight: 500; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  .row .ic { width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center; font-size: 9px; font-weight: 700; color: #fff; background: var(--green-2); }
-  .row .ic.pdf { background: #b5562d; }
-  .row .ic.q { background: #8a6d10; }
+  .row .ic { width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center; font-size: 8.5px; font-weight: 700; color: #fff; background: var(--green-2); }
+  .row .ic.pdf { background: #9a5a34; }
+  .row .ic.q { background: var(--gold); }
   .row em { font-style: normal; color: var(--faint); font-size: 9.5px; }
   .row.done b { color: var(--faint); text-decoration: line-through; }
-  .live { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--mark); border-radius: 8px; padding: 8px 10px; font-size: 10.5px; }
-  .live b { font-weight: 700; }
-  .live span { background: var(--ink); color: #fff; border-radius: 99px; padding: 4px 9px; font-weight: 700; font-size: 9.5px; white-space: nowrap; }
-  .ph { position: absolute; right: 0; bottom: 0; width: 168px; height: 336px; background: #0d0f0e; border-radius: 28px; padding: 7px; box-shadow: 0 26px 50px -22px rgba(18,21,19,.55); transform: rotate(4deg); }
-  .ph .in { background: var(--white); height: 100%; border-radius: 22px; padding: 18px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .live { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--green); color: #fff; border-radius: 8px; padding: 8px 10px; font-size: 10.5px; }
+  .live span { background: var(--gold-2); color: var(--green); border-radius: 99px; padding: 4px 9px; font-weight: 700; font-size: 9.5px; white-space: nowrap; }
+  .ph { position: absolute; right: 0; bottom: 0; width: 168px; height: 336px; background: #0e110f; border-radius: 28px; padding: 7px; box-shadow: 0 28px 50px -24px rgba(15,58,46,.55); transform: rotate(4deg); }
+  .ph .in { background: var(--ivory); height: 100%; border-radius: 22px; padding: 18px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
   .ph .in small { font-size: 9px; color: var(--faint); }
-  .ph h5 { margin: 0; font-size: 13px; line-height: 1.2; }
-  .ar { font-family: "Amiri", "Traditional Arabic", serif; font-size: 1.25em; font-weight: 400; }
-  .opt { font-size: 10px; border: 1px solid var(--line); border-radius: 8px; padding: 7px 8px; }
+  .ph h5 { font-size: 13px; line-height: 1.3; }
+  .ar { font-family: "Amiri", "Traditional Arabic", serif; font-size: 1.3em; font-weight: 400; }
+  .opt { font-size: 10px; border: 1px solid var(--line); border-radius: 8px; padding: 7px 8px; background: #fff; }
   .opt.ok { border-color: var(--green-2); background: var(--green-soft); font-weight: 700; }
   .score { margin-top: auto; text-align: center; background: var(--green); color: #fff; border-radius: 10px; padding: 9px 6px; font-size: 10px; }
-  .score b { display: block; font-size: 20px; line-height: 1.1; }
-  .hint { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); font-size: 12px; color: var(--faint); white-space: nowrap; }
+  .score b { display: block; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; color: var(--gold-2); }
+  .hint { position: absolute; left: 50%; bottom: -32px; transform: translateX(-50%); font-size: 12px; color: var(--faint); white-space: nowrap; }
 
-  /* Masalah vs solusi */
-  .vs { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-radius: 22px; overflow: hidden; background: var(--white); }
-  .vs > div { padding: 28px; }
+  /* Sebelum / sesudah */
+  .vs { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-radius: 24px; overflow: hidden; background: var(--ivory); }
+  .vs > div { padding: 34px 32px; }
   .vs .new { background: var(--green); color: #fff; }
-  .vs h3 { font-size: 19px; }
-  .vs ul { margin-top: 18px; display: grid; gap: 11px; }
-  .vs li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 15px; line-height: 1.5; }
+  .vs h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; }
+  .vs ul { margin-top: 20px; display: grid; gap: 12px; }
+  .vs li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 15.5px; line-height: 1.5; }
   .vs .old li { color: var(--ink-2); }
   .vs .old li::before { content: "–"; color: var(--faint); }
-  .vs .new li::before { content: "✓"; font-weight: 700; color: var(--mark); }
+  .vs .new li::before { content: "✓"; color: var(--gold-2); }
 
   /* Benefit */
-  .ben { margin-top: 44px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 48px; }
-  .ben h3 { font-size: 20px; line-height: 1.25; letter-spacing: -.015em; }
-  .ben p { margin-top: 8px; font-size: 15px; color: var(--ink-2); }
+  .ben { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 52px; }
+  .ben h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.15; }
+  .ben p { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); }
 
-  /* Siapa pakai apa */
-  .who { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-  .who > div { background: var(--white); border-radius: 20px; padding: 26px 24px; }
-  .who h3 { font-size: 19px; }
-  .who p { font-size: 14.5px; color: var(--faint); margin-top: 2px; }
-  .who ul { margin-top: 16px; display: grid; gap: 9px; font-size: 15px; }
+  /* Tiga pintu */
+  .who { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .who > div { background: var(--ivory); border-radius: 22px; padding: 30px 28px; }
+  .who h3 { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1.1; }
+  .who p { font-size: 14px; color: var(--faint); margin-top: 4px; }
+  .who ul { margin-top: 18px; display: grid; gap: 10px; font-size: 15.5px; }
   .who li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
-  .who li::before { content: "✓"; font-weight: 700; color: var(--green-2); }
+  .who li::before { content: "✓"; color: var(--gold); }
 
   /* Paket */
-  .price { margin-top: 44px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-  .pk { position: relative; border-radius: 22px; padding: 28px 26px 26px; background: var(--white); display: flex; flex-direction: column; }
+  .price { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+  .pk { position: relative; border-radius: 24px; padding: 34px 30px 30px; background: var(--ivory); display: flex; flex-direction: column; }
   .pk.rec { background: var(--green); color: #fff; }
-  .pk .badge { position: absolute; top: -12px; left: 24px; background: var(--mark); color: var(--ink); font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
-  .pk h3 { font-size: 22px; letter-spacing: -.01em; }
-  .pk .for { margin-top: 4px; font-size: 14px; color: inherit; opacity: .78; }
-  .pk .amt { margin-top: 18px; font-size: 44px; font-weight: 700; letter-spacing: -.035em; line-height: 1; }
-  .pk .amt small { font-size: 15px; font-weight: 500; letter-spacing: 0; opacity: .7; }
-  .pk ul { margin: 22px 0 24px; display: grid; gap: 10px; font-size: 15px; }
+  .pk .badge { position: absolute; top: 22px; right: 22px; color: var(--gold-2); font-family: var(--serif); font-size: 17px; }
+  .pk h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; }
+  .pk .for { margin-top: 8px; font-family: var(--sans); font-size: 14.5px; color: inherit; opacity: .75; }
+  .amt { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(179,138,69,.4); display: flex; align-items: flex-start; gap: 6px; font-family: var(--serif); line-height: 1; }
+  .amt sup { font-family: var(--sans); font-size: 14px; font-weight: 500; margin-top: 8px; opacity: .7; }
+  .amt b { font-weight: 400; font-size: 50px; letter-spacing: -.02em; }
+  .pk .per { margin-top: 8px; font-size: 13.5px; opacity: .72; }
+  .pk ul { margin: 26px 0 28px; display: grid; gap: 11px; font-size: 15px; }
   .pk li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
-  .pk li::before { content: "✓"; font-weight: 700; color: var(--green-2); }
-  .pk.rec li::before { color: var(--mark); }
+  .pk li::before { content: "✓"; color: var(--gold); }
+  .pk.rec li::before { color: var(--gold-2); }
   .pk li.plus { font-weight: 700; }
+  .care { margin: 0 0 22px; padding: 14px 16px; border-radius: 14px; background: var(--paper); font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+  .care b { color: var(--ink); }
+  .pk.rec .care { background: rgba(255,255,255,.08); color: rgba(255,255,255,.82); }
+  .pk.rec .care b { color: #fff; }
   .pk .btn { margin-top: auto; justify-content: space-between; }
-  .pk.rec .btn { background: var(--mark); color: var(--ink); }
-  .pk.rec .btn i { background: rgba(18,21,19,.1); }
-  .terms { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 14px; color: var(--ink-2); }
-  .terms span::before { content: "• "; color: var(--green-2); }
+  .pk:not(.rec) .btn { background: var(--ink); }
+  .pk.rec .btn { background: var(--gold-2); color: var(--green); }
+  .pk.rec .btn i { background: var(--green); color: var(--gold-2); }
+
+  /* Perawatan */
+  .keep { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .keep > div { border-radius: 24px; padding: 34px 32px; }
+  .keep .y1 { background: var(--green); color: #fff; }
+  .keep .y2 { background: var(--ivory); }
+  .keep h3 { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
+  .keep .tag { display: inline-block; margin-top: 8px; font-size: 14px; color: var(--gold-2); }
+  .keep .y2 .tag { color: var(--gold); }
+  .keep ul { margin-top: 20px; display: grid; gap: 10px; font-size: 15.5px; }
+  .keep li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+  .keep .y1 li::before { content: "✓"; color: var(--gold-2); }
+  .fee { margin-top: 22px; display: grid; gap: 0; }
+  .fee div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; }
+  .fee div:first-child { border-top: 1px solid var(--line); }
+  .fee b { font-family: var(--serif); font-weight: 400; font-size: 24px; white-space: nowrap; }
+  .fee small { display: block; font-size: 12.5px; color: var(--faint); }
+  .keep .fine { margin-top: 16px; font-size: 13.5px; color: var(--faint); }
+
+  .terms { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; color: var(--ink-2); }
+  .terms span::before { content: "· "; color: var(--gold); font-weight: 700; }
 
   /* Alur */
-  .flow { margin-top: 44px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: s; }
-  .flow li { counter-increment: s; padding: 4px 8px 0 0; }
-  .flow li::before { content: "0" counter(s); display: block; font-family: var(--serif); font-size: 36px; color: var(--green-2); line-height: 1; }
+  .flow { margin-top: 52px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+  .flow li { counter-increment: s; padding-top: 18px; border-top: 1px solid rgba(179,138,69,.45); }
+  .flow li::before { content: "0" counter(s); display: block; font-family: var(--serif); font-size: 40px; color: var(--gold); line-height: 1; }
   .flow b { display: block; margin-top: 14px; font-size: 16px; }
   .flow p { margin-top: 6px; font-size: 15px; color: var(--ink-2); }
 
   /* Tanya jawab */
-  .faq { margin-top: 30px; }
+  .faq { margin-top: 36px; }
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 20px 0; font-weight: 700; font-size: 17px; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; font-family: var(--serif); font-size: 23px; line-height: 1.25; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; font-weight: 400; font-size: 24px; line-height: 1; transition: transform .2s; }
+  .faq summary::after { content: "+"; font-family: var(--sans); font-weight: 400; font-size: 24px; line-height: 1; color: var(--gold); transition: transform .2s; }
   .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq p { padding: 0 0 20px; color: var(--ink-2); max-width: 46em; }
+  .faq p { padding: 0 0 22px; color: var(--ink-2); max-width: 46em; }
 
   /* Penutup */
-  .end { margin: 110px 0 0; background: var(--green); color: #fff; border-radius: 28px; padding: 56px 40px; display: grid; grid-template-columns: minmax(0, 1.3fr) auto; gap: 28px; align-items: end; }
-  .end p { color: rgba(255,255,255,.8); margin-top: 12px; max-width: 32em; }
+  .end { margin: 130px 0 0; background: var(--green); color: #fff; border-radius: 30px; padding: 64px 48px; display: grid; grid-template-columns: minmax(0, 1.3fr) auto; gap: 28px; align-items: end; }
+  .end h2 { color: #fff; }
+  .end p { color: rgba(255,255,255,.8); margin-top: 14px; max-width: 32em; }
+  .end .btn { background: var(--gold-2); color: var(--green); }
+  .end .btn i { background: var(--green); color: var(--gold-2); }
   .foot { padding: 34px 0 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); }
 
   @media (max-width: 900px) {
     .hero { grid-template-columns: minmax(0, 1fr); }
     .stage { max-width: 520px; width: 100%; margin: 10px auto 0; }
-    .ben, .price, .who { grid-template-columns: minmax(0, 1fr); }
-    .ben { gap: 28px; }
+    .ben, .price, .who, .keep { grid-template-columns: minmax(0, 1fr); }
+    .ben { gap: 32px; }
     .flow { grid-template-columns: 1fr 1fr; }
-    .price { gap: 22px; }
+    .price { gap: 18px; }
+    .nav .for { display: none; }
   }
   @media (max-width: 600px) {
     .wrap { padding: 0 18px; }
-    section { padding-top: 80px; }
-    .nav .for { display: none; }
-    .hero { padding-top: 34px; }
+    section { padding-top: 96px; }
+    .hero { padding-top: 40px; }
     .stage { height: 380px; }
     .lap { width: 100%; top: 0; }
     .lap .scr { grid-template-columns: 1fr; border-width: 6px; }
@@ -180,13 +212,14 @@
     .ph .in { border-radius: 17px; padding: 12px 9px 9px; gap: 6px; }
     .ph .opt:nth-of-type(3) { display: none; }
     .vs { grid-template-columns: minmax(0, 1fr); }
+    .vs > div, .keep > div { padding: 28px 24px; }
     .flow { grid-template-columns: minmax(0, 1fr); }
-    .end { grid-template-columns: minmax(0, 1fr); padding: 40px 24px; border-radius: 22px; }
-    .pk .amt { font-size: 40px; }
+    .end { grid-template-columns: minmax(0, 1fr); padding: 44px 26px; border-radius: 24px; }
+    .amt b { font-size: 46px; }
   }
   @media (prefers-reduced-motion: no-preference) {
-    .lap { animation: rise .8s both; }
-    .ph { animation: rise2 .9s .2s cubic-bezier(.2,.8,.2,1) both; }
+    .lap { animation: rise .9s both; }
+    .ph { animation: rise2 1s .2s cubic-bezier(.2,.8,.2,1) both; }
     .bar i { animation: grow 1.4s .6s ease-out both; }
     @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
     @keyframes rise2 { from { opacity: 0; transform: translateY(40px) rotate(9deg); } to { opacity: 1; transform: rotate(4deg); } }
@@ -199,7 +232,7 @@
 <nav class="nav">
   <div class="wrap">
     <a class="dar" href="#top"><img src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="34" height="34"><span>Dar Dev<small>Untuk Ustadz Syahrul</small></span></a>
-    <span class="for">Website <b>kelas online</b> untuk <b>bimbel</b></span>
+    <span class="for">Website kelas online untuk bimbel</span>
     <a class="btn" href="#paket">Lihat paket <i aria-hidden="true">→</i></a>
   </div>
 </nav>
@@ -207,13 +240,14 @@
 <main class="wrap" id="top">
   <header class="hero">
     <div>
-      <h1>Bimbel Ustadz, buka kelas di website sendiri.</h1>
-      <p class="lead">Seperti kelas online Al Madraj dan Nizhamiyyah Edu: murid <span class="hl">daftar, bayar, belajar, dan ujian</span> di satu tempat. Ustadz fokus mengajar, urusan pendaftaran, materi, dan nilai berjalan rapi di sistem.</p>
+      <p class="rule">Penawaran untuk Ustadz Syahrul</p>
+      <h1>Bimbel Ustadz, kini punya <em>kelas online</em> sendiri.</h1>
+      <p class="lead">Seperti kelas online Al Madraj dan Nizhamiyyah Edu: murid daftar, bayar, belajar, dan ujian di satu tempat. Ustadz fokus mengajar, urusan pendaftaran, materi, dan nilai berjalan rapi di sistem.</p>
       <div class="acts">
-        <a class="btn" href="#paket">Lihat paket, mulai Rp 3,5 jt <i aria-hidden="true">→</i></a>
-        <a class="btn wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20tanya%20soal%20website%20kelas%20online." target="_blank" rel="noopener">Tanya di WA <i aria-hidden="true">↗</i></a>
+        <a class="btn" href="#paket">Lihat paket <i aria-hidden="true">→</i></a>
+        <a class="btn line" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20tanya%20soal%20website%20kelas%20online." target="_blank" rel="noopener">Tanya di WhatsApp <i aria-hidden="true">↗</i></a>
       </div>
-      <p class="note">Sekali bayar, <b>website milik Ustadz sendiri</b>, tanpa potongan per murid dari kami.</p>
+      <p class="incl"><span>Domain .com 1 tahun</span><span>Perawatan 1 tahun</span><span>Milik Ustadz sendiri</span></p>
     </div>
 
     <div class="stage" aria-hidden="true">
@@ -251,7 +285,8 @@
   </header>
 
   <section>
-    <h2>Dari grup WA yang ramai ke kelas yang tertata</h2>
+    <p class="rule">Sebelum dan sesudah</p>
+    <h2>Dari grup WhatsApp yang ramai ke kelas yang tertata</h2>
     <div class="vs">
       <div class="old">
         <h3>Kalau masih manual</h3>
@@ -264,7 +299,7 @@
         </ul>
       </div>
       <div class="new">
-        <h3>Dengan website kelas online</h3>
+        <h3>Dengan kelas online</h3>
         <ul>
           <li>Murid daftar dan pilih kelas sendiri</li>
           <li>Pembayaran tercatat, akses kelas langsung terbuka</li>
@@ -277,18 +312,20 @@
   </section>
 
   <section>
+    <p class="rule">Manfaat</p>
     <h2>Kenapa layak untuk bimbel Ustadz</h2>
     <ol class="ben">
-      <li><h3>Kelihatan seperti lembaga</h3><p>Calon murid melihat website dengan program, jadwal, dan pengajar yang jelas. Lebih meyakinkan daripada link formulir.</p></li>
-      <li><h3>Muridnya bisa dari mana saja</h3><p>Masisir di Kairo, santri di Indonesia, atau yang bekerja: semua bisa ikut live atau mengejar lewat rekaman.</p></li>
-      <li><h3>Waktu Ustadz untuk mengajar</h3><p>Rekap pendaftar, cek pembayaran, dan kirim materi tidak lagi menghabiskan malam Ustadz.</p></li>
-      <li><h3>Materi jadi aset</h3><p>Rekaman dan modul tersimpan rapi per kelas, bisa dipakai lagi untuk angkatan berikutnya.</p></li>
-      <li><h3>Tahu perkembangan murid</h3><p>Siapa yang rajin, siapa yang tertinggal, dan nilai tiap latihan terlihat di satu halaman.</p></li>
-      <li><h3>Milik sendiri, tanpa potongan</h3><p>Tidak seperti marketplace kursus, tidak ada bagi hasil per murid. Uang pendaftaran masuk ke rekening bimbel.</p></li>
+      <li><h3>Tampil sebagai lembaga</h3><p>Calon murid melihat program, jadwal, dan pengajar yang jelas di alamat .com sendiri. Lebih meyakinkan daripada link formulir.</p></li>
+      <li><h3>Murid dari mana saja</h3><p>Masisir di Kairo, santri di Indonesia, atau yang bekerja: semua bisa ikut live atau mengejar lewat rekaman.</p></li>
+      <li><h3>Waktu kembali untuk mengajar</h3><p>Rekap pendaftar, cek pembayaran, dan kirim materi tidak lagi menghabiskan malam Ustadz.</p></li>
+      <li><h3>Materi menjadi aset</h3><p>Rekaman dan modul tersimpan rapi per kelas, siap dipakai lagi untuk angkatan berikutnya.</p></li>
+      <li><h3>Perkembangan murid terlihat</h3><p>Siapa yang rajin, siapa yang tertinggal, dan nilai tiap latihan ada di satu halaman.</p></li>
+      <li><h3>Milik sendiri, tanpa potongan</h3><p>Tidak ada bagi hasil per murid seperti di marketplace kursus. Uang pendaftaran masuk ke rekening bimbel.</p></li>
     </ol>
   </section>
 
   <section>
+    <p class="rule">Isi sistem</p>
     <h2>Satu website, tiga pintu</h2>
     <div class="who">
       <div>
@@ -307,29 +344,32 @@
   </section>
 
   <section id="paket">
+    <p class="rule">Paket</p>
     <h2>Pilih sesuai besar bimbelnya</h2>
-    <p class="lead">Semua paket sekali bayar dan sudah termasuk domain 1 tahun. Bisa mulai dari paket kecil, lalu naik paket dengan membayar selisihnya.</p>
+    <p class="lead">Sekali bayar. Semua paket sudah termasuk <b>domain .com selama 1 tahun</b> dan <b>perawatan 1 tahun</b>. Bisa mulai dari paket kecil, lalu naik paket dengan membayar selisihnya.</p>
     <div class="price">
       <article class="pk">
         <h3>Kelas Dasar</h3>
-        <p class="for">Untuk mulai buka kelas online</p>
-        <p class="amt">Rp 3,5<small>jt</small></p>
+        <p class="for">Untuk mulai membuka kelas online</p>
+        <p class="amt"><sup>Rp</sup><b>3.499.000</b></p>
+        <p class="per">sekali bayar</p>
         <ul>
           <li>Website bimbel: profil, program, pengajar, jadwal</li>
           <li>Pendaftaran dan akun murid</li>
           <li>Bayar via transfer, unggah bukti, admin konfirmasi</li>
           <li>Kelas berisi rekaman, modul PDF, dan link live Zoom/Meet</li>
           <li>Panel admin: kelas, murid, pembayaran</li>
-          <li>Domain 1 tahun, contoh: namabimbel.com</li>
-          <li>Pendampingan 1 bulan via WhatsApp</li>
+          <li class="plus">Domain .com 1 tahun</li>
         </ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Dasar%20(Rp%203%2C5%20jt)." target="_blank" rel="noopener">Pilih Kelas Dasar <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 900.000/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Dasar%20(Rp%203.499.000)." target="_blank" rel="noopener">Pilih Kelas Dasar <i aria-hidden="true">→</i></a>
       </article>
       <article class="pk rec">
         <span class="badge">Paling pas</span>
         <h3>Kelas Lengkap</h3>
-        <p class="for">Untuk bimbel yang sudah jalan rutin</p>
-        <p class="amt">Rp 5<small>jt</small></p>
+        <p class="for">Untuk bimbel yang sudah berjalan rutin</p>
+        <p class="amt"><sup>Rp</sup><b>4.999.000</b></p>
+        <p class="per">sekali bayar</p>
         <ul>
           <li>Semua isi Kelas Dasar</li>
           <li class="plus">Bayar otomatis: QRIS, virtual account, e-wallet</li>
@@ -337,14 +377,16 @@
           <li>Progres belajar dan absensi per murid</li>
           <li>Sertifikat PDF otomatis saat kelas selesai</li>
           <li>Akun pengajar terpisah</li>
-          <li>Pendampingan 2 bulan + pelatihan admin via video call</li>
+          <li>Pelatihan admin via video call</li>
         </ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Lengkap%20(Rp%205%20jt)." target="_blank" rel="noopener">Pilih Kelas Lengkap <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1.200.000/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Lengkap%20(Rp%204.999.000)." target="_blank" rel="noopener">Pilih Kelas Lengkap <i aria-hidden="true">→</i></a>
       </article>
       <article class="pk">
         <h3>Akademi</h3>
-        <p class="for">Untuk bimbel dengan banyak kelas dan pengajar</p>
-        <p class="amt">Rp 7,5<small>jt</small></p>
+        <p class="for">Untuk banyak kelas dan pengajar</p>
+        <p class="amt"><sup>Rp</sup><b>7.499.000</b></p>
+        <p class="per">sekali bayar</p>
         <ul>
           <li>Semua isi Kelas Lengkap</li>
           <li class="plus">Tryout berwaktu dengan peringkat peserta</li>
@@ -353,9 +395,9 @@
           <li>Tanya jawab per materi antara murid dan pengajar</li>
           <li>Bisa dipasang di layar HP seperti aplikasi</li>
           <li>Laporan pemasukan dan rekap honor pengajar</li>
-          <li>Pendampingan 3 bulan</li>
         </ul>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Akademi%20(Rp%207%2C5%20jt)." target="_blank" rel="noopener">Pilih Akademi <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1.800.000/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Akademi%20(Rp%207.499.000)." target="_blank" rel="noopener">Pilih Akademi <i aria-hidden="true">→</i></a>
       </article>
     </div>
     <div class="terms">
@@ -365,33 +407,65 @@
     </div>
   </section>
 
+  <section id="perawatan">
+    <p class="rule">Perawatan</p>
+    <h2>Tahun pertama kami yang jaga</h2>
+    <p class="lead">Website kelas online perlu dirawat supaya tetap aman dan lancar. Tahun pertama sudah termasuk di harga paket. Mulai tahun kedua ada biaya perawatan tahunan, dan Ustadz bebas memilih lanjut atau tidak.</p>
+    <div class="keep">
+      <div class="y1">
+        <h3>Tahun pertama</h3>
+        <span class="tag">termasuk di harga paket</span>
+        <ul>
+          <li>Domain .com aktif selama 1 tahun</li>
+          <li>Server dan penyimpanan data</li>
+          <li>Cadangan data rutin setiap minggu</li>
+          <li>Perbaikan jika ada error</li>
+          <li>Pembaruan keamanan</li>
+          <li>Bantuan admin lewat WhatsApp</li>
+        </ul>
+      </div>
+      <div class="y2">
+        <h3>Tahun kedua dan seterusnya</h3>
+        <span class="tag">opsional, dibayar per tahun</span>
+        <div class="fee">
+          <div><span>Kelas Dasar<small>setara Rp 75.000 per bulan</small></span><b>Rp 900.000</b></div>
+          <div><span>Kelas Lengkap<small>setara Rp 100.000 per bulan</small></span><b>Rp 1.200.000</b></div>
+          <div><span>Akademi<small>setara Rp 150.000 per bulan</small></span><b>Rp 1.800.000</b></div>
+        </div>
+        <p class="fine">Sudah termasuk perpanjangan domain .com dan semua layanan tahun pertama. Fitur baru dihitung terpisah.</p>
+      </div>
+    </div>
+  </section>
+
   <section>
+    <p class="rule">Alur kerja</p>
     <h2>Dari obrolan sampai kelas pertama</h2>
     <ol class="flow">
-      <li><b>Ngobrol kebutuhan</b><p>Video call singkat: kelas apa saja, berapa murid, cara bayar yang diinginkan.</p></li>
+      <li><b>Ngobrol kebutuhan</b><p>Video call singkat: kelas apa saja, berapa murid, dan cara bayar yang diinginkan.</p></li>
       <li><b>Contoh tampilan</b><p>Kami kirim tampilan awal dengan nama dan warna bimbel untuk dicek Ustadz.</p></li>
-      <li><b>Dibangun dan diuji</b><p>Sistem dibuat, lalu dicoba bareng dengan beberapa akun murid contoh.</p></li>
-      <li><b>Kelas dibuka</b><p>Website tayang, admin dilatih lewat video call, dan kami standby di WhatsApp.</p></li>
+      <li><b>Dibangun dan diuji</b><p>Sistem dibuat, lalu dicoba bersama dengan beberapa akun murid contoh.</p></li>
+      <li><b>Kelas dibuka</b><p>Website tayang di domain .com, admin dilatih lewat video call, dan kami standby di WhatsApp.</p></li>
     </ol>
   </section>
 
   <section>
+    <p class="rule">Tanya jawab</p>
     <h2>Yang mungkin ditanyakan</h2>
     <div class="faq">
       <details><summary>Berapa lama jadinya?</summary><p>Sekitar 2 minggu untuk Kelas Dasar, 3 minggu untuk Kelas Lengkap, dan 4–5 minggu untuk Akademi, dihitung sejak isi website dan daftar kelas kami terima.</p></details>
-      <details><summary>Ada biaya bulanan?</summary><p>Tidak ada biaya bulanan dari Dar Dev. Server memakai paket gratis selama kapasitasnya cukup. Kalau murid sudah sangat banyak dan perlu server lebih besar, biayanya kami sampaikan dulu sebelum naik. Domain tahun kedua dibayar sesuai harga pendaftar domain.</p></details>
-      <details><summary>Rekaman kelasnya disimpan di mana?</summary><p>Rekaman dari pengajar diunggah ke YouTube dalam mode tidak publik atau ke Google Drive, lalu ditampilkan di dalam kelas. Cara ini hemat biaya dan videonya lancar diputar. Hanya murid terdaftar yang melihat halaman kelasnya.</p></details>
-      <details><summary>Bisa untuk banyak bimbel atau cabang?</summary><p>Bisa. Satu website bisa menampung banyak kelas, angkatan, dan pengajar. Kalau nanti ada lembaga lain yang ingin memakai sistem serupa, kita bicarakan terpisah.</p></details>
-      <details><summary>Kalau sudah jalan, mau tambah fitur?</summary><p>Bisa naik paket dengan membayar selisihnya, atau tambah fitur satuan yang dihitung sesuai kebutuhan.</p></details>
+      <details><summary>Domainnya bisa nama apa saja?</summary><p>Bisa, selama alamat .com tersebut masih tersedia, misalnya namabimbel.com. Domain didaftarkan atas nama bimbel Ustadz dan sudah dibayar untuk tahun pertama.</p></details>
+      <details><summary>Kalau tahun kedua tidak lanjut perawatan?</summary><p>Website tetap milik Ustadz. Semua data dan kode kami serahkan, dan domain bisa diperpanjang sendiri. Hanya saja server, cadangan data, dan perbaikan error tidak lagi kami tangani.</p></details>
+      <details><summary>Rekaman kelasnya disimpan di mana?</summary><p>Rekaman dari pengajar diunggah ke YouTube dalam mode tidak publik atau ke Google Drive, lalu ditampilkan di dalam kelas. Hemat biaya dan lancar diputar. Hanya murid terdaftar yang bisa membuka halaman kelasnya.</p></details>
+      <details><summary>Kalau murid sudah sangat banyak?</summary><p>Perawatan sudah mencakup server untuk pemakaian bimbel pada umumnya. Kalau suatu saat murid aktif sudah ribuan dan perlu server lebih besar, biayanya kami sampaikan dulu sebelum dinaikkan.</p></details>
     </div>
   </section>
 
   <div class="end">
     <div>
       <h2>Kelas Ustadz layak punya rumah sendiri.</h2>
-      <p>Ceritakan dulu kelas yang mau dibuka. Kami bantu pilih paket yang pas, tanpa harus langsung ambil yang paling besar.</p>
+      <p>Ceritakan dulu kelas yang mau dibuka. Kami bantu pilih paket yang pas, tanpa harus langsung mengambil yang paling besar.</p>
     </div>
-    <a class="btn wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20tertarik%20dengan%20website%20kelas%20online." target="_blank" rel="noopener">Chat Dar Dev <i aria-hidden="true">↗</i></a>
+    <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20tertarik%20dengan%20website%20kelas%20online." target="_blank" rel="noopener">Chat Dar Dev <i aria-hidden="true">↗</i></a>
   </div>
 
   <footer class="foot">
