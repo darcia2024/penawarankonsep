@@ -125,12 +125,13 @@
   .price { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
   .pk { position: relative; border-radius: 24px; padding: 34px 30px 30px; background: var(--ivory); display: flex; flex-direction: column; }
   .pk.rec { background: var(--green); color: #fff; }
-  .pk .badge { position: absolute; top: 22px; right: 22px; color: var(--gold-2); font-family: var(--serif); font-size: 17px; }
+  .pk .badge { position: absolute; top: -13px; left: 30px; background: var(--gold-2); color: var(--green); font-size: 12.5px; font-weight: 700; padding: 5px 14px; border-radius: 999px; }
   .pk h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; }
   .pk .for { margin-top: 8px; font-family: var(--sans); font-size: 14.5px; color: inherit; opacity: .75; }
   .amt { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(179,138,69,.4); display: flex; align-items: flex-start; gap: 6px; font-family: var(--serif); line-height: 1; }
   .amt sup { font-family: var(--sans); font-size: 14px; font-weight: 500; margin-top: 8px; opacity: .7; }
-  .amt b { font-weight: 400; font-size: 50px; letter-spacing: -.02em; }
+  .amt b { font-weight: 400; font-size: 64px; letter-spacing: -.02em; }
+  .amt span { align-self: flex-end; font-size: 26px; margin-bottom: 6px; }
   .pk .per { margin-top: 8px; font-size: 13.5px; opacity: .72; }
   .pk ul { margin: 26px 0 28px; display: grid; gap: 11px; font-size: 15px; }
   .pk li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
@@ -215,7 +216,7 @@
     .vs > div, .keep > div { padding: 28px 24px; }
     .flow { grid-template-columns: minmax(0, 1fr); }
     .end { grid-template-columns: minmax(0, 1fr); padding: 44px 26px; border-radius: 24px; }
-    .amt b { font-size: 46px; }
+    .amt b { font-size: 58px; }
   }
   @media (prefers-reduced-motion: no-preference) {
     .lap { animation: rise .9s both; }
@@ -265,7 +266,7 @@
             <div class="row"><span class="ic">▶</span><b>Rekaman pertemuan 4</b><em>28 mnt</em></div>
             <div class="row"><span class="ic pdf">PDF</span><b>Ringkasan bab isim</b><em>6 hlm</em></div>
             <div class="row"><span class="ic q">?</span><b>Latihan soal pertemuan 4</b><em>10 soal</em></div>
-            <div class="live"><b>Live malam ini 19.30</b><span>Masuk kelas</span></div>
+            <div class="live"><b>Live malam ini 20.00</b><span>Masuk kelas</span></div>
           </div>
         </div>
         <div class="base"></div>
@@ -351,8 +352,8 @@
       <article class="pk">
         <h3>Kelas Dasar</h3>
         <p class="for">Untuk mulai membuka kelas online</p>
-        <p class="amt"><sup>Rp</sup><b>3.499.000</b></p>
-        <p class="per">sekali bayar</p>
+        <p class="amt"><sup>Rp</sup><b>3,5</b><span>juta</span></p>
+        <p class="per">sekali bayar · setara 35 murid × Rp 100rb</p>
         <ul>
           <li>Website bimbel: profil, program, pengajar, jadwal</li>
           <li>Pendaftaran dan akun murid</li>
@@ -361,15 +362,15 @@
           <li>Panel admin: kelas, murid, pembayaran</li>
           <li class="plus">Domain .com 1 tahun</li>
         </ul>
-        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 900.000/tahun.</p>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Dasar%20(Rp%203.499.000)." target="_blank" rel="noopener">Pilih Kelas Dasar <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 600rb/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Dasar%20(Rp%203%2C5%20juta)." target="_blank" rel="noopener">Pilih Kelas Dasar <i aria-hidden="true">→</i></a>
       </article>
       <article class="pk rec">
         <span class="badge">Paling pas</span>
         <h3>Kelas Lengkap</h3>
         <p class="for">Untuk bimbel yang sudah berjalan rutin</p>
-        <p class="amt"><sup>Rp</sup><b>4.999.000</b></p>
-        <p class="per">sekali bayar</p>
+        <p class="amt"><sup>Rp</sup><b>5</b><span>juta</span></p>
+        <p class="per">sekali bayar · setara 50 murid × Rp 100rb</p>
         <ul>
           <li>Semua isi Kelas Dasar</li>
           <li class="plus">Bayar otomatis: QRIS, virtual account, e-wallet</li>
@@ -379,14 +380,14 @@
           <li>Akun pengajar terpisah</li>
           <li>Pelatihan admin via video call</li>
         </ul>
-        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1.200.000/tahun.</p>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Lengkap%20(Rp%204.999.000)." target="_blank" rel="noopener">Pilih Kelas Lengkap <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1,2 juta/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Kelas%20Lengkap%20(Rp%205%20juta)." target="_blank" rel="noopener">Pilih Kelas Lengkap <i aria-hidden="true">→</i></a>
       </article>
       <article class="pk">
         <h3>Akademi</h3>
         <p class="for">Untuk banyak kelas dan pengajar</p>
-        <p class="amt"><sup>Rp</sup><b>7.499.000</b></p>
-        <p class="per">sekali bayar</p>
+        <p class="amt"><sup>Rp</sup><b>7,5</b><span>juta</span></p>
+        <p class="per">sekali bayar · setara 75 murid × Rp 100rb</p>
         <ul>
           <li>Semua isi Kelas Lengkap</li>
           <li class="plus">Tryout berwaktu dengan peringkat peserta</li>
@@ -396,8 +397,8 @@
           <li>Bisa dipasang di layar HP seperti aplikasi</li>
           <li>Laporan pemasukan dan rekap honor pengajar</li>
         </ul>
-        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1.800.000/tahun.</p>
-        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Akademi%20(Rp%207.499.000)." target="_blank" rel="noopener">Pilih Akademi <i aria-hidden="true">→</i></a>
+        <p class="care"><b>Perawatan 1 tahun termasuk.</b> Tahun berikutnya Rp 1,8 juta/tahun.</p>
+        <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20Syahrul%20mau%20ambil%20paket%20Akademi%20(Rp%207%2C5%20juta)." target="_blank" rel="noopener">Pilih Akademi <i aria-hidden="true">→</i></a>
       </article>
     </div>
     <div class="terms">
@@ -428,9 +429,9 @@
         <h3>Tahun kedua dan seterusnya</h3>
         <span class="tag">opsional, dibayar per tahun</span>
         <div class="fee">
-          <div><span>Kelas Dasar<small>setara Rp 75.000 per bulan</small></span><b>Rp 900.000</b></div>
-          <div><span>Kelas Lengkap<small>setara Rp 100.000 per bulan</small></span><b>Rp 1.200.000</b></div>
-          <div><span>Akademi<small>setara Rp 150.000 per bulan</small></span><b>Rp 1.800.000</b></div>
+          <div><span>Kelas Dasar<small>setara Rp 50rb per bulan</small></span><b>Rp 600rb</b></div>
+          <div><span>Kelas Lengkap<small>setara Rp 100rb per bulan</small></span><b>Rp 1,2 juta</b></div>
+          <div><span>Akademi<small>setara Rp 150rb per bulan</small></span><b>Rp 1,8 juta</b></div>
         </div>
         <p class="fine">Sudah termasuk perpanjangan domain .com dan semua layanan tahun pertama. Fitur baru dihitung terpisah.</p>
       </div>
