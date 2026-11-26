@@ -12,6 +12,8 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `stroll-around/` — penawaran sistem pendaftaran tur (website, QRIS, WhatsApp otomatis, check-in, dasbor) untuk Stroll Around, walking tour Jakarta. Demo tampilan tiap fiturnya (9 layar yang bisa diklik, data contoh) ada di `stroll-around/demo/`.
 - `jembar-diesel/` — penawaran toko digital (katalog cari part per mesin, pesan via WhatsApp, kasir & stok, buku bon nelayan) untuk Toko Jembar Diesel, Binuangeun. Demo tampilan aplikasinya (8 layar yang bisa diklik, data contoh) ada di `jembar-diesel/demo/`.
 - `babashasan/` — penawaran web testimoni jamaah (Rp 650rb, add-on rekam suara +Rp 200rb) untuk muthowif Nasrudin Babas Hasan, dengan demo yang bisa dicoba (isi form + upload foto + rekam suara, setujui, tampil) di `babashasan/demo/`, plus form jamaah tersendiri di `babashasan/isi/` (bisa per travel `?travel=feb26` atau per grup keberangkatan `?grup=ri-ram1`), dan admin panel di `babashasan/admin/` (ringkasan, testimoni, travel + grup keberangkatan, pengaturan). Data contoh bersama ada di `babashasan/data.js`. Alamat lama `babas-hasan-basri/` otomatis dialihkan ke sini.
+- `syabi/` — penawaran CV online / landing page pribadi (Rp 450rb–950rb) untuk Syabi.
+- `makarim/` — penawaran video animasi edukasi umrah & video marketing gaya UGC (mulai Rp 100rb/video, paket Rp 350rb–1,5 jt) untuk travel Makarim (Ustadz Syahrul).
 - `video-travel-umrah/` — penawaran umum jasa video motion graphic (narasi AI) untuk travel umrah & haji, tanpa nama klien tertentu.
 
 Foto produk diambil dari purnama-eskrim.com dan font dari Fontshare, jadi halaman perlu koneksi internet.
