@@ -9,7 +9,7 @@
 <meta name="description" content="Penawaran dari Dar Dev untuk Ustadz Syahrul: website kelas online untuk bimbel, termasuk domain .com dan perawatan 1 tahun.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Amiri&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
 <style>
@@ -62,39 +62,53 @@
   .incl span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
   /* Mockup */
-  .stage { position: relative; height: 480px; }
-  .lap { position: absolute; left: 0; top: 24px; width: 92%; }
-  .lap .scr { background: var(--ivory); border: 8px solid #1c211e; border-bottom-width: 10px; border-radius: 14px 14px 0 0; aspect-ratio: 16 / 10.4; overflow: hidden; display: grid; grid-template-columns: 30% 1fr; }
-  .lap .base { height: 12px; background: #2b302d; border-radius: 0 0 14px 14px; margin: 0 -5%; }
-  .side { background: var(--green); color: #fff; padding: 14px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 10.5px; }
-  .side .brand { display: flex; align-items: center; gap: 7px; font-family: var(--serif); font-size: 14px; margin-bottom: 10px; }
-  .side .brand i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--gold-2); }
-  .side span { padding: 6px 8px; border-radius: 6px; opacity: .75; }
-  .side span.on { background: rgba(255,255,255,.12); opacity: 1; font-weight: 700; }
-  .main { padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
-  .main .t { font-size: 10px; color: var(--faint); }
-  .main h4 { font-family: var(--serif); font-weight: 400; font-size: 19px; line-height: 1.1; }
-  .bar { height: 5px; border-radius: 99px; background: var(--green-soft); overflow: hidden; }
-  .bar i { display: block; height: 100%; width: 34%; background: var(--gold); border-radius: 99px; }
-  .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 8px; align-items: center; font-size: 10.5px; padding: 6px 8px; border-radius: 7px; background: #fff; }
-  .row b { font-weight: 500; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  .row .ic { width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center; font-size: 8.5px; font-weight: 700; color: #fff; background: var(--green-2); }
-  .row .ic.pdf { background: #9a5a34; }
-  .row .ic.q { background: var(--gold); }
-  .row em { font-style: normal; color: var(--faint); font-size: 9.5px; }
-  .row.done b { color: var(--faint); text-decoration: line-through; }
-  .live { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--green); color: #fff; border-radius: 8px; padding: 8px 10px; font-size: 10.5px; }
-  .live span { background: var(--gold-2); color: var(--green); border-radius: 99px; padding: 4px 9px; font-weight: 700; font-size: 9.5px; white-space: nowrap; }
-  .ph { position: absolute; right: 0; bottom: 0; width: 168px; height: 336px; background: #0e110f; border-radius: 28px; padding: 7px; box-shadow: 0 28px 50px -24px rgba(15,58,46,.55); transform: rotate(4deg); }
-  .ph .in { background: var(--ivory); height: 100%; border-radius: 22px; padding: 18px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
-  .ph .in small { font-size: 9px; color: var(--faint); }
-  .ph h5 { font-size: 13px; line-height: 1.3; }
-  .ar { font-family: "Amiri", "Traditional Arabic", serif; font-size: 1.3em; font-weight: 400; }
-  .opt { font-size: 10px; border: 1px solid var(--line); border-radius: 8px; padding: 7px 8px; background: #fff; }
-  .opt.ok { border-color: var(--green-2); background: var(--green-soft); font-weight: 700; }
-  .score { margin-top: auto; text-align: center; background: var(--green); color: #fff; border-radius: 10px; padding: 9px 6px; font-size: 10px; }
-  .score b { display: block; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.05; color: var(--gold-2); }
-  .hint { position: absolute; left: 50%; bottom: -32px; transform: translateX(-50%); font-size: 12px; color: var(--faint); white-space: nowrap; }
+  /* Gaya ruang belajar: bingkai teal redup, kartu putih, ubin mint, label kapital berjarak */
+  .stage { position: relative; height: 480px; --t: #3d7179; --t-2: #2c5d64; --mint: #eaf4ef; --mint-2: #d6e9df; --mi: #17231b; --mf: #6f8279; font-family: "Plus Jakarta Sans", var(--sans); }
+  .stage svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .cap { font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .dash { position: absolute; right: 0; top: 20px; width: 86%; background: var(--t); border-radius: 22px; padding: 14px 12px 12px; box-shadow: 0 30px 60px -30px rgba(44,93,100,.6); }
+  .dash .hd { display: flex; justify-content: space-between; align-items: flex-end; color: #fff; padding: 0 6px 12px; }
+  .dash .hd .cap { color: rgba(255,255,255,.7); }
+  .dash .hd b { display: block; font-size: 14px; font-weight: 700; margin-top: 3px; }
+  .dash .hd span { display: flex; align-items: center; gap: 8px; font-size: 9px; opacity: .9; }
+  .dash .hd span svg { width: 14px; height: 14px; }
+  .card { background: #fff; border-radius: 16px; overflow: hidden; color: var(--mi); }
+  .card .tb { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #edf1ee; font-size: 10px; font-weight: 600; color: var(--t-2); }
+  .card .tb span { display: flex; align-items: center; gap: 7px; }
+  .card .tb i { font-style: normal; color: var(--mf); letter-spacing: 2px; }
+  .card .bd { display: grid; grid-template-columns: 24% 1fr; }
+  .mnav { padding: 12px 8px; border-right: 1px solid #edf1ee; display: flex; flex-direction: column; gap: 3px; font-size: 9px; color: var(--mf); }
+  .mnav span { padding: 5px 7px; border-radius: 6px; }
+  .mnav span.on { background: var(--mint); color: var(--t-2); font-weight: 700; }
+  .mmain { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+  .mmain .hi { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; }
+  .mmain .hi small { display: block; font-size: 8.5px; color: var(--mf); }
+  .mmain .hi b { display: block; font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+  .mmain .hi em { font-style: normal; font-size: 9px; font-weight: 700; color: var(--t); white-space: nowrap; }
+  .now { background: var(--mint); border: 1px solid var(--mint-2); border-radius: 12px; padding: 11px 12px 12px; }
+  .now .cap { color: var(--t); }
+  .now b { display: block; margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--t-2); }
+  .now p { display: flex; align-items: center; gap: 5px; margin-top: 3px; font-size: 8.5px; color: var(--mf); }
+  .bar { margin-top: 9px; height: 4px; border-radius: 99px; background: #fff; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 68%; background: var(--t); border-radius: 99px; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tiles div { border: 1px solid #e3ebe6; border-radius: 10px; padding: 8px 10px; }
+  .tiles small { display: flex; justify-content: space-between; font-size: 8px; color: var(--mf); }
+  .tiles small svg { color: var(--t); width: 11px; height: 11px; }
+  .tiles b { display: block; margin-top: 3px; font-size: 13px; font-weight: 700; color: var(--t-2); }
+  .ph { position: absolute; left: -14px; bottom: -22px; width: 170px; height: 340px; background: #16201b; border-radius: 30px; padding: 6px; box-shadow: 0 30px 50px -24px rgba(23,35,27,.55); }
+  .ph .in { background: #f6faf8; height: 100%; border-radius: 25px; padding: 18px 11px 11px; display: flex; flex-direction: column; gap: 7px; color: var(--mi); }
+  .ph .in .cap { color: var(--t); }
+  .ph h5 { font-size: 12.5px; line-height: 1.35; font-weight: 700; margin-bottom: 3px; }
+  .ar { font-family: "Amiri", "Traditional Arabic", serif; font-size: 1.35em; font-weight: 400; }
+  .opt { display: flex; align-items: center; gap: 7px; font-size: 10px; font-weight: 500; border: 1px solid #dfe8e3; border-radius: 99px; padding: 7px 10px; background: #fff; }
+  .opt::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #c3d2ca; flex: none; }
+  .opt.ok { border-color: var(--t); background: var(--mint); color: var(--t-2); font-weight: 700; }
+  .opt.ok::before { border-color: var(--t); background: var(--t); box-shadow: inset 0 0 0 2px var(--mint); }
+  .score { margin-top: auto; background: var(--t); color: #fff; border-radius: 16px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; }
+  .score span { font-size: 8.5px; line-height: 1.4; opacity: .85; }
+  .score b { font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+  .hint { position: absolute; left: 50%; bottom: -54px; transform: translateX(-50%); font-size: 12px; color: var(--faint); white-space: nowrap; font-family: var(--sans); }
 
   /* Sebelum / sesudah */
   .vs { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-radius: 24px; overflow: hidden; background: var(--ivory); }
@@ -206,11 +220,13 @@
     section { padding-top: 96px; }
     .hero { padding-top: 40px; }
     .stage { height: 380px; }
-    .lap { width: 100%; top: 0; }
-    .lap .scr { grid-template-columns: 1fr; border-width: 6px; }
-    .side { display: none; }
-    .ph { width: 132px; height: 262px; border-radius: 22px; padding: 6px; }
-    .ph .in { border-radius: 17px; padding: 12px 9px 9px; gap: 6px; }
+    .stage { height: 600px; }
+    .dash { width: 100%; top: 0; border-radius: 18px; padding: 12px 9px 9px; }
+    .card .bd { grid-template-columns: 1fr; }
+    .mnav { display: none; }
+    .ph { left: auto; right: 4px; bottom: 0; width: 150px; height: 290px; border-radius: 26px; padding: 5px; }
+    .hint { left: 0; bottom: 20px; transform: none; white-space: normal; width: calc(100% - 180px); }
+    .ph .in { border-radius: 20px; padding: 14px 9px 9px; gap: 6px; }
     .ph .opt:nth-of-type(3) { display: none; }
     .vs { grid-template-columns: minmax(0, 1fr); }
     .vs > div, .keep > div { padding: 28px 24px; }
@@ -219,12 +235,11 @@
     .amt b { font-size: 58px; }
   }
   @media (prefers-reduced-motion: no-preference) {
-    .lap { animation: rise .9s both; }
-    .ph { animation: rise2 1s .2s cubic-bezier(.2,.8,.2,1) both; }
+    .dash { animation: rise .9s both; }
+    .ph { animation: rise 1s .2s cubic-bezier(.2,.8,.2,1) both; }
     .bar i { animation: grow 1.4s .6s ease-out both; }
-    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-    @keyframes rise2 { from { opacity: 0; transform: translateY(40px) rotate(9deg); } to { opacity: 1; transform: rotate(4deg); } }
-    @keyframes grow { from { width: 0; } to { width: 34%; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes grow { from { width: 0; } to { width: 68%; } }
   }
 </style>
 </head>
@@ -252,33 +267,42 @@
     </div>
 
     <div class="stage" aria-hidden="true">
-      <div class="lap">
-        <div class="scr">
-          <div class="side">
-            <span class="brand"><i></i>Bimbel Ustadz</span>
-            <span class="on">Kelas saya</span><span>Jadwal live</span><span>Tryout</span><span>Sertifikat</span><span>Pembayaran</span>
+      <div class="dash">
+        <div class="hd">
+          <div><p class="cap">Ruang belajar</p><b>Dashboard murid</b></div>
+          <span>Bimbel Ustadz <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
+        </div>
+        <div class="card">
+          <div class="tb">
+            <span><svg viewBox="0 0 24 24"><path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/><path d="M12 6v14"/></svg>Ringkasan belajar</span>
+            <i>⌕ ···</i>
           </div>
-          <div class="main">
-            <p class="t">Kelas Nahwu Dasar · pertemuan 4 dari 12</p>
-            <h4>Isim, fi'il, dan huruf</h4>
-            <div class="bar"><i></i></div>
-            <div class="row done"><span class="ic">▶</span><b>Rekaman pertemuan 3</b><em>32 mnt</em></div>
-            <div class="row"><span class="ic">▶</span><b>Rekaman pertemuan 4</b><em>28 mnt</em></div>
-            <div class="row"><span class="ic pdf">PDF</span><b>Ringkasan bab isim</b><em>6 hlm</em></div>
-            <div class="row"><span class="ic q">?</span><b>Latihan soal pertemuan 4</b><em>10 soal</em></div>
-            <div class="live"><b>Live malam ini 20.00</b><span>Masuk kelas</span></div>
+          <div class="bd">
+            <div class="mnav"><span class="on">Beranda</span><span>Kelas saya</span><span>Jadwal live</span><span>Tryout</span><span>Sertifikat</span></div>
+            <div class="mmain">
+              <div class="hi"><div><small>Selamat belajar, Ahmad</small><b>Lanjutkan kelasmu</b></div><em>68% selesai</em></div>
+              <div class="now">
+                <p class="cap">Sedang dipelajari</p>
+                <b>Nahwu Dasar: isim, fi'il, dan huruf</b>
+                <p><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pertemuan 8 dari 12</p>
+                <div class="bar"><i></i></div>
+              </div>
+              <div class="tiles">
+                <div><small>Rekaman selesai <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></small><b>8 / 12</b></div>
+                <div><small>Live berikutnya <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></small><b>Malam ini 20.00</b></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="base"></div>
       </div>
       <div class="ph">
         <div class="in">
-          <small>Latihan · soal 7 dari 10</small>
+          <p class="cap">Latihan · soal 7 dari 10</p>
           <h5>Kata <bdi lang="ar" dir="rtl" class="ar">كِتَابٌ</bdi> termasuk…</h5>
           <span class="opt ok">Isim</span>
           <span class="opt">Fi'il</span>
           <span class="opt">Huruf</span>
-          <div class="score">Nilai sementara<b>80</b></div>
+          <div class="score"><span>Nilai<br>sementara</span><b>80</b></div>
         </div>
       </div>
       <span class="hint">Contoh tampilan. Nama, kelas, dan warna mengikuti bimbel Ustadz.</span>
