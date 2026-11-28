@@ -15,6 +15,7 @@ Website presentasi penawaran dari Dar Dev (WhatsApp 0813 1150 6025).
 - `syabi/` — penawaran CV online / landing page pribadi (Rp 450rb–950rb) untuk Syabi.
 - `makarim/` — penawaran video animasi edukasi umrah & video marketing gaya UGC (mulai Rp 100rb/video, paket Rp 350rb–1,5 jt) untuk travel Makarim (Ustadz Syahrul).
 - `kelas-online/` — penawaran website kelas online untuk bimbel (Rp 3,5 jt / 5 jt / 7,5 jt) untuk Ustadz Syahrul. Contoh aplikasi jadi (bimbel contoh "Rumah Nahwu": website, daftar dan bayar, ruang belajar murid `#/murid`, panel admin `#/admin`) ada di `kelas-online/demo/`, dengan fitur sesuai paket lewat `?paket=dasar|lengkap|akademi` atau tombol di pojok kanan bawah.
+- `layanan/` — katalog layanan Dar Dev untuk calon klien (tanpa nama klien lain): 6 layanan dengan harga mulai, link ke contoh kelas online dan penawaran video travel umrah.
 - `video-travel-umrah/` — penawaran umum jasa video motion graphic (narasi AI) untuk travel umrah & haji, tanpa nama klien tertentu.
 
 Foto produk diambil dari purnama-eskrim.com dan font dari Fontshare, jadi halaman perlu koneksi internet.
