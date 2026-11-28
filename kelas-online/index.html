@@ -147,6 +147,8 @@
   .amt b { font-weight: 400; font-size: 64px; letter-spacing: -.02em; }
   .amt span { align-self: flex-end; font-size: 26px; margin-bottom: 6px; }
   .pk .per { margin-top: 8px; font-size: 13.5px; opacity: .72; }
+  .pk .demo { align-self: flex-start; margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--green-2); border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  .pk.rec .demo { color: var(--gold-2); }
   .pk ul { margin: 26px 0 28px; display: grid; gap: 11px; font-size: 15px; }
   .pk li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
   .pk li::before { content: "✓"; color: var(--gold); }
@@ -371,13 +373,14 @@
   <section id="paket">
     <p class="rule">Paket</p>
     <h2>Pilih sesuai besar bimbelnya</h2>
-    <p class="lead">Harga paket dibayar sekali dan sudah termasuk domain .com serta perawatan selama 1 tahun. Ustadz bisa mulai dari paket kecil, lalu naik paket dengan membayar selisihnya.</p>
+    <p class="lead">Harga paket dibayar sekali dan sudah termasuk domain .com serta perawatan selama 1 tahun. Ustadz bisa mulai dari paket kecil, lalu naik paket dengan membayar selisihnya. Tiap paket punya <a href="demo/" target="_blank" rel="noopener" style="color:var(--green-2);font-weight:700;border-bottom:1px solid currentColor">contoh yang bisa diklik</a>.</p>
     <div class="price">
       <article class="pk">
         <h3>Kelas Dasar</h3>
         <p class="for">Untuk mulai membuka kelas online</p>
         <p class="amt"><sup>Rp</sup><b>3,5</b><span>juta</span></p>
         <p class="per">sekali bayar · setara 35 murid × Rp 100rb</p>
+        <a class="demo" href="demo/?paket=dasar" target="_blank" rel="noopener">Coba contoh paket ini ↗</a>
         <ul>
           <li>Website bimbel: profil, program, pengajar, jadwal</li>
           <li>Pendaftaran dan akun murid</li>
@@ -395,6 +398,7 @@
         <p class="for">Untuk bimbel yang sudah berjalan rutin</p>
         <p class="amt"><sup>Rp</sup><b>5</b><span>juta</span></p>
         <p class="per">sekali bayar · setara 50 murid × Rp 100rb</p>
+        <a class="demo" href="demo/?paket=lengkap" target="_blank" rel="noopener">Coba contoh paket ini ↗</a>
         <ul>
           <li>Semua isi Kelas Dasar</li>
           <li class="plus">Bayar otomatis: QRIS, virtual account, e-wallet</li>
@@ -412,6 +416,7 @@
         <p class="for">Untuk banyak kelas dan pengajar</p>
         <p class="amt"><sup>Rp</sup><b>7,5</b><span>juta</span></p>
         <p class="per">sekali bayar · setara 75 murid × Rp 100rb</p>
+        <a class="demo" href="demo/?paket=akademi" target="_blank" rel="noopener">Coba contoh paket ini ↗</a>
         <ul>
           <li>Semua isi Kelas Lengkap</li>
           <li class="plus">Tryout berwaktu dengan peringkat peserta</li>

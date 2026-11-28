@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contoh Kelas Online · Dar Dev</title>
+<meta name="description" content="Contoh tampilan website kelas online untuk tiap paket: Kelas Dasar, Kelas Lengkap, dan Akademi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Amiri&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f6f4; --white: #fff; --ink: #17231b; --ink-2: #4b5d54; --faint: #73857c; --line: #e1e9e4;
+    --t: #3d7179; --t-2: #2c5d64; --t-3: #234b51; --mint: #eaf4ef; --mint-2: #d3e7dc;
+    --gold: #b38a45; --gold-soft: #f6efe1; --red: #b5523b; --red-soft: #f8ebe7; --ok: #2f7a55;
+    --sans: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, p, ul, ol { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--t); outline-offset: 2px; }
+  svg.i { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .ar { font-family: "Amiri", "Traditional Arabic", serif; font-size: 1.35em; font-weight: 400; }
+  .cap { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--t); }
+
+  /* Bar atas */
+  .top { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top .in { max-width: 1280px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 16px; }
+  .dar { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; line-height: 1.2; flex: none; }
+  .dar img { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: #fff; }
+  .dar small { display: block; color: var(--faint); font-weight: 500; font-size: 12px; }
+  .seg { margin-left: auto; display: flex; background: var(--mint); border-radius: 999px; padding: 4px; gap: 2px; }
+  .seg button { border: 0; background: transparent; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--t-2); white-space: nowrap; line-height: 1.25; }
+  .seg button small { display: block; font-size: 11px; font-weight: 500; opacity: .75; }
+  .seg button.on { background: var(--t); color: #fff; box-shadow: 0 4px 10px -4px rgba(44,93,100,.6); }
+  .back { font-size: 13px; font-weight: 600; color: var(--t-2); white-space: nowrap; flex: none; }
+
+  /* Kerangka */
+  .shell { max-width: 1280px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 20px; align-items: start; }
+  .side { position: sticky; top: 84px; display: grid; gap: 18px; }
+  .side h4 { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 0 0 6px 10px; }
+  .side button { width: 100%; display: flex; align-items: center; gap: 9px; border: 0; background: transparent; padding: 8px 10px; border-radius: 10px; font-size: 14px; font-weight: 500; color: var(--ink-2); text-align: left; }
+  .side button:hover { background: #fff; }
+  .side button.on { background: #fff; color: var(--t-2); font-weight: 700; box-shadow: 0 1px 0 var(--line); }
+  .side button .lk { margin-left: auto; font-size: 10.5px; font-weight: 700; color: var(--gold); background: var(--gold-soft); border-radius: 99px; padding: 2px 8px; }
+  .note { font-size: 12.5px; color: var(--faint); padding: 0 10px; line-height: 1.5; }
+
+  .frame { background: var(--t); border-radius: 22px; padding: 14px; box-shadow: 0 30px 60px -40px rgba(35,75,81,.7); }
+  .frame > .hd { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; padding: 2px 6px 12px; }
+  .frame > .hd .cap { color: rgba(255,255,255,.7); }
+  .frame > .hd b { display: block; font-size: 17px; }
+  .frame > .hd .who { display: flex; align-items: center; gap: 8px; font-size: 13px; opacity: .92; }
+  .frame > .hd .who i { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.16); display: grid; place-items: center; font-style: normal; font-weight: 700; font-size: 12px; }
+  .scr { background: #fff; border-radius: 16px; padding: 26px; min-height: 560px; }
+
+  /* Komponen layar */
+  .h { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .h small { display: block; color: var(--faint); font-size: 13px; }
+  .h h2 { font-size: 24px; letter-spacing: -.01em; line-height: 1.2; }
+  .grid { display: grid; gap: 14px; }
+  .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .box { border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .box.mint { background: var(--mint); border-color: var(--mint-2); }
+  .box h3 { font-size: 16px; line-height: 1.3; }
+  .box p { color: var(--ink-2); font-size: 14px; }
+  .stat small { display: flex; justify-content: space-between; color: var(--faint); font-size: 12.5px; }
+  .stat b { display: block; font-size: 22px; color: var(--t-2); margin-top: 2px; letter-spacing: -.01em; }
+  .bar { height: 6px; border-radius: 99px; background: #fff; overflow: hidden; margin-top: 10px; }
+  .box:not(.mint) .bar { background: var(--mint); }
+  .bar i { display: block; height: 100%; background: var(--t); border-radius: 99px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 10px 18px; background: var(--t); color: #fff; font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .btn:hover { background: var(--t-2); }
+  .btn.ghost { background: #fff; color: var(--t-2); box-shadow: inset 0 0 0 1px var(--mint-2); }
+  .btn.ghost:hover { background: var(--mint); }
+  .btn.sm { padding: 6px 12px; font-size: 12.5px; }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; border-radius: 99px; padding: 3px 10px; font-size: 12px; font-weight: 600; background: var(--mint); color: var(--t-2); white-space: nowrap; }
+  .pill.wait { background: var(--gold-soft); color: #8a6526; }
+  .pill.ok { background: #e3f3ea; color: var(--ok); }
+  .rows { display: grid; gap: 8px; }
+  .row { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+  .row .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--mint); color: var(--t-2); font-size: 11px; font-weight: 700; }
+  .row .ic.pdf { background: #f6e9e1; color: #9a5a34; }
+  .row .ic.q { background: var(--gold-soft); color: #8a6526; }
+  .row b { display: block; font-size: 14px; font-weight: 600; }
+  .row small { color: var(--faint); font-size: 12.5px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  td { padding: 11px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+  .tbl table tr:last-child td { border-bottom: 0; }
+  .field { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  .field input, .field select { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-weight: 500; background: #fff; color: var(--ink); width: 100%; }
+  .sep { height: 1px; background: var(--line); margin: 22px 0; }
+
+  /* Terkunci */
+  .lock { max-width: 520px; margin: 50px auto; text-align: center; }
+  .lock .ico { width: 64px; height: 64px; border-radius: 50%; background: var(--gold-soft); color: var(--gold); display: grid; place-items: center; margin: 0 auto 16px; }
+  .lock .ico svg { width: 28px; height: 28px; }
+  .lock h2 { font-size: 22px; line-height: 1.3; }
+  .lock p { color: var(--ink-2); margin: 10px 0 20px; }
+  .lock ul { text-align: left; display: grid; gap: 6px; margin: 0 auto 22px; max-width: 360px; font-size: 14px; color: var(--ink-2); }
+  .lock li::before { content: "✓ "; color: var(--t); font-weight: 700; }
+
+  /* Website bimbel */
+  .site-hero { border-radius: 16px; background: linear-gradient(135deg, var(--mint), #f7fbf9); padding: 40px 34px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 26px; align-items: center; }
+  .logo-ph { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--t-2); }
+  .logo-ph i { width: 36px; height: 36px; border-radius: 10px; border: 1.5px dashed var(--t); display: grid; place-items: center; font-style: normal; font-size: 9px; color: var(--t); }
+  .site-hero h1 { font-size: 34px; line-height: 1.12; letter-spacing: -.02em; color: var(--t-3); margin-top: 18px; }
+  .site-hero p { color: var(--ink-2); margin-top: 12px; }
+  .site-hero .acts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .sched { background: #fff; border-radius: 14px; padding: 16px; display: grid; gap: 10px; }
+  .sched div { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 9px; }
+  .sched div:last-child { border: 0; padding: 0; }
+  .prog h3 { margin-top: 8px; }
+  .prog .price { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-weight: 700; color: var(--t-2); }
+
+  /* Latihan */
+  .q { border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .q h3 { font-size: 15.5px; font-weight: 600; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .opts button { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 500; }
+  .opts button:hover:not(:disabled) { border-color: var(--t); }
+  .opts button.ok { border-color: var(--ok); background: #e3f3ea; color: var(--ok); font-weight: 700; }
+  .opts button.no { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+  .opts button:disabled { cursor: default; }
+  .score { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--t); color: #fff; border-radius: 16px; padding: 16px 20px; }
+  .score b { font-size: 36px; line-height: 1; }
+
+  /* Pembayaran */
+  .methods { display: flex; gap: 8px; flex-wrap: wrap; }
+  .methods button { border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 10px 16px; font-weight: 600; font-size: 14px; }
+  .methods button.on { border-color: var(--t); background: var(--mint); color: var(--t-2); }
+  .qr { width: 170px; height: 170px; border-radius: 12px; border: 1px solid var(--line); padding: 10px; background: #fff; }
+  .paid { text-align: center; padding: 30px 10px; }
+  .paid .ico { width: 64px; height: 64px; border-radius: 50%; background: #e3f3ea; color: var(--ok); display: grid; place-items: center; margin: 0 auto 14px; }
+  .paid .ico svg { width: 30px; height: 30px; }
+
+  /* Sertifikat */
+  .cert { border: 1px solid var(--mint-2); border-radius: 16px; padding: 10px; background: var(--mint); }
+  .cert .in { border: 1.5px solid var(--gold); border-radius: 10px; background: #fffdf8; padding: 36px 26px; text-align: center; }
+  .cert .in .cap { color: var(--gold); }
+  .cert h3 { font-size: 30px; letter-spacing: -.01em; color: var(--t-3); margin: 12px 0 6px; }
+  .cert p { color: var(--ink-2); }
+  .cert .sig { display: flex; justify-content: space-between; margin-top: 28px; font-size: 12.5px; color: var(--faint); text-align: center; }
+  .cert .sig b { display: block; color: var(--ink); font-size: 13.5px; border-top: 1px solid var(--line); padding-top: 6px; margin-top: 26px; min-width: 150px; }
+
+  /* Absensi */
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px; background: var(--t); margin-right: 3px; }
+  .dot.x { background: #e6c9bf; }
+  .dot.n { background: var(--line); }
+  .hbar { display: grid; grid-template-columns: 120px minmax(0, 1fr) 90px; gap: 10px; align-items: center; font-size: 13.5px; }
+  .hbar span { height: 10px; border-radius: 99px; background: var(--mint); overflow: hidden; }
+  .hbar span i { display: block; height: 100%; background: var(--t); }
+
+  .pwa { display: flex; align-items: center; gap: 14px; background: var(--t-3); color: #fff; border-radius: 14px; padding: 14px 16px; }
+  .pwa p { font-size: 13.5px; opacity: .85; }
+  .pwa .btn { margin-left: auto; background: #fff; color: var(--t-3); }
+
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: var(--ink); color: #fff; border-radius: 12px; padding: 12px 18px; font-size: 14px; opacity: 0; pointer-events: none; transition: .25s; z-index: 50; max-width: calc(100% - 32px); }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 960px) {
+    .shell { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+    .side { position: relative; top: auto; display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+    .side > div { display: contents; }
+    .side h4, .note { display: none; }
+    .side button { width: auto; white-space: nowrap; background: #fff; border: 1px solid var(--line); padding: 7px 12px; font-size: 13px; }
+    .side button.on { border-color: var(--t); }
+    .site-hero { grid-template-columns: minmax(0, 1fr); padding: 28px 22px; }
+  }
+  @media (max-width: 720px) {
+    .top .in { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
+    .back { margin-left: auto; }
+    .seg { order: 3; margin: 0; width: 100%; }
+    .seg button { flex: 1; padding: 6px 4px; }
+    .g2, .g3 { grid-template-columns: minmax(0, 1fr); }
+    .frame { padding: 8px; border-radius: 18px; }
+    .frame > .hd { padding: 4px 6px 10px; }
+    .frame > .hd .who span { display: none; }
+    .scr { padding: 18px 14px; border-radius: 13px; }
+    .site-hero h1 { font-size: 27px; }
+    .row { grid-template-columns: 34px minmax(0, 1fr); }
+    .row > :last-child { grid-column: 2; justify-self: start; }
+    .hbar { grid-template-columns: 90px minmax(0, 1fr) 70px; font-size: 12.5px; }
+    .pwa { flex-wrap: wrap; }
+    .pwa .btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="in">
+    <a class="dar" href="../"><img src="../assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="34" height="34"><span>Dar Dev<small>Contoh kelas online</small></span></a>
+    <div class="seg" role="tablist" aria-label="Pilih paket">
+      <button data-p="1">Kelas Dasar<small>Rp 3,5 juta</small></button>
+      <button data-p="2">Kelas Lengkap<small>Rp 5 juta</small></button>
+      <button data-p="3">Akademi<small>Rp 7,5 juta</small></button>
+    </div>
+    <a class="back" href="../#paket">← Penawaran</a>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="side" id="side" aria-label="Halaman contoh"></nav>
+  <main>
+    <div class="frame">
+      <div class="hd" id="fhd"></div>
+      <div class="scr" id="scr"></div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const P = { 1: "Kelas Dasar", 2: "Kelas Lengkap", 3: "Akademi" };
+const KEY = { dasar: 1, lengkap: 2, akademi: 3 };
+const ic = {
+  play: '<svg class="i" viewBox="0 0 24 24"><path d="M7 5v14l11-7z"/></svg>',
+  lock: '<svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  check: '<svg class="i" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>',
+  cal: '<svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  clock: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  up: '<svg class="i" viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>',
+  phone: '<svg class="i" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>'
+};
+
+const VIEWS = [
+  { g: "Website bimbel", items: [
+    { id: "web", t: "Beranda bimbel", who: "Calon murid", min: 1 },
+    { id: "daftar", t: "Pendaftaran", who: "Calon murid", min: 1 } ] },
+  { g: "Murid", items: [
+    { id: "home", t: "Dashboard murid", who: "Murid", min: 1 },
+    { id: "kelas", t: "Kelas dan materi", who: "Murid", min: 1 },
+    { id: "bayar", t: "Pembayaran", who: "Murid", min: 1 },
+    { id: "latihan", t: "Latihan soal", who: "Murid", min: 2 },
+    { id: "sertifikat", t: "Sertifikat", who: "Murid", min: 2 },
+    { id: "tryout", t: "Tryout", who: "Murid", min: 3 },
+    { id: "rapor", t: "Rapor nilai", who: "Murid", min: 3 } ] },
+  { g: "Admin dan pengajar", items: [
+    { id: "adm", t: "Panel admin", who: "Admin", min: 1 },
+    { id: "absen", t: "Progres dan absensi", who: "Pengajar", min: 2 },
+    { id: "laporan", t: "Laporan dan honor", who: "Admin", min: 3 } ] }
+];
+const FLAT = VIEWS.flatMap(g => g.items);
+
+const LOCKINFO = {
+  latihan: ["Latihan soal dinilai otomatis", "Murid langsung tahu nilainya", "Nilai tersimpan untuk pengajar"],
+  sertifikat: ["Sertifikat PDF terbit otomatis saat kelas selesai", "Nama murid dan kelas terisi sendiri"],
+  absen: ["Progres belajar tiap murid", "Absensi live per pertemuan", "Rata-rata nilai latihan"],
+  tryout: ["Tryout berwaktu, berhenti otomatis", "Peringkat peserta setelah tryout"],
+  rapor: ["Rapor nilai per murid", "Bisa diunduh dan dikirim ke wali"],
+  laporan: ["Laporan pemasukan per kelas", "Rekap honor pengajar", "Kupon dan harga promo"]
+};
+
+const qs = new URLSearchParams(location.search);
+const S = {
+  p: KEY[qs.get("paket")] || 2,
+  v: FLAT.some(x => x.id === qs.get("v")) ? qs.get("v") : "web",
+  method: "qris", paid: false, proof: false, coupon: false, cicil: false,
+  confirmed: {}, answers: {}, timer: null
+};
+
+const $ = s => document.querySelector(s);
+const rp = n => "Rp " + n.toLocaleString("id-ID");
+function toast(m) { const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2600); }
+function go(v) { S.v = v; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+function setP(p) { S.p = p; S.paid = false; S.proof = false; render(); }
+
+function syncUrl() {
+  const name = Object.keys(KEY).find(k => KEY[k] === S.p);
+  history.replaceState(null, "", "?paket=" + name + "&v=" + S.v);
+}
+
+function side() {
+  $("#side").innerHTML = VIEWS.map(g => '<div><h4>' + g.g + '</h4>' + g.items.map(x =>
+    '<button class="' + (x.id === S.v ? "on" : "") + '" data-v="' + x.id + '">' + x.t +
+    (S.p < x.min ? '<span class="lk">' + (x.min === 2 ? "Lengkap" : "Akademi") + '</span>' : "") + '</button>'
+  ).join("") + '</div>').join("") +
+  '<p class="note">Fitur bertanda emas belum ada di paket ' + P[S.p] + '. Klik untuk melihat isinya.</p>';
+}
+
+function lockScreen(x) {
+  const need = x.min === 2 ? 2 : 3;
+  return '<div class="lock"><div class="ico">' + ic.lock + '</div>' +
+    '<h2>' + x.t + ' ada mulai paket ' + P[need] + '</h2>' +
+    '<p>Di paket ' + P[S.p] + ', halaman ini belum tersedia. Isinya:</p>' +
+    '<ul>' + LOCKINFO[x.id].map(i => '<li>' + i + '</li>').join("") + '</ul>' +
+    '<button class="btn" data-setp="' + need + '">Lihat di paket ' + P[need] + '</button></div>';
+}
+
+/* ---------- Layar ---------- */
+const V = {};
+
+V.web = () => `
+  <div class="site-hero">
+    <div>
+      <span class="logo-ph"><i>LOGO</i>Bimbel Ustadz</span>
+      <h1>Belajar bahasa Arab dan kitab dari dasar, langsung dengan ustadznya.</h1>
+      <p>Kelas live tiap pekan, rekaman bisa ditonton ulang, dan modul PDF untuk setiap pertemuan.</p>
+      <div class="acts"><button class="btn" data-go="daftar">Daftar kelas</button><button class="btn ghost" data-toast="Calon murid bisa melihat semua program di bawah">Lihat program</button></div>
+    </div>
+    <div class="sched">
+      <p class="cap">Jadwal pekan ini</p>
+      <div><span>Nahwu Dasar</span><b>Senin 20.00</b></div>
+      <div><span>Shorof Pemula</span><b>Rabu 20.00</b></div>
+      <div><span>Tahsin Al-Quran</span><b>Sabtu 08.00</b></div>
+    </div>
+  </div>
+  <div class="sep"></div>
+  <p class="cap">Program</p>
+  <div class="grid g3" style="margin-top:12px">
+    ${[["Nahwu Dasar", "12 pertemuan · Ust. Syahrul"], ["Shorof Pemula", "10 pertemuan · Ust. Hasan"], ["Tahsin Al-Quran", "8 pertemuan · Ust. Ali"]].map(c => `
+    <div class="box prog"><span class="pill">Angkatan 3</span><h3>${c[0]}</h3><p>${c[1]}</p>
+      <div class="price"><span>Rp 100.000</span><button class="btn sm" data-go="daftar">Daftar</button></div></div>`).join("")}
+  </div>
+  <p class="note" style="padding:0;margin-top:16px">Nama, logo, warna, dan program mengikuti bimbel Ustadz. Semua paket mendapat halaman ini di domain .com sendiri.</p>`;
+
+V.daftar = () => `
+  <div class="h"><div><small>Langkah 1 dari 2</small><h2>Daftar kelas</h2></div></div>
+  <div class="grid g2">
+    <label class="field">Nama lengkap<input value="Ahmad Fauzi"></label>
+    <label class="field">Nomor WhatsApp<input value="0812 0000 0000"></label>
+    <label class="field">Pilih kelas<select><option>Nahwu Dasar · Rp 100.000</option><option>Shorof Pemula · Rp 100.000</option><option>Tahsin Al-Quran · Rp 100.000</option></select></label>
+    <label class="field">Domisili<select><option>Kairo, Mesir</option><option>Indonesia</option></select></label>
+  </div>
+  <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <button class="btn" data-go="bayar">Lanjut ke pembayaran</button>
+    <small style="color:var(--faint)">Akun murid langsung dibuat. Data ini hanya contoh.</small>
+  </div>`;
+
+V.home = () => {
+  const p = S.p;
+  let h = `<div class="h"><div><small>Selamat belajar, Ahmad</small><h2>Lanjutkan kelasmu</h2></div>${p >= 2 ? '<span class="pill">68% selesai</span>' : ""}</div>`;
+  if (p === 3) h += `<div class="pwa" style="margin-bottom:14px">${ic.phone}<div><b>Pasang di layar HP</b><p>Buka kelas langsung dari ikon, seperti aplikasi.</p></div><button class="btn sm" data-toast="Di HP murid, ikon bimbel muncul di layar utama">Pasang</button></div>`;
+  h += `<div class="box mint"><p class="cap">Sedang dipelajari</p><h3 style="margin-top:6px;color:var(--t-2)">Nahwu Dasar: isim, fi'il, dan huruf</h3>
+    <p style="display:flex;gap:6px;align-items:center;margin-top:4px">${ic.clock} Pertemuan 8 dari 12</p>
+    ${p >= 2 ? '<div class="bar"><i style="width:68%"></i></div>' : ""}
+    <div style="margin-top:14px"><button class="btn sm" data-go="kelas">${ic.play} Tonton rekaman terakhir</button></div></div>`;
+  h += `<div class="grid ${p >= 2 ? "g3" : "g2"}" style="margin-top:14px">
+    <div class="box stat"><small>Live berikutnya ${ic.cal}</small><b>Senin 20.00</b></div>
+    <div class="box stat"><small>Kelas aktif</small><b>2 kelas</b></div>
+    ${p >= 2 ? '<div class="box stat"><small>Nilai latihan terakhir ' + ic.check + '</small><b>80</b></div>' : ""}
+  </div>`;
+  if (p === 3) h += `<div class="box" style="margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap"><div><p class="cap">Tryout pekan ini</p><h3 style="margin-top:4px">Tryout Nahwu 1 · peringkat kamu terakhir #3</h3></div><button class="btn sm" data-go="tryout">Kerjakan</button></div>`;
+  if (p === 1) h += `<p class="note" style="padding:0;margin-top:16px">Di Kelas Dasar, murid bisa menonton rekaman, mengunduh modul, dan masuk live. Progres belajar dan nilai otomatis ada mulai Kelas Lengkap.</p>`;
+  return h;
+};
+
+V.kelas = () => {
+  const p = S.p;
+  const list = [
+    ["Pertemuan 6", "Isim ma'rifah dan nakirah", 34, true],
+    ["Pertemuan 7", "Mubtada' dan khabar", 29, true],
+    ["Pertemuan 8", "Isim, fi'il, dan huruf", 31, false]
+  ];
+  let h = `<div class="h"><div><small>Ust. Syahrul · Senin 20.00</small><h2>Nahwu Dasar</h2></div><button class="btn" data-toast="Murid masuk ke Zoom atau Meet dari tombol ini">${ic.cal} Masuk kelas live</button></div>
+    <div class="rows">`;
+  list.forEach(l => {
+    h += `<div class="row"><span class="ic">${ic.play}</span><div><b>${l[0]}: ${l[1]}</b><small>Rekaman ${l[2]} menit</small></div>${p >= 2 && l[3] ? '<span class="pill ok">' + ic.check + ' Ditonton</span>' : '<button class="btn sm ghost" data-toast="Rekaman diputar dari YouTube tidak publik atau Google Drive">Putar</button>'}</div>`;
+  });
+  h += `<div class="row"><span class="ic pdf">PDF</span><div><b>Modul pertemuan 8</b><small>6 halaman</small></div><button class="btn sm ghost" data-toast="Modul PDF terunduh">Unduh</button></div>`;
+  h += p >= 2
+    ? `<div class="row"><span class="ic q">?</span><div><b>Latihan pertemuan 8</b><small>5 soal · dinilai otomatis</small></div><button class="btn sm" data-go="latihan">Kerjakan</button></div>`
+    : `<div class="row"><span class="ic q">?</span><div><b>Soal latihan pertemuan 8</b><small>PDF, dikerjakan di kertas</small></div><button class="btn sm ghost" data-toast="Soal PDF terunduh">Unduh</button></div>`;
+  h += `</div>`;
+  if (p === 3) h += `<div class="sep"></div><p class="cap">Tanya jawab materi</p>
+    <div class="rows" style="margin-top:10px">
+      <div class="box"><b style="font-size:14px">Fauzan</b><p>Kenapa <bdi lang="ar" dir="rtl" class="ar">فِي</bdi> tidak termasuk isim, padahal ada artinya?</p>
+        <div class="box mint" style="margin-top:10px"><b style="font-size:13.5px;color:var(--t-2)">Ust. Syahrul</b><p>Huruf juga punya makna, tapi maknanya baru sempurna jika bersambung dengan kata lain. Coba lihat lagi halaman 3 modul.</p></div></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px"><input style="flex:1;border:1px solid var(--line);border-radius:999px;padding:9px 14px" placeholder="Tulis pertanyaan untuk pengajar"><button class="btn" data-toast="Pertanyaan terkirim ke pengajar">Kirim</button></div>`;
+  return h;
+};
+
+V.bayar = () => {
+  const p = S.p;
+  if (p === 1) {
+    return `<div class="h"><div><small>Langkah 2 dari 2</small><h2>Pembayaran kelas</h2></div><span class="pill ${S.proof ? "wait" : ""}">${S.proof ? "Menunggu konfirmasi admin" : "Belum dibayar"}</span></div>
+      <div class="grid g2">
+        <div class="box"><p class="cap">Transfer ke</p><h3 style="margin-top:6px">Bank BSI · 0000 0000 00</h3><p>a.n. Bimbel Ustadz (contoh)</p>
+          <div class="sep" style="margin:14px 0"></div><p>Nahwu Dasar</p><h3 style="font-size:22px;color:var(--t-2)">Rp 100.000</h3></div>
+        <div class="box mint"><p class="cap">Unggah bukti transfer</p><p style="margin-top:6px">Foto atau tangkapan layar bukti transfer. Admin akan mengecek lalu membuka akses kelas.</p>
+          <div style="margin-top:14px">${S.proof ? '<span class="pill ok">' + ic.check + ' bukti-transfer.jpg terkirim</span>' : '<button class="btn" data-act="proof">' + ic.up + ' Unggah bukti</button>'}</div></div>
+      </div>
+      <p class="note" style="padding:0;margin-top:16px">Di Kelas Dasar, admin mengonfirmasi pembayaran dari panel admin. Pembayaran otomatis lewat QRIS, VA, dan e-wallet ada mulai Kelas Lengkap.</p>`;
+  }
+  const base = 100000;
+  const total = S.coupon ? base * 0.8 : base;
+  if (S.paid) return `<div class="paid"><div class="ico">${ic.check}</div><h2>Pembayaran berhasil</h2><p style="color:var(--ink-2);margin:6px 0 18px">${rp(S.cicil ? total / 2 : total)} via ${S.method.toUpperCase()}. Akses kelas Nahwu Dasar langsung terbuka, tanpa menunggu admin.</p><button class="btn" data-go="kelas">Masuk kelas</button></div>`;
+  let h = `<div class="h"><div><small>Langkah 2 dari 2</small><h2>Pembayaran kelas</h2></div><span class="pill">Nahwu Dasar</span></div>
+    <div class="methods">${[["qris", "QRIS"], ["va", "Virtual account"], ["ewallet", "E-wallet"]].map(m => '<button class="' + (S.method === m[0] ? "on" : "") + '" data-m="' + m[0] + '">' + m[1] + '</button>').join("")}</div>
+    <div class="grid g2" style="margin-top:16px;align-items:start">
+      <div class="box" style="display:grid;place-items:center;gap:10px;text-align:center">
+        ${S.method === "qris" ? qr() : S.method === "va" ? '<p class="cap">Nomor virtual account</p><h3 style="font-size:22px;letter-spacing:.05em">8808 0000 0000 0000</h3><p>BSI, Mandiri, BRI, BNI</p>' : '<p class="cap">Bayar lewat</p><h3>GoPay · OVO · DANA · ShopeePay</h3>'}
+        <p style="font-size:13px">Status berubah otomatis setelah dibayar.</p>
+      </div>
+      <div class="box mint">
+        <div style="display:flex;justify-content:space-between"><span>Harga kelas</span><b>${rp(base)}</b></div>
+        ${p === 3 ? `<div style="display:flex;gap:8px;margin-top:12px"><input id="kupon" style="flex:1;min-width:0;border:1px solid var(--mint-2);border-radius:999px;padding:8px 12px" placeholder="Kode kupon, coba HEMAT20" value="${S.coupon ? "HEMAT20" : ""}"><button class="btn sm" data-act="coupon">Pakai</button></div>
+          ${S.coupon ? '<div style="display:flex;justify-content:space-between;margin-top:8px;color:var(--ok)"><span>Kupon HEMAT20</span><b>- Rp 20.000</b></div>' : ""}
+          <label style="display:flex;gap:8px;align-items:center;margin-top:12px;font-size:14px"><input type="checkbox" data-act="cicil" ${S.cicil ? "checked" : ""}> Cicil 2 kali, bayar ${rp(total / 2)} sekarang</label>` : ""}
+        <div class="sep" style="margin:14px 0;background:var(--mint-2)"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span>Bayar sekarang</span><b style="font-size:22px;color:var(--t-2)">${rp(S.cicil ? total / 2 : total)}</b></div>
+        <button class="btn" style="width:100%;margin-top:14px" data-act="pay">Simulasikan sudah bayar</button>
+      </div>
+    </div>`;
+  return h;
+};
+
+function qr() {
+  let s = '<svg class="qr" viewBox="0 0 25 25" shape-rendering="crispEdges"><rect width="25" height="25" fill="#fff"/>';
+  let seed = 7;
+  for (let y = 0; y < 25; y++) for (let x = 0; x < 25; x++) {
+    const inF = (a, b) => (x >= a && x < a + 7 && y >= b && y < b + 7);
+    if (inF(0, 0) || inF(18, 0) || inF(0, 18)) continue;
+    seed = (seed * 9301 + 49297) % 233280;
+    if (seed / 233280 > .52) s += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="#17231b"/>';
+  }
+  [[0, 0], [18, 0], [0, 18]].forEach(f => { s += '<rect x="' + (f[0] + .5) + '" y="' + (f[1] + .5) + '" width="6" height="6" fill="none" stroke="#17231b"/><rect x="' + (f[0] + 2) + '" y="' + (f[1] + 2) + '" width="3" height="3" fill="#17231b"/>'; });
+  return s + '</svg>';
+}
+
+const QUIZ = [
+  ["Kata <bdi lang='ar' dir='rtl' class='ar'>كِتَابٌ</bdi> termasuk", "Isim"],
+  ["Kata <bdi lang='ar' dir='rtl' class='ar'>ذَهَبَ</bdi> termasuk", "Fi'il"],
+  ["Kata <bdi lang='ar' dir='rtl' class='ar'>فِي</bdi> termasuk", "Huruf"],
+  ["Kata <bdi lang='ar' dir='rtl' class='ar'>مَسْجِدٌ</bdi> termasuk", "Isim"],
+  ["Kata <bdi lang='ar' dir='rtl' class='ar'>يَكْتُبُ</bdi> termasuk", "Fi'il"]
+];
+V.latihan = () => {
+  const done = Object.keys(S.answers).length;
+  const right = QUIZ.filter((q, i) => S.answers[i] === q[1]).length;
+  let h = `<div class="h"><div><small>Nahwu Dasar · pertemuan 8</small><h2>Latihan soal</h2></div><span class="pill">${done} dari ${QUIZ.length} dijawab</span></div><div class="rows">`;
+  QUIZ.forEach((q, i) => {
+    const a = S.answers[i];
+    h += `<div class="q"><h3>${i + 1}. ${q[0]}…</h3><div class="opts">${["Isim", "Fi'il", "Huruf"].map(o => {
+      let c = ""; if (a) { if (o === q[1]) c = "ok"; else if (o === a) c = "no"; }
+      return '<button class="' + c + '" data-q="' + i + '" data-o="' + o + '"' + (a ? " disabled" : "") + '>' + o + '</button>';
+    }).join("")}</div></div>`;
+  });
+  h += `</div>`;
+  if (done === QUIZ.length) h += `<div class="score" style="margin-top:16px"><div><b style="font-size:15px;display:block">Nilai kamu</b><span style="opacity:.85;font-size:13.5px">Tersimpan otomatis dan terlihat oleh pengajar.</span></div><b>${right * 20}</b></div>
+    <button class="btn ghost" style="margin-top:10px" data-act="reset">Ulangi latihan</button>`;
+  return h;
+};
+
+V.sertifikat = () => `
+  <div class="h"><div><small>Terbit otomatis saat kelas selesai</small><h2>Sertifikat</h2></div><button class="btn" data-toast="Sertifikat terunduh sebagai PDF">Unduh PDF</button></div>
+  <div class="cert"><div class="in">
+    <span class="logo-ph" style="justify-content:center"><i>LOGO</i>Bimbel Ustadz</span>
+    <p class="cap" style="margin-top:22px">Sertifikat kelulusan</p>
+    <h3>Ahmad Fauzi</h3>
+    <p>telah menyelesaikan kelas <b>Tahsin Al-Quran</b> (8 pertemuan) dengan nilai rata-rata 86.</p>
+    <div class="sig"><div>Kairo, 20 November 2026<b>Ust. Ali</b></div><div>Pimpinan bimbel<b>Ust. Syahrul</b></div></div>
+  </div></div>`;
+
+V.tryout = () => {
+  const rank = [["Fauzan", 95], ["Nadia", 90], ["Ahmad Fauzi", 85], ["Rizki", 80], ["Hana", 75]];
+  return `<div class="h"><div><small>Tryout Nahwu 1 · 20 soal</small><h2>Tryout berwaktu</h2></div><span class="pill wait">${ic.clock} <span id="tm">45:00</span></span></div>
+    <div class="grid g2" style="align-items:start">
+      <div class="q"><p class="cap">Soal 4 dari 20</p><h3 style="margin-top:8px">Manakah yang termasuk fi'il madhi?</h3>
+        <div class="opts">${["قَرَأَ", "يَقْرَأُ", "اِقْرَأْ"].map(w => '<button data-toast="Jawaban tersimpan. Lanjut ke soal berikutnya"><bdi lang="ar" dir="rtl" class="ar">' + w + '</bdi></button>').join("")}</div>
+        <p style="color:var(--faint);font-size:13px;margin-top:12px">Saat waktu habis, jawaban terkumpul otomatis.</p></div>
+      <div class="box"><p class="cap">Peringkat tryout sebelumnya</p>
+        <table style="margin-top:8px"><tbody>${rank.map((r, i) => '<tr' + (r[0] === "Ahmad Fauzi" ? ' style="background:var(--mint);font-weight:700"' : "") + '><td style="width:36px">#' + (i + 1) + '</td><td>' + r[0] + '</td><td style="text-align:right">' + r[1] + '</td></tr>').join("")}</tbody></table></div>
+    </div>`;
+};
+
+V.rapor = () => {
+  const rows = [["Nahwu Dasar", 85, "11 / 12", "Baik"], ["Shorof Pemula", 78, "9 / 10", "Cukup baik"], ["Tahsin Al-Quran", 86, "8 / 8", "Lulus"]];
+  return `<div class="h"><div><small>Ahmad Fauzi · Angkatan 3</small><h2>Rapor nilai</h2></div><button class="btn" data-toast="Rapor terunduh sebagai PDF, siap dikirim ke wali">Unduh rapor</button></div>
+    <div class="tbl"><table><thead><tr><th>Kelas</th><th>Nilai rata-rata</th><th>Kehadiran</th><th>Catatan</th></tr></thead><tbody>
+    ${rows.map(r => '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td><td><span class="pill">' + r[3] + '</span></td></tr>').join("")}
+    </tbody></table></div>
+    <div class="box mint" style="margin-top:14px"><p class="cap">Catatan pengajar</p><p style="margin-top:6px">Pemahaman isim dan fi'il sudah kuat. Perlu latihan lagi di bab i'rab.</p></div>`;
+};
+
+V.adm = () => {
+  const p = S.p;
+  const pay = [["Ahmad Fauzi", "Nahwu Dasar", "Hari ini 09.12"], ["Nadia", "Tahsin Al-Quran", "Hari ini 08.40"], ["Rizki", "Shorof Pemula", "Kemarin 21.03"]];
+  let h = `<div class="h"><div><small>Bimbel Ustadz</small><h2>Panel admin</h2></div><button class="btn ghost" data-toast="Admin bisa membuka kelas dan angkatan baru dari sini">+ Buka kelas baru</button></div>
+    <div class="grid g3"><div class="box stat"><small>Murid aktif</small><b>64</b></div><div class="box stat"><small>Kelas berjalan</small><b>3</b></div><div class="box stat"><small>Pemasukan bulan ini</small><b>Rp 6,4 juta</b></div></div>
+    <div class="sep"></div><div class="h" style="margin-bottom:12px"><div><h2 style="font-size:18px">Pembayaran masuk</h2></div></div>`;
+  if (p === 1) {
+    h += `<div class="tbl"><table><thead><tr><th>Murid</th><th>Kelas</th><th>Masuk</th><th>Status</th></tr></thead><tbody>${pay.map((r, i) => {
+      const ok = S.confirmed[i];
+      return '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + (ok ? '<span class="pill ok">' + ic.check + ' Dikonfirmasi</span>' : '<button class="btn sm ghost" data-toast="Foto bukti transfer terbuka">Lihat bukti</button> <button class="btn sm" data-c="' + i + '">Konfirmasi</button>') + '</td></tr>';
+    }).join("")}</tbody></table></div>
+    <p class="note" style="padding:0;margin-top:12px">Di Kelas Dasar, admin mencocokkan bukti transfer lalu menekan Konfirmasi. Setelah itu akses kelas murid terbuka.</p>`;
+  } else {
+    h += `<div class="tbl"><table><thead><tr><th>Murid</th><th>Kelas</th><th>Masuk</th><th>Status</th></tr></thead><tbody>${pay.map((r, i) => '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td><td><span class="pill ok">' + ic.check + ' Lunas · ' + ["QRIS", "VA BSI", "GoPay"][i] + '</span></td></tr>').join("")}</tbody></table></div>
+    <p class="note" style="padding:0;margin-top:12px">Pembayaran tercatat lunas otomatis dan akses kelas langsung terbuka. Admin tidak perlu mengecek bukti transfer.</p>`;
+  }
+  return h;
+};
+
+V.absen = () => {
+  const m = [["Ahmad Fauzi", "hhhhhhhx", 85], ["Nadia", "hhhhhhhh", 90], ["Rizki", "hhxhhxhh", 72], ["Fauzan", "hhhhhhhh", 95], ["Hana", "hxhhxxhh", 64]];
+  return `<div class="h"><div><small>Nahwu Dasar · Angkatan 3</small><h2>Progres dan absensi</h2></div><span class="pill">Pertemuan 1 sampai 8</span></div>
+    <div class="tbl"><table><thead><tr><th>Murid</th><th>Kehadiran live</th><th>Rata-rata latihan</th></tr></thead><tbody>
+    ${m.map(r => '<tr><td><b>' + r[0] + '</b></td><td style="white-space:nowrap">' + [...r[1]].map(c => '<span class="dot' + (c === "x" ? " x" : "") + '"></span>').join("") + '</td><td>' + r[2] + (r[2] < 70 ? ' <span class="pill wait">Perlu perhatian</span>' : "") + '</td></tr>').join("")}
+    </tbody></table></div>
+    <p class="note" style="padding:0;margin-top:12px">Kotak hijau berarti hadir di kelas live, kotak merah muda berarti tidak hadir.</p>`;
+};
+
+V.laporan = () => {
+  const k = [["Nahwu Dasar", 2800000, 28], ["Shorof Pemula", 2100000, 21], ["Tahsin Al-Quran", 1500000, 15]];
+  const max = 2800000;
+  return `<div class="h"><div><small>November 2026</small><h2>Laporan dan honor</h2></div><button class="btn ghost" data-toast="Laporan terunduh sebagai Excel">Unduh Excel</button></div>
+    <div class="grid g3"><div class="box stat"><small>Pemasukan</small><b>Rp 6,4 juta</b></div><div class="box stat"><small>Honor pengajar (40%)</small><b>Rp 2,56 juta</b></div><div class="box stat"><small>Kupon terpakai</small><b>9 kali</b></div></div>
+    <div class="box" style="margin-top:14px;display:grid;gap:12px"><p class="cap">Pemasukan per kelas</p>
+      ${k.map(r => '<div class="hbar"><b>' + r[0] + '</b><span><i style="width:' + (r[1] / max * 100) + '%"></i></span><small style="text-align:right">' + rp(r[1]) + '</small></div>').join("")}</div>
+    <div class="tbl" style="margin-top:14px"><table><thead><tr><th>Pengajar</th><th>Kelas</th><th>Murid</th><th>Honor</th></tr></thead><tbody>
+    ${[["Ust. Syahrul", "Nahwu Dasar", 28, 1120000], ["Ust. Hasan", "Shorof Pemula", 21, 840000], ["Ust. Ali", "Tahsin Al-Quran", 15, 600000]].map(r => '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + rp(r[3]) + '</td></tr>').join("")}
+    </tbody></table></div>
+    <div class="box mint" style="margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap"><div><p class="cap">Kupon aktif</p><p style="margin-top:4px"><b>HEMAT20</b> potongan 20%, berlaku sampai 30 November</p></div><button class="btn sm" data-toast="Admin bisa membuat kupon baru dan mengatur masa berlakunya">Buat kupon</button></div>`;
+};
+
+/* ---------- Render ---------- */
+function render() {
+  clearInterval(S.timer);
+  document.querySelectorAll(".seg button").forEach(b => b.classList.toggle("on", +b.dataset.p === S.p));
+  const x = FLAT.find(i => i.id === S.v);
+  side();
+  const on = $("#side .on");
+  if (on && window.innerWidth <= 960) { const s = $("#side"); s.scrollLeft = on.offsetLeft - (s.clientWidth - on.offsetWidth) / 2; }
+  const locked = S.p < x.min;
+  $("#fhd").innerHTML = '<div><p class="cap">' + (x.who === "Calon murid" ? "Website bimbel" : x.who === "Murid" ? "Ruang belajar" : "Panel bimbel") + '</p><b>' + x.t + '</b></div>' +
+    '<span class="who"><span>' + (x.who === "Calon murid" ? "namabimbel.com" : x.who === "Murid" ? "Ahmad Fauzi" : x.who === "Pengajar" ? "Ust. Syahrul" : "Admin") + '</span><i>' + (x.who === "Calon murid" ? "www" : x.who === "Murid" ? "AF" : x.who === "Pengajar" ? "US" : "AD") + '</i></span>';
+  $("#scr").innerHTML = locked ? lockScreen(x) : V[x.id]();
+  if (!locked && x.id === "tryout") {
+    let s = 45 * 60;
+    S.timer = setInterval(() => { s--; const el = $("#tm"); if (!el) return clearInterval(S.timer); el.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); }, 1000);
+  }
+  syncUrl();
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button, [data-act]");
+  if (!b) return;
+  const d = b.dataset;
+  if (d.p) return setP(+d.p);
+  if (d.setp) return setP(+d.setp);
+  if (d.v) return go(d.v);
+  if (d.go) return go(d.go);
+  if (d.toast) return toast(d.toast);
+  if (d.m) { S.method = d.m; return render(); }
+  if (d.q) { S.answers[d.q] = d.o; return render(); }
+  if (d.c) { S.confirmed[d.c] = true; toast("Pembayaran dikonfirmasi. Akses kelas murid terbuka."); return render(); }
+  if (d.act === "proof") { S.proof = true; toast("Bukti terkirim. Admin mendapat notifikasi."); return render(); }
+  if (d.act === "pay") { S.paid = true; return render(); }
+  if (d.act === "reset") { S.answers = {}; return render(); }
+  if (d.act === "coupon") {
+    const v = ($("#kupon").value || "").trim().toUpperCase();
+    if (v === "HEMAT20") { S.coupon = true; toast("Kupon dipakai, potongan 20%"); } else toast("Kode kupon tidak dikenal. Coba HEMAT20");
+    return render();
+  }
+});
+document.addEventListener("change", e => { if (e.target.dataset.act === "cicil") { S.cicil = e.target.checked; render(); } });
+
+render();
+</script>
+</body>
+</html>
