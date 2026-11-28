@@ -2,315 +2,346 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dar Dev · Website, sistem, dan konten untuk usaha dan lembaga</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dar Dev · Mau bikin apa hari ini?</title>
 <meta name="description" content="Layanan Dar Dev: website kelas online, sistem pendaftaran, toko digital, web testimoni, CV online, dan video edukasi. Semua dikerjakan online.">
-<meta property="og:title" content="Dar Dev · Layanan website, sistem, dan konten">
+<meta property="og:title" content="Dar Dev · Mau bikin apa hari ini?">
 <meta property="og:description" content="Website kelas online, sistem pendaftaran, toko digital, web testimoni, CV online, dan video edukasi. Dikerjakan online.">
+<meta property="og:image" content="assets/dar-mascot-256.png">
 <link rel="icon" href="assets/dar-mascot-128.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
 <style>
+  /* Gaya buku dagang Dar: krem, judul raksasa, stiker, karcis kertas miring */
   :root {
-    --paper: #f4f1ea; --ivory: #fbfaf6; --ink: #161a18; --ink-2: #4a504c; --faint: #6f7571; --line: #dcd6c8;
-    --green: #123d31; --green-2: #1c5c48; --soft: #e3ebe5; --gold: #b0863f; --gold-2: #dcbc7c;
-    --serif: "Instrument Serif", Georgia, serif; --sans: "Satoshi", "Segoe UI", system-ui, sans-serif;
+    --bg: #f3f0e9; --paper: #fbfaf6; --ink: #151515; --muted: #6e6a62; --faint: #a19c91; --line: #d9d4c8;
+    --dot: #e0603a; --note: #e6ee8f;
+    --c-sys: #2f5fa7; --c-shop: #7a4fb0; --c-me: #2c7a45; --c-vid: #e0603a;
+    --sans: "Satoshi", "Helvetica Neue", Arial, sans-serif; --hand: "Caveat", "Segoe Print", cursive;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.65 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
   ul, ol { list-style: none; }
   a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; }
-  :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
-  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
-  h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; }
-  h2 { font-size: clamp(36px, 4.6vw, 56px); line-height: 1.04; }
-  .label { font-size: 13px; color: var(--gold); letter-spacing: .02em; display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-  .label::before { content: ""; width: 34px; height: 1px; background: currentColor; }
-  section { padding: 120px 0 0; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 22px max(20px, env(safe-area-inset-right, 0px)) 80px max(20px, env(safe-area-inset-left, 0px)); }
+  .cap { font-size: 12.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
 
-  .btn { display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 6px 6px 6px 22px; background: var(--green); color: #fff; font-weight: 500; font-size: 15px; line-height: 1; white-space: nowrap; }
-  .btn i { width: 36px; height: 36px; border-radius: 50%; background: var(--gold-2); color: var(--green); display: grid; place-items: center; font-style: normal; transition: transform .25s; }
-  .btn:hover i { transform: translateX(3px); }
-  .btn.line { background: transparent; color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
-  .btn.line i { background: var(--soft); }
+  /* Bilah atas */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-weight: 700; font-size: 20px; letter-spacing: -.02em; display: inline-flex; align-items: center; gap: 10px; }
+  .logo img { width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 1px solid var(--line); }
+  .logo i { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
+  .top a.cap { border-bottom: 1.5px solid var(--ink); padding-bottom: 4px; }
 
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(244,241,234,.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(176,134,63,.2); }
-  .nav .wrap { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .dar { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; line-height: 1.2; }
-  .dar img { width: 38px; height: 38px; border-radius: 50%; background: #fff; border: 1px solid var(--line); }
-  .dar small { display: block; font-weight: 500; font-size: 12px; color: var(--faint); }
-  .nav nav { display: flex; gap: 28px; font-size: 15px; color: var(--ink-2); }
-  .nav nav a:hover { color: var(--green); }
-  .nav .btn { font-size: 14px; padding: 4px 4px 4px 18px; }
-  .nav .btn i { width: 32px; height: 32px; }
+  /* Pembuka */
+  .hero { position: relative; padding: clamp(48px, 8vw, 96px) 0 0; --mx: 0; --my: 0; }
+  .hero h1 { font-weight: 500; font-size: clamp(60px, 11.5vw, 150px); line-height: .9; letter-spacing: -.055em; }
+  @media (min-width: 601px) { .hero h1 { margin-top: 150px; } }
+  .hero h1 .ln { display: block; overflow: hidden; padding-bottom: .04em; }
+  .hero h1 .ind { padding-left: .5em; }
+  .hero h1 .dash { display: inline-block; width: .55em; height: .07em; background: var(--ink); vertical-align: .28em; margin-left: .06em; transform-origin: left center; }
+  .hero h1 .ch { display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .2s; }
+  .hero h1 .ch:hover { transform: translateY(-.12em) rotate(-4deg); color: var(--dot); }
+  .stickers { position: absolute; right: 0; top: 8px; width: 380px; height: 290px; pointer-events: none; transform: translate(calc(var(--mx) * -16px), calc(var(--my) * -12px)); transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+  .stickers > * { pointer-events: auto; }
+  .mcard { position: absolute; right: 186px; top: -6px; width: 180px; transform: rotate(-8deg); filter: drop-shadow(0 10px 14px rgba(40, 30, 10, .16)); }
+  .mcard img { display: block; width: 100%; height: auto; background: #fff; border-radius: 4px; }
+  .scrib { position: absolute; right: 214px; top: 200px; font-family: var(--hand); font-size: 27px; line-height: 1; transform: rotate(-5deg); padding-bottom: 3px; background: linear-gradient(var(--dot), var(--dot)) 0 100% / 100% 2px no-repeat; white-space: nowrap; }
+  .note { position: absolute; right: 4px; top: 64px; width: 168px; padding: 22px 16px 18px; background: var(--note); transform: rotate(-6deg); box-shadow: 0 10px 22px rgba(60, 50, 20, .12); font-family: var(--hand); font-size: 25px; line-height: 1.05; text-align: center; }
+  .note::before { content: ""; position: absolute; left: 50%; top: -10px; width: 64px; height: 20px; transform: translateX(-50%) rotate(3deg); background: rgba(255, 255, 255, .55); }
+  .note b { display: block; font-size: 46px; line-height: 1; font-weight: 600; }
+  .stamp { position: absolute; right: 150px; top: 218px; width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--dot); outline: 1px solid var(--dot); outline-offset: -7px; color: var(--dot); display: grid; place-content: center; text-align: center; transform: rotate(14deg); opacity: .9; }
+  .stamp b { font-size: 17px; font-weight: 700; letter-spacing: .02em; line-height: 1; }
+  .stamp small { font-family: var(--hand); font-size: 15px; line-height: 1; margin-top: 3px; }
+  .intro { position: relative; margin: clamp(40px, 7vw, 80px) 0 0 auto; max-width: 560px; }
+  .intro p { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.35; letter-spacing: -.01em; }
+  .badge { position: absolute; left: -190px; top: -14px; width: 124px; height: 124px; fill: var(--ink); font-size: 11.2px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; transform: translate(calc(var(--mx) * 10px), calc(var(--my) * 8px)); transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+  .badge text { transform-origin: 60px 60px; }
+  .badge circle { fill: var(--dot); transform-origin: 60px 60px; }
+  .add { margin-top: 22px; display: inline-flex; align-items: center; gap: 18px; padding: 0 0 12px; border-bottom: 1.5px solid var(--ink); font-size: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; transition: gap .25s; }
+  .add:hover { gap: 24px; }
+  .facts { margin-top: clamp(40px, 6vw, 64px); display: flex; flex-wrap: wrap; gap: 6px 22px; color: var(--muted); font-size: 17px; }
+  .facts b { color: var(--ink); font-weight: 500; }
+  .facts .hot { display: inline-flex; align-items: center; gap: 8px; }
+  .facts .hot::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
 
-  .hero { padding: 84px 0 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: end; }
-  .hero h1 { font-size: clamp(50px, 7vw, 92px); line-height: .96; }
-  .hero h1 em { font-style: italic; color: var(--green-2); }
-  .hero .lead { margin-top: 24px; font-size: 18.5px; color: var(--ink-2); max-width: 31em; }
-  .hero .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-  .facts { border-top: 1px solid var(--ink); }
-  .facts div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-  .facts b { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1; color: var(--green); }
-  .facts span { font-size: 15px; color: var(--ink-2); align-self: center; }
+  /* Bagian bernomor */
+  .sec { margin-top: clamp(64px, 9vw, 112px); }
+  .sec-k { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+  .sec-k .cap + .cap { color: var(--muted); }
 
-  .svc { margin-top: 50px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .card { background: var(--ivory); border-radius: 26px; padding: 32px 30px 28px; display: flex; flex-direction: column; position: relative; }
-  .card.dark { background: var(--green); color: #fff; }
-  .card .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-  .card .cat { font-size: 13px; color: var(--gold); }
-  .card.dark .cat { color: var(--gold-2); }
-  .card .no { font-family: var(--serif); font-size: 22px; color: var(--faint); line-height: 1; }
-  .card.dark .no { color: rgba(255,255,255,.45); }
-  .card h3 { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.05; margin-top: 12px; }
-  .card .for { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); max-width: 30em; }
-  .card.dark .for { color: rgba(255,255,255,.78); }
-  .card ul { margin: 22px 0 26px; display: grid; gap: 9px; font-size: 15px; }
-  .card li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
-  .card li::before { content: "✓"; color: var(--gold); }
-  .card.dark li::before { color: var(--gold-2); }
-  .card .cf { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(176,134,63,.35); display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-  .price small { display: block; font-size: 12.5px; color: var(--faint); }
-  .card.dark .price small { color: rgba(255,255,255,.6); }
-  .price b { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.1; white-space: nowrap; }
-  .links { display: flex; gap: 8px; flex-wrap: wrap; }
-  .chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 9px 15px; font-size: 14px; font-weight: 500; background: var(--paper); color: var(--green); }
-  .chip:hover { background: var(--soft); }
-  .chip.wa { background: var(--green); color: #fff; }
-  .card.dark .chip { background: rgba(255,255,255,.1); color: #fff; }
-  .card.dark .chip.wa { background: var(--gold-2); color: var(--green); }
-  .card .demo { position: absolute; top: 28px; right: 28px; }
-  .note { margin-top: 18px; font-size: 14px; color: var(--faint); }
+  /* Karcis layanan */
+  .rows { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px 22px; padding: 8px 6px 14px; align-items: stretch; }
+  .row { position: relative; transform: rotate(var(--rot, 0deg)); filter: drop-shadow(0 1px 1px rgba(60, 50, 20, .07)) drop-shadow(0 10px 14px rgba(60, 50, 20, .10)); transition: transform .55s cubic-bezier(.2, .9, .25, 1.2), filter .4s; }
+  .row:hover { transform: rotate(0deg) translateY(-8px); filter: drop-shadow(0 2px 2px rgba(60, 50, 20, .08)) drop-shadow(0 24px 26px rgba(60, 50, 20, .16)); }
+  .tix { position: relative; height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 58px 24px 28px; background: var(--paper); border-radius: 5px 5px 0 0; -webkit-mask: radial-gradient(circle at 50% 100%, transparent 5px, #000 5.5px) 0 0 / 15px 100% repeat-x; mask: radial-gradient(circle at 50% 100%, transparent 5px, #000 5.5px) 0 0 / 15px 100% repeat-x; }
+  .row .n { position: absolute; left: 24px; top: 24px; font-size: 12px; letter-spacing: .14em; color: var(--faint); }
+  .row .kind { position: absolute; top: 22px; right: 20px; padding: 2px 0 2px 16px; color: var(--c); font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: radial-gradient(circle, var(--c) 4.5px, transparent 5px) 0 50% / 10px 10px no-repeat; }
+  .row h3 { font-weight: 500; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.05; letter-spacing: -.03em; }
+  .row .lay { color: var(--muted); font-size: 15px; }
+  .row ul { display: grid; gap: 6px; font-size: 14.5px; }
+  .row li { display: grid; grid-template-columns: 16px 1fr; gap: 6px; }
+  .row li::before { content: "·"; font-weight: 700; color: var(--c); font-size: 20px; line-height: .9; }
+  .tear { position: relative; height: 0; margin: 8px -24px 2px; border-top: 1.5px dashed #d6cfbf; }
+  .tear::before, .tear::after { content: ""; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); }
+  .tear::before { left: -11px; } .tear::after { right: -11px; }
+  .meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-top: auto; }
+  .lab { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+  .val { font-size: 22px; font-weight: 500; letter-spacing: -.02em; white-space: nowrap; }
+  .acts { display: flex; gap: 2px; }
+  .ic { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--ink); transition: background-color .2s, color .2s; }
+  .ic:hover { background: var(--ink); color: var(--bg); }
+  .ic svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .ic.wa svg { fill: currentColor; stroke: none; }
+  .try { font-family: var(--hand); font-size: 22px; line-height: 1; color: var(--dot); align-self: flex-start; border-bottom: 2px solid var(--dot); padding-bottom: 1px; transform: rotate(-2deg); }
+  .fine { margin-top: 18px; color: var(--muted); font-size: 15px; }
 
-  .how { margin-top: 50px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; counter-reset: s; }
-  .how li { counter-increment: s; border-top: 1px solid rgba(176,134,63,.5); padding-top: 18px; }
-  .how li::before { content: "0" counter(s); display: block; font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--gold); }
-  .how b { display: block; margin-top: 14px; font-size: 16.5px; }
-  .how p { margin-top: 6px; font-size: 15px; color: var(--ink-2); }
+  /* Cara kerja */
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .steps li { padding: 26px 22px 26px 0; border-bottom: 1px solid var(--line); }
+  .steps li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .steps .k { font-size: 12px; letter-spacing: .14em; color: var(--faint); }
+  .steps b { display: block; margin-top: 10px; font-size: 22px; font-weight: 500; letter-spacing: -.02em; line-height: 1.15; }
+  .steps p { margin-top: 8px; color: var(--muted); font-size: 15px; }
 
-  .why { margin-top: 50px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 48px; }
-  .why h3 { font-family: var(--serif); font-weight: 400; font-size: 27px; line-height: 1.15; }
-  .why p { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); }
-
-  .faq { margin-top: 34px; max-width: 860px; }
+  /* Tanya jawab */
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; font-family: var(--serif); font-size: 24px; line-height: 1.25; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; font-size: clamp(20px, 2vw, 24px); font-weight: 500; letter-spacing: -.02em; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; font-family: var(--sans); font-size: 24px; line-height: 1; color: var(--gold); transition: transform .2s; }
+  .faq summary::after { content: "+"; font-weight: 400; color: var(--dot); transition: transform .25s; }
   .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq p { padding: 0 0 22px; color: var(--ink-2); max-width: 46em; }
+  .faq p { padding: 0 0 22px; color: var(--muted); max-width: 46em; font-size: 16px; }
 
-  .end { margin-top: 120px; background: var(--green); color: #fff; border-radius: 32px; padding: 64px 52px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: end; }
-  .end h2 { max-width: 13em; }
-  .end p { margin-top: 14px; color: rgba(255,255,255,.78); max-width: 32em; }
-  .end .btn { background: var(--gold-2); color: var(--green); }
-  .end .btn i { background: var(--green); color: var(--gold-2); }
-  .foot { padding: 34px 0 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); }
+  /* Penutup */
+  .end { margin-top: clamp(80px, 11vw, 140px); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: end; }
+  .end h2 { font-weight: 500; font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.05em; }
+  .end h2 .ind { display: block; padding-left: .5em; }
+  .end h2 .scr { font-family: var(--hand); font-weight: 600; color: var(--dot); letter-spacing: 0; font-size: .7em; }
+  .end p { color: var(--muted); max-width: 22em; font-size: 17px; }
+  .foot { margin-top: 70px; padding-top: 18px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
 
-  @media (max-width: 960px) {
-    .nav nav { display: none; }
-    .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .svc { grid-template-columns: minmax(0, 1fr); }
-    .how { grid-template-columns: 1fr 1fr; }
-    .why { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  /* Gerak: hanya setelah halaman tampil (kelas .go) */
+  .go .hero h1 .ch { animation: up .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--k) * 35ms + .05s); }
+  .go .hero h1 .dash { animation: grow .7s .6s cubic-bezier(.2, .8, .2, 1) both; }
+  .go .mcard { animation: drop .9s .2s cubic-bezier(.2, .8, .2, 1) both; }
+  .go .mcard img { animation: bob 4.5s 1.2s ease-in-out infinite; transform-origin: 50% 80%; }
+  .go .scrib { animation: fadein .5s .8s both, ink .6s 1s ease-out both; }
+  .go .note { animation: notein .9s .45s cubic-bezier(.2, .8, .2, 1) both, sway 5s 1.5s ease-in-out infinite; }
+  .go .stamp { animation: slam .55s 1.25s cubic-bezier(.3, 1.4, .5, 1) both, wobble 6s 2s ease-in-out infinite; }
+  .go .intro { animation: rise .8s .35s cubic-bezier(.2, .8, .2, 1) both; }
+  .go .facts { animation: rise .8s .5s cubic-bezier(.2, .8, .2, 1) both; }
+  .go .badge text { animation: spin 16s linear infinite; }
+  .go .badge circle, .go .logo i { animation: pulse 2.4s ease-in-out infinite; }
+  .go .rows.anim .row { animation: deal .75s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 80ms + .15s); }
+  .go .rows.anim .row .kind { animation: thunk .45s cubic-bezier(.3, 1.4, .5, 1) both; animation-delay: calc(var(--i) * 80ms + .7s); }
+  @keyframes up { from { transform: translateY(105%); } to { transform: none; } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
+  @keyframes drop { from { opacity: 0; transform: translateY(-40px) rotate(-20deg); } to { opacity: 1; transform: rotate(-8deg); } }
+  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-4px) rotate(-2.5deg); } }
+  @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ink { from { background-size: 0 2px; } to { background-size: 100% 2px; } }
+  @keyframes notein { from { opacity: 0; transform: translateY(-30px) rotate(8deg); } to { opacity: 1; transform: rotate(-6deg); } }
+  @keyframes sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-2.5deg) translateY(-3px); } }
+  @keyframes slam { 0% { opacity: 0; transform: rotate(40deg) scale(2.2); } 60% { opacity: .95; transform: rotate(10deg) scale(.92); } 100% { opacity: .9; transform: rotate(14deg) scale(1); } }
+  @keyframes wobble { 0%, 100% { transform: rotate(14deg); } 50% { transform: rotate(8deg) scale(1.03); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  @keyframes deal { from { opacity: 0; transform: translateY(60px) rotate(calc(var(--rot, 0deg) + 10deg)) scale(.96); } to { opacity: 1; transform: rotate(var(--rot, 0deg)); } }
+  @keyframes thunk { 0% { opacity: 0; transform: translateX(10px) scale(1.5); } 55% { opacity: 1; transform: scale(.94); } 100% { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps li:nth-child(3) { padding-left: 0; border-left: 0; }
+    .end { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 600px) {
-    .wrap { padding: 0 18px; }
-    section { padding-top: 90px; }
-    .hero { padding-top: 48px; }
-    .card { padding: 26px 22px 22px; border-radius: 22px; }
-    .card h3 { font-size: 30px; }
-    .card .demo { position: static; margin-top: 14px; align-self: flex-start; }
-    .how { grid-template-columns: minmax(0, 1fr); }
-    .end { grid-template-columns: minmax(0, 1fr); padding: 44px 26px; border-radius: 24px; }
-    .facts div { grid-template-columns: 90px 1fr; }
-    .facts b { font-size: 28px; }
-    .nav .dar small { display: none; }
+    .top a.cap { display: none; }
+    .hero { padding-top: 22px; }
+    .stickers { position: relative; top: auto; width: 100%; height: 196px; margin: 4px 0 6px; transform: none; }
+    .mcard { right: auto; left: 2px; top: 0; width: 138px; }
+    .scrib { right: auto; left: 10px; top: 158px; font-size: 21px; }
+    .note { right: 4px; top: 8px; width: 132px; padding: 18px 12px 14px; font-size: 19px; }
+    .note b { font-size: 34px; }
+    .stamp { right: auto; left: 46%; top: 118px; width: 64px; height: 64px; }
+    .stamp b { font-size: 12px; } .stamp small { font-size: 11px; }
+    .hero h1 .ind { padding-left: .3em; }
+    .intro { margin-top: 28px; }
+    .badge { left: auto; right: -4px; top: auto; bottom: -10px; width: 80px; height: 80px; transform: none; }
+    .facts { font-size: 15px; }
+    .rows { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 4px 2px 10px; }
+    .row:hover { transform: rotate(var(--rot, 0deg)); }
+    .tix { padding: 52px 18px 24px; }
+    .row .n { left: 18px; top: 20px; }
+    .row .kind { right: 16px; top: 18px; }
+    .tear { margin: 6px -18px 2px; }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    .steps li, .steps li + li { padding: 22px 0; border-left: 0; }
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .card { transition: transform .3s; }
-    .card:hover { transform: translateY(-3px); }
-  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
+<div class="wrap">
+  <header class="top">
+    <span class="logo"><img src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="34" height="34">Dar Dev<i></i></span>
+    <a class="cap" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20mau%20tanya%20soal%20layanan%20Dar%20Dev." target="_blank" rel="noopener">Chat WhatsApp ↗</a>
+  </header>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="dar" href="#top"><img src="assets/dar-mascot-128.png" alt="Maskot Dar Dev" width="38" height="38"><span>Dar Dev<small>Website, sistem, dan konten</small></span></a>
-    <nav><a href="#layanan">Layanan</a><a href="#cara">Cara kerja</a><a href="#tanya">Tanya jawab</a></nav>
-    <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20mau%20tanya%20soal%20layanan%20Dar%20Dev." target="_blank" rel="noopener">Chat WhatsApp <i aria-hidden="true">↗</i></a>
-  </div>
-</header>
-
-<main class="wrap" id="top">
-  <div class="hero">
-    <div>
-      <p class="label">Layanan Dar Dev</p>
-      <h1>Website dan sistem untuk usaha, lembaga, dan <em>dakwah.</em></h1>
-      <p class="lead">Dar Dev membuat website kelas online, sistem pendaftaran, toko digital, dan konten video untuk usaha, lembaga, dan pegiat dakwah. Semua dikerjakan online, dari ngobrol kebutuhan sampai pelatihan admin.</p>
-      <div class="acts">
-        <a class="btn" href="#layanan">Lihat layanan <i aria-hidden="true">↓</i></a>
-        <a class="btn line" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20mau%20konsultasi%20dulu." target="_blank" rel="noopener">Konsultasi dulu <i aria-hidden="true">↗</i></a>
-      </div>
+  <section class="hero" id="hero">
+    <div class="stickers">
+      <figure class="mcard"><img src="assets/dar-mascot-256.png" alt="Maskot Dar Dev" width="256" height="256"></figure>
+      <span class="scrib">si tukang bikinin</span>
+      <span class="stamp" aria-hidden="true"><b>ONLINE</b><small>dari mana aja</small></span>
+      <div class="note"><b>6</b>layanan, mulai Rp 450rb</div>
+    </div>
+    <h1 aria-label="Mau bikin apa hari ini?"><span class="ln" data-split>Mau bikin<i class="dash"></i></span><span class="ln ind" data-split>apa hari ini?</span></h1>
+    <div class="intro">
+      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#ring" textLength="284" lengthAdjust="spacing">layanan · dar dev · dikerjain online · </textPath></text><circle cx="60" cy="60" r="7"/></svg>
+      <p>Dar Dev bikin website kelas online, sistem pendaftaran, toko digital, sampai video edukasi. Buat usaha, lembaga, dan yang lagi dakwah. Semuanya dikerjain online, dari ngobrol pertama sampai admin bisa jalan sendiri.</p>
+      <a class="add" href="#layanan">Lihat layanannya <span aria-hidden="true">↓</span></a>
     </div>
     <div class="facts">
-      <div><b>6</b><span>jenis layanan, dari CV online sampai sistem untuk lembaga</span></div>
-      <div><b>Rp 450rb</b><span>harga mulai, untuk CV online pribadi</span></div>
-      <div><b>100%</b><span>online: rapat lewat video call, bantuan lewat WhatsApp</span></div>
+      <span><b>6</b> layanan</span>
+      <span>mulai <b>Rp 450rb</b></span>
+      <span class="hot">100% online, ngobrolnya lewat <b>video call</b></span>
     </div>
-  </div>
-
-  <section id="layanan">
-    <p class="label">Layanan</p>
-    <h2>Pilih yang paling dekat dengan kebutuhanmu</h2>
-    <div class="svc">
-
-      <article class="card dark">
-        <div class="top"><span class="cat">Untuk bimbel dan lembaga belajar</span><span class="no">01</span></div>
-        <h3>Website kelas online</h3>
-        <p class="for">Murid daftar, bayar, menonton rekaman, mengerjakan latihan, dan mendapat sertifikat di website milik lembaga sendiri.</p>
-        <ul>
-          <li>Pendaftaran, akun murid, dan panel admin</li>
-          <li>Rekaman, modul PDF, dan jadwal live Zoom</li>
-          <li>Paket lebih besar: bayar QRIS otomatis, latihan dinilai otomatis, tryout, rapor</li>
-          <li>Domain .com dan perawatan 1 tahun termasuk</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>3 paket, mulai</small><b>Rp 3,5 juta</b></p>
-          <div class="links"><a class="chip" href="../kelas-online/demo/" target="_blank" rel="noopener">Coba contohnya ↗</a><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20website%20kelas%20online." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="top"><span class="cat">Untuk tur, event, dan komunitas</span><span class="no">02</span></div>
-        <h3>Sistem pendaftaran dan tiket</h3>
-        <p class="for">Peserta daftar dan bayar dari link di bio, tiket terkirim otomatis, dan tim check-in cepat di lokasi.</p>
-        <ul>
-          <li>Jadwal, kuota, dan halaman tiap acara</li>
-          <li>Bayar lewat QRIS, tiket dan pengingat via WhatsApp</li>
-          <li>Check-in di lokasi dan dasbor tim</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>3 paket, mulai</small><b>Rp 3,5 juta</b></p>
-          <div class="links"><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20sistem%20pendaftaran%20dan%20tiket." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="top"><span class="cat">Untuk toko dan usaha</span><span class="no">03</span></div>
-        <h3>Toko digital</h3>
-        <p class="for">Katalog barang yang mudah dicari pembeli, pesanan masuk ke WhatsApp, dan catatan kasir serta stok di satu tempat.</p>
-        <ul>
-          <li>Katalog dengan pencarian, pesan via WhatsApp</li>
-          <li>Kasir dan stok barang</li>
-          <li>Buku bon pelanggan untuk paket lebih besar</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>3 paket, mulai</small><b>Rp 5 juta</b></p>
-          <div class="links"><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20toko%20digital." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="top"><span class="cat">Untuk muthowif dan travel umrah</span><span class="no">04</span></div>
-        <h3>Web testimoni jamaah</h3>
-        <p class="for">Jamaah mengisi testimoni dan foto dari HP lewat satu link. Testimoni yang disetujui tampil rapi di halaman sendiri.</p>
-        <ul>
-          <li>Form testimoni per travel atau per grup keberangkatan</li>
-          <li>Admin menyetujui sebelum tampil</li>
-          <li>Tambahan rekam suara jamaah: Rp 200rb</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>Sekali bayar</small><b>Rp 650rb</b></p>
-          <div class="links"><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20web%20testimoni%20jamaah." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="top"><span class="cat">Untuk pelamar kerja dan freelancer</span><span class="no">05</span></div>
-        <h3>CV online</h3>
-        <p class="for">CV dalam bentuk halaman web yang enak dibuka HRD di HP, lengkap dengan pengalaman, portofolio, dan tombol kontak.</p>
-        <ul>
-          <li>Satu halaman pribadi dengan link sendiri</li>
-          <li>Portofolio dan tombol WhatsApp atau email</li>
-          <li>Bisa diperbarui saat ada pengalaman baru</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>3 paket</small><b>Rp 450rb sampai 950rb</b></p>
-          <div class="links"><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20CV%20online." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="top"><span class="cat">Untuk travel umrah dan haji</span><span class="no">06</span></div>
-        <h3>Video edukasi motion graphic</h3>
-        <p class="for">Video pendek edukasi umrah untuk Reels dan TikTok, dengan narasi dan animasi yang digambar, siap tayang di akun travel.</p>
-        <ul>
-          <li>Naskah disiapkan, travel tinggal cek dan setujui</li>
-          <li>Format vertikal untuk Reels, TikTok, dan Shorts</li>
-          <li>Paket bulanan 8 atau 12 video</li>
-        </ul>
-        <div class="cf">
-          <p class="price"><small>Coba 3 video</small><b>Rp 900rb</b></p>
-          <div class="links"><a class="chip" href="../video-travel-umrah/" target="_blank" rel="noopener">Lihat penawaran ↗</a><a class="chip wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20video%20edukasi." target="_blank" rel="noopener">Tanya</a></div>
-        </div>
-      </article>
-
-    </div>
-    <p class="note">Harga di atas adalah harga mulai. Rincian akhir menyesuaikan kebutuhan dan disampaikan sebelum pekerjaan dimulai.</p>
   </section>
 
-  <section id="cara">
-    <p class="label">Cara kerja</p>
-    <h2>Dari obrolan sampai bisa dipakai</h2>
-    <ol class="how">
-      <li><b>Ngobrol kebutuhan</b><p>Lewat WhatsApp atau video call: apa yang mau dibuat, untuk siapa, dan berapa anggarannya.</p></li>
-      <li><b>Penawaran dan contoh</b><p>Kamu menerima halaman penawaran berisi paket, harga, dan contoh tampilan.</p></li>
-      <li><b>Dikerjakan dan dicek</b><p>Hasil awal dikirim untuk dicek, lalu diperbaiki sampai sesuai.</p></li>
-      <li><b>Tayang dan didampingi</b><p>Admin dilatih lewat video call, dan Dar Dev tetap bisa dihubungi di WhatsApp.</p></li>
+  <section class="sec" id="layanan" aria-labelledby="k1">
+    <div class="sec-k"><span class="cap" id="k1">01 / Yang bisa dibikinin</span><span class="cap">6 layanan</span></div>
+    <div class="rows anim">
+
+      <article class="row" style="--rot:-1.2deg;--i:0;--c:var(--c-sys)"><div class="tix">
+        <span class="n">01</span><span class="kind">Sistem</span>
+        <h3>Website kelas online</h3>
+        <p class="lay">Buat bimbel dan lembaga belajar. Murid daftar, bayar, nonton rekaman, latihan, dan dapat sertifikat di website sendiri.</p>
+        <ul><li>Panel admin, akun murid, jadwal live Zoom</li><li>Paket besar: QRIS otomatis, tryout, rapor</li><li>Domain .com dan perawatan 1 tahun termasuk</li></ul>
+        <a class="try" href="../kelas-online/demo/" target="_blank" rel="noopener">coba contohnya ↗</a>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">Mulai</span><span class="val">Rp 3,5 juta</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20website%20kelas%20online." target="_blank" rel="noopener" aria-label="Tanya soal website kelas online di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+      <article class="row" style="--rot:1deg;--i:1;--c:var(--c-sys)"><div class="tix">
+        <span class="n">02</span><span class="kind">Sistem</span>
+        <h3>Sistem pendaftaran dan tiket</h3>
+        <p class="lay">Buat tur, event, dan komunitas. Peserta daftar dan bayar dari link di bio, tiketnya terkirim otomatis.</p>
+        <ul><li>Jadwal, kuota kursi, halaman tiap acara</li><li>Bayar QRIS, tiket dan pengingat via WhatsApp</li><li>Check-in di lokasi dan dasbor tim</li></ul>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">Mulai</span><span class="val">Rp 3,5 juta</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20sistem%20pendaftaran%20dan%20tiket." target="_blank" rel="noopener" aria-label="Tanya soal sistem pendaftaran di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+      <article class="row" style="--rot:-.6deg;--i:2;--c:var(--c-shop)"><div class="tix">
+        <span class="n">03</span><span class="kind">Usaha</span>
+        <h3>Toko digital</h3>
+        <p class="lay">Buat toko dan usaha. Katalog yang gampang dicari pembeli, pesanan masuk ke WhatsApp, kasir dan stok di satu tempat.</p>
+        <ul><li>Katalog dengan pencarian, pesan via WhatsApp</li><li>Kasir dan stok barang</li><li>Paket besar: buku bon pelanggan</li></ul>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">Mulai</span><span class="val">Rp 5 juta</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20toko%20digital." target="_blank" rel="noopener" aria-label="Tanya soal toko digital di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+      <article class="row" style="--rot:.9deg;--i:3;--c:var(--c-shop)"><div class="tix">
+        <span class="n">04</span><span class="kind">Travel</span>
+        <h3>Web testimoni jamaah</h3>
+        <p class="lay">Buat muthowif dan travel umrah. Jamaah isi testimoni dan foto dari HP lewat satu link, yang disetujui tampil rapi.</p>
+        <ul><li>Form per travel atau per grup keberangkatan</li><li>Admin setujui dulu sebelum tampil</li><li>Tambahan rekam suara jamaah: Rp 200rb</li></ul>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">Sekali bayar</span><span class="val">Rp 650rb</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20web%20testimoni%20jamaah." target="_blank" rel="noopener" aria-label="Tanya soal web testimoni di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+      <article class="row" style="--rot:-1deg;--i:4;--c:var(--c-me)"><div class="tix">
+        <span class="n">05</span><span class="kind">Pribadi</span>
+        <h3>CV online</h3>
+        <p class="lay">Buat pelamar kerja dan freelancer. CV berbentuk halaman web yang enak dibuka HRD di HP.</p>
+        <ul><li>Satu halaman pribadi dengan link sendiri</li><li>Portofolio dan tombol kontak</li><li>Bisa diperbarui kalau ada pengalaman baru</li></ul>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">3 paket</span><span class="val">Rp 450rb sampai 950rb</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20tertarik%20CV%20online." target="_blank" rel="noopener" aria-label="Tanya soal CV online di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+      <article class="row" style="--rot:1.2deg;--i:5;--c:var(--c-vid)"><div class="tix">
+        <span class="n">06</span><span class="kind">Konten</span>
+        <h3>Video edukasi motion graphic</h3>
+        <p class="lay">Buat travel umrah dan haji. Video pendek edukasi untuk Reels dan TikTok, animasinya digambar, naskahnya disiapin.</p>
+        <ul><li>Travel tinggal cek dan setujui naskah</li><li>Format vertikal Reels, TikTok, Shorts</li><li>Paket bulanan 8 atau 12 video</li></ul>
+        <a class="try" href="../video-travel-umrah/" target="_blank" rel="noopener">lihat penawarannya ↗</a>
+        <div class="tear"></div>
+        <div class="meta"><div><span class="lab">Coba 3 video</span><span class="val">Rp 900rb</span></div>
+          <div class="acts"><a class="ic wa" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20dari%20travel%20umrah%20tertarik%20video%20edukasi." target="_blank" rel="noopener" aria-label="Tanya soal video edukasi di WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1.9 2 1.2 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a></div></div>
+      </div></article>
+
+    </div>
+    <p class="fine">Harga di atas harga mulai. Rinciannya nyesuain kebutuhan, dan disampaikan dulu sebelum mulai dikerjain.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="k2">
+    <div class="sec-k"><span class="cap" id="k2">02 / Cara kerjanya</span><span class="cap">semua online</span></div>
+    <ol class="steps">
+      <li><span class="k">01</span><b>Ngobrol dulu</b><p>Lewat WhatsApp atau video call: mau bikin apa, buat siapa, budgetnya berapa.</p></li>
+      <li><span class="k">02</span><b>Terima penawaran</b><p>Kamu dapat halaman penawaran berisi paket, harga, dan contoh tampilan.</p></li>
+      <li><span class="k">03</span><b>Dikerjain dan dicek</b><p>Hasil awal dikirim buat dicek, lalu dibenerin sampai pas.</p></li>
+      <li><span class="k">04</span><b>Jalan</b><p>Admin dilatih lewat video call, dan Dar Dev tetap standby di WhatsApp.</p></li>
     </ol>
   </section>
 
-  <section>
-    <p class="label">Kenapa Dar Dev</p>
-    <h2>Dibuat untuk dipakai sehari-hari</h2>
-    <div class="why">
-      <div><h3>Mulai dari kebutuhanmu</h3><p>Setiap penawaran disusun untuk usaha atau lembaga yang bersangkutan, lengkap dengan contoh yang bisa dicoba.</p></div>
-      <div><h3>Harga jelas sejak awal</h3><p>Paket dan biaya tertulis di halaman penawaran, termasuk biaya perawatan setelahnya bila ada.</p></div>
-      <div><h3>Milik kamu sendiri</h3><p>Website dan datanya milik usaha atau lembaga kamu, tanpa potongan per transaksi dari Dar Dev.</p></div>
-    </div>
-  </section>
-
-  <section id="tanya">
-    <p class="label">Tanya jawab</p>
-    <h2>Sebelum menghubungi</h2>
+  <section class="sec" aria-labelledby="k3">
+    <div class="sec-k"><span class="cap" id="k3">03 / Yang sering ditanyain</span><span class="cap">4 pertanyaan</span></div>
     <div class="faq">
-      <details><summary>Saya di luar kota, bisa?</summary><p>Bisa. Semua pekerjaan Dar Dev dilakukan online: rapat lewat video call, kirim bahan lewat WhatsApp atau email, dan pelatihan admin juga lewat video call.</p></details>
-      <details><summary>Kebutuhan saya tidak ada di daftar ini</summary><p>Ceritakan saja lewat WhatsApp. Daftar ini adalah layanan yang paling sering dikerjakan, dan kebutuhan lain bisa dibicarakan.</p></details>
-      <details><summary>Bisa lihat contoh dulu?</summary><p>Bisa. Website kelas online punya contoh yang bisa dicoba langsung, dan video edukasi punya halaman penawaran sendiri. Untuk layanan lain, contoh tampilan dikirim bersama penawaran.</p></details>
-      <details><summary>Bagaimana cara mulainya?</summary><p>Kirim pesan ke WhatsApp Dar Dev dengan menyebut layanan yang diminati. Setelah ngobrol singkat, kamu menerima halaman penawaran yang disusun untuk kebutuhanmu.</p></details>
+      <details><summary>Saya di luar kota, bisa?</summary><p>Bisa. Semua pekerjaan Dar Dev online: rapat lewat video call, kirim bahan lewat WhatsApp atau email, pelatihan admin juga lewat video call.</p></details>
+      <details><summary>Kebutuhan saya nggak ada di daftar</summary><p>Ceritain aja lewat WhatsApp. Daftar ini layanan yang paling sering dikerjain, kebutuhan lain bisa diobrolin.</p></details>
+      <details><summary>Bisa lihat contoh dulu?</summary><p>Bisa. Website kelas online punya contoh yang bisa langsung dicoba, video edukasi punya halaman penawaran sendiri. Buat layanan lain, contoh tampilan dikirim bareng penawarannya.</p></details>
+      <details><summary>Mulainya gimana?</summary><p>Kirim pesan ke WhatsApp Dar Dev, sebutin layanan yang diminati. Habis ngobrol singkat, kamu dapat halaman penawaran yang disusun buat kebutuhanmu.</p></details>
     </div>
   </section>
 
   <div class="end">
+    <h2>Ceritain aja<span class="ind">dulu. <span class="scr">lewat WA</span></span></h2>
     <div>
-      <h2>Ceritakan apa yang mau kamu buat.</h2>
-      <p>Kirim pesan singkat. Dar Dev akan membalas dengan pertanyaan seperlunya, lalu menyusun penawarannya.</p>
+      <p>Kirim pesan singkat. Dar Dev balas dengan pertanyaan seperlunya, terus nyusun penawarannya.</p>
+      <a class="add" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20mau%20cerita%20soal%20kebutuhan%20saya." target="_blank" rel="noopener">Chat Dar Dev <span aria-hidden="true">↗</span></a>
     </div>
-    <a class="btn" href="https://wa.me/6281311506025?text=Assalamu%27alaikum%20Dar%2C%20saya%20mau%20cerita%20soal%20kebutuhan%20saya." target="_blank" rel="noopener">Chat Dar Dev <i aria-hidden="true">↗</i></a>
   </div>
 
   <footer class="foot">
-    <span class="dar"><img src="assets/dar-mascot-128.png" alt="" width="38" height="38"><span>Dar Dev<small>WhatsApp 0813 1150 6025</small></span></span>
-    <span>Semua layanan dikerjakan online.</span>
+    <span>Dar Dev · WhatsApp 0813 1150 6025</span>
+    <span>Semua layanan dikerjain online.</span>
   </footer>
-</main>
+</div>
 
+<script>
+  // Huruf judul dipecah satu-satu untuk animasi masuk
+  let k = 0;
+  document.querySelectorAll("[data-split]").forEach(ln => {
+    const dash = ln.querySelector(".dash");
+    const text = ln.firstChild.nodeType === 3 ? ln.firstChild.textContent : ln.textContent;
+    const wrap = document.createElement("span");
+    wrap.setAttribute("aria-hidden", "true");
+    [...text].forEach(c => {
+      if (c === " ") { wrap.append(" "); return; }
+      const s = document.createElement("i"); s.className = "ch"; s.style.fontStyle = "normal"; s.style.setProperty("--k", k++); s.textContent = c; wrap.append(s);
+    });
+    ln.textContent = ""; ln.append(wrap); if (dash) ln.append(dash);
+  });
+  // Stiker ikut gerak kursor
+  const hero = document.getElementById("hero");
+  if (matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) {
+    addEventListener("mousemove", e => {
+      hero.style.setProperty("--mx", (e.clientX / innerWidth - .5).toFixed(3));
+      hero.style.setProperty("--my", (e.clientY / innerHeight - .5).toFixed(3));
+    }, { passive: true });
+  }
+  // Animasi hanya jalan saat halaman benar-benar tampil
+  if (document.visibilityState === "visible") requestAnimationFrame(() => document.body.classList.add("go"));
+  else document.addEventListener("visibilitychange", () => document.body.classList.add("go"), { once: true });
+</script>
 </body>
 </html>
